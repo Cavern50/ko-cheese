@@ -1,0 +1,85 @@
+@import "/src/styles/root.scss";
+@import "/src/styles/mixins.scss";
+
+.footer {
+    background-color: $gen;
+    color: $accent;
+    padding: 7.5rem 0 3.125rem;
+  
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.block {
+    width: 28.125rem;
+}
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.link {
+    width: 50%;
+    margin-bottom: 1.875rem;
+    a {
+        @extend %underline;
+        color: $accent;
+        font-family: $font-main;
+        text-transform: none;
+    }
+}
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.address {
+    margin-bottom: 1.875rem;
+}
+.contacts {
+    a {
+        display: block;
+        width: fit-content;
+        text-transform: none;
+        &:not(:first-child) {
+            margin-top: 1.25rem;
+        }
+    }
+}
+.contact {
+    @extend %link;
+    color: $accent;
+    font-weight: 400;
+    &::after {
+        background-color: $accent;
+    }
+}
+.asap {
+    align-self: flex-end;
+    g, path {
+        transition: opacity .3s;
+    }
+    &:hover {
+        g, path {
+            opacity: 1;
+        }
+    }
+}
+
+.corp {
+    margin-top: 3.125rem;
+    padding-top: 3.125rem;
+    border-top: 1px solid rgba($accent, .3);
+    text-align: center;
+    font-family: $font-service;
+    svg {
+        width: 4.375rem;
+    }
+    span {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+}

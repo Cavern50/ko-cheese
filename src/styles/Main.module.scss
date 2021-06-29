@@ -1,0 +1,96 @@
+@import "./root.scss";
+@import "./mixins.scss";
+
+.main {
+   padding-bottom: 120px;
+}
+
+.wrapper {
+   width: calc(100% - 120px);
+   margin: 0 auto;
+   max-width: 1320px;
+}
+
+.modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   overflow: hidden;
+   @extend %flexbox;
+   justify-content: center;
+   //Вложенное окно с контентом, необходимо задать фиксированные размерыж
+   &__box {
+      padding: 2rem 3rem;
+      box-sizing: border-box;
+      position: relative;
+      overflow: auto;
+      max-height: 100%;
+      max-width: 100%;
+   }
+   // Кнопка закрытия
+   &__close {
+      @extend %close-btn;
+   }
+}
+
+.italic {
+   font-family: $font-italic;
+}
+
+.numbers {
+   font-family: $font-numbers;
+}
+
+.flex {
+   display: flex;
+}
+
+.pt {
+   padding-top: 5rem;
+}
+
+.title {
+   text-align: center;
+   margin: 5rem 0 7.5rem 0;
+}
+
+
+.status {
+   @extend %flexbox;
+   font-family: $font-service;
+   font-size: 0.875rem;
+   line-height: 1;
+   color: #575757;
+   &::before {
+      content: "";
+      display: inline-block;
+      align-self: center;
+      width: 0.875rem;
+      height: 0.875rem;
+      margin-right: 0.6875rem;
+      border-radius: 50%;
+   }
+}
+
+.avaliable {
+   @extend .status;
+   &::before {
+      background-color: #b2e08d;
+   }
+}
+
+.preparing {
+   @extend .status;
+   &::before {
+      background-color: #90b1ca;
+   }
+}
+
+.not-avaliable {
+   @extend .status;
+   &::before {
+      background-color: #FF867C;
+   }
+}

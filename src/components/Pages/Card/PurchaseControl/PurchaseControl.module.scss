@@ -1,0 +1,67 @@
+@import "/src/styles/root.scss";
+@import "/src/styles/mixins.scss";
+
+.container {
+   @extend %flexbox;
+   margin-top: 1.875rem;
+}
+
+.counter {
+   position: relative;
+   @extend %flexbox;
+   justify-content: center;
+   width: 8.75rem;
+   height: 2.5rem;
+   margin-right: 1.125rem;
+   border: 1px solid $grey;
+   border-radius: 8px;
+   font-family: $font-service;
+   user-select: none;
+}
+
+.count {
+   font-size: 1.125rem;
+}
+
+.change {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+}
+.minus {
+   left: 1.25rem;
+}
+.plus {
+   right: 1.25rem;
+}
+
+.add {
+   width: 9.375rem;
+   height: 2.5rem;
+   margin-right: 1.125rem;
+   border: 1px solid transparent;
+   border-radius: 42px;
+   font-size: 12px;
+   text-decoration: underline;
+   text-transform: uppercase;
+   color: $accent;
+   background-color: $gen;
+   &:hover {
+      border-color: $gen;
+      background-color: transparent;
+      color: $gen;
+   }
+}
+
+.favorite {
+   @extend %button--circle;
+}
+.delivery {
+    @extend %flexbox;
+    margin-top: 1.875rem;
+    font-family: $font-service;
+}
+.text {
+    opacity: 0.8;
+    margin: 0 0.25rem 0 0.875rem;
+}

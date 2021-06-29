@@ -1,0 +1,72 @@
+@import "/src/styles/mixins.scss";
+@import "/src/styles/root.scss";
+
+.card {
+    width: 26.25rem;
+}
+
+.body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 35rem;
+    padding: 1.625rem 2rem 1.125rem 1.25rem;
+}
+.image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
+}
+.well {
+    display: flex;
+    position: relative;
+    align-self: flex-start;
+}
+.name {
+    margin-top: 1.875rem;
+    line-height: 1;
+}
+.addition {
+    display: block;
+    font-size: 0.875rem;
+    font-family: $font-italic;
+    line-height: 1.5;
+    margin-top: 0.625rem;
+}
+
+
+.style {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    width: 5.9375rem;
+    height: 5.9375rem;
+    padding: 0 0.9375rem;
+    background-image: url('/img/icons/remark.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-family: $font-italic;
+}
+
+
+.country {
+    width: 100%;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1;
+    color: $accent;
+}
+
+.flag {
+    width: 12px;
+    height: 12px;
+    margin-top: 0.625rem;
+}

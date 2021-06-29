@@ -1,0 +1,39 @@
+@import "/src/styles/mixins.scss";
+
+.header {
+   @extend %header-nav;
+}
+
+.container {
+   @extend %flexbox;
+   font-family: $font-numbers;
+}
+
+.counter {
+   margin-right: 4.375rem;
+   font-size: 1.5rem;
+   &__all {
+      color: $grey;
+   }
+}
+
+.nav {
+   @extend %flexbox;
+   button {
+      @extend %flexbox;
+      justify-content: center;
+      width: 3.75rem;
+      height: 3.75rem;
+      border-radius: 50%;
+      background-color: $lightest;
+      &:first-child {
+         margin-right: 1.25rem;
+      }
+      &:hover {
+         background-color: $gen;
+         path {
+            fill: $accent;
+         }
+      }
+   }
+}

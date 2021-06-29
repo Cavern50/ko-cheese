@@ -1,0 +1,13 @@
+@import "/src/styles/root.scss";
+
+.product_slide {
+   border: 1px solid rgba($gen, 0.3);
+   border-left: none;
+   &:first-child {
+      border-left: 1px solid rgba($gen, 0.3);
+   }
+}
+
+.recipe_slide {
+    height: auto;
+}

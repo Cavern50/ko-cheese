@@ -1,0 +1,26 @@
+@import "/src/styles/mixins.scss";
+@import "/src/styles/root.scss";
+
+.container {
+    @extend %flexbox;
+    justify-content: center;
+    position: relative;
+    min-height: 5rem;
+    margin-top: 0.5rem;
+    background-color: $lightest;
+    border-radius: 14px;
+}
+.text {
+    font-family: $font-service;
+    font-size: 1.125rem;
+
+}
+.close {
+    @extend %close-btn;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.25rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
