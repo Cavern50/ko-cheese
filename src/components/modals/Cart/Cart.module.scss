@@ -1,0 +1,22 @@
+@import "/src/styles/mixins.scss";
+@import "/src/styles/root.scss";
+
+.container {
+    width: 31.25rem;
+    min-height: 56.25rem;
+    padding: 0 1.875rem 1.875rem 1.875rem;
+    background-color: $accent;
+}
+.header {
+    @extend %flexbox;
+    justify-content: space-between;
+    height: 5rem;
+    border-bottom: 1px solid rgba($gen, .3);
+}
+.close {
+    @extend %close-btn;
+    position: relative;
+    top: unset;
+    right: unset;
+    transform: unset;
+}

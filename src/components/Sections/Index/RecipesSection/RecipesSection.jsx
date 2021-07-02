@@ -1,7 +1,7 @@
 import React from "react";
 import g from "src/styles/Main.module.scss";
-import { Slider } from "@components/Common/Slider/Slider";
-import { Recipe } from "@components/Common/Recipe/Recipe";
+import { Slider } from "@components/common/Slider/Slider";
+import { Recipe } from "@components/common/Recipe/Recipe";
 
 
 const recipes = [

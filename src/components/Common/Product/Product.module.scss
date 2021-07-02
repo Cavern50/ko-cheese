@@ -1,7 +1,6 @@
 @import "/src/styles/mixins.scss";
 @import "/src/styles/root.scss";
 
-
 .card {
    position: relative;
    overflow: hidden;
@@ -45,13 +44,12 @@
    border-radius: 50%;
    font-size: 0.875rem;
    color: rgba($gen, 0.3);
-   transition: right 400ms ease-out, background-color .3s, color .3s;
+   transition: right 400ms ease-out, background-color 0.3s, color 0.3s;
    &:hover {
       background-color: $gen;
       color: $accent;
    }
 }
-
 
 .image,
 .name,
@@ -63,7 +61,7 @@
 }
 
 .price {
-    font-family: $font-numbers;
+   font-family: $font-numbers;
 }
 
 .image {

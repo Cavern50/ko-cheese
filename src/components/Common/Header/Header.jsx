@@ -15,28 +15,43 @@ const headerLinks = [
    { title: "Войти", link: "/" },
 ];
 
-export const Header = ({promo}) => {
+export const Header = ({ promo }) => {
    return (
       <header className={clsx(s.header)}>
          <div className={clsx(g.wrapper)}>
-            <div className={clsx(s.container, promo ? s.border_accent : '')}>
+            <div className={clsx(s.container, promo ? s.border_accent : "")}>
                <nav className={clsx(s.nav)}>
                   {headerLinks.map((el, i) =>
                      el.logo ? (
                         <Link href="/" key={i}>
-                           <a className={clsx(s.logo, promo ? s.logo_accent : '')}>
+                           <a
+                              className={clsx(
+                                 s.logo,
+                                 promo ? s.logo_accent : ""
+                              )}
+                           >
                               <Logo />
                            </a>
                         </Link>
                      ) : (
                         <Link href={el.link} key={i}>
-                           <a className={clsx(s.link, promo ? s.link_accent : '')}>{el.title}</a>
+                           <a
+                              className={clsx(
+                                 s.link,
+                                 promo ? s.link_accent : ""
+                              )}
+                           >
+                              {el.title}
+                           </a>
                         </Link>
                      )
                   )}
                </nav>
                <div className={clsx(s.control)}>
-                  <button type="button" className={clsx(s.button, promo ? s.button_accent : '')}>
+                  <button
+                     type="button"
+                     className={clsx(s.button, promo ? s.button_accent : "")}
+                  >
                      <svg
                         width="20"
                         height="18"
@@ -50,7 +65,10 @@ export const Header = ({promo}) => {
                         />
                      </svg>
                   </button>
-                  <button type="button" className={clsx(s.button)}>
+                  <button
+                     type="button"
+                     className={clsx(s.button, promo ? s.button_accent : "")}
+                  >
                      <svg
                         width="15"
                         height="21"

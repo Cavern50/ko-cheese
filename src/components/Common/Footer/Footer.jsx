@@ -2,6 +2,8 @@ import React from "react";
 import s from "./Footer.module.scss";
 import g from "src/styles/Main.module.scss";
 import { Logo } from "@components/SVG/HeaderLogoSVG";
+
+import Link from 'next/link';
 import clsx from "clsx";
 
 export const Footer = () => {
@@ -144,7 +146,13 @@ export const Footer = () => {
                </div>
             </div>
             <div className={clsx(s.corp)}>
-               {<Logo />}
+               {
+                  <Link href="/">
+                     <a>
+                        <Logo />
+                     </a>
+                  </Link>
+               }
                <span>© Pty Ltd and Wild Game Resources</span>
                <span>Australia Pty Ltd</span>
                <span>Terms & Conditions</span>

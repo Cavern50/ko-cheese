@@ -4,7 +4,15 @@
 .container {
     position: relative;
     min-height: 560px;
-    background-image: url('/img/content/discount.jpg');
+}
+
+.background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .promo {

@@ -26,8 +26,9 @@
     position: absolute;
     right: 5%;
     top: 3%;
-    height: 1.25rem;
-    width: 1.25rem;
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 50%;
     background-color: rgba($gen, 0.1);
 
     &::after,

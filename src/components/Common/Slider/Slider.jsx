@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
-import { SliderNav } from "@components/Common/Slider/SliderNav/SliderNav";
+import { SliderNav } from "@components/common/Slider/SliderNav/SliderNav";
 
 import s from "./Slider.module.scss";
 

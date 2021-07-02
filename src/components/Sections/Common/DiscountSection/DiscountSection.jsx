@@ -10,6 +10,7 @@ export const DiscountSection = () => {
       <section className={clsx(s.discount)}>
          <div className={clsx(g.wrapper)}>
             <div className={clsx(s.container)}>
+               <img className={clsx(s.background)} src="/static/img/content/discount.jpg" alt="" />
                <div className={clsx(s.promo)}>
                   <h3 className={clsx(s.before)}>Скидка до</h3>
                   <span className={clsx(s.offer)}>10%</span>

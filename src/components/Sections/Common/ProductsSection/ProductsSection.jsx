@@ -1,13 +1,12 @@
 import React from "react";
 import clsx from "clsx";
-import { Product } from "@components/Common/Product/Product";
+import { Product } from "@components/common/Product/Product";
 
 import s from "./ProductsSection.module.scss";
 import g from "src/styles/Main.module.scss";
 
 
 export const ProductsSection = ({ products }) => {
-   // console.log(products)
    const [activeCategory, setActiveCategory] = React.useState(0);
    const [activeSubcategory, setActiveSubcategory] = React.useState(0);
 

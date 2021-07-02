@@ -6,6 +6,9 @@
    &:first-child {
       border-left: 1px solid rgba($gen, 0.3);
    }
+   &.swiper-slide {
+      background-color: red;
+   }
 }
 
 .recipe_slide {

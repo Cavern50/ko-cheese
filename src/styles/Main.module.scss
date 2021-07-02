@@ -18,21 +18,10 @@
    width: 100vw;
    height: 100vh;
    overflow: hidden;
+   z-index: 2;
    @extend %flexbox;
    justify-content: center;
-   //Вложенное окно с контентом, необходимо задать фиксированные размерыж
-   &__box {
-      padding: 2rem 3rem;
-      box-sizing: border-box;
-      position: relative;
-      overflow: auto;
-      max-height: 100%;
-      max-width: 100%;
-   }
-   // Кнопка закрытия
-   &__close {
-      @extend %close-btn;
-   }
+   background-color: rgba(0,0,0,.3);
 }
 
 .italic {
@@ -61,6 +50,7 @@
    @extend %flexbox;
    font-family: $font-service;
    font-size: 0.875rem;
+   text-transform: lowercase;
    line-height: 1;
    color: #575757;
    &::before {
@@ -72,25 +62,19 @@
       margin-right: 0.6875rem;
       border-radius: 50%;
    }
-}
-
-.avaliable {
-   @extend .status;
-   &::before {
-      background-color: #b2e08d;
+   &.avaliable {
+      &::before {
+         background-color: #b2e08d;
+      }
    }
-}
-
-.preparing {
-   @extend .status;
-   &::before {
-      background-color: #90b1ca;
+   &.not-avaliable {
+      &::before {
+         background-color: #ff867c;
+      }
    }
-}
-
-.not-avaliable {
-   @extend .status;
-   &::before {
-      background-color: #FF867C;
+   &.preparing {
+      &::before {
+         background-color: #90b1ca;
+      }
    }
 }

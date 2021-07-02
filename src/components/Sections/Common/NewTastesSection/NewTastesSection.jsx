@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { Slider } from "@components/Common/Slider/Slider";
+import { Slider } from "@components/common/Slider/Slider";
 import { NewTaste } from "./NewTaste/NewTaste";
 
 import s from "./NewTastesSection.module.scss";

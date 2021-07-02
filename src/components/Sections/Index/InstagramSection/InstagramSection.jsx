@@ -3,7 +3,7 @@ import s from "./InstagramSection.module.scss";
 import g from "src/styles/Main.module.scss";
 
 import { _instagram } from "src/api/_instagram";
-import { Instagram } from "@components/Common/Instagram/Instagram";
+import { Instagram } from "@components/common/Instagram/Instagram";
 
 export const InstagramSection = () => {
    const [photos, setPhotos] = React.useState([]);

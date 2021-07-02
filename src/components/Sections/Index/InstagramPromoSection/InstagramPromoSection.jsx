@@ -1,7 +1,7 @@
 import React from "react";
 import s from './InstagramPromoSection.module.scss';
 import g from 'src/styles/Main.module.scss';
-import { Instagram } from "@components/Common/Instagram/Instagram";
+import { Instagram } from "@components/common/Instagram/Instagram";
 
 export const InstagramPromoSection = ({url}) => {
    return (

@@ -1,31 +1,19 @@
 import React from "react";
 import clsx from "clsx";
 
-import Accordion from "@components/Common/Accordion/Accordion";
-import { Slider } from "@components/Common/Slider/Slider";
-import { Product } from "@components/Common/Product/Product";
-import { BackButton } from "@components/Common/BackButton/BackButton";
-import { Thumbnails } from "@components/Pages/Card/Thumbnails/Thumbnails";
-import { PurchaseControl } from "@components/Pages/Card/PurchaseControl/PurchaseControl";
+import Accordion from "@components/common/Accordion/Accordion";
 
-import { allStatus, allTastes } from "src/constants";
+import { BackButton } from "@components/common/BackButton/BackButton";
+import { Thumbnails } from "@components/pages/card/Thumbnails/Thumbnails";
+import { PurchaseControl } from "@components/pages/card/PurchaseControl/PurchaseControl";
+
+import { allTastes } from "src/constants";
 
 import s from "./DescriptionSection.module.scss";
 import g from "src/styles/Main.module.scss";
 
-const sliderParams = {
-   slider: {
-      slidesPerView: 4,
-      slidesPerGroup: 1,
-      spaceBetween: 0,
-      slideClass: "product_slide",
-   },
-   nav: {
-      counter: false,
-   },
-};
 
-export const DescriptionSection = ({ id, product, products }) => {
+export const DescriptionSection = ({ id, product }) => {
    return (
       <section>
          <BackButton />
@@ -38,11 +26,11 @@ export const DescriptionSection = ({ id, product, products }) => {
                   {product.addition}
                </h2>
                <div className={clsx(s.statuses)}>
-                  {product.allStatus.map((status) => (
-                     <span className={clsx(g[status.name])} key={status.name}>
-                        {allStatus[status.name].title}
-                        {status.count && ` ${status.count}  шт `}
-                        {status.date && `до ${status.date}`}
+                  {product.statuses.map(({status, name, count, date}) => (
+                     <span className={clsx(g.status, g[status])} key={name}>
+                        {name}
+                        {count && ` ${count}  шт `}
+                        {date && `до ${date}`}
                      </span>
                   ))}
                </div>
@@ -84,15 +72,7 @@ export const DescriptionSection = ({ id, product, products }) => {
                </div>
             </div>
          </div>
-         <div className={clsx(s.products)}>
-            <Slider
-               title={"Сырная продукция"}
-               slides={products}
-               params={sliderParams}
-            >
-               <Product additionClass={"card_slider"} />
-            </Slider>
-         </div>
+
       </section>
    );
 };

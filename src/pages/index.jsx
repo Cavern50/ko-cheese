@@ -1,18 +1,20 @@
 import React from "react";
 import Head from "next/head";
 import g from "../styles/Main.module.scss";
-import { Header } from "../components/Common/Header/Header";
-import { PromoSection } from "../components/Sections/Index/PromoSection/PromoSection";
-import { NewTastesSection } from "../components/Sections/Common/NewTastesSection/NewTastesSection";
-import { ProductsSection } from "../components/Sections/Common/ProductsSection/ProductsSection";
-import { DiscountSection } from "@components/Sections/Common/DiscountSection/DiscountSection";
-import { RecipesSection } from "@components/Sections/Index/RecipesSection/RecipesSection";
-import { InstagramPromoSection } from "@components/Sections/Index/InstagramPromoSection/InstagramPromoSection";
-import { InstagramSection } from "@components/Sections/Index/InstagramSection/InstagramSection";
-import { Footer } from "@components/Common/Footer/Footer";
+import { Header } from "../components/common/Header/Header";
+import { PromoSection } from "../components/sections/index/PromoSection/PromoSection";
+import { NewTastesSection } from "../components/sections/common/NewTastesSection/NewTastesSection";
+import { ProductsSection } from "../components/sections/common/ProductsSection/ProductsSection";
+import { DiscountSection } from "@components/sections/common/DiscountSection/DiscountSection";
+import { RecipesSection } from "@components/sections/index/RecipesSection/RecipesSection";
+import { InstagramPromoSection } from "@components/sections/index/InstagramPromoSection/InstagramPromoSection";
+import { InstagramSection } from "@components/sections/index/InstagramSection/InstagramSection";
+import { Footer } from "@components/common/Footer/Footer";
+import ProductsAPI from 'src/api/ProductsAPI';
 
 
-const index = () => {
+const index = ({products}) => {
+   console.log(products)
    return (
       <>
          <Head></Head>
@@ -20,7 +22,7 @@ const index = () => {
          <main className={g.main}>
             <PromoSection />
             <NewTastesSection />
-            <ProductsSection />
+            <ProductsSection products={products}/>
             <DiscountSection/>
             <RecipesSection/>
             <InstagramPromoSection url={'http://instagram.com/instagram'}/>
@@ -32,3 +34,14 @@ const index = () => {
 };
 
 export default index;
+
+const getProducts = async () => {
+   const products = await ProductsAPI.getProducts();
+   return products;
+};
+
+export const getServerSideProps = async () => {
+   const products = await getProducts();
+   return { props: { products } };
+};
+
