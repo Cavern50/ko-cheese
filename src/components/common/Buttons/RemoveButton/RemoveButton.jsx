@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import s from './RemoveButton.module.scss';
 
 export const RemoveButton = ({small}) => {
-    console.log(small);
   return (
     <button type="button" className={clsx(s.btn, small && s.btn_small)}>
       <svg

@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import s from './SubcategoryButton.module.scss';
 
 export const SubcategoryButton = ({title, id, active, setActive}) => {
+  
   return (
     <button
       type="button"

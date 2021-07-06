@@ -27,6 +27,10 @@
    position: absolute;
    top: 50%;
    transform: translateY(-50%);
+   transition: top .1s;
+   &:active {
+      top: 55%;
+   }
 }
 .minus {
    left: 1.25rem;

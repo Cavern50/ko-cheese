@@ -1,9 +1,7 @@
 @import "./root.scss";
 @import "./mixins.scss";
 
-.main {
-   padding-bottom: 120px;
-}
+
 
 .wrapper {
    width: calc(100% - 120px);
@@ -26,15 +24,16 @@
 
 .flex {
    display: flex;
-}
-
-.pt {
-   padding-top: 5rem;
+   flex-wrap: wrap;
 }
 
 .title {
    text-align: center;
    margin: 5rem 0 7.5rem 0;
+}
+
+.italic {
+   font-family: $font-italic;
 }
 
 
@@ -69,4 +68,9 @@
          background-color: #90b1ca;
       }
    }
+}
+
+.divided {
+   @extend %flexbox;
+
 }

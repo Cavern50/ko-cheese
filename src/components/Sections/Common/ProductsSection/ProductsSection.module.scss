@@ -8,41 +8,7 @@
    border-bottom: 1px solid rgba($gen, 0.3);
 }
 
-.category {
-   position: relative;
-   text-transform: uppercase;
-   cursor: pointer;
-   color: $lighten;
-   transition: color 0.3s;
 
-   &:hover {
-      color: $gen;
-   }
-
-   &::after {
-      content: "";
-      position: absolute;
-      bottom: -1.3125rem;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: $gen;
-      opacity: 0;
-      transition: opacity 0.3s;
-   }
-
-   &:not(:last-child) {
-      margin-right: 3.25rem;
-   }
-
-   &.active {
-      color: $gen;
-
-      &::after {
-         opacity: 1;
-      }
-   }
-}
 
 .subcategories {
    @extend %flexbox;

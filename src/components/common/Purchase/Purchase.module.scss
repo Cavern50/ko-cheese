@@ -5,7 +5,7 @@
    display: flex;
    margin-top: 1.875rem;
    padding-bottom: 1.875rem;
-   border-bottom: 1px solid $lightest;
+   border-bottom: 1px solid rgba($gen, .3);
 }
 .image {
    width: 6rem;
@@ -36,4 +36,21 @@
    font-size: 14px;
    letter-spacing: 0.035em;
    color: $grey;
+}
+.wrapper {
+   position: relative;
+}
+.count {
+   @extend %flexbox;
+   justify-content: center;
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 2.25rem;
+   height: 2.25rem;
+   border-radius: 50%;
+   font-family: $font-service;
+   font-size: 1.125rem;
+   background-color: $gen;
+   color: $accent;
 }

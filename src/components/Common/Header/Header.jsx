@@ -21,25 +21,18 @@ const headerLinks = [
    { title: "Войти", link: "/" },
 ];
 
-export const Header = ({ promo }) => {
+export const Header = ({ router }) => {
+
+   const isPromoPage = router.pathname === '/';
 
    const cartModal = useModal();
    const favoriteModal = useModal();
-   // const [modalShowed, setModalShowed] = React.useState({
-   //    cart: false,
-   //    favorite: false,
-   // });
 
-   // const toggleShowed = (modal) => () => {
-   //    setModalShowed((prev) => {
-   //       return { ...prev, ...modal };
-   //    });
-   // };
    return (
       <>
          <header className={s.header}>
             <div className={g.wrapper}>
-               <div className={clsx(s.container, promo ? s.border_accent : "")}>
+               <div className={clsx(s.container, isPromoPage ? s.border_accent : "")}>
                   <nav className={s.nav}>
                      {headerLinks.map((el, i) =>
                         el.logo ? (
@@ -47,7 +40,7 @@ export const Header = ({ promo }) => {
                               <a
                                  className={clsx(
                                     s.logo,
-                                    promo ? s.logo_accent : ""
+                                    isPromoPage ? s.logo_accent : ""
                                  )}
                               >
                                  <Logo />
@@ -58,7 +51,7 @@ export const Header = ({ promo }) => {
                               <a
                                  className={clsx(
                                     s.link,
-                                    promo ? s.link_accent : ""
+                                    isPromoPage ? s.link_accent : ""
                                  )}
                               >
                                  {el.title}
@@ -70,7 +63,7 @@ export const Header = ({ promo }) => {
                   <div className={s.control}>
                      <button
                         type="button"
-                        className={clsx(s.button, promo ? s.button_accent : "")}
+                        className={clsx(s.button, isPromoPage ? s.button_accent : "")}
                         onClick={() => favoriteModal.showModal()}
                      >
                         <svg
@@ -89,7 +82,7 @@ export const Header = ({ promo }) => {
                      <button
                         onClick={() => cartModal.showModal()}
                         type="button"
-                        className={clsx(s.button, promo ? s.button_accent : "")}
+                        className={clsx(s.button, isPromoPage ? s.button_accent : "")}
                      >
                         <svg
                            width="15"
@@ -116,10 +109,10 @@ export const Header = ({ promo }) => {
             </div>
          </header>
          {cartModal.isShowed && (
-            <Cart toggleShowed={cartModal.hideModal} />
+            <Cart closeModal={cartModal.hideModal} />
          )}
          {favoriteModal.isShowed && (
-            <Favorite toggleShowed={favoriteModal.hideModal} />
+            <Favorite closeModal={favoriteModal.hideModal} />
          )}
       </>
    );

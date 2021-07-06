@@ -5,6 +5,7 @@ import s from './Favorite.module.scss';
 import { ModalBody } from '../ModalBody/ModalBody';
 import { SubcategoryButton } from '@components/common/Buttons/SubcategoryButton/SubcategoryButton';
 import { Purchase } from '@components/common/Purchase/Purchase';
+import { useTabs } from 'src/hooks';
 
 const favorites = [
   { title: 'сыры', id: 1 },
@@ -12,22 +13,19 @@ const favorites = [
   { title: 'десерты', id: 3 }
 ];
 
-export const Favorite = ({ toggleShowed }) => {
-  const [activeSubcategory, setActiveSubcategory] = React.useState(0);
+export const Favorite = ({ closeModal }) => {
 
-  const toggleActiveSubcategory = (id) => {
-    id === activeSubcategory ? setActiveSubcategory(null) : setActiveSubcategory(id);
-  };
+  const tabCategory = useTabs();
 
   return (
-    <ModalBody toggleShowed={toggleShowed} title={'Избранное'}>
+    <ModalBody closeModal={closeModal} title={'Избранное'}>
       <div className={s.subcategories}>
         {favorites.map((favorite) => (
           <SubcategoryButton
             {...favorite}
             key={favorite.id}
-            active={activeSubcategory}
-            setActive={toggleActiveSubcategory}
+            active={tabCategory.active}
+            setActive={tabCategory.toggleActive}
           />
         ))}
       </div>
