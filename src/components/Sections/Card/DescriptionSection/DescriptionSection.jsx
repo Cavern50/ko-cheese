@@ -3,9 +3,9 @@ import clsx from "clsx";
 
 import Accordion from "@components/common/Accordion/Accordion";
 
-import { BackButton } from "@components/common/BackButton/BackButton";
+import { BackButton } from "@components/common/Buttons/BackButton/BackButton";
 import { Thumbnails } from "@components/pages/card/Thumbnails/Thumbnails";
-import { PurchaseControl } from "@components/pages/card/PurchaseControl/PurchaseControl";
+import { PurchaseControl } from "@components/common/PurchaseControl/PurchaseControl";
 
 import { allTastes } from "src/constants";
 
@@ -45,7 +45,7 @@ export const DescriptionSection = ({ id, product }) => {
                   </>
                )}
 
-               <PurchaseControl id={id} />
+               <PurchaseControl id={id} cart={false}/>
                <div className={clsx(s.about)}>
                   <Accordion title={"Состав"}>
                      <p>

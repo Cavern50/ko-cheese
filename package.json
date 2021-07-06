@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "server": "json-server --watch public/products.json --port 3001"
+    "server": "json-server --watch public/products.json --port 3001",
+    "lint":"eslint"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +21,12 @@
     "react-dom": "^17.0.2",
     "sass": "^1.35.1",
     "swiper": "^6.7.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0"
   }
 }

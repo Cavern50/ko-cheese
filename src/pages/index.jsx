@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import g from "../styles/Main.module.scss";
-import { Header } from "../components/common/Header/Header";
 import { PromoSection } from "../components/sections/index/PromoSection/PromoSection";
 import { NewTastesSection } from "../components/sections/common/NewTastesSection/NewTastesSection";
 import { ProductsSection } from "../components/sections/common/ProductsSection/ProductsSection";
@@ -18,7 +17,6 @@ const index = ({products}) => {
    return (
       <>
          <Head></Head>
-         <Header promo/>
          <main className={g.main}>
             <PromoSection />
             <NewTastesSection />

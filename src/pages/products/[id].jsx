@@ -30,7 +30,6 @@ const card = ({ id, product, products }) => {
    return (
       <>
          <Head></Head>
-         <Header />
          <main className={clsx(g.main, g.pt)}>
             <div className={g.wrapper}>
                <DescriptionSection

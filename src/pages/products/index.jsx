@@ -18,7 +18,6 @@ const products = ({ products }) => {
    return (
       <>
          <Head></Head>
-         <Header />
          <main className={clsx(g.main, g.pt)}>
             <div className={g.wrapper}>
                <Discount text={"Вам представлена скидка на перый заказ 10%"} />
@@ -28,7 +27,6 @@ const products = ({ products }) => {
             <NewTastesSection />
             <DiscountSection />
          </main>
-         <Cart/>
          <Footer />
       </>
    );
