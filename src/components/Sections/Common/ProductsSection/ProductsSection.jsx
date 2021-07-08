@@ -5,19 +5,23 @@ import { Product } from '@components/common/Product/Product';
 import s from './ProductsSection.module.scss';
 import g from 'src/styles/Main.module.scss';
 import { SubcategoryButton } from '@components/common/Buttons/SubcategoryButton/SubcategoryButton';
+import { Tabs } from '@components/layout/Tabs/Tabs';
 import { TabButton } from '@components/common/Buttons/TabButton/TabButton';
 import { useTabs } from 'src/hooks';
 
 const categories = [
   {
+    id: 1,
     title: 'Сыры',
     href: '/'
   },
   {
+    id: 2,
     title: 'Молоко',
     href: '/'
   },
   {
+    id: 3,
     title: 'Десерты',
     href: '/'
   }
@@ -55,25 +59,24 @@ const subCategories = [
 ];
 
 export const ProductsSection = ({ products }) => {
-  
-  const tabsCategory = useTabs(0);
+  const tabsCategory = useTabs(1, false);
   const tabsSubCategory = useTabs();
 
   return (
     <section className={clsx(s.products)}>
       <div className={clsx(g.wrapper)}>
         <div className={clsx(s.header)}>
-          <div className={clsx(s.categories)}>
-            {categories.map((category, i) => (
+          <Tabs>
+            {categories.map(({title, id}, i) => (
               <TabButton
-                key={i}
-                text={category.title}
-                index={i}
+                key={id}
+                text={title}
+                index={id}
                 active={tabsCategory.active}
                 toggleActive={tabsCategory.toggleActive}
               />
             ))}
-          </div>
+          </Tabs>
           <div className={clsx(s.subcategories)}>
             {subCategories.map((subcategory, i) => (
               <SubcategoryButton

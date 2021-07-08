@@ -9,12 +9,16 @@ export const useModal = (init = false) => {
   return { isShowed, hideModal, showModal };
 };
 
-export const useTabs = (init = null) => {
-  const [active, setActive] = React.useState(init);
+export const useTabs = (init = null, isRemovable = true ) => {
+  const [activeId, setActiveId] = React.useState(init);
 
-  const toggleActive = (id) => {
-    id === active ? setActive(null) : setActive(id);
+  const toggleActiveId = (id) => {
+    if (isRemovable) {
+      id === activeId && setActiveId(null);
+    } else {
+      setActiveId(id);
+    }
   };
 
-  return { active, setActive, toggleActive };
+  return { activeId, setActiveId, toggleActiveId };
 };

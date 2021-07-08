@@ -49,10 +49,10 @@ export const Footer = () => {
                      </h3>
                   </nav>
                   <div className={clsx(s.info)}>
-                     <div className={clsx(s.address)}>
+                     <address className={clsx(s.address)}>
                         Смоленская область, Кардымовский район, село Каменка ООО
                         "Красная горка", ОГРН 1136733008763, ИНН 6722041039
-                     </div>
+                     </address>
                      <div className={clsx(s.contacts)}>
                         <a href="tel:" className={clsx(s.contact)}>
                            8 (800) 250-58-24

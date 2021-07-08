@@ -73,7 +73,7 @@ const sliderParams = {
    },
 };
 
-export const RecipesSection = () => {
+export const RecipesSliderSection = () => {
    return (
       <section>
          <div className={g.wrapper}>

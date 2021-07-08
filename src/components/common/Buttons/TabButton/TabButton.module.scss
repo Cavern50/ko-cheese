@@ -35,6 +35,7 @@
        }
     }
     &.small {
+       text-transform: none;
         &::after {
             display: none;
         }

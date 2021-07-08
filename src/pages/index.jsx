@@ -5,7 +5,7 @@ import { PromoSection } from '../components/sections/index/PromoSection/PromoSec
 import { NewTastesSection } from '../components/sections/common/NewTastesSection/NewTastesSection';
 import { ProductsSection } from '../components/sections/common/ProductsSection/ProductsSection';
 import { DiscountSection } from '@components/sections/common/DiscountSection/DiscountSection';
-import { RecipesSection } from '@components/sections/index/RecipesSection/RecipesSection';
+import { RecipesSliderSection } from '@components/sections/index/RecipesSliderSection/RecipesSliderSection';
 import { InstagramPromoSection } from '@components/sections/index/InstagramPromoSection/InstagramPromoSection';
 import { InstagramSection } from '@components/sections/index/InstagramSection/InstagramSection';
 import { Cookies } from '@components/modals/Cookies/Cookies';
@@ -24,7 +24,7 @@ const Index = ({ products }) => {
       <NewTastesSection />
       <ProductsSection products={products} />
       <DiscountSection />
-      <RecipesSection />
+      <RecipesSliderSection />
       <InstagramPromoSection url={'http://instagram.com/instagram'} />
       <InstagramSection />
       {cookiesModal.isShowed && <Cookies close={cookiesModal.hideModal}/>}

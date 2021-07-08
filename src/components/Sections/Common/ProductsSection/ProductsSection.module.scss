@@ -1,15 +1,6 @@
 @import "/src/styles/mixins.scss";
 @import "/src/styles/root.scss";
 
-.categories {
-   @extend %flexbox;
-   justify-content: center;
-   padding-bottom: 1.25rem;
-   border-bottom: 1px solid rgba($gen, 0.3);
-}
-
-
-
 .subcategories {
    @extend %flexbox;
    justify-content: center;

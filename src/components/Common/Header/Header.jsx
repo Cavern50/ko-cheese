@@ -12,8 +12,8 @@ import s from "./Header.module.scss";
 import g from "src/styles/Main.module.scss";
 
 const headerLinks = [
-   { title: "Точки продаж", link: "/" },
-   { title: "Доставка", link: "/" },
+   { title: "Точки продаж", link: "/sale-points" },
+   { title: "Доставка", link: "/delivery" },
    { title: "Вопросы", link: "/" },
    { logo: true },
    { title: "Ферма", link: "/" },

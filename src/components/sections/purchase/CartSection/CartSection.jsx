@@ -4,7 +4,7 @@ import s from './CartSection.module.scss';
 import { Purchase } from '@components/common/Purchase/Purchase';
 import { TotalPrice } from '@components/common/TotalPrice/TotalPrice';
 
-const CartSection = () => {
+export const CartSection = () => {
   return (
     <>
       <div className={s.container}>
@@ -37,4 +37,3 @@ const CartSection = () => {
   );
 };
 
-export default CartSection;
