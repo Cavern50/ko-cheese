@@ -1,0 +1,18 @@
+@import 'src/styles/root';
+
+.subcategories {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 108px;
+  margin-top: 50px;
+}
+
+.posts div:nth-child(even) {
+  transform: translateY(80px);
+}

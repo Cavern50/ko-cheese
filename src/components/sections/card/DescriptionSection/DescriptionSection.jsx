@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Accordion from "@components/common/Accordion/Accordion";
 
 import { BackButton } from "@components/common/Buttons/BackButton/BackButton";
-import { Thumbnails } from "@components/pages/card/Thumbnails/Thumbnails";
+import { Thumbnails } from "@components/common/Thumbnails/Thumbnails";
 import { PurchaseControl } from "@components/common/PurchaseControl/PurchaseControl";
 
 import { allTastes } from "src/constants";

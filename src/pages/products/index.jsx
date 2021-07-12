@@ -7,28 +7,29 @@ import { NewTastesSection } from '@components/sections/common/NewTastesSection/N
 import { DiscountSection } from '@components/sections/common/DiscountSection/DiscountSection';
 import { Discount } from '@components/common/Discount/Discount';
 import { useModal } from 'src/hooks';
+import { Wrapper } from '@components/layout/Wrapper/Wrapper';
 
 import axios from 'axios';
 
-import g from 'src/styles/Main.module.scss';
+import { H1 } from '@components/layout/H1/H1';
 
 const Products = ({ products }) => {
   const discountModal = useModal(true);
   return (
     <>
       <Head></Head>
-      <div className={g.wrapper}>
+      <Wrapper>
         {discountModal.isShowed && (
           <Discount
             text="Вам представлена скидка на перый заказ 10%"
             close={discountModal.hideModal}
           />
         )}
-        <h1 className={g.title}>Продукция</h1>
-      </div>
-      <ProductsSection products={products} />
-      <NewTastesSection />
-      <DiscountSection />
+        <H1>Продукция</H1>
+      </Wrapper>
+      <ProductsSection products={products}/>
+      <NewTastesSection/>
+      <DiscountSection/>
     </>
   );
 };

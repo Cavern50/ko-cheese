@@ -1,261 +1,457 @@
 {
-   "data": [
+  "products": [
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/camamberGoat.png",
+      "gallery": [
+        "/static/img/content/camamberGoat.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Камамбер козий",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 320,
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "link": "/card",
+      "id": 23
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/camamberCow.png",
+      "gallery": [
+        "/static/img/content/camamberCow.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Камамбер коровий",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 320,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "link": "/card",
+      "id": 20
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/goatBalance.png",
+      "gallery": [
+        "/static/img/content/goatBalance.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Cыр Козий Валансе",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 650,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "link": "/card",
+      "id": 2
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/goatBalance2.png",
+      "gallery": [
+        "/static/img/content/goatBalance2.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Cыр Козий Валансе",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "addition": "с белой плесенью",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "link": "/card",
+      "id": 3
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/bushDeShevr.png",
+      "gallery": [
+        "/static/img/content/bushDeShevr.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Бюш де шевр",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "link": "/card",
+      "id": 4
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/mozzarella.png",
+      "gallery": [
+        "/static/img/content/mozzarella.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Моцарелла",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "link": "/card",
+      "id": 29
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/buratta.png",
+      "gallery": [
+        "/static/img/content/buratta.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Буратта",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "link": "/card",
+      "id": 18
+    },
+    {
+      "statuses": [
+        {
+          "status": "not-avaliable",
+          "name": "Нет в наличии"
+        }
+      ],
+      "image": "/static/img/content/strachella.png",
+      "gallery": [
+        "/static/img/content/strachella.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Страчелла",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "link": "/card",
+      "id": 7
+    },
+    {
+      "statuses": [
+        {
+          "status": "avaliable",
+          "name": "В наличии",
+          "count": 20
+        },
+        {
+          "status": "preparing",
+          "name": "Созревает",
+          "count": 15,
+          "date": "15.08.2021"
+        }
+      ],
+      "image": "/static/img/content/bushDeShevr.png",
+      "gallery": [
+        "/static/img/content/bushDeShevr.png",
+        "/static/img/content/slide-1.jpg",
+        "/static/img/content/recipe-2.jpg",
+        "/static/img/content/recipe-3.jpg"
+      ],
+      "name": "Бюш де шевр",
+      "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
+      "weight": "200 гр",
+      "price": 500,
+      "tastes": [
+        "white-wine",
+        "vegetables"
+      ],
+      "link": "/card",
+      "id": 40
+    }
+  ],
+  "articlesCategories": [
+    {
+      "id": 1,
+      "title": "Рецепты",
+      "url": "recipes",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Горячие блюда"
+        },
+        {
+          "id": 2,
+          "title": "Холодные блюда"
+        },
+        {
+          "id": 3,
+          "title": "Закуски"
+        },
+        {
+          "id": 4,
+          "title": "Блюда"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "url": "dishes",
+      "title": "Блюда",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Закуски"
+        },
+        {
+          "id": 2,
+          "title": "Блюда"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "url": "advices",
+      "title": "Советы",
+      "subcategories": [
+        {
+          "id": 1,
+          "title": "Горячие советы"
+        },
+        {
+          "id": 2,
+          "title": "Вредные советы"
+        }
+      ]
+    }
+  ],
+  "recipes": {
+    "id": 1,
+    "title": "Рецепты",
+    "subcategories": [
       {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/camamberGoat.png",
-         "gallery": [
-            "/static/img/content/camamberGoat.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Камамбер козий",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "addition": "с белой плесенью",
-         "weight": "200 гр",
-         "price": 320,
-         "tastes": ["red-wine", "fruits"],
-         "link": "/card",
-         "id": 23
+        "id": 1,
+        "title": "Горячие блюда"
       },
       {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/camamberCow.png",
-         "gallery": [
-            "/static/img/content/camamberCow.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Камамбер коровий",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "addition": "с белой плесенью",
-         "weight": "200 гр",
-         "price": 320,
-         "tastes": ["white-wine", "vegetables"],
-         "link": "/card",
-         "id": 20
+        "id": 2,
+        "title": "Холодные блюда"
       },
       {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/goatBalance.png",
-         "gallery": [
-            "/static/img/content/goatBalance.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Cыр Козий Валансе",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "addition": "с белой плесенью",
-         "weight": "200 гр",
-         "price": 650,
-         "tastes": ["white-wine", "vegetables"],
-         "link": "/card",
-         "id": 2
+        "id": 3,
+        "title": "Закуски"
       },
       {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/goatBalance2.png",
-         "gallery": [
-            "/static/img/content/goatBalance2.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Cыр Козий Валансе",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "addition": "с белой плесенью",
-         "weight": "200 гр",
-         "price": 500,
-         "tastes": ["white-wine", "vegetables"],
-         "link": "/card",
-         "id": 3
-      },
-      {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/bushDeShevr.png",
-         "gallery": [
-            "/static/img/content/bushDeShevr.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Бюш де шевр",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "weight": "200 гр",
-         "price": 500,
-         "tastes": ["white-wine", "vegetables"],
-         "link": "/card",
-         "id": 4
-      },
-      {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/mozzarella.png",
-         "gallery": [
-            "/static/img/content/mozzarella.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Моцарелла",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "weight": "200 гр",
-         "price": 500,
-         "link": "/card",
-         "id": 29
-      },
-      {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/buratta.png",
-         "gallery": [
-            "/static/img/content/buratta.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Буратта",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "weight": "200 гр",
-         "price": 500,
-         "tastes": ["white-wine", "vegetables"],
-         "link": "/card",
-         "id": 18
-      },
-      {
-         "statuses": [
-            {
-               "status": "not-avaliable",
-               "name" : "Нет в наличии"
-            }
-         ],
-         "image": "/static/img/content/strachella.png",
-         "gallery": [
-            "/static/img/content/strachella.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Страчелла",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "weight": "200 гр",
-         "price": 500,
-         "tastes": ["white-wine", "vegetables"],
-         "link": "/card",
-         "id": 7
-      },
-      {
-         "statuses": [
-            {
-               "status": "avaliable",
-               "name" : "В наличии",
-               "count": 20
-            },
-            {
-               "status": "preparing",
-               "name" : "Созревает",
-               "count": 15,
-               "date": "15.08.2021"
-            }
-         ],
-         "image": "/static/img/content/bushDeShevr.png",
-         "gallery": [
-            "/static/img/content/bushDeShevr.png",
-            "/static/img/content/slide-1.jpg",
-            "/static/img/content/recipe-2.jpg",
-            "/static/img/content/recipe-3.jpg"
-         ],
-         "name": "Бюш де шевр",
-         "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-         "weight": "200 гр",
-         "price": 500,
-         "tastes": ["white-wine", "vegetables"],
-         "link": "/card",
-         "id": 40
+        "id": 4,
+        "title": "Блюда"
       }
-   ]
+    ],
+    "posts": [
+      {
+        "id": 1,
+        "image": "../static/img/content/recipe-1.jpg",
+        "url": "/",
+        "name": "Сырный соус",
+        "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+        "category": "горячие блюда"
+      },
+      {
+        "id": 2,
+        "image": "../static/img/content/recipe-2.jpg",
+        "url": "/",
+        "name": "Французский сырный соус",
+        "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+        "category": "горячие блюда"
+      },
+      {
+        "id": 3,
+        "image": "../static/img/content/recipe-3.jpg",
+        "url": "/",
+        "name": "Салат и заправка из сыра с голубой плесенью",
+        "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+        "category": "холодные блюда"
+      },
+      {
+        "id": 4,
+        "image": "../static/img/content/recipe-1.jpg",
+        "url": "/",
+        "name": "Сырный соус",
+        "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+        "category": "горячие блюда"
+      },
+      {
+        "id": 5,
+        "image": "../static/img/content/recipe-2.jpg",
+        "url": "/",
+        "name": "Французский сырный соус",
+        "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+        "category": "закуски"
+      },
+      {
+        "id": 6,
+        "image": "../static/img/content/recipe-3.jpg",
+        "url": "/",
+        "name": "Салат и заправка из сыра с голубой плесенью",
+        "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+        "category": "блюда"
+      },
+      {
+        "id": 7,
+        "image": "../static/img/content/recipe-1.jpg",
+        "url": "/",
+        "name": "Сырный соус",
+        "text": "Мы признаем, что мы встречаемся и работаем на землях коренных народов по всей стране и что суверенитет над этой землей никогда не уступался. ",
+        "category": "блюда"
+      },
+      {
+        "id": 8,
+        "image": "../static/img/content/recipe-2.jpg",
+        "url": "/",
+        "name": "Французский сырный соус",
+        "text": "Изумительный рецепт, который надо иметь в своей копилке. Подходит для любых быстрых закусок.",
+        "category": "блюда"
+      },
+      {
+        "id": 9,
+        "image": "../static/img/content/recipe-3.jpg",
+        "url": "/",
+        "name": "Салат и заправка из сыра с голубой плесенью",
+        "text": "Этот салат – классическое американское блюдо, которое было придумано еще в 1920-х, и практически повсеместно встречалось в меню ресторанов до 1950-х.",
+        "category": "блюда"
+      }
+    ]
+  },
+  "dishes": {
+    "id": 2,
+    "title": "Блюда",
+    "subcategories": [
+      {
+        "id": 1,
+        "title": "Горячие блюда"
+      },
+      {
+        "id": 2,
+        "title": "Холодные блюда"
+      }
+    ],
+    "posts": []
+  },
+  "advices": {
+    "id": 3,
+    "title": "Советы",
+    "subcategories": [],
+    "posts": []
+  }
 }
