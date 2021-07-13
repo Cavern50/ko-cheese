@@ -1,12 +1,11 @@
 import React from "react";
 
-import { CloseButton } from "@components/common/Buttons/CloseButton/CloseButton";
+import { CloseButton } from "components/common/Buttons/CloseButton/CloseButton";
 
-import g from "src/styles/Main.module.scss";
+import g from "styles/Main.module.scss";
 import s from "./ModalBody.module.scss";
 
-export const ModalBody = ({ closeModal, title, children }) => {
-   return (
+export const ModalBody = ({ closeModal, title, children }) => (
       <div className={g.modal}>
          <div className={s.container}>
             <div className={s.header}>
@@ -17,4 +16,3 @@ export const ModalBody = ({ closeModal, title, children }) => {
          </div>
       </div>
    );
-};

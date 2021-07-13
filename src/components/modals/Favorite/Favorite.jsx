@@ -1,11 +1,11 @@
 import React from 'react';
 
-import s from './Favorite.module.scss';
 
+import { SubcategoryButton } from 'components/common/Buttons/SubcategoryButton/SubcategoryButton';
+import { Purchase } from 'components/common/Purchase/Purchase';
+import { useTabs } from 'hooks';
 import { ModalBody } from '../ModalBody/ModalBody';
-import { SubcategoryButton } from '@components/common/Buttons/SubcategoryButton/SubcategoryButton';
-import { Purchase } from '@components/common/Purchase/Purchase';
-import { useTabs } from 'src/hooks';
+import s from './Favorite.module.scss';
 
 const favorites = [
   { title: 'сыры', id: 1 },

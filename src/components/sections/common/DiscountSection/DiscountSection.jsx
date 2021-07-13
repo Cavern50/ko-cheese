@@ -2,11 +2,10 @@ import React from "react";
 import clsx from 'clsx';
 import Link from "next/link";
 
+import g from "styles/Main.module.scss";
 import s from "./DiscountSection.module.scss";
-import g from "src/styles/Main.module.scss";
 
-export const DiscountSection = () => {
-   return (
+export const DiscountSection = () => (
       <section className={clsx(s.discount)}>
          <div className={clsx(g.wrapper)}>
             <div className={clsx(s.container)}>
@@ -27,4 +26,3 @@ export const DiscountSection = () => {
          </div>
       </section>
    );
-};

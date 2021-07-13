@@ -1,10 +1,9 @@
 import React from 'react'
-import { formatPhone } from 'src/functions';
+import { formatPhone } from 'functions.js';
 
 import s from './MarketCard.module.scss';
 
-export const MarketCard = ({city, market, workingTime, phone, image }) => {
-    return (
+export const MarketCard = ({city, market, workingTime, phone, image }) => (
         <div className={s.card}>
             <div className={s.header}>
                 <div className={s.info}>
@@ -16,5 +15,4 @@ export const MarketCard = ({city, market, workingTime, phone, image }) => {
             <img src={image} alt='Козий сыр рынок' className={s.image} />
         </div>
     )
-}
 

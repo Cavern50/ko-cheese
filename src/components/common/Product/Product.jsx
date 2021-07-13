@@ -1,10 +1,10 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { allStatus, allTastes } from "src/constants";
+import { allTastes } from "constants.js";
 
+import g from "styles/Main.module.scss";
 import s from "./Product.module.scss";
-import g from "src/styles/Main.module.scss";
 
 export const Product = ({
    statuses,
@@ -17,9 +17,7 @@ export const Product = ({
    tastes,
    additionClass,
    id
-}) => {
-   console.log(statuses)
-   return (
+}) => (
       <div className={clsx(s.card, additionClass && s[additionClass])}>
          <button type="button" className={clsx(s.add)}>
             +
@@ -38,8 +36,8 @@ export const Product = ({
          </div>
          <h3 className={clsx(s.price)}>{price} руб.</h3>
          <Link href={`/products/${id}`}>
+           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className={clsx(s.more)}>Подробнее</a>
          </Link>
       </div>
    );
-};

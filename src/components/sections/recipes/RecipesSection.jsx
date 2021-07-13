@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import { Tabs } from '@components/layout/Tabs/Tabs';
-import { TabButton } from '@components/common/Buttons/TabButton/TabButton';
-import { SubcategoryButton } from '@components/common/Buttons/SubcategoryButton/SubcategoryButton';
-import { Recipe} from '@components/common/Recipe/Recipe';
+import { Tabs } from "components/layout/Tabs/Tabs";
+import { TabButton } from "components/common/Buttons/TabButton/TabButton";
+import { SubcategoryButton } from "components/common/Buttons/SubcategoryButton/SubcategoryButton";
+import { Recipe } from "components/common/Recipe/Recipe";
 
-import { useTabs } from 'src/hooks';
+import { useTabs } from "hooks";
 
-import ArticlesAPI from '../../../api/ArticlesAPI';
+import ArticlesAPI from "api/ArticlesAPI";
 
-import s from './RecipesSection.module.scss';
+import s from "./RecipesSection.module.scss";
 
 export const RecipesSection = ({ categories, items }) => {
 
@@ -19,12 +19,11 @@ export const RecipesSection = ({ categories, items }) => {
 
 
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
-  const [activeCategoryItems, setActiveCategoryItems] = React.useState(items.posts);
+  const [activeCategoryItems, setActiveCategoryItems] = React.useState(items);
 
 
-  const getPosts = async (url) => {
-    return await ArticlesAPI.getPosts(url);
-  };
+  // eslint-disable-next-line no-return-await
+  const getPosts = async (url) => await ArticlesAPI.getPosts(url);
 
 
   React.useEffect(() => {
@@ -33,10 +32,9 @@ export const RecipesSection = ({ categories, items }) => {
   }, [activeCategoryId]);
 
   React.useEffect(() => {
-    getPosts(activeCategory.url).then(res => setActiveCategoryItems(res.posts));
-  }, [activeCategory])
+    getPosts(activeCategory.url).then(res => setActiveCategoryItems(res));
+  }, [activeCategory]);
 
-  console.log(activeCategoryItems);
 
   return (
     <>

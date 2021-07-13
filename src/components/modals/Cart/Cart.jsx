@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Purchase } from '@components/common/Purchase/Purchase';
+import { Purchase } from 'components/common/Purchase/Purchase';
+import { CloseButton } from 'components/common/Buttons/CloseButton/CloseButton';
+import { TotalPrice } from 'components/common/TotalPrice/TotalPrice';
+import { useModal } from 'hooks';
 import { ModalBody } from '../ModalBody/ModalBody';
-import { CloseButton } from '@components/common/Buttons/CloseButton/CloseButton';
-import { TotalPrice } from '@components/common/TotalPrice/TotalPrice';
-import { useModal } from 'src/hooks';
 
 import s from './Cart.module.scss';
 

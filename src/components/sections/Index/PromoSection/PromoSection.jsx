@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
+import g from "styles/Main.module.scss";
+import { AbLogo, UsachevLogo, VkusWillLogo } from "components/SVG/PartnersSVG";
 import s from "./PromoSection.module.scss";
-import g from "src/styles/Main.module.scss";
 import { Partner } from "./Partner/Partner";
-import { AbLogo, UsachevLogo, VkusWillLogo } from "@components/SVG/PartnersSVG";
 
 const partners = [
    {
@@ -20,29 +20,28 @@ const partners = [
    },
 ];
 
-export const PromoSection = () => {
-   return (
-      <section className={clsx(s.promo)}>
-         <div className={clsx(g.wrapper)}>
-            <h1 className={clsx(s.title)}>
+export const PromoSection = () => (
+      <section className={s.promo}>
+         <div className={g.wrapper}>
+            <h1 className={s.title}>
                Магазин натуральных{" "}
-               <span className={clsx(g.italic)}>молочных продуктов</span> <br />ручной
+               <span className={g.italic}>молочных продуктов</span> <br />ручной
                работы
             </h1>
-            <span className={clsx(s.link)}>
+            <span className={s.link}>
                С доставкой по Москве и Московской области
             </span>
-            <div className={clsx(s.footer)}>
-               <span className={clsx(s.remark)}>теперь в магазинах</span>
-               <div className={clsx(s.container)}>
-                  <div className={clsx(s.block)}></div>
-                  <div className={clsx(s.partners)}>
+            <div className={s.footer}>
+               <span className={s.remark}>теперь в магазинах</span>
+               <div className={s.container}>
+                  <div className={s.block} />
+                  <div className={s.partners}>
                      {partners.map((logo, i) => (
                         <Partner {...logo} key={i} />
                      ))}
                   </div>
-                  <div className={clsx(s.block)}>
-                     <a href="/" target="_blank" className={clsx(s.inst)}>
+                  <div className={s.block}>
+                     <a href="/" target="_blank" className={s.inst}>
                         <svg
                            width="39"
                            height="39"
@@ -62,4 +61,3 @@ export const PromoSection = () => {
          </div>
       </section>
    );
-};

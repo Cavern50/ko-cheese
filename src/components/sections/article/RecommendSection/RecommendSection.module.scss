@@ -1,11 +1,12 @@
 @import 'src/styles/root';
-.container {
-  margin-top: 3.125rem;
-}
 
 .recommend {
   display: flex;
   margin-top: 3.125rem;
   border-left: 1px solid rgba($gen, .3);
   border-top: 1px solid rgba($gen, .3);
+}
+
+.section {
+  margin-top: 6.25rem;
 }

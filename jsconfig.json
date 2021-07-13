@@ -1,10 +1,7 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./",
-      "paths": {
-        "@components/*": ["src/components/*"],
-        "@designsystem/*": ["src/designsystem/*"],
-        "@buttons/*": ["src/designsystem/buttons"]
-      }
-    }
+  "compilerOptions": {
+    "baseUrl": "src/",
+    "checkJs": true,
+    "jsx": "react"
   }
+}

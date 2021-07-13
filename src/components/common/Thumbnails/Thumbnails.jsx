@@ -22,6 +22,7 @@ export const Thumbnails = ({ gallery }) => {
                   className={clsx(s.mini, i === activeMini ? s.active : "")}
                   src={image}
                   alt=""
+                  {/* eslint-disable-next-line react/no-array-index-key */}
                   key={i}
                   onClick={() => switchImage(image, i)}
                />

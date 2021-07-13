@@ -1,98 +1,54 @@
-import React from 'react';
-import clsx from 'clsx';
-import { Product } from '@components/common/Product/Product';
+import React from "react";
 
-import s from './ProductsSection.module.scss';
-import g from 'src/styles/Main.module.scss';
-import { SubcategoryButton } from '@components/common/Buttons/SubcategoryButton/SubcategoryButton';
-import { Tabs } from '@components/layout/Tabs/Tabs';
-import { TabButton } from '@components/common/Buttons/TabButton/TabButton';
-import { useTabs } from 'src/hooks';
+import { Product } from "components/common/Product/Product";
+import { SubcategoryButton } from "components/common/Buttons/SubcategoryButton/SubcategoryButton";
+import { Tabs } from "components/layout/Tabs/Tabs";
+import { TabButton } from "components/common/Buttons/TabButton/TabButton";
+import { Section } from "components/layout/Section/Section";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
-const categories = [
-  {
-    id: 1,
-    title: 'Сыры',
-    href: '/'
-  },
-  {
-    id: 2,
-    title: 'Молоко',
-    href: '/'
-  },
-  {
-    id: 3,
-    title: 'Десерты',
-    href: '/'
-  }
-];
+import { useTabs } from "hooks";
 
-const subCategories = [
-  {
-    title: 'Свежие',
-    href: '/'
-  },
-  {
-    title: 'Мягкие',
-    href: '/'
-  },
-  {
-    title: 'Твердые',
-    href: '/'
-  },
-  {
-    title: 'С белой плесенью',
-    href: '/'
-  },
-  {
-    title: 'С голубой плесенью',
-    href: '/'
-  },
-  {
-    title: 'Коровий',
-    href: '/'
-  },
-  {
-    title: 'Козий',
-    href: '/'
-  }
-];
+import s from "./ProductsSection.module.scss";
 
-export const ProductsSection = ({ products }) => {
-  const tabsCategory = useTabs(1, false);
-  const tabsSubCategory = useTabs();
+
+export const ProductsSection = ({ products, categories: { categories, subcategories } }) => {
+  console.log(categories);
+  const { activeId, toggleActiveId } = useTabs(1, false);
+  const tabsSubCategory = useTabs(1, false);
 
   return (
-    <section className={clsx(s.products)}>
-      <div className={clsx(g.wrapper)}>
-        <div className={clsx(s.header)}>
+    <Section>
+      <Wrapper>
+        <div className={s.header}>
           <Tabs>
-            {categories.map(({title, id}, i) => (
+            {categories.map(({ title, id }, i) => (
               <TabButton
                 key={id}
                 text={title}
                 index={id}
-                active={tabsCategory.active}
-                toggleActive={tabsCategory.toggleActive}
+                active={activeId}
+                toggleActive={toggleActiveId}
               />
             ))}
           </Tabs>
-          <div className={clsx(s.subcategories)}>
-            {subCategories.map((subcategory, i) => (
+          <div className={s.subcategories}>
+            {subcategories.map((subcategory, i) => (
               <SubcategoryButton
                 key={i}
                 id={i}
                 title={subcategory.title}
-                active={tabsSubCategory.active}
-                setActive={tabsSubCategory.toggleActive}
+                active={tabsSubCategory.activeId}
+                setActive={tabsSubCategory.toggleActiveId}
               />
             ))}
           </div>
         </div>
-        <div className={clsx(s.body)}>
+        <div className={s.body}>
           {products && products.map((product) => <Product key={product.id} {...product} />)}
         </div>
-      </div>
-    </section>
+      </Wrapper>
+    </Section>
+
   );
 };

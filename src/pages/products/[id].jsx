@@ -1,14 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import Head from 'next/head';
-import { DescriptionSection } from '@components/sections/card/DescriptionSection/DescriptionSection';
+import { DescriptionSection } from 'components/sections/card/DescriptionSection/DescriptionSection';
 
-import { Slider } from '@components/common/Slider/Slider';
-import { Product } from '@components/common/Product/Product';
+import { Slider } from 'components/common/Slider/Slider';
+import { Product } from 'components/common/Product/Product';
 
-import ProductsAPI from 'src/api/ProductsAPI';
+import ProductsAPI from 'api/ProductsAPI';
 
-import g from 'src/styles/Main.module.scss';
+import g from 'styles/Main.module.scss';
 import s from './ProductPage.module.scss';
 
 const sliderParams = {
@@ -24,10 +24,9 @@ const sliderParams = {
   }
 };
 
-const card = ({ id, product, products }) => {
-  return (
+const Card = ({ id, product, products }) => (
     <>
-      <Head></Head>
+      <Head />
       <div className={g.wrapper}>
         <DescriptionSection product={product} products={products} id={id} />
         <div className={clsx(s.products)}>
@@ -38,9 +37,8 @@ const card = ({ id, product, products }) => {
       </div>
     </>
   );
-};
 
-export default card;
+export default Card;
 
 const getProducts = async (id) => {
   const product = await ProductsAPI.getProduct(id);
