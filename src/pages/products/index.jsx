@@ -13,6 +13,7 @@ import { H1 } from 'components/layout/H1/H1';
 import ProductsAPI from "api/ProductsAPI";
 
 const Products = ({ products, categories }) => {
+  console.log(categories);
   const discountModal = useModal(true);
   return (
     <>
@@ -43,6 +44,6 @@ const getProductsCategories = async () => await ProductsAPI.getProductsCategorie
 
 export const getServerSideProps = async () => {
   const products = await getProducts();
-  const categories = await getProductsCategories();
+  const { categories } = await getProductsCategories();
   return { props: { products, categories } };
 };

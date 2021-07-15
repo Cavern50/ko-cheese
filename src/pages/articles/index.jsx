@@ -23,6 +23,7 @@ export default Index;
 // eslint-disable-next-line no-return-await
 const getCategories = async () => await ArticlesAPI.getCategories();
 
+// eslint-disable-next-line no-return-await
 const getPosts = async () => await ArticlesAPI.getPosts('recipes');
 
 

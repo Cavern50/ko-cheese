@@ -12,34 +12,43 @@ import { useTabs } from "hooks";
 import s from "./ProductsSection.module.scss";
 
 
-export const ProductsSection = ({ products, categories: { categories, subcategories } }) => {
-  console.log(categories);
-  const { activeId, toggleActiveId } = useTabs(1, false);
-  const tabsSubCategory = useTabs(1, false);
+export const ProductsSection = ({ products, categories }) => {
+  const { activeId: activeCategoryId, toggleActiveId: toggleActiveCategoryId } = useTabs(categories[0].id, false);
+  const { activeId: activeSubcategoryId, toggleActiveId: toggleSubcategoryId } = useTabs(categories[0].subcategories[0].id, false);
 
+  const [activeCategory, setActiveCategory] = React.useState(categories[0]);
+  const [activeSubcategory, setActiveSubcategory] = React.useState(categories[0].subcategories);
+
+  React.useEffect(() => {
+    setActiveCategory(categories.find(({ id }) => id === activeCategoryId));
+  }, [activeCategoryId]);
+
+  React.useEffect(() => {
+    toggleSubcategoryId(activeCategory.subcategories[0].id);
+  }, [activeCategory]);
   return (
     <Section>
       <Wrapper>
         <div className={s.header}>
           <Tabs>
-            {categories.map(({ title, id }, i) => (
+            {categories.map(({ title, id }) => (
               <TabButton
                 key={id}
                 text={title}
                 index={id}
-                active={activeId}
-                toggleActive={toggleActiveId}
+                active={activeCategoryId}
+                toggleActive={toggleActiveCategoryId}
               />
             ))}
           </Tabs>
           <div className={s.subcategories}>
-            {subcategories.map((subcategory, i) => (
+            {activeCategory.subcategories.map(({ title, id }) => (
               <SubcategoryButton
-                key={i}
-                id={i}
-                title={subcategory.title}
-                active={tabsSubCategory.activeId}
-                setActive={tabsSubCategory.toggleActiveId}
+                key={id}
+                id={id}
+                title={title}
+                active={activeSubcategoryId}
+                toggleActive={toggleSubcategoryId}
               />
             ))}
           </div>
