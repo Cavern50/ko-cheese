@@ -1,1 +1,1 @@
-https://the-asap.github.io/rubezh/build/
+https://the-asap.github.io/ko-cheese-react/build/profile.html
