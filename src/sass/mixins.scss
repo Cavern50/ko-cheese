@@ -1,5 +1,35 @@
 @import 'root';
 
+@mixin large {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (max-width: 830px) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin x-small {
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+
+@mixin xx-small {
+    @media (max-width: 375px) {
+        @content;
+    }
+}
+
 %flexbox {
     display: flex;
     align-items: center;

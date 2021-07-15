@@ -166,6 +166,11 @@ section:not(:first-of-type) {
   padding-left: 1px;
 }
 
+.main {
+  padding-top: 5rem;
+  padding-bottom: 7.5rem;
+}
+
 .wrapper {
   width: calc(100% - 120px);
   margin: 0 auto;
@@ -192,6 +197,10 @@ section:not(:first-of-type) {
 .title {
   text-align: center;
   margin: 5rem 0 7.5rem 0;
+}
+
+.title--profile {
+  margin: 1rem 0 2.375rem;
 }
 
 .italic {
@@ -228,6 +237,54 @@ section:not(:first-of-type) {
   background-color: #90b1ca;
 }
 
+.field {
+  width: 100%;
+}
+
+.field:not(:first-child) {
+  margin-top: 1.25rem;
+}
+
+.field--short {
+  width: calc(50% - .6875rem);
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: "Roboto", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0 .8rem;
+  border: 1px solid #AEAEAE;
+  font-family: "Roboto", "sans-serif";
+  transition: border-color .3s;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #184240;
+}
+
+.input {
+  height: 2.5rem;
+}
+
+.textarea {
+  height: 7.85rem;
+  padding: .8rem;
+  resize: none;
+}
+
+.textarea::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 1400px) {
   html {
     font-size: 14px;
@@ -255,6 +312,10 @@ section:not(:first-of-type) {
 @media (max-width: 1200px) {
   html {
     font-size: 12px;
+  }
+
+  .title--profile {
+    margin-bottom: 2rem;
   }
 }
 

@@ -8,8 +8,8 @@
 	<meta name="description" content="Описание страницы для SEO и соцсетей">
 	<meta name="keywords" content="ключевые, слова, через, запятую">
 	<link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
-	<title>Личный кабинет</title>
-	<link rel="stylesheet" href="css/profile.css?t=1626335157201" type="text/css">
+	<title>Личный кабинет/Личные данные</title>
+	<link rel="stylesheet" href="css/profile.css?t=1626359787114" type="text/css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -18,8 +18,96 @@
 </head>
 
 <body>
-	<script src="vendors/js/jquery-3.5.1.min.js?t=1626335157201"></script>
-	<script src="js/scripts.js?t=1626335157201"></script>
+	<main class="main">
+		<div class="wrapper">
+			<h1 class="title title--profile">Личный кабинет</h1>
+
+			<section class="profile">
+				<header class="profile__header">
+    <h3 class="profile__header-title">Здравствуйте, <span>Сергей</span></h3>
+    <div class="profile__row">
+        <div class="profile__info">
+            <div class="profile__info-item">
+                <span class="profile__info-title">Скидка:</span>
+                <span class="profile__info-text">5%</span>
+            </div>
+            <div class="profile__info-item">
+                <span class="profile__info-title">Баланс:</span>
+                <span class="profile__info-text">320 руб.</span>
+            </div>
+            <div class="profile__info-item">
+                <span class="profile__info-title">Всего покупок:</span>
+                <span class="profile__info-text">112</span>
+            </div>
+            <div class="profile__info-item">
+                <span class="profile__info-title">Доставка:</span>
+                <span class="profile__info-text">Бесплатно</span>
+            </div>
+        </div>
+        <a class="profile__out" href="#">Выйти</a>
+    </div>
+</header>
+
+				<div class="profile__box">
+					<nav class="profile__nav">
+    <a class="profile__link" href="#">Заказы</a>
+    <a class="profile__link" href="#">Адреса доставки</a>
+    <a class="profile__link" href="#">Личные данные</a>
+    <a class="profile__link" href="#">Программа лояльности</a>
+    <a class="profile__link" href="#">Возврат товара</a>
+</nav>
+
+					<div class="profile__content">
+						<h2 class="profile__title">Личные данные</h2>
+						<form class="profile__form profile__form--flex" action="#">
+							<div class="profile__form-column">
+								<div class="field">
+									<label class="label" for="tel">* Телефон</label>
+									<input id="tel" class="input" type="tel">
+								</div>
+								<div class="field">
+									<label class="label" for="name">* Имя</label>
+									<input id="name" class="input" type="text">
+								</div>
+								<div class="field">
+									<label class="label" for="surname">Фамилия</label>
+									<input id="surname" class="input" type="text">
+								</div>
+								<div class="field">
+									<label class="label" for="email">Е-mail</label>
+									<input id="email" class="input" type="email">
+								</div>
+								<button class="profile__btn">Изменить пароль</button>
+							</div>
+							<div class="profile__form-column profile__form-column--pic">
+								<div class="profile__pic">
+									<label class="profile__pic-label" for="pic">
+										<svg width="219" height="219" viewBox="0 0 219 219" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+											<circle cx="109.5" cy="109.5" r="109.5" fill="#E3DED2" />
+											<rect x="94.6562" y="117.623" width="21.2459" height="14.1639"
+												fill="#8D9A9A" />
+											<circle cx="105.672" cy="108.18" r="6.29508" fill="#8D9A9A" />
+											<path d="M109.337 93.2295H86V132.574H124.557V109.796" stroke="#8D9A9A"
+												stroke-width="2" />
+											<line x1="124.77" y1="83" x2="124.77" y2="103.459" stroke="#8D9A9A"
+												stroke-width="2" />
+											<line x1="114.328" y1="93.0164" x2="134" y2="93.0164" stroke="#8D9A9A"
+												stroke-width="2" />
+										</svg>
+										<span class="profile__pic-text">Изменить аватар</span>
+									</label>
+									<input id="pic" class="profile__pic-input" type="file">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	<script src="vendors/js/jquery-3.5.1.min.js?t=1626359787114"></script>
+	<script src="js/scripts.js?t=1626359787114"></script>
 </body>
 
 </html>

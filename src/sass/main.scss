@@ -119,6 +119,11 @@ section {
     padding-left: 1px;
 }
 
+.main {
+    padding-top: 5rem;
+    padding-bottom: 7.5rem;
+}
+
 .wrapper {
     width: calc(100% - 120px);
     margin: 0 auto;
@@ -146,6 +151,10 @@ section {
 .title {
     text-align: center;
     margin: 5rem 0 7.5rem 0;
+
+    &--profile {
+        margin: 1rem 0 2.375rem;
+    }
 }
 
 .italic {
@@ -191,4 +200,59 @@ section {
 
 .divided {
     @extend %flexbox;
+}
+
+.field {
+    width: 100%;
+
+    &:not(:first-child) {
+        margin-top: 1.25rem;
+    }
+
+    &--short {
+        width: calc(50% - .6875rem);
+    }
+}
+
+.label {
+    display: block;
+    margin-bottom: 4px;
+    font-family: $font-service;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0 .8rem;
+    border: 1px solid $grey;
+    font-family: $font-service;
+    transition: border-color .3s;
+
+    &:focus {
+        border-color: $gen;
+    }
+}
+
+.input {
+    height: 2.5rem;
+}
+
+.textarea {
+    height: 7.85rem;
+    padding: .8rem;
+    resize: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@include large {
+    .title {
+        &--profile {
+            margin-bottom: 2rem;
+        }
+    }
 }

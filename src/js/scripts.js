@@ -1,6 +1,6 @@
-// удаляем прелодер при загрузке страницы
+//удаляем прелодер при загрузке страницы
 const contentFadeInOnReady = () => {
-    $('.preloader').fadeOut(150, ()=>{
+    $('.preloader').fadeOut(150, () => {
         $('.preloader').remove();
     });
 };
@@ -11,21 +11,21 @@ const bindModalListeners = modalArr => {
         let jQTrigger = $(obj.trigger);
         let jQModal = $(obj.modal);
 
-        jQTrigger.on('click', function() {
+        jQTrigger.on('click', function () {
             stopScroll('body');
             jQModal.addClass('active');
         });
 
-        jQModal.on('click', function(e) {
+        jQModal.on('click', function (e) {
             if ($(e.target).hasClass('modal')) {
                 $(this).removeClass('active');
                 freeScroll();
             }
         });
 
-        jQModal.find('.modal__close').on('click', function() {
+        jQModal.find('.modal__close').on('click', function () {
             jQModal.removeClass('active');
-           freeScroll();
+            freeScroll();
         });
 
         $(document).keydown((e) => {
@@ -38,16 +38,16 @@ const bindModalListeners = modalArr => {
     });
 }
 
-// Запрещаем скролл для body 
-function stopScroll(item='body') {
+//запрещаем скролл для body
+function stopScroll(item = 'body') {
     let documentWidth = parseInt(document.documentElement.clientWidth),
         windowsWidth = parseInt(window.innerWidth),
         scrollbarWidth = windowsWidth - documentWidth;
     $(item).attr("style", 'overflow: hidden; padding-right: ' + scrollbarWidth + 'px');
 }
 
-// возвращаем скролл для body
-function freeScroll(item='body') {
+//возвращаем скролл для body
+function freeScroll(item = 'body') {
     $(item).attr("style", '');
 }
 
@@ -55,5 +55,3 @@ $().ready(() => {
     contentFadeInOnReady()
     bindModalListeners([]);
 });
-
-
