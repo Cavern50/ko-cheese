@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
+.profile__tab,
 .profile__address,
+.profile__date-btn,
 .modal,
 .status,
 .divided,
@@ -25,20 +27,76 @@ body::-webkit-scrollbar-thumb {
   background: #184240;
 }
 
+.profile__box-close {
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  background-color: rgba(24, 66, 64, 0.1);
+}
+
+.profile__box-close::after,
+.profile__box-close::before {
+  transition: background-color 0.3s;
+  content: '';
+  width: 0.875rem;
+  height: 1px;
+  background-color: #184240;
+  position: absolute;
+  top: 50%;
+  right: calc(50% - 0.4375rem);
+}
+
+.profile__box-close::after {
+  transform: rotate(45deg);
+}
+
+.profile__box-close::before {
+  transform: rotate(135deg);
+}
+
+.profile__box-close:hover {
+  background-color: #184240;
+}
+
+.profile__box-close:hover::after,
+.profile__box-close:hover::before {
+  background-color: #FFF3E7;
+}
+
 /*кнопка меню*/
 
 /*в разметке обязательно должна иметь внутренний span */
 
 /*<button class="burger"><span></span></button>*/
 
-.profile__address {
+.profile__tab,
+.profile__address,
+.profile__date-btn {
   justify-content: center;
   width: fit-content;
   border: 1px solid #FFF3E7;
   font-size: 0.875rem;
 }
 
-.profile__address {
+.profile__tab {
+  min-height: 1.875rem;
+  padding: 0 1.25rem;
+  border-color: #184240;
+  border-radius: 0.9375rem;
+  text-transform: uppercase;
+}
+
+.profile__tab:hover,
+.active.profile__tab {
+  background-color: #184240;
+  color: #FFF3E7;
+}
+
+.profile__address,
+.profile__date-btn {
   background-color: #E3DED2;
   border: 1px solid #E3DED2;
   border-radius: 2.25rem;
@@ -48,7 +106,8 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0.54px;
 }
 
-.profile__address:hover {
+.profile__address:hover,
+.profile__date-btn:hover {
   border-color: transparent;
   background-color: #184240;
   color: #FFF3E7;
@@ -56,7 +115,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__out,
 .profile__btn,
-.profile__pic-text {
+.profile__pic-text,
+.profile__date-btn > span {
   position: relative;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -67,7 +127,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__out::after,
 .profile__btn::after,
-.profile__pic-text::after {
+.profile__pic-text::after,
+.profile__date-btn > span::after {
   content: '';
   position: absolute;
   left: 0;
@@ -80,7 +141,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__out:hover::after,
 .profile__btn:hover::after,
-.profile__pic-text:hover::after {
+.profile__pic-text:hover::after,
+.profile__date-btn > span:hover::after {
   bottom: -5px;
 }
 
@@ -105,7 +167,9 @@ body::-webkit-scrollbar-thumb {
   opacity: 1;
 }
 
+.profile__tab,
 .profile__address,
+.profile__date-btn,
 .modal,
 .status,
 .divided,
@@ -130,20 +194,76 @@ body::-webkit-scrollbar-thumb {
   background: #184240;
 }
 
+.profile__box-close {
+  position: absolute;
+  right: 5%;
+  top: 3%;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  background-color: rgba(24, 66, 64, 0.1);
+}
+
+.profile__box-close::after,
+.profile__box-close::before {
+  transition: background-color 0.3s;
+  content: '';
+  width: 0.875rem;
+  height: 1px;
+  background-color: #184240;
+  position: absolute;
+  top: 50%;
+  right: calc(50% - 0.4375rem);
+}
+
+.profile__box-close::after {
+  transform: rotate(45deg);
+}
+
+.profile__box-close::before {
+  transform: rotate(135deg);
+}
+
+.profile__box-close:hover {
+  background-color: #184240;
+}
+
+.profile__box-close:hover::after,
+.profile__box-close:hover::before {
+  background-color: #FFF3E7;
+}
+
 /*кнопка меню*/
 
 /*в разметке обязательно должна иметь внутренний span */
 
 /*<button class="burger"><span></span></button>*/
 
-.profile__address {
+.profile__tab,
+.profile__address,
+.profile__date-btn {
   justify-content: center;
   width: fit-content;
   border: 1px solid #FFF3E7;
   font-size: 0.875rem;
 }
 
-.profile__address {
+.profile__tab {
+  min-height: 1.875rem;
+  padding: 0 1.25rem;
+  border-color: #184240;
+  border-radius: 0.9375rem;
+  text-transform: uppercase;
+}
+
+.profile__tab:hover,
+.active.profile__tab {
+  background-color: #184240;
+  color: #FFF3E7;
+}
+
+.profile__address,
+.profile__date-btn {
   background-color: #E3DED2;
   border: 1px solid #E3DED2;
   border-radius: 2.25rem;
@@ -153,7 +273,8 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0.54px;
 }
 
-.profile__address:hover {
+.profile__address:hover,
+.profile__date-btn:hover {
   border-color: transparent;
   background-color: #184240;
   color: #FFF3E7;
@@ -161,7 +282,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__out,
 .profile__btn,
-.profile__pic-text {
+.profile__pic-text,
+.profile__date-btn > span {
   position: relative;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -172,7 +294,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__out::after,
 .profile__btn::after,
-.profile__pic-text::after {
+.profile__pic-text::after,
+.profile__date-btn > span::after {
   content: '';
   position: absolute;
   left: 0;
@@ -185,7 +308,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__out:hover::after,
 .profile__btn:hover::after,
-.profile__pic-text:hover::after {
+.profile__pic-text:hover::after,
+.profile__date-btn > span:hover::after {
   bottom: -5px;
 }
 
@@ -309,6 +433,11 @@ h2 {
 
 h3 {
   font-size: 1.5rem;
+  font-weight: normal;
+}
+
+h6 {
+  font-size: 1.125rem;
   font-weight: normal;
 }
 
@@ -481,11 +610,14 @@ section:not(:first-of-type) {
   margin-right: .5rem;
 }
 
-.profile__box {
+.profile__container {
   display: flex;
+  box-sizing: border-box;
+  padding: 0 10px;
 }
 
 .profile__nav {
+  width: 12.625rem;
   margin-right: 8.125rem;
 }
 
@@ -505,7 +637,10 @@ section:not(:first-of-type) {
 }
 
 .profile__content {
-  width: 100%;
+  width: calc(100% - 20.75rem);
+}
+
+.profile__content--medium {
   max-width: 874px;
 }
 
@@ -559,6 +694,87 @@ section:not(:first-of-type) {
   margin-top: 1.875rem;
 }
 
+.profile__controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  font-family: "Roboto", "sans-serif";
+  margin-bottom: 1.8125rem;
+}
+
+.profile__tabs {
+  display: flex;
+  align-items: flex-end;
+}
+
+.profile__tab:not(:last-child) {
+  margin-right: .625rem;
+}
+
+.profile__date {
+  display: flex;
+}
+
+.profile__date > * {
+  width: 9.25rem;
+}
+
+.profile__date > *:not(:last-child) {
+  margin-right: 1.1875rem;
+}
+
+.profile__date > .field:not(:first-child) {
+  margin-top: 0;
+}
+
+.profile__date-btn {
+  align-self: flex-end;
+  height: 2.5rem;
+}
+
+.profile__date-btn:hover > span::after {
+  opacity: 0;
+}
+
+.profile__date-btn > span {
+  font-size: .75rem;
+  font-weight: 400;
+}
+
+.profile__box {
+  box-sizing: border-box;
+  padding: 2rem 2rem 8.125rem;
+  border: 1px solid #AEAEAE;
+  border-radius: 14px;
+}
+
+.profile__box-header {
+  position: relative;
+  font-family: "Roboto", "sans-serif";
+  font-size: 1.125rem;
+}
+
+.profile__box-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1875rem;
+  width: calc(100% - 1.875rem);
+}
+
+.profile__box-close {
+  top: 0;
+  right: 0;
+}
+
+.profile__box-content {
+  margin-top: 3rem;
+}
+
+.profile__box-title {
+  margin-bottom: 1.375rem;
+}
+
 @media (max-width: 1400px) {
   html {
     font-size: 14px;
@@ -590,6 +806,10 @@ section:not(:first-of-type) {
 
   .title--profile {
     margin-bottom: 2rem;
+  }
+
+  .profile__header {
+    margin-bottom: 1.8125rem;
   }
 }
 

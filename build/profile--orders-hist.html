@@ -8,8 +8,8 @@
     <meta name="description" content="Описание страницы для SEO и соцсетей">
     <meta name="keywords" content="ключевые, слова, через, запятую">
     <link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
-    <title>Личный кабинет/Адреса доставки</title>
-    <link rel="stylesheet" href="css/profile.css?t=1626433900126" type="text/css">
+    <title>Личный кабинет/История заказов</title>
+    <link rel="stylesheet" href="css/profile.css?t=1626433900133" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -57,51 +57,53 @@
     <a class="profile__link" href="#">Возврат товара</a>
 </nav>
 
-                    <div class="profile__content profile__content--medium">
-                        <h2 class="profile__title">Адреса доставки</h2>
-                        <form class="profile__form profile__form--flex profile__form--lines" action="#">
-                            <div class="profile__form-column profile__form-column--flex">
-                                <div class="field">
-                                    <label class="label" for="city">Город</label>
-                                    <input id="city" class="input" type="text">
-                                </div>
-                                <div class="field">
-                                    <label class="label" for="street">Улица</label>
-                                    <input id="street" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="house">Дом</label>
-                                    <input id="house" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="entrance">Подъезд</label>
-                                    <input id="entrance" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="office">Офис/Квартира</label>
-                                    <input id="office" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="code">Код</label>
-                                    <input id="code" class="input" type="text">
-                                </div>
-                                <button class="profile__btn">Сохранить</button>
+                    <div class="profile__content">
+                        <h2 class="profile__title">История заказов</h2>
+                        <header class="profile__controls">
+                            <div class="profile__tabs">
+                                <button class="profile__tab">Все</button>
+                                <button class="profile__tab">Активные</button>
+                                <button class="profile__tab">Завершенные</button>
                             </div>
-                            <div class="profile__form-column">
+                            <form class="profile__date" action="#">
                                 <div class="field">
-                                    <label class="label" for="comment">Комментарий</label>
-                                    <textarea id="comment" class="textarea"></textarea>
+                                    <label class="label" for="date-start">от</label>
+                                    <input id="date-start" class="input" type="text">
                                 </div>
+                                <div class="field">
+                                    <label class="label" for="date-finish">до</label>
+                                    <input id="date-finish" class="input" type="text">
+                                </div>
+                                <button class="profile__date-btn" type="submit"><span>Найти по дате</span></button>
+                            </form>
+                        </header>
+                        <div class="profile__box">
+                            <header class="profile__box-header">
+                                <div class="profile__box-grid">
+                                    <span class="profile__box-info"><strong>Номер заказа:</strong> 1234567</span>
+                                    <span class="profile__box-info"><strong>Товаров:</strong> 3</span>
+                                    <span class="profile__box-info"><strong>Дата:</strong> 12.04.21</span>
+                                    <span class="profile__box-info"><strong>Цена:</strong> 2245 руб.</span>
+                                    <span class="profile__box-info"><strong>Номер заказа:</strong> 1234567</span>
+                                </div>
+                                <button class="profile__box-close"></button>
+                            </header>
+                            <div class="profile__box-content">
+                                <h6 class="profile__box-title">Детали заказа</h6>
+                                <h2>@import "profile-order.html"</h2>
+
+                                <h2>@import "profile-order.html"</h2>
+
                             </div>
-                        </form>
-                        <button class="profile__address">Добавить адресс +</button>
+                            <button class="profile__btn">Показать еще</button>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </main>
-    <script src="vendors/js/jquery-3.5.1.min.js?t=1626433900126"></script>
-    <script src="js/scripts.js?t=1626433900126"></script>
+    <script src="vendors/js/jquery-3.5.1.min.js?t=1626433900133"></script>
+    <script src="js/scripts.js?t=1626433900133"></script>
 </body>
 
 </html>
