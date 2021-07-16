@@ -8,8 +8,8 @@
     <meta name="description" content="Описание страницы для SEO и соцсетей">
     <meta name="keywords" content="ключевые, слова, через, запятую">
     <link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
-    <title>Личный кабинет/Адреса доставки</title>
-    <link rel="stylesheet" href="css/profile.css?t=1626435420525" type="text/css">
+    <title>Личный кабинет/Отправка отзыва</title>
+    <link rel="stylesheet" href="css/profile.css?t=1626435422444" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -58,50 +58,25 @@
 </nav>
 
                     <div class="profile__content profile__content--medium">
-                        <h2 class="profile__title">Адреса доставки</h2>
-                        <form class="profile__form profile__form--flex profile__form--lines" action="#">
-                            <div class="profile__form-column profile__form-column--flex">
-                                <div class="field">
-                                    <label class="label" for="city">Город</label>
-                                    <input id="city" class="input" type="text">
-                                </div>
-                                <div class="field">
-                                    <label class="label" for="street">Улица</label>
-                                    <input id="street" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="house">Дом</label>
-                                    <input id="house" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="entrance">Подъезд</label>
-                                    <input id="entrance" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="office">Офис/Квартира</label>
-                                    <input id="office" class="input" type="text">
-                                </div>
-                                <div class="field field--short">
-                                    <label class="label" for="code">Код</label>
-                                    <input id="code" class="input" type="text">
-                                </div>
-                                <button class="profile__btn">Сохранить</button>
+                        <h2 class="profile__title">Отправка отзыва</h2>
+                        <form class="profile__form" action="#">
+                            <div class="field field--medium">
+                                <label class="label" for="tel">Телефон для обратной связи</label>
+                                <input id="tel" class="input" type="tel" placeholder="По умолчанию">
                             </div>
-                            <div class="profile__form-column">
-                                <div class="field">
-                                    <label class="label" for="comment">Комментарий</label>
-                                    <textarea id="comment" class="textarea"></textarea>
-                                </div>
+                            <div class="field">
+                                <label class="label" for="feedback">Отзыв</label>
+                                <textarea id="feedback" class="textarea textarea--high"></textarea>
                             </div>
+                            <button class="profile__submit">Отправить</button>
                         </form>
-                        <button class="profile__address">Добавить адресс +</button>
                     </div>
                 </div>
             </section>
         </div>
     </main>
-    <script src="vendors/js/jquery-3.5.1.min.js?t=1626435420525"></script>
-    <script src="js/scripts.js?t=1626435420525"></script>
+    <script src="vendors/js/jquery-3.5.1.min.js?t=1626435422444"></script>
+    <script src="js/scripts.js?t=1626435422444"></script>
 </body>
 
 </html>

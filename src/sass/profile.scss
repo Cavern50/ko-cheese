@@ -235,6 +235,12 @@
             margin-bottom: 1.375rem;
         }
     }
+
+    &__submit {
+        @extend %button--green;
+        margin-top: 3.125rem;
+        font-size: 1.125rem;
+    }
 }
 
 @include large {

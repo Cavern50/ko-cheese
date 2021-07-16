@@ -250,6 +250,10 @@ section:not(:first-of-type) {
   margin-top: 1.25rem;
 }
 
+.field--medium {
+  width: 17.5rem;
+}
+
 .field--short {
   width: calc(50% - .6875rem);
 }
@@ -288,6 +292,10 @@ section:not(:first-of-type) {
 
 .textarea::-webkit-scrollbar {
   display: none;
+}
+
+.textarea--high {
+  height: 14.625rem;
 }
 
 @media (max-width: 1400px) {

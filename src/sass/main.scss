@@ -214,6 +214,10 @@ section {
         margin-top: 1.25rem;
     }
 
+    &--medium {
+        width: 17.5rem;
+    }
+
     &--short {
         width: calc(50% - .6875rem);
     }
@@ -251,6 +255,10 @@ section {
 
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    &--high {
+        height: 14.625rem;
     }
 }
 

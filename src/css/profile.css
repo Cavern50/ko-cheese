@@ -3,6 +3,7 @@
 .profile__tab,
 .profile__address,
 .profile__date-btn,
+.profile__submit,
 .modal,
 .status,
 .divided,
@@ -74,7 +75,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__tab,
 .profile__address,
-.profile__date-btn {
+.profile__date-btn,
+.profile__submit {
   justify-content: center;
   width: fit-content;
   border: 1px solid #FFF3E7;
@@ -96,7 +98,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile__address,
-.profile__date-btn {
+.profile__date-btn,
+.profile__submit {
   background-color: #E3DED2;
   border: 1px solid #E3DED2;
   border-radius: 2.25rem;
@@ -107,7 +110,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile__address:hover,
-.profile__date-btn:hover {
+.profile__date-btn:hover,
+.profile__submit:hover {
   border-color: transparent;
   background-color: #184240;
   color: #FFF3E7;
@@ -170,6 +174,7 @@ body::-webkit-scrollbar-thumb {
 .profile__tab,
 .profile__address,
 .profile__date-btn,
+.profile__submit,
 .modal,
 .status,
 .divided,
@@ -241,7 +246,8 @@ body::-webkit-scrollbar-thumb {
 
 .profile__tab,
 .profile__address,
-.profile__date-btn {
+.profile__date-btn,
+.profile__submit {
   justify-content: center;
   width: fit-content;
   border: 1px solid #FFF3E7;
@@ -263,7 +269,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile__address,
-.profile__date-btn {
+.profile__date-btn,
+.profile__submit {
   background-color: #E3DED2;
   border: 1px solid #E3DED2;
   border-radius: 2.25rem;
@@ -274,7 +281,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile__address:hover,
-.profile__date-btn:hover {
+.profile__date-btn:hover,
+.profile__submit:hover {
   border-color: transparent;
   background-color: #184240;
   color: #FFF3E7;
@@ -528,6 +536,10 @@ section:not(:first-of-type) {
   margin-top: 1.25rem;
 }
 
+.field--medium {
+  width: 17.5rem;
+}
+
 .field--short {
   width: calc(50% - .6875rem);
 }
@@ -566,6 +578,10 @@ section:not(:first-of-type) {
 
 .textarea::-webkit-scrollbar {
   display: none;
+}
+
+.textarea--high {
+  height: 14.625rem;
 }
 
 .profile__header {
@@ -773,6 +789,11 @@ section:not(:first-of-type) {
 
 .profile__box-title {
   margin-bottom: 1.375rem;
+}
+
+.profile__submit {
+  margin-top: 3.125rem;
+  font-size: 1.125rem;
 }
 
 @media (max-width: 1400px) {
