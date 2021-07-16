@@ -9,18 +9,7 @@
    max-width: 1320px;
 }
 
-.modal {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   overflow: hidden;
-   z-index: 2;
-   @extend %flexbox;
-   justify-content: center;
-   background-color: rgba(0,0,0,.3);
-}
+
 
 .flex {
    display: flex;

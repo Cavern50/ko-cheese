@@ -60,67 +60,6 @@
   }
 }
 
-/*Кнопка меню*/
-/*В разметке обязательно должна иметь внутренний span */
-/*<button class="burger"><span></span></button>*/
-%burger {
-  overflow: visible;
-
-  & > span {
-    position: relative;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    display: block;
-    width: 22px;
-
-    &,
-    &::after,
-    &::before {
-      background-color: $gen;
-      height: 1px;
-      transition: background-color 0.3s, transform 0.3s;
-    }
-
-    &::after,
-    &::before {
-      position: absolute;
-      content: '';
-      left: 0;
-      top: 5px;
-      width: 100%;
-    }
-
-    &::before {
-      top: -5px;
-    }
-  }
-
-  &:hover span {
-    &,
-    &::after,
-    &::before {
-      background-color: $accent;
-    }
-  }
-
-  &.active {
-    & > span {
-      background-color: transparent;
-      transition: none;
-
-      &::after {
-        top: 0;
-        transform: rotate(-135deg);
-      }
-
-      &::before {
-        top: 0;
-        transform: rotate(135deg);
-      }
-    }
-  }
-}
-
 %button {
   @extend %flexbox;
   justify-content: center;

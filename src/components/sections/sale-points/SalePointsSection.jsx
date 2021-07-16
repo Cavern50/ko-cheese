@@ -7,6 +7,7 @@ import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { cities } from "constants.js";
+import { Tabs } from "components/layout/Tabs/Tabs";
 import s from "./SalePointsSection.module.scss";
 
 
@@ -24,7 +25,7 @@ export const SalePointsSection = () => {
   return (
     <Section>
       <Wrapper>
-        <div className={s.tabs}>
+        <Tabs border={"top"}>
           {cities.map(({ title, id }) => (
             <TabButton
               key={id}
@@ -35,7 +36,8 @@ export const SalePointsSection = () => {
               small
             />
           ))}
-        </div>
+        </Tabs>
+
         <YMaps>
           <Map
             state={{ center: activeCity.cityCoords, zoom: 11 }}
@@ -59,6 +61,7 @@ export const SalePointsSection = () => {
         </YMaps>
         <div className={s.points}>
           {activeCity.points.length > 0 && activeCity.points.map(point => <MarketCard
+            key={point.id}
             city={activeCity.title} {...point} />)}
         </div>
       </Wrapper>

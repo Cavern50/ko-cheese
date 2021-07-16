@@ -1,8 +1,8 @@
 import React from "react";
-import g from "styles/Main.module.scss";
 import { Slider } from "components/common/Slider/Slider";
 import { Recipe } from "components/common/Recipe/Recipe";
 import { Section } from "components/layout/Section/Section";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
 const sliderParams = {
   slider: {
@@ -23,7 +23,7 @@ const sliderParams = {
 
 export const RecipesSliderSection = ({ recipes, title }) => (
   <Section>
-    <div className={g.wrapper}>
+    <Wrapper>
       <Slider
         slides={recipes}
         params={sliderParams}
@@ -31,7 +31,6 @@ export const RecipesSliderSection = ({ recipes, title }) => (
       >
         <Recipe/>
       </Slider>
-      <div>{/*  */}</div>
-    </div>
+    </Wrapper>
   </Section>
 );

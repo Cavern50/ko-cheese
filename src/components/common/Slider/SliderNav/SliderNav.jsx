@@ -4,14 +4,14 @@ import clsx from "clsx";
 import s from "./SliderNav.module.scss";
 
 export const SliderNav = (props) => {
-  const { title, prev, next, allCount, currentCount, params: { counter, seeAll } } = props;
+  const { title, prev, next, allCount, currentCount, params: { counter, seeAll, isGallery } } = props;
   return (
-    <div className={s.header}>
-      <h2>{title}</h2>
+    <div className={clsx(s.wrapper, isGallery && s.bottom)}>
+      {title && <h2>{title}</h2>}
       {seeAll?.visible && <Link href={seeAll.link}><a className={clsx(s.link, s[seeAll.position])}>Посмотреть все</a></Link>}
-      <div className={s.container}>
+      <div className={clsx(s.container, isGallery && s.full)}>
         {counter && (
-          <div className={s.counter}>
+          <div className={clsx(s.counter, isGallery && s.large)}>
                   <span>
                      {currentCount < 10 ? `0${currentCount}` : currentCount}
                   </span>

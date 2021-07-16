@@ -1,11 +1,27 @@
 @import '/src/styles/mixins.scss';
 @import '/src/styles/root.scss';
 
+.box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 2;
+    @extend %flexbox;
+    justify-content: center;
+    background-color: rgba(0,0,0,.3);
+}
+
+
 .container {
     @extend %scrollbar;
-    position: relative;
+    position: absolute;
+    right: 0;
+    transform: translateX(100%);
     width: 31.25rem;
-    height: 95vh;
+    height: 100vh;
     padding: 0 1.875rem ;
     overflow: auto;
     background-color: $accent;
@@ -31,3 +47,5 @@
         height: 1.625rem;
     }
 }
+
+

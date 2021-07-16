@@ -13,12 +13,12 @@ const favorites = [
   { title: 'десерты', id: 3 }
 ];
 
-export const Favorite = ({ closeModal }) => {
+export const Favorite = ({ closeModal, show }) => {
 
   const tabCategory = useTabs();
 
   return (
-    <ModalBody closeModal={closeModal} title={'Избранное'}>
+    <ModalBody closeModal={closeModal} title={'Избранное'} show={show}>
       <div className={s.subcategories}>
         {favorites.map((favorite) => (
           <SubcategoryButton

@@ -13,7 +13,7 @@ export const Slider = ({ children, slides, params, title }) => {
   const allCount = Math.ceil(slides.length / params.slider.slidesPerView);
   const { sliderClass, slideClass, ...restParams } = params.slider;
   return (
-    <>
+    <div className={s.container}>
       <SliderNav
         title={title}
         prev={prevRef}
@@ -42,6 +42,6 @@ export const Slider = ({ children, slides, params, title }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };

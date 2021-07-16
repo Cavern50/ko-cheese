@@ -8,26 +8,27 @@ import { Favorite } from "components/modals/Favorite/Favorite";
 
 import { useModal } from "hooks";
 
+import { useSpring, animated } from "react-spring";
+
+
 import g from "styles/Main.module.scss";
 import s from "./Header.module.scss";
 
 const headerLinks = [
   { title: "Точки продаж", link: "/sale-points" },
   { title: "Доставка", link: "/delivery" },
-  { title: "Вопросы", link: "/" },
+  { title: "Вопросы", link: "/questions" },
   { logo: true },
-  { title: "Ферма", link: "/" },
+  { title: "Ферма", link: "/farm" },
   { title: "Продукция", link: "/products" },
   { title: "Войти", link: "/" }
 ];
 
 export const Header = ({ router }) => {
 
-  const isPromoPage = router.pathname === "/";
-
   const cartModal = useModal();
   const favoriteModal = useModal();
-
+  const isPromoPage = router.pathname === "/";
   return (
     <>
       <header className={s.header}>
@@ -112,12 +113,8 @@ export const Header = ({ router }) => {
           </div>
         </div>
       </header>
-      {cartModal.isShowed && (
-        <Cart closeModal={cartModal.hideModal}/>
-      )}
-      {favoriteModal.isShowed && (
-        <Favorite closeModal={favoriteModal.hideModal}/>
-      )}
+      <Cart closeModal={cartModal.hideModal} show={cartModal.isShowed}/>
+      <Favorite closeModal={favoriteModal.hideModal} show={favoriteModal.isShowed}/>
     </>
   );
 };

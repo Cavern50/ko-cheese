@@ -74,6 +74,7 @@
     "func-names": "off",
     "import/named": "off",
     "no-return-await": "off",
+    "no-console": "off",
     "no-unused-vars": [
       "warn",
       {

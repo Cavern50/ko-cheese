@@ -1,12 +1,18 @@
 import React from "react";
 import FarmAPI from "api/FarmAPI";
-import { IntroSection } from "components/sections/farm/IntroSection";
+import { IntroSection } from "components/sections/farm/IntroSection/IntroSection";
+import { FarmContentLargeSection } from "components/sections/farm/FarmContentLargeSection/FarmContentLargeSection";
+import { FarmContentSmallSection } from "components/sections/farm/FarmContentSmallSection/FarmContentSmallSection";
+import {GallerySection} from "components/sections/farm/GallerySection/GallerySection";
 
-const Cheeseboard = ({ categories, resolvedUrl, pageData }) => {
-  return (
-    <IntroSection categories={categories} url={resolvedUrl}/>
+const Cheeseboard = ({ categories, resolvedUrl, pageData }) => (
+    <>
+      <IntroSection categories={categories} url={resolvedUrl} pageData={pageData}/>
+      <FarmContentSmallSection pageData={pageData} firstItem="left"/>
+      {pageData.gallery && <GallerySection pageData={pageData}/>}
+      <FarmContentLargeSection pageData={pageData}/>
+    </>
   );
-};
 
 export default Cheeseboard;
 

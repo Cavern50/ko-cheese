@@ -16,7 +16,7 @@ import ProductsAPI from "api/ProductsAPI";
 import ArticlesAPI from "api/ArticlesAPI";
 
 const Index = ({ products, categories, posts }) => {
-  const cookiesModal = useModal(true);
+  const cookiesModal = useModal(true, false);
   return (
     <>
       <Head>

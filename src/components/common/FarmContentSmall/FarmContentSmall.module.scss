@@ -1,0 +1,21 @@
+@import "src/styles/root";
+
+.container {
+  width: 45%;
+}
+
+.title {
+  margin-bottom: 1.875rem;
+}
+
+.image {
+  max-width: 85%;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.text {
+  max-width: 75%;
+  margin-top: 1.25rem;
+  font-family: $font-service;
+}
