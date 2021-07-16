@@ -120,7 +120,8 @@ body::-webkit-scrollbar-thumb {
 .profile__out,
 .profile__btn,
 .profile__pic-text,
-.profile__date-btn > span {
+.profile__date-btn > span,
+.profile__loyalty-link {
   position: relative;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -132,7 +133,8 @@ body::-webkit-scrollbar-thumb {
 .profile__out::after,
 .profile__btn::after,
 .profile__pic-text::after,
-.profile__date-btn > span::after {
+.profile__date-btn > span::after,
+.profile__loyalty-link::after {
   content: '';
   position: absolute;
   left: 0;
@@ -146,7 +148,8 @@ body::-webkit-scrollbar-thumb {
 .profile__out:hover::after,
 .profile__btn:hover::after,
 .profile__pic-text:hover::after,
-.profile__date-btn > span:hover::after {
+.profile__date-btn > span:hover::after,
+.profile__loyalty-link:hover::after {
   bottom: -5px;
 }
 
@@ -291,7 +294,8 @@ body::-webkit-scrollbar-thumb {
 .profile__out,
 .profile__btn,
 .profile__pic-text,
-.profile__date-btn > span {
+.profile__date-btn > span,
+.profile__loyalty-link {
   position: relative;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -303,7 +307,8 @@ body::-webkit-scrollbar-thumb {
 .profile__out::after,
 .profile__btn::after,
 .profile__pic-text::after,
-.profile__date-btn > span::after {
+.profile__date-btn > span::after,
+.profile__loyalty-link::after {
   content: '';
   position: absolute;
   left: 0;
@@ -317,7 +322,8 @@ body::-webkit-scrollbar-thumb {
 .profile__out:hover::after,
 .profile__btn:hover::after,
 .profile__pic-text:hover::after,
-.profile__date-btn > span:hover::after {
+.profile__date-btn > span:hover::after,
+.profile__loyalty-link:hover::after {
   bottom: -5px;
 }
 
@@ -664,6 +670,10 @@ section:not(:first-of-type) {
   margin-bottom: 2rem;
 }
 
+.profile__form {
+  font-family: "Roboto", "sans-serif";
+}
+
 .profile__form-column {
   width: calc(50% - .84375rem);
 }
@@ -763,6 +773,7 @@ section:not(:first-of-type) {
   padding: 2rem 2rem 8.125rem;
   border: 1px solid #AEAEAE;
   border-radius: 14px;
+  font-family: "Roboto", "sans-serif";
 }
 
 .profile__box-header {
@@ -794,6 +805,39 @@ section:not(:first-of-type) {
 .profile__submit {
   margin-top: 3.125rem;
   font-size: 1.125rem;
+}
+
+.profile__loyalty {
+  counter-reset: loyalty-counter;
+  font-family: "Roboto", "sans-serif";
+}
+
+.profile__loyalty-item {
+  display: flex;
+  box-sizing: border-box;
+  padding: 2.5625rem 9.6875rem 2.1875rem 2.25rem;
+  border-radius: 12px;
+  background: #E3DED2;
+  counter-increment: loyalty-counter;
+}
+
+.profile__loyalty-item::before {
+  content: "0" counter(loyalty-counter);
+  font-family: "Anglecia Pro", "serif";
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.profile__loyalty-item:not(:last-child) {
+  margin-bottom: 1.25rem;
+}
+
+.profile__loyalty-content {
+  font-size: 1.125rem;
+}
+
+.profile__loyalty-link {
+  margin-top: 1.75rem;
 }
 
 @media (max-width: 1400px) {

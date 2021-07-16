@@ -90,6 +90,8 @@
     }
 
     &__form {
+        font-family: $font-service;
+
         &-column {
             width: calc(50% - .84375rem);
 
@@ -207,6 +209,7 @@
         padding: 2rem 2rem 8.125rem;
         border: 1px solid $grey;
         border-radius: 14px;
+        font-family: $font-service;
 
         &-header {
             position: relative;
@@ -240,6 +243,40 @@
         @extend %button--green;
         margin-top: 3.125rem;
         font-size: 1.125rem;
+    }
+
+    &__loyalty {
+        counter-reset: loyalty-counter;
+        font-family: $font-service;
+
+        &-item {
+            display: flex;
+            box-sizing: border-box;
+            padding: 2.5625rem 9.6875rem 2.1875rem 2.25rem;
+            border-radius: 12px;
+            background: $lightest;
+            counter-increment: loyalty-counter;
+
+            &::before {
+                content: "0"counter(loyalty-counter);
+                font-family: $font-numbers;
+                font-size: 1.5rem;
+                margin-right: 1rem;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        &-content {
+            font-size: 1.125rem;
+        }
+
+        &-link {
+            @extend %link;
+            margin-top: 1.75rem;
+        }
     }
 }
 
