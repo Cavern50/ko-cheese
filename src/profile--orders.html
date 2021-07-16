@@ -8,7 +8,7 @@
     <meta name="description" content="Описание страницы для SEO и соцсетей">
     <meta name="keywords" content="ключевые, слова, через, запятую">
     <link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
-    <title>Личный кабинет/История заказов</title>
+    <title>Личный кабинет/Заказы</title>
     <link rel="stylesheet" href="css/profile.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +26,11 @@
                 <div class="profile__container">
                     @import "profile-nav.html"
                     <div class="profile__content">
-                        <h2 class="profile__title">История заказов</h2>
+                        <h2 class="profile__title">Заказы</h2>
                         @import "profile-controls.html"
-                        @import "profile-box.html"
+                        @import "profile-box--green.html"
+                        @import "profile-box--orange.html"
+                        @import "profile-box--blue.html"
                     </div>
                 </div>
             </section>

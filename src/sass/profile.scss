@@ -211,6 +211,10 @@
         border-radius: 14px;
         font-family: $font-service;
 
+        &:not(:last-child) {
+            margin-bottom: 1.875rem;
+        }
+
         &-header {
             position: relative;
             font-family: $font-service;
@@ -222,6 +226,24 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1.1875rem;
             width: calc(100% - 1.875rem);
+        }
+
+        &-info {
+            &>strong {
+                color: $gen;
+            }
+
+            &--green {
+                color: #219653;
+            }
+
+            &--orange {
+                color: #F2994A;
+            }
+
+            &--blue {
+                color: #2D9CDB;
+            }
         }
 
         &-close {
@@ -236,6 +258,52 @@
 
         &-title {
             margin-bottom: 1.375rem;
+        }
+
+        &-controls {
+            @extend %flexbox;
+            margin-top: 3.3125rem;
+
+            &>* {
+                text-transform: uppercase;
+            }
+
+            &>*:not(:last-child) {
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    &__order {
+
+        &-repeat,
+        &-swap {
+            width: 12.6875rem;
+            height: 2.5rem;
+            border-radius: 36px;
+
+            &:hover {
+                &>svg>path {
+                    fill: $accent;
+                }
+            }
+
+            &>svg {
+                transition: fill .3s;
+                margin-right: .5rem;
+            }
+        }
+
+        &-repeat {
+            @extend %button--green;
+        }
+
+        &-swap {
+            @extend %button--control;
+        }
+
+        &-delete {
+            @extend %link;
         }
     }
 

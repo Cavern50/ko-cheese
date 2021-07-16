@@ -1,14 +1,17 @@
 @charset "UTF-8";
 
 .profile__tab,
+.profile__order-swap,
 .profile__address,
 .profile__date-btn,
+.profile__order-repeat,
 .profile__submit,
 .modal,
 .status,
 .divided,
 .profile__row,
-.profile__pic-label {
+.profile__pic-label,
+.profile__box-controls {
   display: flex;
   align-items: center;
   align-self: center;
@@ -74,8 +77,10 @@ body::-webkit-scrollbar-thumb {
 /*<button class="burger"><span></span></button>*/
 
 .profile__tab,
+.profile__order-swap,
 .profile__address,
 .profile__date-btn,
+.profile__order-repeat,
 .profile__submit {
   justify-content: center;
   width: fit-content;
@@ -83,7 +88,8 @@ body::-webkit-scrollbar-thumb {
   font-size: 0.875rem;
 }
 
-.profile__tab {
+.profile__tab,
+.profile__order-swap {
   min-height: 1.875rem;
   padding: 0 1.25rem;
   border-color: #184240;
@@ -92,13 +98,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile__tab:hover,
-.active.profile__tab {
+.profile__order-swap:hover,
+.active.profile__tab,
+.active.profile__order-swap {
   background-color: #184240;
   color: #FFF3E7;
 }
 
 .profile__address,
 .profile__date-btn,
+.profile__order-repeat,
 .profile__submit {
   background-color: #E3DED2;
   border: 1px solid #E3DED2;
@@ -111,6 +120,7 @@ body::-webkit-scrollbar-thumb {
 
 .profile__address:hover,
 .profile__date-btn:hover,
+.profile__order-repeat:hover,
 .profile__submit:hover {
   border-color: transparent;
   background-color: #184240;
@@ -121,6 +131,7 @@ body::-webkit-scrollbar-thumb {
 .profile__btn,
 .profile__pic-text,
 .profile__date-btn > span,
+.profile__order-delete,
 .profile__loyalty-link {
   position: relative;
   font-size: 0.875rem;
@@ -134,6 +145,7 @@ body::-webkit-scrollbar-thumb {
 .profile__btn::after,
 .profile__pic-text::after,
 .profile__date-btn > span::after,
+.profile__order-delete::after,
 .profile__loyalty-link::after {
   content: '';
   position: absolute;
@@ -149,6 +161,7 @@ body::-webkit-scrollbar-thumb {
 .profile__btn:hover::after,
 .profile__pic-text:hover::after,
 .profile__date-btn > span:hover::after,
+.profile__order-delete:hover::after,
 .profile__loyalty-link:hover::after {
   bottom: -5px;
 }
@@ -175,14 +188,17 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile__tab,
+.profile__order-swap,
 .profile__address,
 .profile__date-btn,
+.profile__order-repeat,
 .profile__submit,
 .modal,
 .status,
 .divided,
 .profile__row,
-.profile__pic-label {
+.profile__pic-label,
+.profile__box-controls {
   display: flex;
   align-items: center;
   align-self: center;
@@ -248,8 +264,10 @@ body::-webkit-scrollbar-thumb {
 /*<button class="burger"><span></span></button>*/
 
 .profile__tab,
+.profile__order-swap,
 .profile__address,
 .profile__date-btn,
+.profile__order-repeat,
 .profile__submit {
   justify-content: center;
   width: fit-content;
@@ -257,7 +275,8 @@ body::-webkit-scrollbar-thumb {
   font-size: 0.875rem;
 }
 
-.profile__tab {
+.profile__tab,
+.profile__order-swap {
   min-height: 1.875rem;
   padding: 0 1.25rem;
   border-color: #184240;
@@ -266,13 +285,16 @@ body::-webkit-scrollbar-thumb {
 }
 
 .profile__tab:hover,
-.active.profile__tab {
+.profile__order-swap:hover,
+.active.profile__tab,
+.active.profile__order-swap {
   background-color: #184240;
   color: #FFF3E7;
 }
 
 .profile__address,
 .profile__date-btn,
+.profile__order-repeat,
 .profile__submit {
   background-color: #E3DED2;
   border: 1px solid #E3DED2;
@@ -285,6 +307,7 @@ body::-webkit-scrollbar-thumb {
 
 .profile__address:hover,
 .profile__date-btn:hover,
+.profile__order-repeat:hover,
 .profile__submit:hover {
   border-color: transparent;
   background-color: #184240;
@@ -295,6 +318,7 @@ body::-webkit-scrollbar-thumb {
 .profile__btn,
 .profile__pic-text,
 .profile__date-btn > span,
+.profile__order-delete,
 .profile__loyalty-link {
   position: relative;
   font-size: 0.875rem;
@@ -308,6 +332,7 @@ body::-webkit-scrollbar-thumb {
 .profile__btn::after,
 .profile__pic-text::after,
 .profile__date-btn > span::after,
+.profile__order-delete::after,
 .profile__loyalty-link::after {
   content: '';
   position: absolute;
@@ -323,6 +348,7 @@ body::-webkit-scrollbar-thumb {
 .profile__btn:hover::after,
 .profile__pic-text:hover::after,
 .profile__date-btn > span:hover::after,
+.profile__order-delete:hover::after,
 .profile__loyalty-link:hover::after {
   bottom: -5px;
 }
@@ -776,6 +802,10 @@ section:not(:first-of-type) {
   font-family: "Roboto", "sans-serif";
 }
 
+.profile__box:not(:last-child) {
+  margin-bottom: 1.875rem;
+}
+
 .profile__box-header {
   position: relative;
   font-family: "Roboto", "sans-serif";
@@ -789,6 +819,22 @@ section:not(:first-of-type) {
   width: calc(100% - 1.875rem);
 }
 
+.profile__box-info > strong {
+  color: #184240;
+}
+
+.profile__box-info--green {
+  color: #219653;
+}
+
+.profile__box-info--orange {
+  color: #F2994A;
+}
+
+.profile__box-info--blue {
+  color: #2D9CDB;
+}
+
 .profile__box-close {
   top: 0;
   right: 0;
@@ -800,6 +846,36 @@ section:not(:first-of-type) {
 
 .profile__box-title {
   margin-bottom: 1.375rem;
+}
+
+.profile__box-controls {
+  margin-top: 3.3125rem;
+}
+
+.profile__box-controls > * {
+  text-transform: uppercase;
+}
+
+.profile__box-controls > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.profile__order-repeat,
+.profile__order-swap {
+  width: 12.6875rem;
+  height: 2.5rem;
+  border-radius: 36px;
+}
+
+.profile__order-repeat:hover > svg > path,
+.profile__order-swap:hover > svg > path {
+  fill: #FFF3E7;
+}
+
+.profile__order-repeat > svg,
+.profile__order-swap > svg {
+  transition: fill .3s;
+  margin-right: .5rem;
 }
 
 .profile__submit {
