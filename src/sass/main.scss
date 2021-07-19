@@ -229,6 +229,52 @@ section {
     font-family: $font-service;
     font-size: 0.875rem;
     line-height: 1.6;
+
+    &--radio {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid $lightest;
+            border-radius: 3px;
+            margin-right: 14px;
+            transition: all .3s;
+        }
+
+        &::before {
+            background: $grey;
+            opacity: .16;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid $lightest;
+        }
+
+        .radio:checked+& {
+            &::before {
+                content: url(../img/profile/radio.svg);
+                @extend %flexbox;
+                justify-content: center;
+                background: $gen;
+                border-color: transparent;
+                opacity: 1;
+            }
+
+            &::after {
+                opacity: 0;
+            }
+        }
+    }
 }
 
 .input,

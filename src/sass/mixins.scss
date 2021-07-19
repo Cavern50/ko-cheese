@@ -316,3 +316,16 @@
         }
     }
 }
+
+%button--arrow {
+    @extend %button--circle;
+
+    &:hover {
+
+        path,
+        rect {
+            fill: $accent;
+            stroke: transparent;
+        }
+    }
+}

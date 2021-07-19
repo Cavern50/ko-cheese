@@ -2,13 +2,16 @@
 
 .profile__tab,
 .profile__order-swap,
+.profile__form-submit,
 .profile__address,
 .profile__date-btn,
 .profile__order-repeat,
 .profile__submit,
+.profile__back,
 .modal,
 .status,
 .divided,
+.radio:checked + .label--radio::before,
 .profile__row,
 .profile__pic-label,
 .profile__box-controls {
@@ -78,6 +81,7 @@ body::-webkit-scrollbar-thumb {
 
 .profile__tab,
 .profile__order-swap,
+.profile__form-submit,
 .profile__address,
 .profile__date-btn,
 .profile__order-repeat,
@@ -105,6 +109,7 @@ body::-webkit-scrollbar-thumb {
   color: #FFF3E7;
 }
 
+.profile__form-submit,
 .profile__address,
 .profile__date-btn,
 .profile__order-repeat,
@@ -118,6 +123,7 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0.54px;
 }
 
+.profile__form-submit:hover,
 .profile__address:hover,
 .profile__date-btn:hover,
 .profile__order-repeat:hover,
@@ -187,15 +193,41 @@ body::-webkit-scrollbar-thumb {
   opacity: 1;
 }
 
+.profile__back {
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: rgba(24, 66, 64, 0.1);
+}
+
+.profile__back:hover {
+  background-color: #184240;
+}
+
+.profile__back:hover path,
+.profile__back:hover rect {
+  stroke: #FFF3E7;
+}
+
+.profile__back:hover path,
+.profile__back:hover rect {
+  fill: #FFF3E7;
+  stroke: transparent;
+}
+
 .profile__tab,
 .profile__order-swap,
+.profile__form-submit,
 .profile__address,
 .profile__date-btn,
 .profile__order-repeat,
 .profile__submit,
+.profile__back,
 .modal,
 .status,
 .divided,
+.radio:checked + .label--radio::before,
 .profile__row,
 .profile__pic-label,
 .profile__box-controls {
@@ -265,6 +297,7 @@ body::-webkit-scrollbar-thumb {
 
 .profile__tab,
 .profile__order-swap,
+.profile__form-submit,
 .profile__address,
 .profile__date-btn,
 .profile__order-repeat,
@@ -292,6 +325,7 @@ body::-webkit-scrollbar-thumb {
   color: #FFF3E7;
 }
 
+.profile__form-submit,
 .profile__address,
 .profile__date-btn,
 .profile__order-repeat,
@@ -305,6 +339,7 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0.54px;
 }
 
+.profile__form-submit:hover,
 .profile__address:hover,
 .profile__date-btn:hover,
 .profile__order-repeat:hover,
@@ -372,6 +407,29 @@ body::-webkit-scrollbar-thumb {
 .profile__link:hover::after {
   width: 100%;
   opacity: 1;
+}
+
+.profile__back {
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: rgba(24, 66, 64, 0.1);
+}
+
+.profile__back:hover {
+  background-color: #184240;
+}
+
+.profile__back:hover path,
+.profile__back:hover rect {
+  stroke: #FFF3E7;
+}
+
+.profile__back:hover path,
+.profile__back:hover rect {
+  fill: #FFF3E7;
+  stroke: transparent;
 }
 
 html {
@@ -584,6 +642,49 @@ section:not(:first-of-type) {
   line-height: 1.6;
 }
 
+.label--radio {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.label--radio::before,
+.label--radio::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #E3DED2;
+  border-radius: 3px;
+  margin-right: 14px;
+  transition: all .3s;
+}
+
+.label--radio::before {
+  background: #AEAEAE;
+  opacity: .16;
+}
+
+.label--radio::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #E3DED2;
+}
+
+.radio:checked + .label--radio::before {
+  content: url(../img/profile/radio.svg);
+  justify-content: center;
+  background: #184240;
+  border-color: transparent;
+  opacity: 1;
+}
+
+.radio:checked + .label--radio::after {
+  opacity: 0;
+}
+
 .input,
 .textarea {
   width: 100%;
@@ -659,9 +760,19 @@ section:not(:first-of-type) {
 }
 
 .profile__container {
+  position: relative;
   display: flex;
   box-sizing: border-box;
   padding: 0 10px;
+}
+
+.profile__container--wide {
+  width: 100%;
+  padding-left: 7.3125rem;
+}
+
+.profile__container--wide > .profile__content {
+  width: 100%;
 }
 
 .profile__nav {
@@ -692,12 +803,28 @@ section:not(:first-of-type) {
   max-width: 874px;
 }
 
+.profile__back {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
 .profile__title {
   margin-bottom: 2rem;
 }
 
-.profile__form {
-  font-family: "Roboto", "sans-serif";
+.profile__form-row,
+.profile__form-header {
+  max-width: 918px;
+}
+
+.profile__form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__form-row:not(:last-child) {
+  margin-bottom: 1.25rem;
 }
 
 .profile__form-column {
@@ -708,6 +835,23 @@ section:not(:first-of-type) {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.profile__form-title {
+  margin-top: 2.5rem;
+  margin-bottom: 1.6875rem;
+}
+
+.profile__form-content {
+  box-sizing: border-box;
+  padding-top: 1.4375rem;
+  border-top: 1px solid #8D9A9A;
+}
+
+.profile__form-submit {
+  width: 13.4375rem;
+  height: 3.1875rem;
+  margin-top: 1.875rem;
 }
 
 .profile__form--flex {
@@ -860,6 +1004,10 @@ section:not(:first-of-type) {
   margin-right: 1rem;
 }
 
+.profile__box--return {
+  padding: 2rem;
+}
+
 .profile__order-repeat,
 .profile__order-swap {
   width: 12.6875rem;
@@ -914,6 +1062,66 @@ section:not(:first-of-type) {
 
 .profile__loyalty-link {
   margin-top: 1.75rem;
+}
+
+.profile__steps {
+  display: flex;
+  width: 100%;
+  max-width: 732px;
+  counter-reset: steps-counter;
+  margin-bottom: 3.5625rem;
+}
+
+.profile__step {
+  display: flex;
+  flex-direction: column;
+  counter-increment: steps-counter;
+}
+
+.profile__step:not(:last-child) {
+  width: 40%;
+}
+
+.profile__step:last-child {
+  width: 20%;
+}
+
+.profile__step:not(:last-child) > .profile__step-num::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 73px;
+  transform: translateY(-50%);
+  display: block;
+  width: calc(100% - 73px);
+  height: 1px;
+  background: #8D9A9A;
+}
+
+.profile__step-num {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.profile__step-num::before {
+  content: "0" counter(steps-counter);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 73px;
+  height: 73px;
+  background: #FFF3E7;
+  border: 1px solid #AEAEAE;
+  border-radius: 50%;
+  font-family: "Anglecia Pro", "serif";
+  font-size: 1.5rem;
+}
+
+.profile__step-text {
+  max-width: 200px;
+  font-family: "Roboto", "sans-serif";
+  font-size: 1.125rem;
 }
 
 @media (max-width: 1400px) {
