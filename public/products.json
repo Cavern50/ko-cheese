@@ -30,8 +30,7 @@
         "red-wine",
         "fruits"
       ],
-      "link": "/card",
-      "id": 23
+      "id": "camamber-goat"
     },
     {
       "statuses": [
@@ -63,8 +62,8 @@
         "white-wine",
         "vegetables"
       ],
-      "link": "/card",
-      "id": 20
+      "id": "camamber-cow",
+      "postName": "name"
     },
     {
       "statuses": [
@@ -96,8 +95,7 @@
         "white-wine",
         "vegetables"
       ],
-      "link": "/card",
-      "id": 2
+      "id": "valance-goat"
     },
     {
       "statuses": [
@@ -129,8 +127,7 @@
         "white-wine",
         "vegetables"
       ],
-      "link": "/card",
-      "id": 3
+      "id": "valance-goat-2"
     },
     {
       "statuses": [
@@ -161,8 +158,7 @@
         "white-wine",
         "vegetables"
       ],
-      "link": "/card",
-      "id": 4
+      "id": "bush-de-shevr"
     },
     {
       "statuses": [
@@ -189,8 +185,7 @@
       "description": "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
       "weight": "200 гр",
       "price": 500,
-      "link": "/card",
-      "id": 29
+      "id": "mozzarela"
     },
     {
       "statuses": [
@@ -221,8 +216,7 @@
         "white-wine",
         "vegetables"
       ],
-      "link": "/card",
-      "id": 18
+      "id": "buratta"
     },
     {
       "statuses": [
@@ -246,8 +240,7 @@
         "white-wine",
         "vegetables"
       ],
-      "link": "/card",
-      "id": 7
+      "id": "strachella"
     },
     {
       "statuses": [
@@ -278,10 +271,80 @@
         "white-wine",
         "vegetables"
       ],
-      "link": "/card",
-      "id": 40
+      "id": "bush-de-shevr-2"
     }
   ],
+  "newProducts": [
+    {
+      "name": "Камамбер козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/camamberGoat.jpg",
+      "style": "french",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "id": "camamber-goat"
+    },
+    {
+      "name": "Джем абрикосовый",
+      "addition": "с кленовыми шишками",
+      "image": "/static/img/content/newTastes/jam.jpg",
+      "style": "",
+      "tastes": [],
+      "id": "buratta"
+    },
+    {
+      "name": "Брюш козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/brushGoat.jpg",
+      "style": "russian",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "id": "bush-de-shevr"
+    },
+    {
+      "name": "Камамбер козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/camamberGoat.jpg",
+      "style": "french",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "link": "/card",
+      "id": "camamber-goat"
+    },
+    {
+      "name": "Джем абрикосовый",
+      "addition": "с кленовыми шишками",
+      "image": "/static/img/content/newTastes/jam.jpg",
+      "style": "",
+      "tastes": [],
+      "id": "buratta"
+    },
+    {
+      "name": "Брюш козий",
+      "addition": "с белой плесенью",
+      "image": "/static/img/content/newTastes/brushGoat.jpg",
+      "style": "russian",
+      "tastes": [
+        "red-wine",
+        "fruits"
+      ],
+      "id": "bush-de-shevr"
+    }
+  ],
+  "discountProduct": {
+    "image": "/static/img/content/discount.jpg",
+    "name": "Камамбер козий",
+    "offer": "10%",
+    "date": "21.09.2021",
+    "category": "сыр",
+    "id": "camamber-goat"
+  },
   "productsCategories": {
     "categories": [
       {
@@ -431,7 +494,7 @@
   ],
   "recipes": [
     {
-      "id": 1,
+      "id": "cheese-sauce",
       "image": "../static/img/content/recipe-1.jpg",
       "url": "/",
       "name": "Сырный соус",
@@ -459,7 +522,7 @@
       }
     },
     {
-      "id": 2,
+      "id": "french-cheese-sauce",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -486,7 +549,7 @@
       }
     },
     {
-      "id": 3,
+      "id": "salad-with-cheese",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -513,7 +576,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "cheese-sauce",
       "image": "../static/img/content/recipe-1.jpg",
       "url": "/",
       "name": "Сырный соус",
@@ -540,7 +603,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "french-cheese-sauce",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -567,7 +630,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "salad-with-cheese",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -594,7 +657,7 @@
       }
     },
     {
-      "id": 7,
+      "id": "cheese-sauce",
       "image": "../static/img/content/recipe-1.jpg",
       "url": "/",
       "name": "Сырный соус",
@@ -621,7 +684,7 @@
       }
     },
     {
-      "id": 8,
+      "id": "french-cheese-sauce",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -648,7 +711,7 @@
       }
     },
     {
-      "id": 9,
+      "id": "salad-cheese-sauce",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -677,7 +740,7 @@
   ],
   "dishes": [
     {
-      "id": 2,
+      "id": "cheese-sauce-dish",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -704,7 +767,7 @@
       }
     },
     {
-      "id": 3,
+      "id": "salad-cheese-dish",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -731,7 +794,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "cheese-sauce-dish",
       "image": "../static/img/content/recipe-1.jpg",
       "url": "/",
       "name": "Сырный соус",
@@ -758,7 +821,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "french-cheese-sauce-dish",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -785,7 +848,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "salad-with-cheese-dish",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -812,7 +875,7 @@
       }
     },
     {
-      "id": 7,
+      "id": "cheese-sauce-dish",
       "image": "../static/img/content/recipe-1.jpg",
       "url": "/",
       "name": "Сырный соус",
@@ -839,7 +902,7 @@
       }
     },
     {
-      "id": 8,
+      "id": "french-cheese-sauce-dish",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -866,7 +929,7 @@
       }
     },
     {
-      "id": 9,
+      "id": "salad-cheese-sauce-dish",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -895,7 +958,7 @@
   ],
   "advices": [
     {
-      "id": 3,
+      "id": "salad-advice",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -922,7 +985,7 @@
       }
     },
     {
-      "id": 4,
+      "id": "cheese-sauce-advice",
       "image": "../static/img/content/recipe-1.jpg",
       "url": "/",
       "name": "Сырный соус",
@@ -949,7 +1012,7 @@
       }
     },
     {
-      "id": 5,
+      "id": "cheese-sauce-french-advice",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -976,7 +1039,7 @@
       }
     },
     {
-      "id": 6,
+      "id": "cheese-sauce-salad-advice",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",
@@ -1003,7 +1066,7 @@
       }
     },
     {
-      "id": 7,
+      "id": "cheese-sauce-advice",
       "image": "../static/img/content/recipe-1.jpg",
       "url": "/",
       "name": "Сырный соус",
@@ -1030,7 +1093,7 @@
       }
     },
     {
-      "id": 8,
+      "id": "french-cheese-sauce-advice",
       "image": "../static/img/content/recipe-2.jpg",
       "url": "/",
       "name": "Французский сырный соус",
@@ -1057,7 +1120,7 @@
       }
     },
     {
-      "id": 9,
+      "id": "salad-cheese-advice",
       "image": "../static/img/content/recipe-3.jpg",
       "url": "/",
       "name": "Салат и заправка из сыра с голубой плесенью",

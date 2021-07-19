@@ -22,7 +22,6 @@ export const RecipesSection = ({ categories, items }) => {
   const [activeCategoryItems, setActiveCategoryItems] = React.useState(items);
 
 
-  // eslint-disable-next-line no-return-await
   const getPosts = async (url) => await ArticlesAPI.getPosts(url);
 
 
@@ -51,7 +50,7 @@ export const RecipesSection = ({ categories, items }) => {
       </Tabs>
       <div className={s.subcategories}>
         {categories.find(category => category.id === activeCategoryId).subcategories.map(({ title, id }) =>
-          <SubcategoryButton title={title} id={id} active={activeSubCategoryId} setActive={toggleSubCategoryId}/>)}
+          <SubcategoryButton title={title} id={id} active={activeSubCategoryId} toggleActive={toggleSubCategoryId}/>)}
       </div>
       <div className={s.posts}>
         {activeCategoryItems.length > 0 && activeCategoryItems.map(post => <Recipe {...post} />)}
@@ -60,19 +59,5 @@ export const RecipesSection = ({ categories, items }) => {
   );
 };
 
-
-// const getCategories = async () => {
-//   return await ArticlesAPI.getCategories();
-// };
-//
-// const getRecipes = async () => {
-//   return await ArticlesAPI.getRecipes();
-// };
-//
-// export const getServerSideProps = async () => {
-//   const categories = await getCategories();
-//   const recipes = await getRecipes();
-//   return { props: { categories, recipes } };
-// };
 
 

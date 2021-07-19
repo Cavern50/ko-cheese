@@ -14,6 +14,7 @@ const Farm = ({ categories, resolvedUrl, pageData }) => (
     {pageData.gallery && <GallerySection pageData={pageData}/>}
   </>
 );
+
 export default Farm;
 
 const getCategories = async () => await FarmAPI.getFarmCategories();

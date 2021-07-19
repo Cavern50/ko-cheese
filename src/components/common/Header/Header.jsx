@@ -5,13 +5,11 @@ import Link from "next/link";
 import { MainLogo } from "components/SVG/MainLogo";
 import { Cart } from "components/modals/Cart/Cart";
 import { Favorite } from "components/modals/Favorite/Favorite";
-
+import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import { useModal } from "hooks";
 
-import { useSpring, animated } from "react-spring";
 
-
-import g from "styles/Main.module.scss";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import s from "./Header.module.scss";
 
 const headerLinks = [
@@ -21,8 +19,19 @@ const headerLinks = [
   { logo: true },
   { title: "Ферма", link: "/farm" },
   { title: "Продукция", link: "/products" },
-  { title: "Войти", link: "/" }
+  { title: "Войти", link: "/login" }
 ];
+
+const mainModalProperties = {
+  animation: {
+    animationShow: "moveFromRight",
+    animationHide: "moveToRight"
+  },
+  classes: {
+    boxClass: "modalBox",
+    containerClass: "modalContainer"
+  }
+};
 
 export const Header = ({ router }) => {
 
@@ -32,7 +41,7 @@ export const Header = ({ router }) => {
   return (
     <>
       <header className={s.header}>
-        <div className={g.wrapper}>
+        <Wrapper>
           <div className={clsx(s.container, isPromoPage ? s.border_accent : "")}>
             <nav className={s.nav}>
               {headerLinks.map((el, i) =>
@@ -111,10 +120,14 @@ export const Header = ({ router }) => {
               </button>
             </div>
           </div>
-        </div>
+        </Wrapper>
       </header>
-      <Cart closeModal={cartModal.hideModal} show={cartModal.isShowed}/>
-      <Favorite closeModal={favoriteModal.hideModal} show={favoriteModal.isShowed}/>
+      <ModalWrapper closeModal={cartModal.hideModal} show={cartModal.isShowed} {...mainModalProperties}>
+        <Cart closeModal={cartModal.hideModal} show={cartModal.isShowed}/>
+      </ModalWrapper>
+      <ModalWrapper closeModal={favoriteModal.hideModal} show={favoriteModal.isShowed} {...mainModalProperties}>
+        <Favorite closeModal={favoriteModal.hideModal} show={favoriteModal.isShowed}/>
+      </ModalWrapper>
     </>
   );
 };

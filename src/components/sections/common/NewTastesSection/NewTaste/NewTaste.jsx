@@ -8,21 +8,22 @@ import {
 } from "components/SVG/TastesSVG/TastesSVG";
 import s from "./NewTaste.module.scss";
 
+const allTastes = {
+  "red-wine": <RedWine key={0}/>,
+  "white-wine": <WhiteWine key={1}/>,
+  vegetables: <Vegetables key={2}/>,
+  fruits: <Fruits key={3}/>
+};
+const countryFlags = {
+  french: "/static/img/icons/french-flag.jpg",
+  russian: "/static/img/icons/rus-flag.jpg"
+};
 
-export const NewTaste = ({ href, name, addition, image, style, tastes }) => {
-  const allTastes = {
-    "red-wine": <RedWine key={0}/>,
-    "white-wine": <WhiteWine key={1}/>,
-    vegetables: <Vegetables key={2}/>,
-    fruits: <Fruits key={3}/>
-  };
-  const countryFlags = {
-    French: "/img/icons/french-flag.jpg",
-    Russian: "/img/icons/rus-flag.jpg"
-  };
+export const NewTaste = ({ id, name, addition, image, style, tastes }) => {
+
 
   return (
-    <Link href={href}>
+    <Link href={`products/${id}`}>
       <a>
         <div className={s.card}>
           <div className={s.body}>

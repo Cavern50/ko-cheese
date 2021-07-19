@@ -1,4 +1,12 @@
+@import "/src/styles/root";
+
 .title {
     text-align: center; 
     margin: 5rem 0 7.5rem;
+}
+
+.login {
+    margin: 1.25rem 0 1.875rem 0;
+    padding-bottom: 1.875rem;
+    border-bottom: 1px solid rgba($gen, .3);
 }

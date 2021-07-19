@@ -1,0 +1,45 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.container {
+  @extend %flexbox;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+}
+
+.form {
+  width: 18.75rem;
+  margin-top: 1.875rem;
+}
+
+.checkbox {
+  display: flex;
+  margin-top: 1.25rem;
+}
+
+.label {
+  margin-left: 1.875rem;
+  font-family: $font-service;
+  color: $lighten;
+}
+
+.submit {
+  @extend %button--green;
+  width: 16.875rem;
+  height: 3.125rem;
+  margin: 3.125rem auto 0 auto;
+  text-decoration: underline;
+}
+
+.reg {
+  @extend %link;
+  display: block;
+  width: fit-content;
+  margin: 1.25rem auto 0 auto;
+  text-align: center;
+}

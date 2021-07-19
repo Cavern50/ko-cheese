@@ -3,6 +3,8 @@ import API from './APIService'
 class ProductsAPI {
     getProducts = () => API.get('products');
 
+    getDiscountProduct = () => API.get('discountProduct');
+
     getProductsCategories = () => API.get('productsCategories');
 
     getProduct = (id) => API.get(`products/${id}`)

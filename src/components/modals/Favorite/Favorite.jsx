@@ -15,7 +15,7 @@ const favorites = [
 
 export const Favorite = ({ closeModal, show }) => {
 
-  const tabCategory = useTabs();
+  const { activeId, toggleActiveId } = useTabs(null, false);
 
   return (
     <ModalBody closeModal={closeModal} title={'Избранное'} show={show}>
@@ -24,8 +24,8 @@ export const Favorite = ({ closeModal, show }) => {
           <SubcategoryButton
             {...favorite}
             key={favorite.id}
-            active={tabCategory.active}
-            setActive={tabCategory.toggleActive}
+            active={activeId}
+            toggleActive={toggleActiveId}
           />
         ))}
       </div>

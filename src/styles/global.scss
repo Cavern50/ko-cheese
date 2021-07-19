@@ -154,8 +154,23 @@ section {
   }
 }
 
+@keyframes moveFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
 
-
+@keyframes moveToBottom {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
 
 @media (max-width: 1400px) {
   html {

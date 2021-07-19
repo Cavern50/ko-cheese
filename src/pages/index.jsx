@@ -8,46 +8,70 @@ import { DiscountSection } from "components/sections/common/DiscountSection/Disc
 import { RecipesSliderSection } from "components/sections/common/RecipesSliderSection/RecipesSliderSection";
 import { InstagramPromoSection } from "components/sections/index/InstagramPromoSection/InstagramPromoSection";
 import { InstagramSection } from "components/sections/index/InstagramSection/InstagramSection";
+import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import { Cookies } from "components/modals/Cookies/Cookies";
 
 import { useModal } from "hooks";
 
 import ProductsAPI from "api/ProductsAPI";
+import NewProductsAPI from "api/NewProductsAPI";
 import ArticlesAPI from "api/ArticlesAPI";
 
-const Index = ({ products, categories, posts }) => {
+const cookiesModalProperties = {
+  animation: {
+    animationShow: "moveFromBottom",
+    animationHide: "moveToBottom"
+  },
+  classes: {
+    boxClass: "cookiesBox",
+    containerClass: "cookiesContainer"
+  }
+};
+
+const Index = ({ products, discountProduct, categories, posts, newProducts }) => {
   const cookiesModal = useModal(true, false);
+  const [showDelay, setShowDelay] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setShowDelay(true);
+    }, 5000);
+  }, []);
+
   return (
     <>
       <Head>
         <title>Главная</title>
       </Head>
       <PromoSection/>
-      <NewTastesSection/>
+      <NewTastesSection products={newProducts}/>
       <ProductsSection products={products} categories={categories}/>
-      <DiscountSection/>
+      <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
       <InstagramPromoSection url={"http://instagram.com/instagram"}/>
       <InstagramSection/>
-      {cookiesModal.isShowed && <Cookies close={cookiesModal.hideModal}/>}
+      {cookiesModal.isShowed && showDelay ?
+        <ModalWrapper show={cookiesModal.isShowed} {...cookiesModalProperties}>
+          <Cookies close={cookiesModal.hideModal}/>
+        </ModalWrapper> : ""}
     </>
   );
 };
 
 export default Index;
+const getProducts = async () => {
+  const products = await ProductsAPI.getProducts();
+  const discountProduct = await ProductsAPI.getDiscountProduct();
+  const categories = await ProductsAPI.getProductsCategories();
+  return { products, discountProduct, categories };
+};
 
-// eslint-disable-next-line no-return-await
-const getProducts = async () => await ProductsAPI.getProducts();
-
-// eslint-disable-next-line no-return-await
-const getProductsCategories = async () => await ProductsAPI.getProductsCategories();
-
-// eslint-disable-next-line no-return-await
-const getPosts = async () => await ArticlesAPI.getPosts('recipes');
+const getNewProducts = async () => await NewProductsAPI.getNewProducts();
+const getPosts = async () => await ArticlesAPI.getPosts("recipes");
 
 export const getServerSideProps = async () => {
-  const products = await getProducts();
-  const { categories } = await getProductsCategories();
-  const posts = await getPosts('recipes');
-  return { props: { products, categories, posts } };
+  const { products, discountProduct, categories } = await getProducts();
+  const posts = await getPosts("recipes");
+  const newProducts = await getNewProducts();
+  return { props: { products, discountProduct, categories, posts, newProducts } };
 };
