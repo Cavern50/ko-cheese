@@ -11,7 +11,7 @@ const Delivery = ({deliveryData}) => (
       <Head />
       <Wrapper>
         <H1>Доставка и оплата</H1>
-        <DeliverySection deliveryData={deliveryData} />
+        <DeliverySection deliveryData={deliveryData.delivery} />
       </Wrapper>
     </>
   );
