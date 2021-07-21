@@ -4,8 +4,9 @@ import clsx from "clsx";
 import s from "./Input.module.scss";
 
 export const Input = (props) => {
-  const { label, type, id, name, props1 } = props;
+  const { label, type, id, name } = props;
   console.log(props);
+
   return (
     <Field name={name}>
       {({
@@ -15,7 +16,7 @@ export const Input = (props) => {
         }) => (
         <div className={label && s.container}>
           {label && <label className={s.label} htmlFor={id}>{label}</label>}
-          <input id={id} className={clsx(type === "checkbox" ? s.checkbox : s.input)} type={type} {...field} />
+          <input {...field} id={id} className={clsx(type === "checkbox" ? s.checkbox : s.input)} type={type} name={name} />
           {meta.touched && meta.error && (
             <div className="error">{meta.error}</div>
           )}

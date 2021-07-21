@@ -1,4 +1,6 @@
 import React from "react";
+import * as Yup from "yup";
+
 import {
   RedWine,
   WhiteWine,
@@ -95,4 +97,12 @@ export const cities = [
   }
 ];
 
-export const instagramUser = 'ko-cheese';
+export const instagramUser = "ko-cheese";
+
+export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
+  name: Yup.string(),
+  surname: Yup.string(),
+  email: Yup.string(),
+  phone: Yup.number()
+});
+

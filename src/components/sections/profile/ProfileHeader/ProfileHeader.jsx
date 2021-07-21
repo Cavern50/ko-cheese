@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { H1 } from "components/layout/H1/H1";
 import s from "./ProfileHeader.module.scss";
 
@@ -28,7 +29,10 @@ export const ProfileHeader = () => {
               <span className={s.value}>Бесплатно</span>
             </div>
           </div>
-          <button type="button" className={s.out} href="#">Выйти</button>
+          <Link href="/login">
+            <a className={s.out}>Выйти</a>
+          </Link>
+          {/*<button type="button" className={s.out} href="#">Выйти</button>*/}
         </div>
       </header>
     </>

@@ -27,7 +27,8 @@
     "react-yandex-maps": "^4.6.0",
     "sass": "^1.35.1",
     "standart": "^6.1.0",
-    "swiper": "^6.7.0"
+    "swiper": "^6.7.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
