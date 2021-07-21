@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "server": "json-server --watch public/products.json --port 3001",
+    "server": "json-server --watch src/data/products.json --port 3001",
     "lint": "eslint",
     "build": "next build",
     "start": "next start"
