@@ -31,7 +31,7 @@ export const allTastes = {
 };
 
 
-export const BASE_URL = "/data/products.json";
+export const BASE_URL = "/static/data/products.json";
 
 export const cities = [
   {
