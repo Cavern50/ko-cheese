@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import { PromoSection } from "components/sections/Index/PromoSection/PromoSection";
+import { PromoSection } from "components/sections/index/PromoSection/PromoSection";
 import { NewTastesSection } from "components/sections/common/NewTastesSection/NewTastesSection";
 import { ProductsSection } from "components/sections/common/ProductsSection/ProductsSection";
 import { DiscountSection } from "components/sections/common/DiscountSection/DiscountSection";
