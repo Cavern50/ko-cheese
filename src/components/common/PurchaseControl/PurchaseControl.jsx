@@ -7,6 +7,7 @@ import s from "./PurchaseControl.module.scss";
 
 export const PurchaseControl = ({ id, inCart }) => {
    const [count, setCount] = React.useState(1);
+   // eslint-disable-next-line consistent-return
    const changeCount = (operation) => {
       if (count === 1 && operation === "-") {
          return false;

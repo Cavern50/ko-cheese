@@ -1,23 +1,22 @@
-import React from 'react';
-import clsx from 'clsx';
-import Head from 'next/head';
+import React from "react";
+import Head from "next/head";
 
-import { ProductsSection } from '@components/sections/common/ProductsSection/ProductsSection';
-import { NewTastesSection } from '@components/sections/common/NewTastesSection/NewTastesSection';
-import { DiscountSection } from '@components/sections/common/DiscountSection/DiscountSection';
-import { Discount } from '@components/common/Discount/Discount';
-import { useModal } from 'src/hooks';
-import { Wrapper } from '@components/layout/Wrapper/Wrapper';
+import { ProductsSection } from "components/sections/common/ProductsSection/ProductsSection";
+import { NewTastesSection } from "components/sections/common/NewTastesSection/NewTastesSection";
+import { DiscountSection } from "components/sections/common/DiscountSection/DiscountSection";
+import { Discount } from "components/common/Discount/Discount";
+import { useModal } from "hooks";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
-import axios from 'axios';
 
-import { H1 } from '@components/layout/H1/H1';
+import { H1 } from "components/layout/H1/H1";
+import ProductsAPI from "api/ProductsAPI";
 
-const Products = ({ products }) => {
-  const discountModal = useModal(true);
+const Products = ({ products, newProducts, discountProduct, productsCategories }) => {
+  const discountModal = useModal(true, false);
   return (
     <>
-      <Head></Head>
+      <Head/>
       <Wrapper>
         {discountModal.isShowed && (
           <Discount
@@ -27,21 +26,26 @@ const Products = ({ products }) => {
         )}
         <H1>Продукция</H1>
       </Wrapper>
-      <ProductsSection products={products}/>
-      <NewTastesSection/>
-      <DiscountSection/>
+      <ProductsSection products={products} categories={productsCategories}/>
+      <NewTastesSection products={newProducts}/>
+      <DiscountSection {...discountProduct}/>
     </>
   );
 };
 
 export default Products;
 
-const request = async () => {
-  const { data } = await axios.get('http://localhost:3001/data');
-  return data;
+const getProducts = async () => {
+  const newProducts = await ProductsAPI.getNewProducts();
+  const products = await ProductsAPI.getProducts();
+  const productsCategories = await ProductsAPI.getProductsCategories();
+  const discountProduct = await ProductsAPI.getDiscountProduct();
+
+  return { products, newProducts, productsCategories, discountProduct };
 };
 
+
 export const getServerSideProps = async () => {
-  const products = await request();
-  return { props: { products } };
+  const { products, newProducts, productsCategories, discountProduct } = await getProducts();
+  return { props: { products, discountProduct, newProducts, productsCategories } };
 };

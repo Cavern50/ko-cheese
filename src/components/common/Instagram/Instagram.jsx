@@ -1,9 +1,8 @@
 import React from 'react';
 import s from './Instagram.module.scss';
 
-export const Instagram = ({url, image, user, date, text, videoCover }) => {
-    return (
-        <a href={url} target='_blank' className={s.post}>
+export const Instagram = ({url, image, user, date, text, videoCover }) => (
+        <a href={url} target='_blank' className={s.post} rel="noreferrer">
         <div className={s.header}>
             <div className={s.info}>
                 <span className={s.user}>{user}</span>
@@ -24,8 +23,7 @@ export const Instagram = ({url, image, user, date, text, videoCover }) => {
                 </svg>
             </span>
         </div>
-        <img src={videoCover ? videoCover : image} alt={user} className={s.image}/>
+        <img src={videoCover || image} alt={user} className={s.image}/>
         <p className={s.text}>{text}</p>
     </a>
     )
-}

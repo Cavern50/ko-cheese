@@ -1,11 +1,11 @@
 import React from 'react';
 
-import s from './Favorite.module.scss';
 
+import { SubcategoryButton } from 'components/common/Buttons/SubcategoryButton/SubcategoryButton';
+import { Purchase } from 'components/common/Purchase/Purchase';
+import { useTabs } from 'hooks';
 import { ModalBody } from '../ModalBody/ModalBody';
-import { SubcategoryButton } from '@components/common/Buttons/SubcategoryButton/SubcategoryButton';
-import { Purchase } from '@components/common/Purchase/Purchase';
-import { useTabs } from 'src/hooks';
+import s from './Favorite.module.scss';
 
 const favorites = [
   { title: 'сыры', id: 1 },
@@ -13,19 +13,19 @@ const favorites = [
   { title: 'десерты', id: 3 }
 ];
 
-export const Favorite = ({ closeModal }) => {
+export const Favorite = ({ closeModal, show }) => {
 
-  const tabCategory = useTabs();
+  const { activeId, toggleActiveId } = useTabs(null, false);
 
   return (
-    <ModalBody closeModal={closeModal} title={'Избранное'}>
+    <ModalBody closeModal={closeModal} title={'Избранное'} show={show}>
       <div className={s.subcategories}>
         {favorites.map((favorite) => (
           <SubcategoryButton
             {...favorite}
             key={favorite.id}
-            active={tabCategory.active}
-            setActive={tabCategory.toggleActive}
+            active={activeId}
+            toggleActive={toggleActiveId}
           />
         ))}
       </div>

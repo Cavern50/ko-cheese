@@ -1,297 +1,98 @@
+import React from "react";
 import {
-   RedWine,
-   WhiteWine,
-   Vegetables,
-   Fruits,
-} from "@components/SVG/TastesSVG/TastesSVG";
+  RedWine,
+  WhiteWine,
+  Vegetables,
+  Fruits
+} from "components/SVG/TastesSVG/TastesSVG";
 
 export const allStatus = {
-   avaliable: {
-      title: "в наличии",
-      class: "avaliable",
-   },
-   preparing: {
-      title: "созревает",
-      class: "preparing",
-   },
-   "not-avaliable": {
-      title: "нет в наличии",
-      class: "not-avaliable",
-   },
+  avaliable: {
+    title: "в наличии",
+    class: "avaliable"
+  },
+  preparing: {
+    title: "созревает",
+    class: "preparing"
+  },
+  "not-avaliable": {
+    title: "нет в наличии",
+    class: "not-avaliable"
+  }
 };
 
 export const allTastes = {
-   "red-wine": <RedWine border={"accent"} key={0} />,
-   "white-wine": <WhiteWine border={"accent"} key={1} />,
-   vegetables: <Vegetables border={"accent"} key={2} />,
-   fruits: <Fruits border={"accent"} key={3} />,
+  "red-wine": <RedWine border={"accent"} key={0}/>,
+  "white-wine": <WhiteWine border={"accent"} key={1}/>,
+  vegetables: <Vegetables border={"accent"} key={2}/>,
+  fruits: <Fruits border={"accent"} key={3}/>
 };
 
-export const products = [
-   {
-      status: "avaliable",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/camamberGoat.png",
-      gallery: [
-         "/static/img/content/camamberGoat.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Камамбер козий",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      addition: "с белой плесенью",
-      weight: "200 гр",
-      price: 320,
-      tastes: ["red-wine", "fruits"],
-      link: "/card",
-      id: 23,
-   },
-   {
-      status: "preparing",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/camamberCow.png",
-      gallery: [
-         "/static/img/content/camamberCow.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Камамбер коровий",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      addition: "с белой плесенью",
-      weight: "200 гр",
-      price: 320,
-      tastes: ["white-wine", "vegetables"],
-      link: "/card",
-      id: 20,
-   },
-   {
-      status: "avaliable",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/goatBalance.png",
-      gallery: [
-         "/static/img/content/goatBalance.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Cыр Козий Валансе",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      addition: "с белой плесенью",
-      weight: "200 гр",
-      price: 650,
-      tastes: ["white-wine", "vegetables"],
-      link: "/card",
-      id: 2,
-   },
-   {
-      status: "avaliable",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/goatBalance2.png",
-      gallery: [
-         "/static/img/content/goatBalance2.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Cыр Козий Валансе",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      addition: "с белой плесенью",
-      weight: "200 гр",
-      price: 500,
-      tastes: ["white-wine", "vegetables"],
-      link: "/card",
-      id: 3,
-   },
-   {
-      status: "preparing",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/bushDeShevr.png",
-      gallery: [
-         "/static/img/content/bushDeShevr.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Бюш де шевр",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      weight: "200 гр",
-      price: 500,
-      tastes: ["white-wine", "vegetables"],
-      link: "/card",
-      id: 4,
-   },
-   {
-      status: "avaliable",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/mozzarella.png",
-      gallery: [
-         "/static/img/content/mozzarella.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Моцарелла",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      weight: "200 гр",
-      price: 500,
-      link: "/card",
-      id: 29,
-   },
-   {
-      status: "not-avaliable",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/buratta.png",
-      gallery: [
-         "/static/img/content/buratta.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Буратта",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      weight: "200 гр",
-      price: 500,
-      tastes: ["white-wine", "vegetables"],
-      link: "/card",
-      id: 18,
-   },
-   {
-      status: "avaliable",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/strachella.png",
-      gallery: [
-         "/static/img/content/strachella.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Страчелла",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      weight: "200 гр",
-      price: 500,
-      tastes: ["white-wine", "vegetables"],
-      link: "/card",
-      id: 7,
-   },
-   {
-      status: "preparing",
-      allStatus: [
-         {
-            name: "avaliable",
-            count: 20,
-         },
-         {
-            name: "preparing",
-            count: 15,
-            date: "15.08.2021",
-         },
-      ],
-      image: "/static/img/content/bushDeShevr.png",
-      gallery: [
-         "/static/img/content/bushDeShevr.png",
-         "/static/img/content/slide-1.jpg",
-         "/static/img/content/recipe-2.jpg",
-         "/static/img/content/recipe-3.jpg",
-      ],
-      name: "Бюш де шевр",
-      description:
-         "Французский сыр из молока козы продолговатой формы, имеющий свежий резкий запах и нежный сливочный вкус в середине и пикантный вкус у корочки, покрытой легкой белой плесенью.",
-      weight: "200 гр",
-      price: 500,
-      tastes: ["white-wine", "vegetables"],
-      link: "/card",
-      id: 40,
-   },
+
+export const BASE_URL = "http://localhost:3001/";
+
+export const cities = [
+  {
+    id: 1,
+    title: "Москва",
+    cityCoords: [55.75322, 37.622513],
+    points: [
+      {
+        id: 1,
+        market: "Усачевский рынок",
+        coords: [55.727506, 37.567707],
+        image: "/static/img/content/marketPoints/usach.jpg",
+        phone: "+7 (495) 120-18-01",
+        workingTime: "с 08 до 21 часа"
+      },
+      {
+        id: 2,
+        market: "Даниловский рынок",
+        coords: [55.712117, 37.620555],
+        image: "/static/img/content/marketPoints/danil.jpg",
+        phone: "+7 (495) 120-18-01",
+        workingTime: "с 08 до 22 часов"
+      },
+      {
+        id: 3,
+        market: "Черемушкинский рынок",
+        coords: [55.683919, 37.550567],
+        image: "/static/img/content/marketPoints/chermush.jpg",
+        phone: "+7 (495) 120-18-01",
+        workingTime: "с 08 до 20 часов"
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "Екатеринбург",
+    cityCoords: [56.838011, 60.597474],
+    points: [
+      {
+        id: 1,
+        market: "Свердловский рынок",
+        coords: [56.838011, 60.597474],
+        image: "/static/img/content/marketPoints/usach.jpg",
+        phone: "+7 (495) 120-18-01",
+        workingTime: "с 08 до 21 часа"
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Арамиль",
+    cityCoords: [56.694568, 60.834342],
+    points: [
+      {
+        id: 1,
+        market: "Арамильcкий рынок",
+        coords: [56.694568, 60.834342],
+        image: "/static/img/content/marketPoints/chermush.jpg",
+        phone: "+7 (495) 120-18-01",
+        workingTime: "с 08 до 21 часа"
+      }
+    ]
+  }
 ];
 
-export const BASE_URL = 'http://localhost:3001/';
+export const instagramUser = 'ko-cheese';

@@ -1,14 +1,12 @@
 import React from 'react';
 
-import { RemoveButton } from '../Buttons/RemoveButton/RemoveButton';
+import { RemoveButton } from 'components/common/Buttons/RemoveButton/RemoveButton';
 import s from './FavoriteControl.module.scss';
 
-export const FavoriteControl = () => {
-    return (
+export const FavoriteControl = () => (
         <div className={s.container}>
             <button type='button' className={s.add}>в корзину</button>
             <RemoveButton small/>
         </div>
     )
-}
 

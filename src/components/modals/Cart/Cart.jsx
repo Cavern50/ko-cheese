@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { Purchase } from '@components/common/Purchase/Purchase';
+import { Purchase } from 'components/common/Purchase/Purchase';
+import { CloseButton } from 'components/common/Buttons/CloseButton/CloseButton';
+import { TotalPrice } from 'components/common/TotalPrice/TotalPrice';
+import { useModal } from 'hooks';
 import { ModalBody } from '../ModalBody/ModalBody';
-import { CloseButton } from '@components/common/Buttons/CloseButton/CloseButton';
-import { TotalPrice } from '@components/common/TotalPrice/TotalPrice';
-import { useModal } from 'src/hooks';
 
 import s from './Cart.module.scss';
 
-export const Cart = ({ closeModal }) => {
+export const Cart = ({ closeModal, show }) => {
   const discountModal = useModal(true);
   return (
-    <ModalBody closeModal={closeModal} title="Корзина">
+    <ModalBody closeModal={closeModal} title="Корзина" show={show} >
       {discountModal.isShowed && (
         <div className={s.promo}>
           <div className={s.promo__text}>Вам представлена скидка на первый заказ 10%</div>

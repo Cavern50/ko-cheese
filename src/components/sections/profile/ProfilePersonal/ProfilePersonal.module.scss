@@ -1,0 +1,21 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+.password {
+  @extend %link;
+  margin-top: 1.875rem;
+  font-family: $font-service--bold;
+}
+
+.container {
+  display: flex;
+}
+.form {
+  width: 40%;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}

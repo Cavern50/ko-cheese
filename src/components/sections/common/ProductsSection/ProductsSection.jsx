@@ -1,98 +1,63 @@
-import React from 'react';
-import clsx from 'clsx';
-import { Product } from '@components/common/Product/Product';
+import React from "react";
 
-import s from './ProductsSection.module.scss';
-import g from 'src/styles/Main.module.scss';
-import { SubcategoryButton } from '@components/common/Buttons/SubcategoryButton/SubcategoryButton';
-import { Tabs } from '@components/layout/Tabs/Tabs';
-import { TabButton } from '@components/common/Buttons/TabButton/TabButton';
-import { useTabs } from 'src/hooks';
+import { Product } from "components/common/Product/Product";
+import { SubcategoryButton } from "components/common/Buttons/SubcategoryButton/SubcategoryButton";
+import { Tabs } from "components/layout/Tabs/Tabs";
+import { TabButton } from "components/common/Buttons/TabButton/TabButton";
+import { Section } from "components/layout/Section/Section";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
-const categories = [
-  {
-    id: 1,
-    title: 'Сыры',
-    href: '/'
-  },
-  {
-    id: 2,
-    title: 'Молоко',
-    href: '/'
-  },
-  {
-    id: 3,
-    title: 'Десерты',
-    href: '/'
-  }
-];
+import { useTabs } from "hooks";
 
-const subCategories = [
-  {
-    title: 'Свежие',
-    href: '/'
-  },
-  {
-    title: 'Мягкие',
-    href: '/'
-  },
-  {
-    title: 'Твердые',
-    href: '/'
-  },
-  {
-    title: 'С белой плесенью',
-    href: '/'
-  },
-  {
-    title: 'С голубой плесенью',
-    href: '/'
-  },
-  {
-    title: 'Коровий',
-    href: '/'
-  },
-  {
-    title: 'Козий',
-    href: '/'
-  }
-];
+import s from "./ProductsSection.module.scss";
 
-export const ProductsSection = ({ products }) => {
-  const tabsCategory = useTabs(1, false);
-  const tabsSubCategory = useTabs();
 
+export const ProductsSection = ({ products, categories }) => {
+  const { activeId: activeCategoryId, toggleActiveId: toggleActiveCategoryId } = useTabs(categories[0].id, false);
+  const { activeId: activeSubcategoryId, toggleActiveId: toggleSubcategoryId } = useTabs(categories[0].subcategories[0].id, false);
+
+  const [activeCategory, setActiveCategory] = React.useState(categories[0]);
+  const [activeSubcategory, setActiveSubcategory] = React.useState(categories[0].subcategories);
+
+  React.useEffect(() => {
+    setActiveCategory(categories.find(({ id }) => id === activeCategoryId));
+  }, [activeCategoryId]);
+
+  React.useEffect(() => {
+    toggleSubcategoryId(activeCategory.subcategories[0].id);
+  }, [activeCategory]);
   return (
-    <section className={clsx(s.products)}>
-      <div className={clsx(g.wrapper)}>
-        <div className={clsx(s.header)}>
+    <Section>
+      <Wrapper>
+        <div className={s.header}>
           <Tabs>
-            {categories.map(({title, id}, i) => (
+            {categories.map(({ title, id }) => (
               <TabButton
                 key={id}
                 text={title}
                 index={id}
-                active={tabsCategory.active}
-                toggleActive={tabsCategory.toggleActive}
+                active={activeCategoryId}
+                toggleActive={toggleActiveCategoryId}
               />
             ))}
           </Tabs>
-          <div className={clsx(s.subcategories)}>
-            {subCategories.map((subcategory, i) => (
+          <div className={s.subcategories}>
+            {activeCategory.subcategories.map(({ title, id }) => (
               <SubcategoryButton
-                key={i}
-                id={i}
-                title={subcategory.title}
-                active={tabsSubCategory.active}
-                setActive={tabsSubCategory.toggleActive}
+                key={id}
+                id={id}
+                title={title}
+                active={activeSubcategoryId}
+                toggleActive={toggleSubcategoryId}
               />
             ))}
           </div>
         </div>
-        <div className={clsx(s.body)}>
+        <div className={s.body}>
           {products && products.map((product) => <Product key={product.id} {...product} />)}
         </div>
-      </div>
-    </section>
+      </Wrapper>
+    </Section>
+
   );
 };

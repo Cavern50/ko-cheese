@@ -1,28 +1,31 @@
-import React from 'react';
-import s from './InstagramSection.module.scss';
-import g from 'src/styles/Main.module.scss';
+import React from "react";
 
-import { _instagram } from 'src/api/_instagram';
-import { Instagram } from '@components/common/Instagram/Instagram';
+// eslint-disable-next-line import/extensions
+import { InstagramAPI } from "api/InstagramAPI.js";
+import { Instagram } from "components/common/Instagram/Instagram";
+import { Section } from "components/layout/Section/Section";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
+import { instagramUser } from "constants.js";
+import s from "./InstagramSection.module.scss";
 
 export const InstagramSection = () => {
   const [photos, setPhotos] = React.useState([]);
-  const getInstagramData = async () => {
-    return await _instagram();
-  };
+  // eslint-disable-next-line no-return-await
+  const getInstagramData = async () => await InstagramAPI();
   React.useEffect(() => {
     getInstagramData().then((res) => setPhotos(res));
   }, []);
-  const instagramUser = 'ko-cheese';
+
   return (
-    <section>
-      <div className={g.wrapper}>
+    <Section>
+      <Wrapper>
         <div className={s.container}>
           {photos.map(
+            // eslint-disable-next-line camelcase
             ({ permalink, media_url, caption, timestamp, thumbnail_url }, i) =>
               i < 4 && (
                 <Instagram
-                  key={i}
+                  key={timestamp}
                   url={permalink}
                   image={media_url}
                   videoCover={thumbnail_url}
@@ -33,7 +36,7 @@ export const InstagramSection = () => {
               )
           )}
         </div>
-      </div>
-    </section>
+      </Wrapper>
+    </Section>
   );
 };

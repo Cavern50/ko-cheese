@@ -1,7 +1,23 @@
 @import "/src/styles/mixins.scss";
 
-.header {
+.wrapper {
    @extend %header-nav;
+   position: relative;
+   width: 100%;
+}
+
+.bottom {
+   order: 1;
+}
+
+.top {
+   order: -1;
+}
+
+.full {
+   width: 100%;
+   justify-content: space-between;
+   margin-top: 3.125rem;
 }
 
 .container {
@@ -12,11 +28,13 @@
 .counter {
    margin-right: 4.375rem;
    font-size: 1.5rem;
-   &__all {
+   &All {
       color: $grey;
    }
 }
-
+.large {
+   font-size: 2.25rem;
+}
 .nav {
    @extend %flexbox;
    button {
@@ -36,4 +54,15 @@
          }
       }
    }
+}
+
+.link {
+   @extend %link;
+   position: absolute;
+   margin-top: 0.7rem;
+}
+
+.center {
+   left: 50%;
+   transform: translateX(-50%);
 }

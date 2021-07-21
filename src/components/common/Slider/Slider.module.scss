@@ -1,5 +1,8 @@
 @import "/src/styles/root.scss";
-
+.container {
+   display: flex;
+   flex-wrap: wrap;
+}
 .product_slide {
    border: 1px solid rgba($gen, 0.3);
    border-left: none;
