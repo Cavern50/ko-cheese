@@ -2,6 +2,7 @@ import React from "react";
 import s from "./InputPhoto.module.scss";
 
 export const InputPhoto = ({ id, name, formProps }) => {
+  console.log(formProps);
   const [file, setFile] = React.useState("");
 
   const handleChange = (event) => {
