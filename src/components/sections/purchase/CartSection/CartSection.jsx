@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { Purchase } from 'components/common/Purchase/Purchase';
+import { TotalPrice } from 'components/common/TotalPrice/TotalPrice';
 import s from './CartSection.module.scss';
-import { Purchase } from '@components/common/Purchase/Purchase';
-import { TotalPrice } from '@components/common/TotalPrice/TotalPrice';
 
-export const CartSection = () => {
-  return (
+export const CartSection = () => (
     <>
       <div className={s.container}>
         <div className={s.cart}>
@@ -35,5 +34,4 @@ export const CartSection = () => {
       </div>
     </>
   );
-};
 

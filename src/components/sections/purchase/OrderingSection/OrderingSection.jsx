@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 
-import { BackButton } from '@components/common/Buttons/BackButton/BackButton';
-import { Input } from '@components/common/Input/Input';
+import { BackButton } from 'components/common/Buttons/BackButton/BackButton';
+import { Input } from 'components/common/Input/Input';
 import s from './OrderingSection.module.scss';
 
 export const OrderingSection = () => {
