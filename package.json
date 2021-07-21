@@ -16,6 +16,7 @@
     "babel-eslint": "^10.1.0",
     "clsx": "^1.1.1",
     "eslint-import-resolver-webpack": "^0.13.1",
+    "formik": "^2.2.9",
     "html-react-parser": "^1.2.7",
     "json-server": "^0.16.3",
     "next": "^11.0.0",

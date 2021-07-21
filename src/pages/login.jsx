@@ -6,8 +6,7 @@ import {AuthSection} from "components/sections/auth/AuthSection/AuthSection";
 const Login = () => {
   return (
     <Wrapper>
-
-      <H1 additionClass="login">Личный кабинет</H1>
+      <H1 additionClass="profile">Личный кабинет</H1>
       <AuthSection/>
     </Wrapper>
   );

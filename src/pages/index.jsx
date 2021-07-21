@@ -14,7 +14,6 @@ import { Cookies } from "components/modals/Cookies/Cookies";
 import { useModal } from "hooks";
 
 import ProductsAPI from "api/ProductsAPI";
-import NewProductsAPI from "api/NewProductsAPI";
 import ArticlesAPI from "api/ArticlesAPI";
 
 const cookiesModalProperties = {
@@ -59,19 +58,19 @@ const Index = ({ products, discountProduct, categories, posts, newProducts }) =>
 };
 
 export default Index;
+
 const getProducts = async () => {
   const products = await ProductsAPI.getProducts();
   const discountProduct = await ProductsAPI.getDiscountProduct();
   const categories = await ProductsAPI.getProductsCategories();
-  return { products, discountProduct, categories };
+  const newProducts = await ProductsAPI.getNewProducts();
+  return { products, discountProduct, categories, newProducts };
 };
 
-const getNewProducts = async () => await NewProductsAPI.getNewProducts();
 const getPosts = async () => await ArticlesAPI.getPosts("recipes");
 
 export const getServerSideProps = async () => {
-  const { products, discountProduct, categories } = await getProducts();
+  const { products, discountProduct, categories, newProducts } = await getProducts();
   const posts = await getPosts("recipes");
-  const newProducts = await getNewProducts();
   return { props: { products, discountProduct, categories, posts, newProducts } };
 };

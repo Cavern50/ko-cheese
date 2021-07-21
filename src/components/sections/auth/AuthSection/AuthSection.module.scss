@@ -5,6 +5,8 @@
   @extend %flexbox;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 1.875rem;
+  border-top: 1px solid rgba($gen, .3);
 }
 
 .title {
@@ -12,12 +14,7 @@
   text-align: center;
 }
 
-.form {
-  width: 18.75rem;
-  margin-top: 1.875rem;
-}
-
-.checkbox {
+.politics {
   display: flex;
   margin-top: 1.25rem;
 }
