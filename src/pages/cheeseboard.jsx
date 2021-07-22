@@ -6,14 +6,18 @@ import { FarmContentSmallSection } from 'components/sections/farm/FarmContentSma
 import { GallerySection } from 'components/sections/farm/GallerySection/GallerySection';
 import DataAPI from '../api/DataAPI';
 
-const Cheeseboard = ({ categories, resolvedUrl, pageData }) => (
-  <>
-    <IntroSection categories={categories} url={resolvedUrl} pageData={pageData}/>
-    <FarmContentSmallSection pageData={pageData} firstItem="left"/>
-    {pageData.gallery && <GallerySection pageData={pageData}/>}
-    <FarmContentLargeSection pageData={pageData}/>
-  </>
-);
+const Cheeseboard = ({ categories, resolvedUrl, pageData }) => {
+  console.log(categories, resolvedUrl, pageData);
+  return (
+    <>
+      <IntroSection categories={categories} url={resolvedUrl} pageData={pageData}/>
+      <FarmContentSmallSection pageData={pageData} firstItem="left"/>
+      {pageData.gallery && <GallerySection pageData={pageData}/>}
+      <FarmContentLargeSection pageData={pageData}/>
+    </>
+  );
+};
+
 
 export default Cheeseboard;
 
