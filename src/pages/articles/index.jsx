@@ -6,14 +6,14 @@ import { H1 } from 'components/layout/H1/H1';
 import { RecipesSection } from 'components/sections/recipes/RecipesSection';
 import DataAPI from 'api/DataAPI';
 
-const Index = (props) => (
+const Index = ({ articlesCategories, recipes }) => (
     <>
       <Head>
         <title>Статьи</title>
       </Head>
       <Wrapper>
         <H1>Культура потребления</H1>
-        <RecipesSection {...props}/>
+        <RecipesSection categories={articlesCategories} items={recipes}/>
       </Wrapper>
     </>
   );
