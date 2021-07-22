@@ -7,12 +7,12 @@ import { FarmContentSmallSection } from "components/sections/farm/FarmContentSma
 import { GallerySection } from "components/sections/farm/GallerySection/GallerySection";
 import DataAPI from '../api/DataAPI';
 
-const Farm = ({ categories, resolvedUrl, pageData }) => (
+const Farm = ({ categories, resolvedUrl, farm }) => (
   <>
-    <IntroSection categories={categories} url={resolvedUrl} pageData={pageData}/>
-    <FarmContentLargeSection pageData={pageData}/>
-    <FarmContentSmallSection pageData={pageData} firstItem="right"/>
-    {pageData.gallery && <GallerySection pageData={pageData}/>}
+    <IntroSection categories={categories} url={resolvedUrl} pageData={farm}/>
+    <FarmContentLargeSection pageData={farm}/>
+    <FarmContentSmallSection pageData={farm} firstItem="right"/>
+    {farm.gallery && <GallerySection pageData={farm}/>}
   </>
 );
 
@@ -32,9 +32,8 @@ const getData = async () => await DataAPI.getData();
 export const getServerSideProps = async ({ resolvedUrl }) => {
   // const categories = await getCategories();
   // const pageData = await getPageData(resolvedUrl.slice(1));
-  const { data } = await getData();
-  const categories = data.farmCategories;
-  const pageData = data[resolvedUrl.slice(1)];
-  return { props: { resolvedUrl, categories, pageData } };
+  const { farm } = await getData();
+  const { farmCategories } = await getData();
+  return { props: { resolvedUrl, farmCategories, farm } };
 };
 
