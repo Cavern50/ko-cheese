@@ -1,7 +1,7 @@
 import API from './APIService'
 
 class FarmAPI {
-  getFarmCategories = () => API.get('farmCategories');
+  getFarmCategories = () => API.get('');
 
   getPage = (url) => API.get(url);
 }
