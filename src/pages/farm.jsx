@@ -6,9 +6,9 @@ import { FarmContentSmallSection } from "components/sections/farm/FarmContentSma
 import { GallerySection } from "components/sections/farm/GallerySection/GallerySection";
 import DataAPI from '../api/DataAPI';
 
-const Farm = ({ categories, resolvedUrl, farm }) => (
+const Farm = ({ farmCategories, resolvedUrl, farm }) => (
   <>
-    <IntroSection categories={categories} url={resolvedUrl} pageData={farm}/>
+    <IntroSection categories={farmCategories} url={resolvedUrl} pageData={farm}/>
     <FarmContentLargeSection pageData={farm}/>
     <FarmContentSmallSection pageData={farm} firstItem="right"/>
     {farm.gallery && <GallerySection pageData={farm}/>}
