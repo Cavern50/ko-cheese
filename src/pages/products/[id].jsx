@@ -8,6 +8,7 @@ import ProductsAPI from "api/ProductsAPI";
 
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import s from "./ProductPage.module.scss";
+import DataAPI from '../../api/DataAPI';
 
 const sliderParams = {
   slider: {
@@ -36,14 +37,23 @@ const Card = ({ id, product, products }) => (
 );
 
 export default Card;
+//
+// const getProducts = async (id) => {
+//   const product = await ProductsAPI.getProduct(id);
+//   const products = await ProductsAPI.getProducts();
+//   return { product, products };
+// };
+//
+// export const getServerSideProps = async (appContext) => {
+//   const { product, products } = await getProducts(appContext.query.id);
+//   return { props: { id: appContext.query.id, product, products } };
+// };
 
-const getProducts = async (id) => {
-  const product = await ProductsAPI.getProduct(id);
-  const products = await ProductsAPI.getProducts();
-  return { product, products };
-};
 
-export const getServerSideProps = async (appContext) => {
-  const { product, products } = await getProducts(appContext.query.id);
-  return { props: { id: appContext.query.id, product, products } };
+const getData = async () => await DataAPI.getData();
+
+export const getServerSideProps = async ({ params }) => {
+  const { products } = await getData();
+  const product = products.find(product => params.id === product.id);
+  return { props: { id: params.id, products, product } };
 };

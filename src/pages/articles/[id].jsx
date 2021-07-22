@@ -27,7 +27,6 @@ const Article = ({ recipes, products, article }) => (
       <RecipesSliderSection recipes={recipes} title="Другие рецепты"/>
     </Wrapper>
   </>
-
 );
 
 
