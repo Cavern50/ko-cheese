@@ -13,7 +13,7 @@ import { Cookies } from "components/modals/Cookies/Cookies";
 
 import { useModal } from "hooks";
 
-import ProductsAPI from "api/ProductsAPI";
+import DataAPI from "api/DataAPI";
 import ArticlesAPI from "api/ArticlesAPI";
 
 const cookiesModalProperties = {
@@ -27,7 +27,7 @@ const cookiesModalProperties = {
   }
 };
 
-const Index = ({ products, discountProduct, categories, posts, newProducts }) => {
+const Index = ({ products, discountProduct, categories, recipes, newProducts }) => {
   const cookiesModal = useModal(true, false);
   const [showDelay, setShowDelay] = React.useState(false);
 
@@ -46,7 +46,7 @@ const Index = ({ products, discountProduct, categories, posts, newProducts }) =>
       <NewTastesSection products={newProducts}/>
       <ProductsSection products={products} categories={categories}/>
       <DiscountSection {...discountProduct}/>
-      <RecipesSliderSection recipes={posts} title="Рецепты"/>
+      <RecipesSliderSection recipes={recipes} title="Рецепты"/>
       <InstagramPromoSection url={"http://instagram.com/instagram"}/>
       <InstagramSection/>
       {cookiesModal.isShowed && showDelay ?
@@ -58,19 +58,26 @@ const Index = ({ products, discountProduct, categories, posts, newProducts }) =>
 };
 
 export default Index;
+//
+// const getProducts = async () => {
+//   const products = await ProductsAPI.getProducts();
+//   const discountProduct = await ProductsAPI.getDiscountProduct();
+//   const categories = await ProductsAPI.getProductsCategories();
+//   const newProducts = await ProductsAPI.getNewProducts();
+//   return { products, discountProduct, categories, newProducts };
+// };
+//
+// const getPosts = async () => await ArticlesAPI.getPosts("recipes");
+//
+// export const getServerSideProps = async () => {
+//   const { products, discountProduct, categories, newProducts } = await getProducts();
+//   const posts = await getPosts("recipes");
+//   return { props: { products, discountProduct, categories, posts, newProducts } };
+// };
 
-const getProducts = async () => {
-  const products = await ProductsAPI.getProducts();
-  const discountProduct = await ProductsAPI.getDiscountProduct();
-  const categories = await ProductsAPI.getProductsCategories();
-  const newProducts = await ProductsAPI.getNewProducts();
-  return { products, discountProduct, categories, newProducts };
-};
-
-const getPosts = async () => await ArticlesAPI.getPosts("recipes");
+const getData = async () => await DataAPI.getData();
 
 export const getServerSideProps = async () => {
-  const { products, discountProduct, categories, newProducts } = await getProducts();
-  const posts = await getPosts("recipes");
-  return { props: { products, discountProduct, categories, posts, newProducts } };
+  const { products, discountProduct, productsCategories, recipes, newProducts } = await getData();
+  return { props: { products, discountProduct, productsCategories, recipes, newProducts } };
 };
