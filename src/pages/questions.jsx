@@ -4,6 +4,7 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { H1 } from "components/layout/H1/H1";
 import Accordion from "components/common/Accordion/Accordion";
 import QuestionsAPI from "api/QuestionsAPI";
+import DataAPI from '../api/DataAPI';
 
 const additionAccordionClasses = {
   triggerClass: "trigger--main",
@@ -27,11 +28,21 @@ const Questions = ({ questions }) => (
 
 export default Questions;
 
-const getQuestions = async () => await QuestionsAPI.getQuestions();
+// const getQuestions = async () => await QuestionsAPI.getQuestions();
+//
+// export const getServerSideProps = async () => {
+//   const questions = await getQuestions();
+//   return {
+//     props: { questions }
+//   };
+// };
+
+
+const getData = async () => await DataAPI.getData();
 
 export const getServerSideProps = async () => {
-  const questions = await getQuestions();
-  return {
-    props: { questions }
-  };
+  // const categories = await getCategories();
+  // const pageData = await getPageData(resolvedUrl.slice(1));
+  const { questions } = await getData();
+  return { props: { questions } };
 };
