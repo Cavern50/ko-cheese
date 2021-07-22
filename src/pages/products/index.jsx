@@ -10,7 +10,7 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
 
 import { H1 } from "components/layout/H1/H1";
-import ProductsAPI from "api/ProductsAPI";
+import DataAPI from "api/DataAPI";
 
 const Products = ({ products, newProducts, discountProduct, productsCategories }) => {
   const discountModal = useModal(true, false);
@@ -34,18 +34,29 @@ const Products = ({ products, newProducts, discountProduct, productsCategories }
 };
 
 export default Products;
+//
+// const getProducts = async () => {
+//   const newProducts = await ProductsAPI.getNewProducts();
+//   const products = await ProductsAPI.getProducts();
+//   const productsCategories = await ProductsAPI.getProductsCategories();
+//   const discountProduct = await ProductsAPI.getDiscountProduct();
+//
+//   return { products, newProducts, productsCategories, discountProduct };
+// };
+//
+//
+// export const getServerSideProps = async () => {
+//   const { products, newProducts, productsCategories, discountProduct } = await getProducts();
+//   return { props: { products, discountProduct, newProducts, productsCategories } };
+// };
 
-const getProducts = async () => {
-  const newProducts = await ProductsAPI.getNewProducts();
-  const products = await ProductsAPI.getProducts();
-  const productsCategories = await ProductsAPI.getProductsCategories();
-  const discountProduct = await ProductsAPI.getDiscountProduct();
 
-  return { products, newProducts, productsCategories, discountProduct };
-};
-
+const getData = async () => await DataAPI.getData();
 
 export const getServerSideProps = async () => {
-  const { products, newProducts, productsCategories, discountProduct } = await getProducts();
-  return { props: { products, discountProduct, newProducts, productsCategories } };
+  // const categories = await getCategories();
+  // const pageData = await getPageData(resolvedUrl.slice(1));
+  const { products, newProducts, discountProduct, productsCategories } = await getData();
+  return { props: { products, newProducts, discountProduct, productsCategories } };
 };
+
