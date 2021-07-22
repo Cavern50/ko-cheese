@@ -27,7 +27,7 @@ const cookiesModalProperties = {
   }
 };
 
-const Index = ({ products, discountProduct, categories, recipes, newProducts }) => {
+const Index = ({ products, discountProduct, productsCategories, recipes, newProducts }) => {
   const cookiesModal = useModal(true, false);
   const [showDelay, setShowDelay] = React.useState(false);
 
@@ -44,7 +44,7 @@ const Index = ({ products, discountProduct, categories, recipes, newProducts }) 
       </Head>
       <PromoSection/>
       <NewTastesSection products={newProducts}/>
-      <ProductsSection products={products} categories={categories}/>
+      <ProductsSection products={products} categories={productsCategories}/>
       <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={recipes} title="Рецепты"/>
       <InstagramPromoSection url={"http://instagram.com/instagram"}/>
