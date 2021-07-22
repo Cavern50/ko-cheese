@@ -1,5 +1,4 @@
 import React from "react";
-import FarmAPI from "api/FarmAPI";
 
 import { IntroSection } from "components/sections/farm/IntroSection/IntroSection";
 import { FarmContentLargeSection } from "components/sections/farm/FarmContentLargeSection/FarmContentLargeSection";
@@ -32,8 +31,7 @@ const getData = async () => await DataAPI.getData();
 export const getServerSideProps = async ({ resolvedUrl }) => {
   // const categories = await getCategories();
   // const pageData = await getPageData(resolvedUrl.slice(1));
-  const { farm } = await getData();
-  const { farmCategories } = await getData();
+  const { farm, farmCategories } = await getData();
   return { props: { resolvedUrl, farmCategories, farm } };
 };
 

@@ -28,8 +28,7 @@ const getData = async () => await DataAPI.getData();
 export const getServerSideProps = async ({ resolvedUrl }) => {
   // const categories = await getCategories();
   // const pageData = await getPageData(resolvedUrl.slice(1));
-  const { cheeseboard } = await getData();
-  const { farmCategories } = await getData();
+  const { cheeseboard, farmCategories } = await getData();
   return { props: { resolvedUrl, farmCategories, cheeseboard } };
 };
 
