@@ -5,14 +5,14 @@ import { FarmContentSmallSection } from 'components/sections/farm/FarmContentSma
 import { GallerySection } from 'components/sections/farm/GallerySection/GallerySection';
 import DataAPI from '../api/DataAPI';
 
-const Cheeseboard = ({ farmCategories, resolvedUrl, cheeseBoard }) => {
-  console.log(cheeseBoard, resolvedUrl, cheeseBoard);
+const Cheeseboard = ({ farmCategories, resolvedUrl, cheeseboard }) => {
+  console.log(cheeseboard, resolvedUrl, cheeseboard);
   return (
     <>
-      <IntroSection categories={farmCategories} url={resolvedUrl} pageData={cheeseBoard}/>
-      <FarmContentSmallSection pageData={cheeseBoard} firstItem="left"/>
-      {cheeseBoard.gallery && <GallerySection pageData={cheeseBoard}/>}
-      <FarmContentLargeSection pageData={cheeseBoard}/>
+      <IntroSection categories={farmCategories} url={resolvedUrl} pageData={cheeseboard}/>
+      <FarmContentSmallSection pageData={cheeseboard} firstItem="left"/>
+      {cheeseboard.gallery && <GallerySection pageData={cheeseboard}/>}
+      <FarmContentLargeSection pageData={cheeseboard}/>
     </>
   );
 };
@@ -28,8 +28,8 @@ const getData = async () => await DataAPI.getData();
 export const getServerSideProps = async ({ resolvedUrl }) => {
   // const categories = await getCategories();
   // const pageData = await getPageData(resolvedUrl.slice(1));
-  const { cheeseBoard } = await getData();
+  const { cheeseboard } = await getData();
   const { farmCategories } = await getData();
-  return { props: { resolvedUrl, farmCategories, cheeseBoard } };
+  return { props: { resolvedUrl, farmCategories, cheeseboard } };
 };
 
