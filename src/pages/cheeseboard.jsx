@@ -3,6 +3,8 @@ import { IntroSection } from 'components/sections/farm/IntroSection/IntroSection
 import { FarmContentLargeSection } from 'components/sections/farm/FarmContentLargeSection/FarmContentLargeSection';
 import { FarmContentSmallSection } from 'components/sections/farm/FarmContentSmallSection/FarmContentSmallSection';
 import { GallerySection } from 'components/sections/farm/GallerySection/GallerySection';
+import { CheeseboardBackground } from "components/common/CheeseboardBackground/CheeseboardBackground";
+
 import DataAPI from '../api/DataAPI';
 
 const Cheeseboard = ({ farmCategories, resolvedUrl, cheeseboard }) => {
@@ -13,6 +15,7 @@ const Cheeseboard = ({ farmCategories, resolvedUrl, cheeseboard }) => {
       <FarmContentSmallSection pageData={cheeseboard} firstItem="left"/>
       {cheeseboard.gallery && <GallerySection pageData={cheeseboard}/>}
       <FarmContentLargeSection pageData={cheeseboard}/>
+      <CheeseboardBackground />
     </>
   );
 };

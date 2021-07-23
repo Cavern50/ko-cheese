@@ -31,7 +31,7 @@ export const allTastes = {
 };
 
 
-export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc";
+export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/4";
 
 export const cities = [
   {

@@ -1,0 +1,23 @@
+@import "/src/styles/root";
+.wrapper {
+  background-color: #FFE8D1;
+  padding-bottom: 4.25rem;
+}
+.container {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  min-height: 47.25rem;
+  font-family: $font-service;
+  line-height: 1.7;
+  font-size: 1.125rem;
+}
+
+.image {
+  position: absolute;
+  left: 30%;
+  mix-blend-mode: darken;
+  width: fit-content;
+  height: 100%;
+  object-fit: contain;
+}
