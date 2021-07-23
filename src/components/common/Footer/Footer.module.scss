@@ -5,7 +5,7 @@
     background-color: $gen;
     color: $accent;
     padding: 7.5rem 0 3.125rem;
-  
+
 }
 
 .container {
@@ -13,7 +13,7 @@
     justify-content: space-between;
 }
 .block {
-    width: 28.125rem;
+    width: 30rem;
 }
 .menu {
     display: flex;
@@ -21,14 +21,15 @@
     justify-content: space-between;
 }
 .link {
+    color: $accent;
+    font-family: $font-main;
+    text-transform: none;
     width: 50%;
     margin-bottom: 1.875rem;
-    a {
-        @extend %underline;
-        color: $accent;
-        font-family: $font-main;
-        text-transform: none;
-    }
+}
+.title {
+    @extend %underline;
+    width: fit-content;
 }
 .info {
     display: flex;
@@ -57,30 +58,26 @@
         background-color: $accent;
     }
 }
-.asap {
-    align-self: flex-end;
-    g, path {
-        transition: opacity .3s;
-    }
-    &:hover {
-        g, path {
-            opacity: 1;
-        }
-    }
-}
 
 .corp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 3.125rem;
     padding-top: 3.125rem;
     border-top: 1px solid rgba($accent, .3);
     text-align: center;
     font-family: $font-service;
-    svg {
-        width: 4.375rem;
-    }
     span {
         display: block;
         font-size: 0.875rem;
         line-height: 1.4;
+    }
+}
+
+.logo {
+    width: 4.875rem;
+    & svg {
+        width: 100%;
     }
 }
