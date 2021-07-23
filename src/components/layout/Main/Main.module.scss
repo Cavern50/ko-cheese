@@ -1,21 +1,32 @@
 @import '/src/styles/root.scss';
 .main {
+  position: relative;
   padding-bottom: 7.5rem;
   padding-top: 5rem;
-  &_promo {
-    padding-top: 0;
+}
+
+
+.promo {
+  padding-top: 0;
+}
+.purchase {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 5rem;
+    transform: translateX(-50%);
+    height: calc(100% - 5rem);
+    width: 1px;
+    border-left: 1px solid rgba($gen, .3);
   }
-  &_divided {
-    position: relative;
-    &::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 5rem;
-      transform: translateX(-50%);
-      height: calc(100% - 5rem);
-      width: 1px;
-      border-left: 1px solid rgba($gen, .3);
-    }
-  }
+}
+
+.farm {
+  padding-bottom: 0;
+}
+
+.cheeseboard {
+  padding-bottom: 12.5rem;
 }
