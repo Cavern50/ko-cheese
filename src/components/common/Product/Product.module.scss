@@ -10,6 +10,7 @@
    border: 1px solid rgba($gen, 0.3);
    border-top: none;
    border-left: none;
+   cursor: pointer;
    &:hover {
       .add {
          right: 1.25rem;
@@ -45,9 +46,21 @@
    font-size: 0.875rem;
    color: rgba($gen, 0.3);
    transition: right 400ms ease-out, background-color 0.3s, color 0.3s;
+   & svg {
+      margin-bottom: 2px;
+   }
    &:hover {
       background-color: $gen;
       color: $accent;
+      path {
+         stroke: $accent;
+      }
+      path:first-child {
+         fill:$accent;
+      }
+      rect {
+         stroke: $accent;
+      }
    }
 }
 

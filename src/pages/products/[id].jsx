@@ -9,6 +9,7 @@ import ProductsAPI from "api/ProductsAPI";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import s from "./ProductPage.module.scss";
 import DataAPI from '../../api/DataAPI';
+import { RecipesSliderSection } from '../../components/sections/common/RecipesSliderSection/RecipesSliderSection';
 
 const sliderParams = {
   slider: {
@@ -23,7 +24,7 @@ const sliderParams = {
   }
 };
 
-const Card = ({ id, product, products }) => (
+const Card = ({ id, product, products, recipes }) => (
   <>
     <Wrapper>
       <DescriptionSection product={product} products={products} id={id}/>
@@ -33,6 +34,7 @@ const Card = ({ id, product, products }) => (
         </Slider>
       </div>
     </Wrapper>
+    <RecipesSliderSection title="Рецепты" recipes={recipes}/>
   </>
 );
 
@@ -53,7 +55,7 @@ export default Card;
 const getData = async () => await DataAPI.getData();
 
 export const getServerSideProps = async ({ params }) => {
-  const { products } = await getData();
+  const { products, recipes } = await getData();
   const product = products.find(product => params.id === product.id);
-  return { props: { id: params.id, products, product } };
+  return { props: { id: params.id, products, product, recipes } };
 };

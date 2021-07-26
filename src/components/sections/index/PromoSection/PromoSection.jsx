@@ -8,15 +8,12 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
 const partners = [
   {
-    link: "/",
     logo: <AbLogo/>
   },
   {
-    link: "/",
     logo: <UsachevLogo/>
   },
   {
-    link: "/",
     logo: <VkusWillLogo/>
   }
 ];
@@ -37,8 +34,8 @@ export const PromoSection = () => (
         <div className={s.container}>
           <div className={s.block}/>
           <div className={s.partners}>
-            {partners.map((logo, i) => (
-              <Partner {...logo} key={i}/>
+            {partners.map(({ logo }, i) => (
+              <Partner {logo} key={i}/>
             ))}
           </div>
           <div className={s.block}>
