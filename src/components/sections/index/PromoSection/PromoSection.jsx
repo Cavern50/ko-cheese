@@ -35,7 +35,7 @@ export const PromoSection = () => (
           <div className={s.block}/>
           <div className={s.partners}>
             {partners.map(({ logo }, i) => (
-              <Partner {logo} key={i}/>
+              <Partner logo={logo} key={i}/>
             ))}
           </div>
           <div className={s.block}>
