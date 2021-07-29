@@ -16,7 +16,7 @@ export const ProfileFeedback = () => {
       <FormContainer initialValues={initialValues} validationScheme={PROFILE_VALIDATION_SCHEMA}>
         {() => (
           <>
-            <div className={s.wrapper}>
+            <div className={s.phone}>
               <Input label="Телефон для обратной связи" type="text" id="phone" name="phone"/>
             </div>
             <Textarea label="Отзыв" id="feedback" name="feedback" additionClass="feedback"/>

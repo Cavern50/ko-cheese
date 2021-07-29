@@ -1,9 +1,7 @@
-.wrapper {
-  width: 17%;
-}
+@import "/src/styles/mixins";
+@import "/src/styles/root";
 
 .nav {
-  display: flex;
-  flex-direction: column;
+  width: 17%;
 }
 

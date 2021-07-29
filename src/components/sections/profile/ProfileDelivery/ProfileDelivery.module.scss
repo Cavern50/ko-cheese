@@ -1,6 +1,8 @@
 @import "/src/styles/mixins";
 @import "/src/styles/root";
-
+.wrapper {
+  margin-top: 1.875rem;
+}
 .form {
   display: flex;
   justify-content: space-between;

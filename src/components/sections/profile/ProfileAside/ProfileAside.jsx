@@ -5,8 +5,8 @@ import s from "./ProfileAside.module.scss";
 export const ProfileAside = ({ categories, active, setActive }) => {
 
   return (
-    <aside className={s.wrapper}>
-      <nav className={s.nav}>
+    <aside className={s.nav}>
+      <nav>
         {categories.map(({ id, title }) => (
           <ProfileButton
             active={active}

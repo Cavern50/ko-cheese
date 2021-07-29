@@ -1,5 +1,10 @@
 @import "/src/styles/root";
 @import "/src/styles/mixins";
+
+.wrapper {
+  margin-top: 1.875rem;
+}
+
 .password {
   @extend %link;
   margin-top: 1.875rem;
