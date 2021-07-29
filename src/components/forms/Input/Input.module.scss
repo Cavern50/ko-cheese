@@ -1,0 +1,72 @@
+@import "../../../styles/root";
+
+.container {
+    width: 100%;
+    margin-top: 1.25rem;
+}
+.label {
+    display: block;
+    margin-bottom: 4px;
+    font-family: $font-service;
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+.input {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 .8rem;
+    border: 1px solid $grey;
+    font-family: $font-service;
+    transition: border-color .3s;
+    &:focus {
+        border-color: $gen;
+    }
+}
+
+.checkbox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border-radius: 3px;
+    border: 1px solid $lightest;
+    background-color: rgba($grey, .16);
+    cursor: pointer;
+    transition: background-color .3s, border-color .3s;
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("/static/img/icons/check.svg");
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0;
+    }
+    &:focus {
+        border-color: $gen;
+    }
+    &[value="true"] {
+        background-color: $gen;
+        border-color: $gen;
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+.textarea {
+    height: 7.5rem;
+}
+
+.date {
+    width: 9.25rem;
+    margin-top: 0;
+}

@@ -5,7 +5,6 @@ import s from "./FormContainer.module.scss";
 
 export const FormContainer = (props) => {
   const { serverErrors, children, className, ...other } = props;
-  console.log(children);
   return (
     <Formik {...other} onSubmit={values => {
       alert(JSON.stringify(values, null, 2));

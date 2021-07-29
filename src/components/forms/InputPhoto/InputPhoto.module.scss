@@ -1,0 +1,57 @@
+@import "../../../styles/mixins";
+@import "../../../styles/root";
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 13.75rem;
+}
+
+.avatar {
+  position: relative;
+  width: 100%;
+  height: 13.75rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.label {
+  @extend %flexbox;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: $lightest;
+  cursor: pointer;
+  transition: background-color .3s;
+  &:hover {
+    background-color: $gen;
+  }
+}
+
+
+
+.text {
+  @extend %link;
+  margin-top: 1.25rem;
+  font-family: $font-service--bold;
+  cursor: pointer;
+}
+
+.input {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
