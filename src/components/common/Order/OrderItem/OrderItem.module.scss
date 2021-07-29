@@ -10,6 +10,11 @@
     border-top: 1px solid $grey;
   }
 }
+.border {
+  &:last-child {
+    border-bottom: none;
+  }
+}
 .info {
   display: flex;
   align-items: center;

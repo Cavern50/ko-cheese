@@ -1,11 +1,12 @@
 import React from "react";
+import clsx from "clsx";
 import { Input } from "components/forms/Input/Input";
 import s from "./OrderItem.module.scss";
 
 export const OrderItem = (data) => {
   const { image, name, addition, price, weight, count = 2, controls } = data;
   return (
-    <div className={s.container}>
+    <div className={clsx(s.container, !controls && s.border)}>
       <div className={s.info}>
         {controls && <Input type="checkbox" additionClass="checkbox" name={`${name} ${addition}`} id={`${name} ${addition}`}/>}
         <img src={image} alt={name} className={s.image}/>
