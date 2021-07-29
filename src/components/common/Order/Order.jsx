@@ -17,8 +17,8 @@ export const Order = ({ children, controls }) => {
     getItems().then(items => setProducts(items.products));
   }, []);
 
-  const getOrders = (controlPanel, props) => products.length && products.map((order, i) => i < 2 &&
-    <OrderItem controls={controlPanel} key={order.id} {...order} {...props}/>);
+  const getOrders = (controlPanel, props) => products.length ? products.map((order, i) => i < 2 &&
+    <OrderItem controls={controlPanel} key={order.id} {...order} {...props}/>) : "";
 
 
   return (
