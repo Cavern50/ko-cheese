@@ -1,0 +1,12 @@
+@import "/src/styles/mixins";
+
+.wrapper {
+  width: 17.5rem;
+}
+
+.submit {
+  @extend %button--green;
+  margin-top: 3.125rem;
+  height: 4rem;
+  font-size: 1.125rem;
+}

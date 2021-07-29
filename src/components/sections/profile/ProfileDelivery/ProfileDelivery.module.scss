@@ -1,0 +1,33 @@
+@import "/src/styles/mixins";
+@import "/src/styles/root";
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+  padding: 1.25rem 0 3.125rem;
+  border-top: 1px solid rgba($gen, .3);
+  border-bottom: 1px solid rgba($gen, .3);
+}
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 48%;
+}
+
+.submit {
+  @extend %link;
+  margin-top: 1.875rem;
+  font-family: $font-service--bold;
+}
+
+.add {
+  @extend %button--green;
+  width: 13.4375rem;
+  height: 2.5rem;
+  margin-top: 1.875rem;
+  font-family: $font-service--bold;
+}

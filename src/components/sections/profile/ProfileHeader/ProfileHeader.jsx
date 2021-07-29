@@ -4,7 +4,6 @@ import { H1 } from "components/layout/H1/H1";
 import s from "./ProfileHeader.module.scss";
 
 export const ProfileHeader = () => {
-  console.log(1);
   return (
     <>
       <H1 additionClass="profile">Личный кабинет</H1>

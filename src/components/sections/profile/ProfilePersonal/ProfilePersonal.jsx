@@ -1,6 +1,6 @@
 import React from "react";
-import { Input } from "components/common/Input/Input";
-import { InputPhoto } from "components/common/InputPhoto/InputPhoto";
+import { Input } from "components/forms/Input/Input";
+import { InputPhoto } from "components/forms/InputPhoto/InputPhoto";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
 import { PROFILE_VALIDATION_SCHEMA } from "constants.js";
 import s from "./ProfilePersonal.module.scss";
@@ -14,7 +14,7 @@ export const ProfilePersonal = () => {
   };
 
   return (
-    <FormContainer enableReinitialize initialValues={initialValues} validationScheme={PROFILE_VALIDATION_SCHEMA} >
+    <FormContainer enableReinitialize initialValues={initialValues} validationScheme={PROFILE_VALIDATION_SCHEMA}>
       {(formProps) => (
         <>
           <div className={s.container}>
@@ -25,11 +25,12 @@ export const ProfilePersonal = () => {
               <Input id="email" label="E-mail" name="email" type="email"/>
               <button type="button" className={s.password}>Изменить пароль</button>
             </div>
+            {/*<div className={s.photo}>*/}
+            {/*  <InputPhoto name="photo" id="photo" formProps={formProps}/>*/}
+            {/*</div>*/}
           </div>
-          <div className={s.photo}>
-            <InputPhoto name="photo" id="photo" formProps={formProps}/>
-          </div>
-          <button type="submit">сохранить</button>
+
+          <button type="submit" className={s.submit}>сохранить</button>
         </>
       )}
     </FormContainer>
