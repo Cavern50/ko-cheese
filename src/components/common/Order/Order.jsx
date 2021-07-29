@@ -14,7 +14,7 @@ export const Order = ({ children, controls }) => {
   const getItems = async () => await ProductsAPI.getProducts();
 
   React.useEffect(() => {
-    getItems().then(items => setProducts(items));
+    getItems().then(items => setProducts(items.products));
   }, []);
   
   const getOrders = (controlPanel, props) => products.length && products.map((order, i) => i < 2 &&
