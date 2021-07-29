@@ -17,7 +17,7 @@ export const Order = ({ children, controls }) => {
     getItems().then(items => setProducts(items.products));
   }, []);
   
-  const getOrders = (controlPanel, props) => products.length && products.map((order, i) => i < 2 &&
+  const getOrders = (controlPanel, props) => products.map((order, i) => i < 2 &&
       <OrderItem controls={controlPanel} key={order.id} {...order} {...props}/>);
 
 
@@ -28,13 +28,13 @@ export const Order = ({ children, controls }) => {
         <FormContainer initialValues={{ "order-item": false }}>
           {(formProps) => (
             <>
-              {getOrders(true, formProps)}
+              {products.length && getOrders(true, formProps)}
               <OrderControls formProps={formProps}/>
             </>
           )}
         </FormContainer>
         :
-        getOrders(false)}
+        products.length && getOrders(false)}
     </div>
   );
 };
