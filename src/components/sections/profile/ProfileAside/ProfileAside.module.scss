@@ -1,7 +1,12 @@
 @import "/src/styles/mixins";
 @import "/src/styles/root";
 
-.nav {
+.wrapper {
   width: 17%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
 }
 
