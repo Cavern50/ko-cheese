@@ -12,7 +12,7 @@ import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import { Cookies } from "components/modals/Cookies/Cookies";
 
 import { useModal } from "hooks";
-import { DataAPI } from 'api/DataAPI.js';
+import DataAPI from 'api/DataAPI.js';
 import ProductsAPI from "api/ProductsAPI";
 import ArticlesAPI from "api/ArticlesAPI";
 import { PartnersSection } from "components/sections/index/PartnersSection/PartnersSection";

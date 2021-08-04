@@ -11,7 +11,7 @@ import { RecipesSliderSection } from 'components/sections/common/RecipesSliderSe
 import ArticlesAPI from 'api/ArticlesAPI';
 import s from './ProductPage.module.scss';
 import { Section } from 'components/layout/Section/Section';
-import { DataAPI } from 'api/DataAPI.js';
+import DataAPI from 'api/DataAPI.js';
 
 const sliderParams = {
   slider: {
