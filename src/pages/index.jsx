@@ -6,15 +6,16 @@ import { NewTastesSection } from "components/sections/common/NewTastesSection/Ne
 import { ProductsSection } from "components/sections/common/ProductsSection/ProductsSection";
 import { DiscountSection } from "components/sections/common/DiscountSection/DiscountSection";
 import { RecipesSliderSection } from "components/sections/common/RecipesSliderSection/RecipesSliderSection";
-import { InstagramPromoSection } from "components/sections/index/InstagramPromoSection/InstagramPromoSection";
+import { TelegramPromoSection } from "components/sections/index/TelegramPromoSection/TelegramPromoSection";
 import { InstagramSection } from "components/sections/index/InstagramSection/InstagramSection";
 import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import { Cookies } from "components/modals/Cookies/Cookies";
 
 import { useModal } from "hooks";
-
-import DataAPI from "api/DataAPI";
+import { DataAPI } from 'api/DataAPI.js';
+import ProductsAPI from "api/ProductsAPI";
 import ArticlesAPI from "api/ArticlesAPI";
+import { PartnersSection } from "components/sections/index/PartnersSection/PartnersSection";
 
 const cookiesModalProperties = {
   animation: {
@@ -47,8 +48,9 @@ const Index = ({ products, discountProduct, productsCategories, recipes, newProd
       <ProductsSection products={products} categories={productsCategories}/>
       <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={recipes} title="Рецепты"/>
-      <InstagramPromoSection url={"http://instagram.com/instagram"}/>
+      <TelegramPromoSection url={"http://instagram.com/instagram"}/>
       <InstagramSection/>
+      {/*<PartnersSection/>*/}
       {cookiesModal.isShowed && showDelay ?
         <ModalWrapper show={cookiesModal.isShowed} {...cookiesModalProperties}>
           <Cookies close={cookiesModal.hideModal}/>

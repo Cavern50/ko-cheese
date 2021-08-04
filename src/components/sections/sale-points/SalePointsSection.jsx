@@ -3,7 +3,6 @@ import React from "react";
 import { TabButton } from "components/common/Buttons/TabButton/TabButton";
 import { MarketCard } from "components/common/MarketCard/MarketCard";
 import { useTabs } from "hooks";
-import clsx from "clsx";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
@@ -52,11 +51,12 @@ export const SalePointsSection = () => {
                 ref && ref.behaviors.disable("scrollZoom");
               }}
             >
-              {activeCity.points.map(({ title, coords, id }) => (
+              {activeCity.points.map(({ market, coords, id }) => (
                 <Placemark
                   key={id}
                   geometry={coords}
-                  properties={{ iconCaption: title }}
+                  modules={["geoObject.addon.hint"]}
+                  properties={{ hintContent: market}}
                   options={{ preset: "islands#brownShoppingIcon" }}
                 />
               ))}

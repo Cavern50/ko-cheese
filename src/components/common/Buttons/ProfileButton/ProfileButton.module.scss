@@ -3,6 +3,7 @@
 
 .button {
   @extend %underline;
+  display: block;
   width: fit-content;
   font-family: $font-service;
   font-size: 1.125rem;

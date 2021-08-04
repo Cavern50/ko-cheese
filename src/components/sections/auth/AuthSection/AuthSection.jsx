@@ -1,5 +1,5 @@
 import React from "react";
-import { Input } from "components/common/Input/Input";
+import { Input } from "components/forms/Input/Input";
 import Link from "next/link";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
 import s from "./AuthSection.module.scss";
@@ -24,7 +24,7 @@ export const AuthSection = () => {
               <Input id="phone" label="Телефон" name="phone" type="phone"/>
               <Input id="password" label="Пароль" name="password" type="password"/>
               <div className={s.politics}>
-                <Input id="politics" name="politics" type="checkbox"/>
+                <Input id="politics" name="politics" type="checkbox" additionClass="checkbox"/>
                 <span className={s.label}>Я ознакомлен(-а) с Политикой конфиденциальности</span>
               </div>
               <Link href="/profile">

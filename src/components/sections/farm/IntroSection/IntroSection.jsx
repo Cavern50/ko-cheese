@@ -18,6 +18,7 @@ export const IntroSection = ({ categories, url, pageData }) => {
       <Wrapper>
         <Tabs>
           {
+            // eslint-disable-next-line no-shadow
             categories.map(({ title, id, url }) =>
               <Link href={url}>
                 <a>

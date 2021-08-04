@@ -14,14 +14,14 @@ export const Slider = ({ children, slides, params, title }) => {
   const { sliderClass, slideClass, ...restParams } = params.slider;
   return (
     <div className={s.container}>
-      <SliderNav
+      {params.nav && <SliderNav
         title={title}
         prev={prevRef}
         next={nextRef}
         allCount={allCount}
         currentCount={currentCount}
         params={params.nav}
-      />
+      />}
       <Swiper
         onInit={(swiper) => {
           // eslint-disable-next-line no-param-reassign

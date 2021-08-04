@@ -4,6 +4,23 @@
    display: flex;
    justify-content: space-between;
 }
+.block {
+  position: sticky;
+  top: 1.25rem;
+  width: 50%;
+  height: fit-content;
+}
+.properties {
+  display: flex;
+  margin-top: 1.875rem;
+  margin-left: 6.875rem;
+}
+
+.column {
+  &:first-child {
+    margin-right: 4.375rem;
+  }
+}
 
 .title {
     line-height: 1.1;
@@ -20,8 +37,7 @@
 }
 
 .info {
-   width: 36%;
-   margin-right: 6%;
+   width: 40%;
 }
 
 .price {
@@ -32,8 +48,13 @@
     font-family: $font-numbers;
 }
 
-.description {
-    max-width: 93%;
+.nutrients {
+  display: flex;
+  margin-top: 1.25rem;
+}
+
+.about {
+    max-width: 85%;
     margin-top: 1.875rem;
     font-family: $font-service;
     font-size: 0.875rem;
@@ -43,7 +64,7 @@
 
 .with {
     display: block;
-    margin-top: 3.125rem;
+    margin-top: 1.25rem;
     margin-bottom: 1.25rem;
     font-family: $font-service;
     opacity: 0.8;
@@ -62,6 +83,6 @@
     }
 }
 
-.about {
-    margin-top: 1.875rem;
+.description {
+    margin-top: 3.125rem;
 }

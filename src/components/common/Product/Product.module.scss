@@ -12,9 +12,6 @@
    border-left: none;
    cursor: pointer;
    &:hover {
-      .add {
-         right: 1.25rem;
-      }
 
       .info {
          margin-top: -2.9375rem;
@@ -32,22 +29,25 @@
    width: 100%;
    border: none;
 }
-
-.add {
+.buttons {
+   position: absolute;
+   right: 0.625rem;
+   top: 0.6875rem;
+   display: flex;
+   transition: right 400ms ease-out;
+}
+.control {
    @extend %flexbox;
    justify-content: center;
-   position: absolute;
-   right: -2.8125rem;
-   top: 0.6875rem;
    width: 2.5rem;
    height: 2.5rem;
-   border: 1px solid rgba($gen, 0.3);
    border-radius: 50%;
    font-size: 0.875rem;
+   background-color: $lightest;
    color: rgba($gen, 0.3);
-   transition: right 400ms ease-out, background-color 0.3s, color 0.3s;
-   & svg {
-      margin-bottom: 2px;
+   transition: background-color 0.3s, color 0.3s;
+   &:first-child {
+      margin-right: 0.6875rem;
    }
    &:hover {
       background-color: $gen;

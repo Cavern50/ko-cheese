@@ -60,9 +60,14 @@
    @extend %link;
    position: absolute;
    margin-top: 0.7rem;
+   font-family: $font-service--bold;
 }
 
 .center {
    left: 50%;
    transform: translateX(-50%);
+}
+
+.right {
+   right: 20%;
 }

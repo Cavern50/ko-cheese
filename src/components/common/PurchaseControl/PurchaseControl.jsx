@@ -114,8 +114,8 @@ export const PurchaseControl = ({ id, inCart }) => {
                   fill="#728D8C"
                />
             </svg>
-            <span className={clsx(s.text)}>Доставка: </span>
-            <span className={clsx(s.terms)}>15.05.2021 ~ 15:30</span>
+            <span className={clsx(s.text)}>Ближайшая доставка: </span>
+            <span className={clsx(s.terms)}>15.05.2021 </span>
          </div>
       </>
    );

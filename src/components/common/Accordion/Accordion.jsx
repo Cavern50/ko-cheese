@@ -13,7 +13,7 @@ const Accordion = ({ title, children, button, additionClasses = "" }) => {
         triggerTagName={"h3"}
         contentInnerClassName={clsx(s.content, s[contentClass])}
         trigger={title}
-        transitionTime={200}
+        transitionTime={300}
       >
         {children}
         {button && <button type={"button"} className={s.button}>Отправить заявку</button>}

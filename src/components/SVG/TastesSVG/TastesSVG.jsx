@@ -1,8 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 import s from "./TastesSVG.module.scss";
-export const RedWine = ({ border }) => {
-   return (
+
+export const RedWine = ({ border }) => (
       <span className={clsx(s.taste, border === "accent" ? s.accent : "")}>
          <svg
             width="8"
@@ -18,10 +18,8 @@ export const RedWine = ({ border }) => {
          </svg>
       </span>
    );
-};
 
-export const WhiteWine = ({ border }) => {
-   return (
+export const WhiteWine = ({ border }) => (
       <span className={clsx(s.taste, border === "accent" ? s.accent : "")}>
          <svg
             width="8"
@@ -41,10 +39,8 @@ export const WhiteWine = ({ border }) => {
          </svg>
       </span>
    );
-};
 
-export const Vegetables = ({ border }) => {
-   return (
+export const Vegetables = ({ border }) => (
       <span className={clsx(s.taste, border === 'accent' ? s.accent : '')}>
          <svg
             width="12"
@@ -60,10 +56,8 @@ export const Vegetables = ({ border }) => {
          </svg>
       </span>
    );
-};
 
-export const Fruits = ({ border }) => {
-   return (
+export const Fruits = ({ border }) => (
       <span className={clsx(s.taste, border === 'accent' ? s.accent : '')}>
          <svg
             width="10"
@@ -79,4 +73,3 @@ export const Fruits = ({ border }) => {
          </svg>
       </span>
    );
-};

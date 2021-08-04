@@ -13,12 +13,12 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import s from "./Header.module.scss";
 
 const headerLinks = [
-  { title: "Точки продаж", link: "/sale-points" },
+  { title: "Каталог", link: "/products" },
   { title: "Доставка", link: "/delivery" },
-  { title: "Вопросы", link: "/questions" },
+  { title: "Пункты продаж", link: "/sale-points" },
   { logo: true },
-  { title: "Ферма", link: "/farm" },
-  { title: "Продукция", link: "/products" },
+  { title: "Наше производство", link: "/farm" },
+  { title: "Вопросы", link: "/questions" },
   { title: "Войти", link: "/login" }
 ];
 

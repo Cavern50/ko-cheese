@@ -5,7 +5,7 @@
     background-color: $gen;
     color: $accent;
     padding: 7.5rem 0 3.125rem;
-
+  
 }
 
 .container {
@@ -38,9 +38,12 @@
 }
 .address {
     margin-bottom: 1.875rem;
+    line-height: 2;
+    font-family: $font-service;
     font-style: normal;
 }
 .contacts {
+    width: 100%;
     a {
         display: block;
         width: fit-content;
@@ -52,6 +55,16 @@
 }
 .contact {
     @extend %link;
+    color: $accent;
+    font-weight: 400;
+    &::after {
+        background-color: $accent;
+    }
+}
+
+.mail {
+    @extend %link;
+    margin-top: 2.5rem;
     color: $accent;
     font-weight: 400;
     &::after {
