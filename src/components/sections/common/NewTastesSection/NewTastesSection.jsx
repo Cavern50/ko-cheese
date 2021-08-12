@@ -1,16 +1,13 @@
-import React from "react";
-
-import { Slider } from "components/common/Slider/Slider";
-
-import { Section } from "components/layout/Section/Section";
-import { Wrapper } from "components/layout/Wrapper/Wrapper";
-
-import { NewTaste } from "./NewTaste/NewTaste";
+import React from 'react';
+import { Slider } from 'components/common/Slider/Slider';
+import { Section } from 'components/layout/Section/Section';
+import { Wrapper } from 'components/layout/Wrapper/Wrapper';
+import { NewTaste } from './NewTaste/NewTaste';
 
 const sliderParams = {
   slider: {
-    slidesPerView: 3,
-    slidesPerGroup: 3,
+    slidesPerView: 4,
+    slidesPerGroup: 2,
     spaceBetween: 50
   },
   nav: {
@@ -18,17 +15,12 @@ const sliderParams = {
   }
 };
 
-export const NewTastesSection = ({ products}) => (
+export const NewTastesSection = ({ products }) => (
   <Section>
     <Wrapper>
-      <Slider
-        title={"Новые вкусы"}
-        slides={products}
-        params={sliderParams}
-      >
-        <NewTaste/>
+      <Slider title={'Новые вкусы'} slides={products} params={sliderParams}>
+        <NewTaste />
       </Slider>
     </Wrapper>
   </Section>
-
 );

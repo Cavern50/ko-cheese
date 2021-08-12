@@ -9,7 +9,7 @@ export const ProfileReturn = () => {
   return (
     <>
       <ProfileSteps/>
-      <Order controls/>
+      <Order/>
     </>
   );
 };

@@ -1,15 +1,31 @@
-import React from "react";
-import s from "./PartnersSection.module.scss";
-import { Section } from "components/layout/Section/Section";
-import { Wrapper } from "components/layout/Wrapper/Wrapper";
+import React from 'react';
+import { Section } from 'components/layout/Section/Section';
+import { Wrapper } from 'components/layout/Wrapper/Wrapper';
+import { Partner } from 'components/common/Partner/Partner';
+import s from './PartnersSection.module.scss';
 
-export const PartnersSection = () => {
-  return (
-    <Section>
-      <Wrapper>
-        <h2 className={s.title}>Партнеры</h2>
-      </Wrapper>
-    </Section>
-  );
-};
+const partners = [
+  'static/img/content/partners/azbuka.png',
+  'static/img/content/partners/vkuswill.png',
+  'static/img/content/partners/globus.png',
+  'static/img/content/partners/metro.png',
+  'static/img/content/partners/carousel.png',
+  'static/img/content/partners/auchan.png',
+  'static/img/content/partners/gorunich.png',
+  'static/img/content/partners/coffee.png'
+  // 'static/img/content/partners/utkonos.png',
+  // 'static/img/content/partners/magnum.png',
+];
 
+export const PartnersSection = () => (
+  <Section>
+    <Wrapper>
+      <h2 className={s.title}>Партнеры</h2>
+      <div className={s.grid}>
+        {partners.map((partner) => (
+          <Partner url={partner} />
+        ))}
+      </div>
+    </Wrapper>
+  </Section>
+);
