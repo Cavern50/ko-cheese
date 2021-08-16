@@ -97,8 +97,6 @@ class API {
       method: "DELETE",
       url: `${this.url}${path}`
     })
-      .then(res => res.data)
-      .catch(err => this.handleError(err));
   };
 
 
