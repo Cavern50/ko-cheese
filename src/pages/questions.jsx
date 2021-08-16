@@ -4,7 +4,6 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { H1 } from "components/layout/H1/H1";
 import Accordion from "components/common/Accordion/Accordion";
 import QuestionsAPI from "api/QuestionsAPI";
-import DataAPI from '../api/DataAPI';
 
 const additionAccordionClasses = {
   triggerClass: "trigger--main",
@@ -38,7 +37,6 @@ export default Questions;
 // };
 
 
-const getData = async () => await DataAPI.getData();
 
 export const getServerSideProps = async () => {
   // const categories = await getCategories();
