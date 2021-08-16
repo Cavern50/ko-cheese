@@ -2,8 +2,8 @@
 @import "/src/styles/mixins.scss";
 
 .container {
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .block {
   position: sticky;
@@ -24,29 +24,29 @@
 }
 
 .title {
-    line-height: 1.1;
+  line-height: 1.1;
 }
 
 .statuses {
-   display: flex;
-   margin-top: 3.125rem;
-   span {
-      &:not(:first-child) {
-         margin-left: 2.1875rem;
-      }
-   }
+  display: flex;
+  margin-top: 3.125rem;
+  span {
+    &:not(:first-child) {
+      margin-left: 2.1875rem;
+    }
+  }
 }
 
 .info {
-   width: 40%;
+  width: 40%;
 }
 
 .price {
-    display: block;
-    margin-top: 3.125rem;
-    font-size: 2rem;
-    line-height: 1.2;
-    font-family: $font-numbers;
+  display: block;
+  margin-top: 3.125rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-family: $font-numbers;
 }
 
 .nutrients {
@@ -55,36 +55,35 @@
 }
 
 .about {
-    max-width: 85%;
-    margin-top: 1.875rem;
-    font-family: $font-service;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    opacity: 0.8;
+  max-width: 85%;
+  margin-top: 1.875rem;
+  font-family: $font-service;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.8;
 }
 
 .with {
-    display: block;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-    font-family: $font-service;
-    opacity: 0.8;
+  display: block;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-family: $font-service;
+  opacity: 0.8;
 }
 
 .tastes {
-    display: flex;
-    span {
-        width: 2.5rem;
-        height: 2.5rem;
-        margin-right: 1rem;
-        svg {
-            height: 50%;
-            width: 50%;
-        }
+  display: flex;
+  span {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+    svg {
+      height: 50%;
+      width: 50%;
     }
+  }
 }
 
 .description {
-    margin-top: 3.125rem;
+  margin-top: 3.125rem;
 }
-

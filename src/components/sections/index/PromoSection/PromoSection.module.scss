@@ -2,59 +2,59 @@
 @import '/src/styles/root.scss';
 
 .promo {
-  height: 100vh;
-  padding-top: 5rem;
-  background-image: url('/static/img/promo-bg.jpg');
-  background-size: cover;
-  background-position: center;
+    height: 100vh;
+    padding-top: 5rem;
+    background-image: url('/static/img/promo-bg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  color: $accent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    color: $accent;
 }
 .intro {
-  display: block;
-  text-align: center;
-  font-family: 'Roboto', 'sans-serif';
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  margin-bottom: 1.875rem;
+    display: block;
+    text-align: center;
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 1.875rem;
 }
 .title {
-  margin: 0 auto;
-  text-align: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .link {
-  @extend %button;
-  @extend %button--decorate;
-  justify-content: space-between;
-  width: 17.625rem;
-  margin: 9vh auto 0 auto;
-  padding-left: 1.875rem;
-  padding-right: 0.875rem;
-  min-height: 4rem;
-  border-radius: 4.375rem;
-  text-transform: none;
-  color: $accent;
-  font-size: 1.125rem;
-  svg {
-    width: 2.625rem;
-    height: 2.625rem;
-  }
-  path {
-    fill: $accent;
-  }
-  &:hover {
-    background-color: $accent;
-    color: $gen;
-    & path {
-      fill: $gen;
+    @extend %button;
+    @extend %button--decorate;
+    justify-content: space-between;
+    width: 17.625rem;
+    margin: 9vh auto 0 auto;
+    padding-left: 1.875rem;
+    padding-right: 0.875rem;
+    min-height: 4rem;
+    border-radius: 4.375rem;
+    text-transform: none;
+    color: $accent;
+    font-size: 1.125rem;
+    svg {
+        width: 2.625rem;
+        height: 2.625rem;
     }
-  }
+    path {
+        fill: $accent;
+    }
+    &:hover {
+        background-color: $accent;
+        color: $gen;
+        & path {
+            fill: $gen;
+        }
+    }
 }
 
 //.partners {

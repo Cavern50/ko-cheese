@@ -27,4 +27,3 @@ export const getServerSideProps = async ({ resolvedUrl }) => {
   const pageData = await getPageData(resolvedUrl.slice(1));
   return { props: { resolvedUrl, categories, pageData } };
 };
-

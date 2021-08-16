@@ -36,4 +36,3 @@ export const Subscribe = ({ closeModal }) => {
     </div>
   );
 };
-

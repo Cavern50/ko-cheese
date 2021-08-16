@@ -7,16 +7,16 @@ import { RecipesSection } from 'components/sections/recipes/RecipesSection';
 import ArticlesAPI from 'api/ArticlesAPI';
 
 const Index = (props) => (
-    <>
-      <Head>
-        <title>Статьи</title>
-      </Head>
-      <Wrapper>
-        <H1>Культура потребления</H1>
-        <RecipesSection {...props}/>
-      </Wrapper>
-    </>
-  );
+  <>
+    <Head>
+      <title>Статьи</title>
+    </Head>
+    <Wrapper>
+      <H1>Культура потребления</H1>
+      <RecipesSection {...props}/>
+    </Wrapper>
+  </>
+);
 
 export default Index;
 
@@ -30,4 +30,3 @@ export const getServerSideProps = async () => {
   const items = await getPosts('recipes');
   return { props: { categories, items } };
 };
-

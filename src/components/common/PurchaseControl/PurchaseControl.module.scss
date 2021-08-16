@@ -85,12 +85,12 @@
 
 
 .delivery {
-    @extend %flexbox;
-    margin-top: 1.875rem;
-    font-family: $font-service;
-    font-size: 0.875rem;
+   @extend %flexbox;
+   margin-top: 1.875rem;
+   font-family: $font-service;
+   font-size: 0.875rem;
 }
 .text {
-    opacity: 0.6;
-    margin: 0 0.25rem 0 0.875rem;
+   opacity: 0.6;
+   margin: 0 0.25rem 0 0.875rem;
 }

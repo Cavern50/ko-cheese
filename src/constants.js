@@ -106,7 +106,6 @@ export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
   phone: Yup.number()
 });
 
-
 export const mainModalProperties = {
   animation: {
     animationShow: "moveFromRight",
