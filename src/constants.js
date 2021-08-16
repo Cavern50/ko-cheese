@@ -31,7 +31,7 @@ export const allTastes = {
 };
 
 
-export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/5";
+export const BASE_URL = "http://localhost:3001/";
 
 export const cities = [
   {
@@ -106,3 +106,14 @@ export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
   phone: Yup.number()
 });
 
+
+export const mainModalProperties = {
+  animation: {
+    animationShow: "moveFromRight",
+    animationHide: "moveToRight"
+  },
+  classes: {
+    boxClass: "modalBox",
+    containerClass: "modalContainer"
+  }
+};

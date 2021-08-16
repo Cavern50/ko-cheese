@@ -1,7 +1,7 @@
 import API from './APIService'
 
 class ProductsAPI {
-    getProducts = () => API.get();
+    getProducts = () => API.get('products');
 
     getDiscountProduct = () => API.get('discountProduct');
 

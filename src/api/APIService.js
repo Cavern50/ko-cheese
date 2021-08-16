@@ -37,7 +37,6 @@ class API {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "secret-key": "$2b$10$HcyLZ3VaoUrUkv6AhKANqeNQLgUmm6KiUL6m0YEpaV9W0FrQWtxfm",
         ...headers
         // ...headerAuth
       }

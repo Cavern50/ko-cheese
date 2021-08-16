@@ -32,19 +32,23 @@ const Profile = () => {
       id: 3,
       title: "Адреса доставки",
       component: <ProfileDelivery/>
-    }, {
+    },
+    {
       id: 4,
       title: "Личные данные",
       component: <ProfilePersonal/>
-    }, {
+    },
+    {
       id: 5,
       title: "Отправка отзыва",
       component: <ProfileFeedback/>
-    }, {
+    },
+    {
       id: 6,
       title: "Программа лояльности",
       component: <ProfileLoyalty/>
-    }, {
+    },
+    {
       id: 7,
       title: "Возврат товара",
       component: <ProfileReturn/>
