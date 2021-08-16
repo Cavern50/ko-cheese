@@ -61,36 +61,13 @@
    @extend %button--circle;
 }
 
-
-.subscribe {
-   @extend %button--green;
-   width: 19.375rem;
-   height: 2.5rem;
-   margin-top: 20px;
-   &:hover {
-      span::after {
-         background-color: $accent;
-         bottom: 0;
-      }
-   }
-   span {
-      @extend %link;
-      font-size: 0.75rem;
-      &::after {
-         transition: background-color .3s;
-      }
-   }
-}
-
-
-
 .delivery {
-   @extend %flexbox;
-   margin-top: 1.875rem;
-   font-family: $font-service;
-   font-size: 0.875rem;
+    @extend %flexbox;
+    margin-top: 1.875rem;
+    font-family: $font-service;
+    font-size: 0.875rem;
 }
 .text {
-   opacity: 0.6;
-   margin: 0 0.25rem 0 0.875rem;
+    opacity: 0.6;
+    margin: 0 0.25rem 0 0.875rem;
 }

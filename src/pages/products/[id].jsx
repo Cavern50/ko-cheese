@@ -11,6 +11,7 @@ import { RecipesSliderSection } from 'components/sections/common/RecipesSliderSe
 import ArticlesAPI from 'api/ArticlesAPI';
 import s from './ProductPage.module.scss';
 import { Section } from 'components/layout/Section/Section';
+import DataAPI from 'api/DataAPI.js';
 
 const sliderParams = {
   slider: {
@@ -58,6 +59,7 @@ export default Card;
 // };
 
 
+const getData = async () => await DataAPI.getData();
 
 export const getServerSideProps = async ({ params }) => {
   const { products, recipes } = await getData();
