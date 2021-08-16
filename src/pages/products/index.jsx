@@ -10,7 +10,6 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
 
 import { H1 } from "components/layout/H1/H1";
-import DataAPI from "api/DataAPI";
 
 const Products = ({ products, newProducts, discountProduct, productsCategories }) => {
   const discountModal = useModal(true, false);
