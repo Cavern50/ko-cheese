@@ -25,7 +25,7 @@ export const Product = (props) => {
     setFav(!fav)
   }
   return (
-
+      <Link href={`/products/${id}`}>
       <div className={clsx(s.card, additionClass && s[additionClass])}>
         <div className={s.buttons}>
           <button type="button" className={s.control} onClick={handleSetFav}>
@@ -35,7 +35,7 @@ export const Product = (props) => {
             <PurchaseIcon/>
           </button>
         </div>
-        <Link href={`/products/${id}`}>
+
         <span className={clsx(g.status, g[statuses[0].status])}>{statuses[0].name}</span>
         <img src={image} alt={name} className={s.image}/>
         <h3 className={s.name}>{name}</h3>
@@ -49,9 +49,9 @@ export const Product = (props) => {
         <h3 className={s.price}>{price} руб.</h3>
         {/*TODO: Сказали убрать в цссе тоже закоментил
         <span className={s.more}>Подробнее</span>*/}
-        </Link>
-      </div>
 
+      </div>
+      </Link>
   );
 };
 
