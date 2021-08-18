@@ -60,6 +60,7 @@
       path:first-child {
          fill:$accent;
       }
+      fill: $accent;
       rect {
          stroke: $accent;
       }
@@ -70,6 +71,7 @@
          path {
             stroke: $accent;
          }
+         fill: initial;
       }
    }
 
