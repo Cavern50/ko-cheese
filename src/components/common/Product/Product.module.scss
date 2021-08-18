@@ -54,15 +54,9 @@
    background-color: $lightest;
    color: rgba($gen, 0.3);
    transition: background-color 0.3s, color 0.3s;
-   &:first-child {
-      margin-right: 0.6875rem;
-   }
    &:hover {
       background-color: $gen;
       color: $accent;
-      path {
-         stroke: $accent;
-      }
       path:first-child {
          fill:$accent;
       }
@@ -70,6 +64,15 @@
          stroke: $accent;
       }
    }
+   &:first-child {
+      margin-right: 0.6875rem;
+      &:hover{
+         path {
+            stroke: $accent;
+         }
+      }
+   }
+
 }
 
 .image,
