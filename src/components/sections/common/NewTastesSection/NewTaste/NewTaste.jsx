@@ -14,13 +14,17 @@ const countryFlags = {
   french: '/static/img/icons/french-flag.jpg',
   russian: '/static/img/icons/rus-flag.jpg'
 };
-
+const [fav, setFav] = useState(false);
+const handleSetFav = (e) =>{
+  e.stopPropagation();
+  setFav(!fav)
+}
 export const NewTaste = ({ id, name, addition, image, style, tastes }) => (
   <div className={s.card}>
     <div className={s.body}>
       <div className={s.buttons}>
-        <button type="button" className={s.control} onClick={(e) => e.stopPropagation()}>
-          <FavoriteIcon />
+        <button type="button" className={s.control} onClick={handleSetFav}>
+          <FavoriteIcon className={clsx(fav && s.fav)}/>
         </button>
         <button type="button" className={s.control} onClick={(e) => e.stopPropagation()}>
           <PurchaseIcon />
@@ -28,7 +32,7 @@ export const NewTaste = ({ id, name, addition, image, style, tastes }) => (
       </div>
       <img src={image} alt={name} className={s.image} />
       <div>
-        {/* TODO: SERGEY,  В НОВОМО МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
+        {/* TODO: SERGEY,  В НОВОМ МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
         {/* {!!style && (
               <div className={s.style}>
                 <span className={s.country}>{style} style</span>

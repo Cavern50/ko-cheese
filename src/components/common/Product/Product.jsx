@@ -23,8 +23,6 @@ export const Product = (props) => {
   const [fav, setFav] = useState(false);
   const handleSetFav = (e) =>{
     e.stopPropagation();
-    console.log('fav', fav, !fav)
-    console.log('e', e)
     setFav(!fav)
   }
   return (

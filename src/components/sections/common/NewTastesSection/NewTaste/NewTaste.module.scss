@@ -81,20 +81,31 @@
     background-color: $lightest;
     color: rgba($gen, 0.3);
     transition: background-color 0.3s, color 0.3s;
-    &:first-child {
-        margin-right: 0.6875rem;
-    }
     &:hover {
         background-color: $gen;
         color: $accent;
-        path {
-            stroke: $accent;
-        }
         path:first-child {
-            fill: $accent;
+            fill:$accent;
         }
+        fill: $accent;
         rect {
             stroke: $accent;
+        }
+    }
+    &:first-child {
+        margin-right: 0.6875rem;
+        &:hover{
+            path {
+                stroke: $accent;
+            }
+            fill: initial;
+        }
+    }
+    &:last-of-type{
+        &:hover{
+            path{
+                fill: $accent;
+            }
         }
     }
 }
