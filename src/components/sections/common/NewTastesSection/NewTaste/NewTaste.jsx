@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
+import clsx from "clsx";
 import { RedWine, WhiteWine, Vegetables, Fruits } from 'components/SVG/TastesSVG/TastesSVG';
 import { FavoriteIcon, PurchaseIcon } from 'components/SVG/Icons';
 import s from './NewTaste.module.scss';
@@ -19,6 +20,7 @@ const handleSetFav = (e) =>{
   e.stopPropagation();
   setFav(!fav)
 }
+
 export const NewTaste = ({ id, name, addition, image, style, tastes }) => (
   <div className={s.card}>
     <div className={s.body}>
