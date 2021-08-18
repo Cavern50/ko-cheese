@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import { allTastes } from "constants.js";
@@ -20,12 +20,16 @@ export const Product = (props) => {
     additionClass,
     id
   } = props;
+  const {fav, setFav} = useState(false);
+  const handleSetFav = () =>{
+    setFav(!fav)
+  }
   return (
     <Link href={`/products/${id}`}>
       <div className={clsx(s.card, additionClass && s[additionClass])}>
         <div className={s.buttons}>
-          <button type="button" className={s.control} onClick={(e) => e.stopPropagation()}>
-            <FavoriteIcon/>
+          <button type="button" className={s.control} onClick={handleSetFav}>
+            <FavoriteIcon  className={clsx(fav && s.fav)}/>
           </button>
           <button type="button" className={s.control} onClick={(e) => e.stopPropagation()}>
             <PurchaseIcon/>
