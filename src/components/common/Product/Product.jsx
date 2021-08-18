@@ -22,12 +22,10 @@ export const Product = (props) => {
   } = props;
   const {fav, setFav} = useState(false);
   const handleSetFav = (e) =>{
-    // e.stopPropagation();
+    e.stopPropagation();
     console.log('fav', fav, !fav)
     console.log('e', e)
     setFav(!fav)
-
-
   }
   return (
       <Link href={`/products/${id}`}>
