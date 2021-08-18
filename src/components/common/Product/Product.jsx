@@ -21,7 +21,8 @@ export const Product = (props) => {
     id
   } = props;
   const {fav, setFav} = useState(false);
-  const handleSetFav = () =>{
+  const handleSetFav = (e) =>{
+    e.stopPropagation()
     setFav(!fav)
   }
   return (
@@ -29,7 +30,7 @@ export const Product = (props) => {
       <div className={clsx(s.card, additionClass && s[additionClass])}>
         <div className={s.buttons}>
           <button type="button" className={s.control} onClick={handleSetFav}>
-            <FavoriteIcon  className={clsx(fav && s.fav)}/>
+            <FavoriteIcon className={clsx(fav && s.fav)}/>
           </button>
           <button type="button" className={s.control} onClick={(e) => e.stopPropagation()}>
             <PurchaseIcon/>
