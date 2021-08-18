@@ -71,6 +71,11 @@
     transition: right 400ms ease-out;
     z-index: 1;
 }
+.fav{
+    path{
+        fill: #184240;
+    }
+}
 .control {
     @extend %flexbox;
     justify-content: center;
