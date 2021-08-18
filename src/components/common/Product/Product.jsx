@@ -43,7 +43,8 @@ export const Product = (props) => {
           <span className={s.weight}>{weight}</span>
         </div>
         <h3 className={s.price}>{price} руб.</h3>
-        <span className={s.more}>Подробнее</span>
+        {/*TODO: Сказали убрать
+        <span className={s.more}>Подробнее</span>*/}
       </div>
     </Link>
   );

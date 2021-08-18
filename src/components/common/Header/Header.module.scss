@@ -53,9 +53,16 @@
 
 .button {
    @extend %button--circle;
-   &:not(:last-of-type) {
-      margin-right: 1rem;
+   &:not(:first-of-type) {
+      margin-left: 1rem;
+      &:hover{
+         path, rect {
+            stroke: inherit;
+         }
+      }
    }
+
+
 }
 .cardIcon {
    path {
@@ -66,6 +73,7 @@
          fill: $accent;
       }
    }
+
 }
 .favIcon {
    path,
