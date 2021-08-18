@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Link from 'next/link';
 import { RedWine, WhiteWine, Vegetables, Fruits } from 'components/SVG/TastesSVG/TastesSVG';
 import { FavoriteIcon, PurchaseIcon } from 'components/SVG/Icons';
