@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, {useState} from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import { allTastes } from "constants.js";
@@ -20,7 +20,7 @@ export const Product = (props) => {
     additionClass,
     id
   } = props;
-  const {fav, setFav} = useState(false);
+  const [fav, setFav] = useState(false);
   const handleSetFav = (e) =>{
     e.stopPropagation();
     console.log('fav', fav, !fav)
