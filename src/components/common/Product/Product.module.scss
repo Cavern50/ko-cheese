@@ -74,6 +74,13 @@
          fill: initial;
       }
    }
+   &:last-of-type{
+      &:hover{
+         path{
+            fill: $accent;
+         }
+      }
+   }
 
 }
 
