@@ -13,7 +13,8 @@ import {
   ProfileFeedback,
   ProfileReturn,
   ProfileBody,
-  ProfileHistory
+  ProfileHistory,
+  ProfileSubscribe
 } from "components/sections/profile";
 
 const Profile = () => {
@@ -24,27 +25,31 @@ const Profile = () => {
       component: <ProfileOrders/>
     },
     {
-      id: 2,
-      title: "История заказов",
-      component: <ProfileHistory/>
+      id: 55,
+      title: "Подписки",
+      component: <ProfileSubscribe/>
     },
     {
       id: 3,
       title: "Адреса доставки",
       component: <ProfileDelivery/>
-    }, {
+    },
+    {
       id: 4,
       title: "Личные данные",
       component: <ProfilePersonal/>
-    }, {
+    },
+    {
       id: 5,
       title: "Отправка отзыва",
       component: <ProfileFeedback/>
-    }, {
+    },
+    {
       id: 6,
       title: "Программа лояльности",
       component: <ProfileLoyalty/>
-    }, {
+    },
+    {
       id: 7,
       title: "Возврат товара",
       component: <ProfileReturn/>
