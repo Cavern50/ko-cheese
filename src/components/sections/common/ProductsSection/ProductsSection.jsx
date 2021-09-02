@@ -1,11 +1,12 @@
 import React from "react";
 
-import { Product } from "components/common/Product/Product";
-import { SubcategoryButton } from "components/common/Buttons/SubcategoryButton/SubcategoryButton";
+import { Product } from "components/Product/Product";
+import { SubcategoryButton } from "components/buttons/SubcategoryButton/SubcategoryButton";
 import { Tabs } from "components/layout/Tabs/Tabs";
-import { TabButton } from "components/common/Buttons/TabButton/TabButton";
+import { TabButton } from "components/buttons/TabButton/TabButton";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
+import { windowWidth } from "constants.js";
 
 import { useTabs } from "hooks";
 
@@ -49,6 +50,7 @@ export const ProductsSection = ({ products, categories }) => {
                 title={title}
                 active={activeSubcategoryId}
                 toggleActive={toggleSubcategoryId}
+                additionClass="mainButton"
               />
             ))}
           </div>
@@ -56,6 +58,7 @@ export const ProductsSection = ({ products, categories }) => {
         <div className={s.body}>
           {products && products.map((product) => <Product key={product.id} {...product} />)}
         </div>
+        {windowWidth <= 1200 && <button type="button" className={s.more}>Показать еще <span>(4)</span></button>}
       </Wrapper>
     </Section>
 

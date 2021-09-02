@@ -114,8 +114,7 @@
     padding: 0 5rem;
     color: $gen;
     letter-spacing: 0.54px;
-    &:hover,
-    &:focus {
+    &:hover {
       border-color: transparent;
       background-color: $gen;
       color: $accent;
@@ -130,8 +129,7 @@
     width: 16.875rem;
     color: $gen;
     letter-spacing: 0.54px;
-    &:hover,
-    &:focus {
+    &:hover {
       border-color: transparent;
       background-color: $gen;
       color: $accent;

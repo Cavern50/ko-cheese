@@ -9,6 +9,7 @@ import { ProfileFeedback } from "components/sections/profile/ProfileFeedback/Pro
 import { ProfileReturn } from "components/sections/profile/ProfileReturn/ProfileReturn";
 import { ProfileBody } from "components/common/Profile/ProfileBody/ProfileBody";
 import { ProfileHistory } from "components/sections/profile/ProfileHistory/ProfileHistory";
+import { ProfileSubscribe } from "components/sections/profile/ProfileSubscribe/ProfileSubscribe";
 
 
 export {
@@ -22,5 +23,6 @@ export {
   ProfileFeedback,
   ProfileReturn,
   ProfileBody,
-  ProfileHistory
+  ProfileHistory,
+  ProfileSubscribe
 };

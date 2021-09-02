@@ -1,26 +1,5 @@
-@import '/src/styles/root';
-
-.item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    height: 15rem;
-
-    //border: 1px solid rgba($gen, .3);
-    border-right: 1px solid #c4c4c4;
-    border-top: 1px solid #c4c4c4;
-    border-bottom: 1px solid #c4c4c4;
-    &:nth-child(n + 5) {
-        margin-top: -1px;
+.partner {
+    &:not(:last-child) {
+        margin-right: 3.9375rem;
     }
-    //&:nth-child(4n) {
-    //  border-right: none;
-    //}
-}
-
-.image {
-    width: 60%;
-    height: 60%;
-    object-fit: contain;
 }

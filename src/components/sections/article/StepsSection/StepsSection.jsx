@@ -13,7 +13,7 @@ export const StepsSection = ({ stages }) => {
         <h2>Этапы</h2>
         <img className={s.promo} src={promo} alt=""/>
         <div>
-          {steps.map((step, index) => <Step index={index} {...step}/>)}
+          {steps.map((step, index) => <Step index={index} key={index} {...step}/>)}
         </div>
       </WrapperNarrow>
     </section>

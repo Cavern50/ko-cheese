@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Product } from "components/common/Product/Product";
+import { Product } from "components/Product/Product";
 import { Section } from "components/layout/Section/Section";
 
 import s from "./RecommendSection.module.scss";

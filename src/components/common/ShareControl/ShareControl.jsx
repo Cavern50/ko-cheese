@@ -1,5 +1,5 @@
 import React from "react";
-import { BackButton } from "components/common/Buttons/BackButton/BackButton";
+import { BackButton } from "components/buttons/BackButton/BackButton";
 import { Mail, Telegram, Vk } from "components/SVG/ArticleIcons";
 
 import s from './ShareControl.module.scss';

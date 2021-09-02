@@ -7,17 +7,17 @@ export const useModal = (init = false, stopScroll = true) => {
   const showModal = () => setIsShowed(true);
 
   // eslint-disable-next-line consistent-return
-  React.useEffect(() => {
-    if (stopScroll) {
-      document.body.style.overflow = isShowed ? "hidden" : "unset";
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") hideModal();
-      });
-      return () => {
-        document.removeEventListener("keydown", hideModal, false);
-      };
-    }
-  }, [isShowed]);
+  // React.useEffect(() => {
+  //   if (stopScroll) {
+  //     document.body.style.overflow = isShowed ? "hidden" : "unset";
+  //     document.addEventListener("keydown", (e) => {
+  //       if (e.key === "Escape") hideModal();
+  //     });
+  //     return () => {
+  //       document.removeEventListener("keydown", hideModal, false);
+  //     };
+  //   }
+  // }, [isShowed]);
 
   return { isShowed, hideModal, showModal };
 };
@@ -32,5 +32,18 @@ export const useTabs = (init = null, isRemovable = true) => {
   };
 
   return { activeId, setActiveId, toggleActiveId };
+};
+
+
+export const windowWidth = () => {
+
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(window.innerWidth);
+  }, []);
+
+
+  return mounted;
 };
 

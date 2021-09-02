@@ -1,0 +1,27 @@
+@import "../../../styles/mixins";
+@import "../../../styles/root";
+ 
+.wrapper {
+  position: relative;
+  padding-bottom: 1.25rem;
+  font-family: $font-service;
+}
+.close {
+  @extend %close-btn;
+  right: 0;
+  top: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.field {
+  width: calc(100% / 3);
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  font-family: $font-service--bold;
+}

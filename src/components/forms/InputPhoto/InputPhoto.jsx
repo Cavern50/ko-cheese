@@ -1,7 +1,8 @@
 import React from "react";
+import clsx from 'clsx';
 import s from "components/forms/InputPhoto/InputPhoto.module.scss";
 
-export const InputPhoto = ({ id, name, formProps }) => {
+export const InputPhoto = ({ id, name, formProps, className }) => {
   const [file, setFile] = React.useState("");
 
   const handleChange = (event) => {
@@ -18,20 +19,18 @@ export const InputPhoto = ({ id, name, formProps }) => {
     formProps.setFieldValue(name, file);
   }, [file]);
   return (
-    <div className={s.container}>
-      <div className={s.avatar}>
+    <div className={clsx(s.container, s[className])}>
+      <div className={s.box}>
         {file && <img src={file} alt="" className={s.image}/>}
         {!file && <label className={s.label} htmlFor={name} style={{ "backgroundImage": file }}>
-          <svg width="49" height="51" viewBox="0 0 49 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="9.65625" y="34.623" width="21.2459" height="14.1639" fill="#8D9A9A"/>
-            <circle cx="20.672" cy="25.1803" r="6.29508" fill="#8D9A9A"/>
-            <path d="M24.3374 10.2295H1V49.5738H39.5574V26.7955" stroke="#8D9A9A" strokeWidth="2"/>
-            <line x1="39.7695" y1="-4.37114e-08" x2="39.7695" y2="20.459" stroke="#8D9A9A" strokeWidth="2"/>
-            <line x1="29.3281" y1="10.0164" x2="49.0003" y2="10.0164" stroke="#8D9A9A" strokeWidth="2"/>
+          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle opacity="0.1" cx="15.2132" cy="15.2131" r="15" transform="rotate(-45 15.2132 15.2131)" fill="#184240"/>
+            <path d="M8.14063 15.2133L22.1937 15.2131" stroke="#184240"/>
+            <path d="M15.2187 8.23523L15.2189 22.2884" stroke="#184240"/>
           </svg>
         </label>}
       </div>
-      <label htmlFor={id} className={s.text}>Изменить аватар</label>
+      {/*<label htmlFor={id} className={s.text}>Изменить аватар</label>*/}
       <input id={id} name={"photo"} className={s.input} type="file"
              onChange={e => handleChange(e)}/>
     </div>

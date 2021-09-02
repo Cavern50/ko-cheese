@@ -2,7 +2,7 @@
 @import '/src/styles/root.scss';
 
 .promo {
-    height: 600px;
+    height: 37.5rem;
     padding-top: 5rem;
     background-image: url('/static/img/promo-bg.jpg');
     background-size: cover;
@@ -33,7 +33,7 @@
     @extend %button--decorate;
     justify-content: space-between;
     width: 17.625rem;
-    margin: 9vh auto 0 auto;
+    margin: 5.625rem auto 0 auto;
     padding-left: 1.875rem;
     padding-right: 0.875rem;
     min-height: 4rem;
@@ -75,3 +75,7 @@
 //    justify-content: space-between;
 //    margin-top: 4vh;
 //}
+
+@media (max-width: $landscape) {
+
+}

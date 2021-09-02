@@ -1,0 +1,30 @@
+@import '/src/styles/mixins';
+@import '/src/styles/root';
+
+.subcategory {
+  @extend %button;
+  min-height: 1.875rem;
+  margin-right: 0.625rem;
+  padding: 0 1.25rem;
+  border-color: $gen;
+  border-radius: 0.9375rem;
+  text-transform: uppercase;
+  &:hover,
+  &.active {
+    background-color: $gen;
+    color: $accent;
+  }
+  &:last-child {
+     margin-right: 0;
+  }
+}
+
+@media (max-width: $tablet) {
+  .subcategory {
+
+  }
+  .mainButton {
+    margin-bottom: 20px;
+  }
+}
+

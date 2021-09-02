@@ -12,3 +12,15 @@
   height: 4rem;
   font-size: 1.125rem;
 }
+
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.label {
+  width: 100%;
+  margin-bottom: 0.625rem;
+  font-family: $font-service;
+}

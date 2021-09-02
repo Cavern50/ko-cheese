@@ -1,10 +1,18 @@
 import React from "react";
 import Collapsible from "react-collapsible";
 import clsx from "clsx";
+import {useDispatch} from "react-redux";
+import { letterChangeModalState } from "redux/slices/modals";
 import s from "./Accordion.module.scss";
+
 
 const Accordion = ({ title, children, button, additionClasses = "" }) => {
   const { triggerClass, contentClass } = additionClasses;
+  const dispatch = useDispatch();
+  const letterModalHandler = () => {
+    dispatch(letterChangeModalState(true));
+  };
+  
   return (
     <div className={s.tab}>
       <Collapsible
@@ -16,7 +24,7 @@ const Accordion = ({ title, children, button, additionClasses = "" }) => {
         transitionTime={300}
       >
         {children}
-        {button && <button type={"button"} className={s.button}>Отправить заявку</button>}
+        {button && <button type={"button"} className={s.button} onClick={letterModalHandler}>Отправить заявку</button>}
       </Collapsible>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "components/forms/Input/Input";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
 import { PROFILE_VALIDATION_SCHEMA } from "constants.js";
-import { Textarea } from "components/common/Textarea/Textarea";
+import { Textarea } from "components/forms/Textarea/Textarea";
 import s from "./ProfileDelivery.module.scss";
 
 export const ProfileDelivery = () => {

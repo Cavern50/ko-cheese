@@ -11,7 +11,7 @@ export const FarmContentSmallSection = ({ pageData, firstItem }) => {
     <Section>
       <Wrapper>
         <div className={clsx(s.container, firstItem === "right" ? s.right : s.left)}>
-          {contentSmallItems.map(item => <FarmContentSmall content={item}/>)}
+          {contentSmallItems.map((item, i) => <FarmContentSmall key={i} content={item}/>)}
         </div>
       </Wrapper>
     </Section>

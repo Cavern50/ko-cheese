@@ -25,7 +25,7 @@ export const AuthSection = () => {
               <Input id="password" label="Пароль" name="password" type="password"/>
               <div className={s.politics}>
                 <Input id="politics" name="politics" type="checkbox" additionClass="checkbox"/>
-                <span className={s.label}>Я ознакомлен(-а) с Политикой конфиденциальности</span>
+                <span className={s.label}>Я ознакомлен(-а) с политикой конфиденциальности</span>
               </div>
               <Link href="/profile">
                 <a className={s.submit}>Войти</a>

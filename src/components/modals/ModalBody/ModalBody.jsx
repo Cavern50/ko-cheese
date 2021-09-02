@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CloseButton } from "components/common/Buttons/CloseButton/CloseButton";
+import { CloseButton } from "components/buttons/CloseButton/CloseButton";
 import s from "./ModalBody.module.scss";
 
 export const ModalBody = ({ closeModal, title, children }) => (

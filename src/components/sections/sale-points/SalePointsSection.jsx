@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TabButton } from "components/common/Buttons/TabButton/TabButton";
+import { TabButton } from "components/buttons/TabButton/TabButton";
 import { MarketCard } from "components/common/MarketCard/MarketCard";
 import { useTabs } from "hooks";
 import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";

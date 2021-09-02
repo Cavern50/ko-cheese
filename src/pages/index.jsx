@@ -49,7 +49,7 @@ const Index = ({ products, discountProduct, productsCategories, recipes, newProd
       <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={recipes} title="Рецепты"/>
       <TelegramPromoSection url={"http://instagram.com/instagram"}/>
-      <InstagramSection/>
+      {/*<InstagramSection/>*/}
       <PartnersSection/>
       {cookiesModal.isShowed && showDelay ?
         <ModalWrapper show={cookiesModal.isShowed} {...cookiesModalProperties}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ProfileButton } from "components/common/Buttons/ProfileButton/ProfileButton";
+import { ProfileButton } from "components/buttons/ProfileButton/ProfileButton";
 import s from "./ProfileAside.module.scss";
 
 export const ProfileAside = ({ categories, active, setActive }) => {

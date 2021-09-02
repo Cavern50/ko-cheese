@@ -1,5 +1,13 @@
+@import '/src/styles/root';
+
 .container {
   width: calc(100% - 120px);
   margin: 0 auto;
   max-width: 1320px;
+}
+
+@media (max-width: $tablet) {
+  .container {
+    width: calc(100% - 44px);
+  }
 }

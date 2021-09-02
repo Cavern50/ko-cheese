@@ -59,3 +59,13 @@
     margin: 3.125rem auto 0 auto;
     border-radius: 2.25rem;
 }
+
+@media (max-width: $tablet) {
+    .promo {
+        width: 100%;
+    }
+    .offer {
+        display: block;
+        margin: 0 auto;
+    }
+}

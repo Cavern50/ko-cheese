@@ -1,4 +1,4 @@
- import React from "react";
+import React from "react";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { Partner } from "components/common/Partner/Partner";
@@ -15,15 +15,13 @@ const partners = [
   "static/img/content/partners/coffee.png"
 ];
 
- // "static/img/content/partners/utkonos.png",
-     // "static/img/content/partners/magnum.png",
 export const PartnersSection = () => (
   <Section>
     <Wrapper>
       <h2 className={s.title}>Партнеры</h2>
       <div className={s.grid}>
         {partners.map((partner) => (
-          <Partner url={partner} />
+          <Partner key={partner} url={partner} />
         ))}
       </div>
     </Wrapper>

@@ -4,10 +4,9 @@
 .subcategories {
    @extend %flexbox;
    justify-content: center;
+   flex-wrap: wrap;
    margin-top: 3.125rem;
 }
-
-
 
 .body {
    @extend %flexbox;
@@ -15,4 +14,17 @@
    border-top: 1px solid rgba($gen, 0.3);
    flex-wrap: wrap;
    margin-top: 3.125rem;
+}
+
+.more {
+   @extend %link;
+   display: block;
+   margin: 3.125rem auto 0 auto;
+}
+
+@media (max-width: $tablet) {
+   .subcategories {
+      width: 85%;
+      margin: 30px auto 0 auto;
+   }
 }

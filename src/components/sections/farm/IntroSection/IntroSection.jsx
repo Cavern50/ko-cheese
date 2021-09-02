@@ -2,7 +2,7 @@ import React from "react";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { Tabs } from "components/layout/Tabs/Tabs";
-import { TabButton } from "components/common/Buttons/TabButton/TabButton";
+import { TabButton } from "components/buttons/TabButton/TabButton";
 import { useTabs } from "hooks";
 import Link from "next/link";
 import s from "components/sections/farm/IntroSection/IntroSection.module.scss";
@@ -20,7 +20,7 @@ export const IntroSection = ({ categories, url, pageData }) => {
           {
             // eslint-disable-next-line no-shadow
             categories.map(({ title, id, url }) =>
-              <Link href={url}>
+              <Link href={url} key={id}>
                 <a>
                   <TabButton index={id}
                              active={activeId}

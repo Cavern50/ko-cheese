@@ -1,26 +1,56 @@
 import React from "react";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
 import { Input } from "components/forms/Input/Input";
+import clsx from "clsx";
 import { PROFILE_VALIDATION_SCHEMA } from "/src/constants.js";
 import s from "components/common/Profile/ProfileControls/ProfileControls.module.scss";
+import { useTabs } from "hooks";
 
-export const ProfileControls = ({ filters }) => {
+
+const buttonFilters = [{
+  text: "Все",
+  url: "/",
+  id: 0
+}, {
+  text: "Активные",
+  url: "/",
+  id: 1
+}, {
+  text: "Завершенные",
+  url: "/",
+  id: 2
+}];
+
+export const ProfileControls = () => {
+
+  const { activeId, toggleActiveId } = useTabs(0, null);
+
+  const handleFilter = (id) => {
+    toggleActiveId(id)
+  }
+
   return (
     <header className={s.header}>
-      <FormContainer enableReinitialize initialValues={{}} validationScheme={PROFILE_VALIDATION_SCHEMA}
-                     className="fullWidth">
+      <FormContainer
+        enableReinitialize
+        initialValues={{}}
+        validationScheme={PROFILE_VALIDATION_SCHEMA}
+        className="fullWidth">
         {() =>
           <div className={s.wrapper}>
             <div className={s.tabs}>
-              {filters && <>
-                <button type="button" className={s.tab}>Все</button>
-                <button type="button" className={s.tab}>Активные</button>
-                <button type="button" className={s.tab}>Завершенные</button>
-              </>}
+              {buttonFilters.map((filter => (
+                <button
+                  type="button"
+                  key={filter.id}
+                  className={clsx(s.tab, activeId === filter.id && s.active)}
+                  onClick={() => handleFilter(filter.id)}>{filter.text}</button>
+              )))}
             </div>
-            <div className={s.date}>
-              <Input id="dateFrom" name="dateFrom" type="date" label="от" containerClass="date"/>
-              <Input id="dateTo" name="dateTo" type="date" label="до" containerClass="date"/>
+            <div className={s.dates}>
+              <Input id="dateFrom" name="dateFrom" type="date" label="от" containerClass="date"
+                     additionClass="dateInput"/>
+              <Input id="dateTo" name="dateTo" type="date" label="до" containerClass="date" additionClass="dateInput"/>
               <button className={s.submit} type="submit"><span>Найти по дате</span></button>
             </div>
           </div>

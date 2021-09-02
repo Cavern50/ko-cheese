@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RemoveButton } from 'components/common/Buttons/RemoveButton/RemoveButton';
+import { RemoveButton } from 'components/buttons/RemoveButton/RemoveButton';
 import s from './FavoriteControl.module.scss';
 
 export const FavoriteControl = () => (

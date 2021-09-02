@@ -31,3 +31,12 @@
     @extend %link;
     margin-top: 3.125rem;
 }
+
+@media (max-width: $landscape) {
+    .image {
+        height: 260px;
+    }
+    .text {
+        max-width: 100%;
+    }
+}

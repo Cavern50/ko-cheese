@@ -36,8 +36,8 @@
 .logo {
    @extend %flexbox;
    justify-content: center;
-   width: 42%;
-   margin-left: 8%;
+   width: 31%;
+   margin-left: 14%;
    path {
       fill: $gen;
    }
@@ -53,16 +53,9 @@
 
 .button {
    @extend %button--circle;
-   &:not(:first-of-type) {
-      margin-left: 1rem;
-      &:hover{
-         path, rect {
-            stroke: inherit;
-         }
-      }
+   &:not(:last-of-type) {
+      margin-right: 1rem;
    }
-
-
 }
 .cardIcon {
    path {
@@ -73,7 +66,6 @@
          fill: $accent;
       }
    }
-
 }
 .favIcon {
    path,
@@ -108,5 +100,27 @@
 .logo_accent {
    path {
       fill: $accent;
+   }
+}
+
+@media (max-width: $landscape) {
+   .favorite {
+      display: none;
+   }
+}
+
+@media (max-width: $tablet) {
+   .nav {
+      width: 100%;
+   }
+   .logo {
+      width: 14%;
+      margin-left: 3%;
+   }
+   .control {
+      margin-left: 30px;
+   }
+   .link {
+      font-size: 10px;
    }
 }

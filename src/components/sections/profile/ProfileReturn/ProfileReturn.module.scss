@@ -1,0 +1,50 @@
+@import "/src/styles/root";
+@import "/src/styles/mixins";
+
+.container {
+  display: flex;
+}
+
+.title {
+  margin-bottom: 2.5rem;
+}
+
+.block {
+  width: calc(50% - 4.0625rem);
+  margin-right: 4.0625rem;
+  > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.replace {
+  margin-top: 1.875rem;
+}
+
+.onchange {
+  display: flex;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.label {
+  padding-left: 0.9375rem;
+  font-family: $font-service;
+  cursor: pointer;
+}
+
+.subtitle {
+  font-family: $font-service;
+  font-size: 0.875rem;
+}
+
+.photos {
+  display: flex;
+  margin-top: 0.625rem;
+}
+
+.submit {
+  @extend %button--green;
+  height: 3.125rem;
+  margin-top: 1.875rem;
+}

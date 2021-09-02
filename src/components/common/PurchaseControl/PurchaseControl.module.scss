@@ -61,6 +61,29 @@
    @extend %button--circle;
 }
 
+
+.subscribe {
+   @extend %button--green;
+   width: 19.375rem;
+   height: 2.5rem;
+   margin-top: 20px;
+   &:hover {
+      span::after {
+         background-color: $accent;
+         bottom: 0;
+      }
+   }
+   span {
+      @extend %link;
+      font-size: 0.75rem;
+      &::after {
+         transition: background-color .3s;
+      }
+   }
+}
+
+
+
 .delivery {
     @extend %flexbox;
     margin-top: 1.875rem;

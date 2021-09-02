@@ -5,13 +5,18 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 13.75rem;
+  height: 13.75rem;
+  margin-right: 0.9375rem;
 }
 
-.avatar {
+.replace {
+  width: 7.5rem;
+  height: 7.5rem;
+}
+.box {
   position: relative;
   width: 100%;
-  height: 13.75rem;
-  border-radius: 50%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -31,11 +36,14 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: $lightest;
+  border: 1px solid #C4C4C4;
   cursor: pointer;
   transition: background-color .3s;
+  & circle {
+      transition: fill .3s, opacity .3s;
+  }
   &:hover {
-    background-color: $gen;
+    background-color: rgba($gen, .3);
   }
 }
 

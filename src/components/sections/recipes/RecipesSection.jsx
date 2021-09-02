@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Tabs } from "components/layout/Tabs/Tabs";
-import { TabButton } from "components/common/Buttons/TabButton/TabButton";
-import { SubcategoryButton } from "components/common/Buttons/SubcategoryButton/SubcategoryButton";
+import { TabButton } from "components/buttons/TabButton/TabButton";
+import { SubcategoryButton } from "components/buttons/SubcategoryButton/SubcategoryButton";
 import { Recipe } from "components/common/Recipe/Recipe";
 
 import { useTabs } from "hooks";
@@ -50,10 +50,10 @@ export const RecipesSection = ({ categories, items }) => {
       </Tabs>
       <div className={s.subcategories}>
         {categories.find(category => category.id === activeCategoryId).subcategories.map(({ title, id }) =>
-          <SubcategoryButton title={title} id={id} active={activeSubCategoryId} toggleActive={toggleSubCategoryId}/>)}
+          <SubcategoryButton key={id} title={title} id={id} active={activeSubCategoryId} toggleActive={toggleSubCategoryId}/>)}
       </div>
       <div className={s.posts}>
-        {activeCategoryItems.length > 0 && activeCategoryItems.map(post => <Recipe {...post} />)}
+        {activeCategoryItems.length > 0 && activeCategoryItems.map((post, i) => <Recipe key={i} {...post} />)}
       </div>
     </>
   );

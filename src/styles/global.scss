@@ -55,6 +55,17 @@ input {
   }
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
+}
+
+
 a {
   transition: color .3s, background-color .3s, border-color .3s;
 }
@@ -93,13 +104,14 @@ img {
 
 h1 {
   font-size: 4rem;
-  line-height: 4.375rem;
+  line-height: 1.2;
   font-weight: normal;
 }
 
 h2 {
   font-size: 2.25rem;
   font-weight: normal;
+  letter-spacing: 0.045rem;
 }
 
 h3 {
@@ -171,39 +183,49 @@ section {
     transform: translateY(100%);
   }
 }
-
+@media (max-width: 1600px) {
+  html {
+    font-size: 15px;
+  }
+}
 @media (max-width: 1400px) {
   html {
-    font-size: 14px
+    font-size: 14px;
   }
 }
 
 @media (max-width: 1350px) {
   html {
-    font-size: 13.5px
+    font-size: 13.5px;
   }
 }
 
 @media (max-width: 1300px) {
   html {
-    font-size: 13px
+    font-size: 13px;
   }
 }
 
 @media (max-width: 1250px) {
   html {
-    font-size: 12.5px
+    font-size: 12.5px;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: $landscape) {
   html {
-    font-size: 12px
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 48px;
   }
 }
 
-@media (max-width: 1024px) {
-  html {
-    font-size: 16px
+@media (max-width: $tablet) {
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 24px;
   }
 }
