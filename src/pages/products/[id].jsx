@@ -1,8 +1,8 @@
-import React from 'react';
-import { DescriptionSection } from 'components/sections/card/DescriptionSection/DescriptionSection';
+import React from "react";
+import { DescriptionSection } from "components/sections/card/DescriptionSection/DescriptionSection";
 
-import { Slider } from 'components/common/Slider/Slider';
-import { Product } from 'components/common/Product/Product';
+import { Slider } from "components/common/Slider/Slider";
+import { Product } from "components/Product/Product";
 
 import ProductsAPI from 'api/ProductsAPI';
 
