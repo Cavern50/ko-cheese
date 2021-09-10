@@ -7,9 +7,10 @@ import s from "./Menu.module.scss";
 const headerLinks = [
   { title: "Каталог", link: "/products" },
   { title: "Доставка", link: "/delivery" },
+  { title: "Статьи", link: "/articles" },
   { title: "Пункты продаж", link: "/sale-points" },
   { title: "Наше производство", link: "/farm" },
-  { title: "Вопросы", link: "/questions" }
+  { title: "Вопросы", link: "/questions" },
 ];
 
 export const Menu = () => {

@@ -9,7 +9,6 @@ import { useTabs } from "hooks";
 
 import ArticlesAPI from "api/ArticlesAPI";
 
-import axios from "axios";
 import s from "./RecipesSection.module.scss";
 
 export const RecipesSection = ({ categories, items }) => {
@@ -28,7 +27,7 @@ export const RecipesSection = ({ categories, items }) => {
   });
 
 
-  // const getPosts = async (url) => await ArticlesAPI.getPosts(url);
+  const getPosts = async (url) => await ArticlesAPI.getPosts(url);
 
   // const getPosts = async (url) => await axios.get('')
 
@@ -39,7 +38,7 @@ export const RecipesSection = ({ categories, items }) => {
 
 
   React.useEffect(() => {
-    // getPosts(activeCategory.url).then(res => setActiveCategoryItems(res));
+    getPosts(activeCategory.url).then(res => setActiveCategoryItems(res));
     // const testApi = async () => await axios.get(`http://192.168.1.141/api/articles/getPreviewsByCategory/${activeCategoryId}`).then(res => setActiveCategoryItems(res.data.list));
     // testApi();
   }, [activeCategory]);
@@ -48,19 +47,19 @@ export const RecipesSection = ({ categories, items }) => {
   return (
     <>
       <Tabs>
-        {categories.map(({ name, id }) => (
+        {categories.map(({ title, id }) => (
           <TabButton
             key={id}
             index={id}
-            text={name}
+            text={title}
             active={activeCategoryId}
             toggleActive={toggleCategoryId}
           />
         ))}
       </Tabs>
       <div className={s.subcategories}>
-        {categories.find(category => category.id === activeCategoryId).subcategories && categories.find(category => category.id === activeCategoryId).subcategories.map(({ name, id }) =>
-          <SubcategoryButton key={id} title={name} id={id} active={activeSubCategoryId}
+        {categories.find(category => category.id === activeCategoryId).subcategories && categories.find(category => category.id === activeCategoryId).subcategories.map(({ title, id }) =>
+          <SubcategoryButton key={id} title={title} id={id} active={activeSubCategoryId}
                              toggleActive={toggleSubCategoryId}/>)}
       </div>
       <div className={s.posts}>
