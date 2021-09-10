@@ -42,17 +42,65 @@
   color: $gen;
 }
 .image {
-  margin-top: 50px;
+  margin-top: 3.125rem;
   width: 100%;
-  height: 500px;
+  height: 31.25rem;
   object-fit: cover;
 }
 .ingredients {
-  margin-top: 50px;
+  margin-top: 3.125rem;
 }
 .content {
-  margin-top: 30px;
+  margin-top: 1.875rem;
   font-family: $font-service;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 2;
+}
+
+@media (max-width: $landscape) {
+  .description {
+    max-width: 75%;
+  }
+  .image {
+    height: 460px;
+  }
+  .image {
+    margin-top: 30px;
+  }
+  .ingredients {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .image {
+    height: 320px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .title {
+    font-size: 24px;
+  }
+  .description {
+    max-width: 100%;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .info {
+    padding: 15px 0 20px;
+  }
+  .field {
+    margin-right: 40px;
+  }
+  .image {
+    height: 220px;
+  }
+  .ingredients {
+    margin-top: 30px;
+  }
+  .content {
+    font-size: 14px;
+    margin-top: 14px;
+  }
 }

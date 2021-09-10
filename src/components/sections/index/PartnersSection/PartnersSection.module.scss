@@ -20,3 +20,15 @@
     border-right: 2px solid $accent;
   }
 }
+
+@media (max-width: $landscape) {
+  .grid {
+    margin-top: 75px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .grid {
+    margin-top: 40px;
+  }
+}

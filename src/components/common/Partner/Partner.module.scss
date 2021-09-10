@@ -10,9 +10,11 @@
   border-right: 1px solid #c4c4c4;
   border-top: 1px solid #c4c4c4;
   border-bottom: 1px solid #c4c4c4;
+
   &:nth-child(n + 5) {
     margin-top: -1px;
   }
+
   //&:nth-child(-n + 4) {
   //  border-top: none;
   //}
@@ -27,3 +29,20 @@
   object-fit: contain;
 }
 
+@media (max-width: $tablet) {
+  .item {
+    width: calc(100% / 3);
+
+    &:nth-child(n+4) {
+      margin-top: -1px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .item {
+    width: 100%;
+    margin-top: 0;
+    border: none;
+  }
+}

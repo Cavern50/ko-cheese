@@ -41,3 +41,9 @@
     height: 256px;
   }
 }
+
+@media (max-width: $mobile) {
+  .image {
+    height: 316px;
+  }
+}

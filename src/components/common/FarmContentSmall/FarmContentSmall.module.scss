@@ -19,3 +19,34 @@
   margin-top: 1.25rem;
   font-family: $font-service;
 }
+
+
+@media (max-width: $landscape) {
+  .image {
+    width: 100%;
+    max-width: 100%;
+    height: 240px;
+  }
+  .text {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: $tablet) {
+  .image {
+    height: 208px;
+  }
+  .text {
+    max-width: 100%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    width: 100%;
+  }
+  .text {
+    margin-top: 15px;
+  }
+}

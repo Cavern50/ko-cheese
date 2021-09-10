@@ -16,6 +16,7 @@
 .large {
   font-size: 2.25rem;
 }
+
 .nav {
   @extend %flexbox;
   button {
@@ -42,4 +43,23 @@
   justify-content: space-between;
   order: 2;
   margin-top: 30px;
+}
+
+.full {
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: $mobile) {
+  .large {
+    font-size: 24px;
+  }
+  .full {
+    margin-top: 20px;
+  }
+  .arrowsRight {
+    justify-content: flex-end;
+    padding-right: 24px;
+  }
 }

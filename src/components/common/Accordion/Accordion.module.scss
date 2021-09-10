@@ -28,7 +28,7 @@
       transition: transform 0.3s, background-color .3s;
    }
    &--main {
-      padding: 1.5rem 0;
+      padding: 0.9375rem 3.75rem 0.9375rem 0;
       &:hover {
          &::after {
             background-color: rgba($gen, .3);
@@ -75,4 +75,25 @@
    font-family: $font-service--bold;
 }
 
+@media (max-width: $tablet) {
+   .content {
+      &--main {
+         max-width: 70%;
+      }
+   }
+}
+
+@media (max-width: $mobile) {
+   .trigger {
+      font-size: 18px;
+      &::after {
+         padding: 9px;
+      }
+   }
+   .content {
+      &--main {
+         max-width: 80%;
+      }
+   }
+}
 

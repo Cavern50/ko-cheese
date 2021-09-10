@@ -21,7 +21,6 @@ const sliderParams = {
 };
 
 export const GallerySection = ({ pageData: { gallery } }) => {
-  console.log(gallery);
   return (
     <Section>
       <Wrapper>

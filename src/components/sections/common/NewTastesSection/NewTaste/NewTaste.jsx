@@ -16,28 +16,28 @@ const countryFlags = {
 };
 
 export const NewTaste = ({ id, name, addition, image, style, tastes }) => (
-    <div className={s.card}>
-      <Link href={`products/${id}`}>
-        <a className={s.link}/>
-      </Link>
-      <ControlButtons/>
-      <div className={s.body}>
-        <img src={image} alt={name} className={s.image}/>
-        <div>
-          {/* TODO: SERGEY,  В НОВОМО МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
-          {/* {!!style && (
+  <div className={s.card}>
+    <Link href={`products/${id}`}>
+      <a className={s.link}/>
+    </Link>
+    <ControlButtons/>
+    <div className={s.body}>
+      <img src={image} alt={name} className={s.image}/>
+      <div>
+        {/* TODO: SERGEY,  В НОВОМО МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
+        {/* {!!style && (
               <div className={s.style}>
                 <span className={s.country}>{style} style</span>
                 <img src={countryFlags[style]} alt={style} className={s.flag} />
               </div>
             )} */}
-        </div>
-        {/* TODO: SERGEY,  В НОВОМО МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
-        {/* {!!tastes.length && (
+      </div>
+      {/* TODO: SERGEY,  В НОВОМО МАКЕТЕ ЭТОГО НЕТ, ПОТОМ САМ УДАЛИШЬ, ЕСЛИ НЕ НАДО */}
+      {/* {!!tastes.length && (
             <div className={s.well}>{tastes.map((taste, i) => allTastes[taste])}</div>
           )} */}
-      </div>
-      <h3 className={s.name}>{name}</h3>
-      <span className={s.addition}>{addition}</span>
     </div>
-  );
+    <h3 className={s.name}>{name}</h3>
+    <span className={s.addition}>{addition}</span>
+  </div>
+);

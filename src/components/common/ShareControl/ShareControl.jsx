@@ -2,12 +2,12 @@ import React from "react";
 import { BackButton } from "components/buttons/BackButton/BackButton";
 import { Mail, Telegram, Vk } from "components/SVG/ArticleIcons";
 
-import s from './ShareControl.module.scss';
+import s from "./ShareControl.module.scss";
 
-export const ShareControl = () => (
+export const ShareControl = ({ back }) => (
   <div className={s.sticky}>
     <div className={s.controls}>
-      <BackButton/>
+      {back && <BackButton additionClass="share"/>}
       <div className={s.share}>
         <button type="button" className={s.social}>
           <Vk/>
@@ -21,6 +21,6 @@ export const ShareControl = () => (
       </div>
     </div>
   </div>
-   
-  );
+
+);
 

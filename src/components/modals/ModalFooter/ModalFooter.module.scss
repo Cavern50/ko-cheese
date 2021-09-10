@@ -27,3 +27,9 @@
   @extend %button--gen;
   margin: 1.875rem auto 0 auto;
 }
+
+@media (max-width: $mobile) {
+  .container {
+    padding-bottom: 70px;
+  }
+}

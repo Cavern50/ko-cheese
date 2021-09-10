@@ -6,7 +6,6 @@ import parse from "html-react-parser";
 import s from "./PlanSection.module.scss";
 
 export const PlanSection = ({ pageData }) => {
-  console.log(pageData);
   const { plan: { image, list } } = pageData;
   return (
     <Section>
@@ -16,8 +15,8 @@ export const PlanSection = ({ pageData }) => {
       <div className={s.wrapper}>
         <Wrapper>
           <div className={s.container}>
-            <img src={image} alt="" className={s.image}/>
             {parse(list)}
+            <img src={image} alt="" className={s.image}/>
           </div>
         </Wrapper>
       </div>

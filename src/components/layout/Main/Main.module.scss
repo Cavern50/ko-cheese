@@ -5,10 +5,10 @@
   padding-top: 5rem;
 }
 
-
 .promo {
   padding-top: 0;
 }
+
 .purchase {
   position: relative;
   &::before {
@@ -23,10 +23,29 @@
   }
 }
 
-.farm {
+main.farm {
   padding-bottom: 0;
 }
 
-.cheeseboard {
+main.cheeseboard {
   padding-bottom: 3.125rem
+}
+@media (max-width: $landscape) {
+  main.cheeseboard {
+    padding-bottom: 160px;
+  }
+}
+@media (max-width: $tablet) {
+  .main {
+    padding-bottom: 80px;
+  }
+  main.cheeseboard {
+    padding-bottom: 110px;
+  }
+}
+
+@media (max-width: $mobile) {
+  main.cheeseboard {
+    padding-bottom: 90px;
+  }
 }

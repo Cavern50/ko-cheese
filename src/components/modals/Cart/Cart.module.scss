@@ -14,4 +14,13 @@
 }
 
 
-
+@media (max-width: $mobile) {
+    .promo {
+        align-items: flex-start;
+        margin-bottom: 0;
+        padding: 0;
+        &__text {
+            max-width: 70%;
+        }
+    }
+}

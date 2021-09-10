@@ -8,3 +8,21 @@
 .profile {
     margin: 1.25rem 0 1.875rem 0;
 }
+
+@media (max-width: $landscape) {
+    .title {
+        margin: 50px 0 60px;
+    }
+}
+@media (max-width: $tablet) {
+    .title {
+        margin: 50px 0;
+    }
+}
+
+@media (max-width: $mobile) {
+    .title {
+        margin: 40px 0;
+        font-size: 29px;
+    }
+}

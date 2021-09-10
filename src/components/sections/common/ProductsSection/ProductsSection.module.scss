@@ -23,8 +23,21 @@
 }
 
 @media (max-width: $tablet) {
+   .body {
+      margin-top: 10px;
+   }
    .subcategories {
       width: 85%;
       margin: 30px auto 0 auto;
+   }
+}
+
+@media (max-width: $mobile) {
+   .body {
+      width: 340px;
+   }
+   .subcategories {
+      justify-content: flex-start;
+      width: 100%;
    }
 }

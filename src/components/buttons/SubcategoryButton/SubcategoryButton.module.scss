@@ -18,13 +18,24 @@
      margin-right: 0;
   }
 }
-
-@media (max-width: $tablet) {
+@media (max-width: $landscape) {
   .subcategory {
-
-  }
-  .mainButton {
     margin-bottom: 20px;
+  }
+}
+@media (max-width: $tablet) {
+  //.mainButton {
+  //  margin-bottom: 20px;
+  //}
+}
+
+@media (max-width: $mobile) {
+
+  //.mainButton {
+  //  margin-bottom: 16px;
+  //}
+  .subcategory {
+    margin-bottom: 16px;
   }
 }
 

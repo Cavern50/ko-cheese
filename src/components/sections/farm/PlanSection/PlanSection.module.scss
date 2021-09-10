@@ -22,3 +22,30 @@
   height: 100%;
   object-fit: contain;
 }
+
+@media (max-width: $landscape) {
+  .container {
+    min-height: 50vw;
+  }
+}
+
+@media (max-width: $tablet) {
+  .container {
+    li {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+    padding-top: 28px;
+  }
+  .image {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 40px;
+  }
+}

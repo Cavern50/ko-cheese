@@ -35,6 +35,7 @@
 }
 
 .offer {
+    display: block;
     font-size: 144px;
     font-family: $font-numbers;
 }
@@ -67,5 +68,17 @@
     .offer {
         display: block;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: $mobile) {
+    .promo {
+        padding: 72px 26px;
+    }
+    .info {
+        margin-top: 30px;
+    }
+    .link {
+        font-size: 18px;
     }
 }

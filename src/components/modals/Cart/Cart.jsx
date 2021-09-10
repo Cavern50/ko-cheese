@@ -22,6 +22,11 @@ export const Cart = ({ closeModal }) => {
         <Purchase inCart />
         <Purchase inCart />
         <Purchase inCart />
+        <Purchase inCart />
+        <Purchase inCart />
+        <Purchase inCart />
+        <Purchase inCart />
+        <Purchase inCart />
       </div>
      <ModalFooter/>
     </ModalBody>

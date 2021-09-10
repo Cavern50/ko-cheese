@@ -1,17 +1,22 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
+import SwiperCore, { Navigation, Controller } from "swiper";
 import { SliderNav } from "components/common/Slider/SliderNav/SliderNav";
 
+import { windowSize } from "constants.js";
 import s from "./Slider.module.scss";
 
 export const Slider = ({ children, slides, params, title }) => {
+
   SwiperCore.use([Navigation]);
+  const { sliderClass, slideClass, turnOffAutoSlides, ...restParams } = params.slider;
+  const [allPages, setAllPages] = React.useState(null);
   const prevRef = React.useRef(null);
   const nextRef = React.useRef(null);
   const [currentCount, setCurrentCount] = React.useState(1);
-  const allCount = Math.ceil(slides.length / params.slider.slidesPerView);
-  const { sliderClass, slideClass, ...restParams } = params.slider;
+  const isSlideWidthAuto = params.slider.slidesPerView === "auto" && windowSize <= turnOffAutoSlides;
+  const allCount = Math.ceil(isSlideWidthAuto ? slides.length : (slides.length / allPages || 1));
+
   return (
     <div className={s.container}>
       {params.nav && <SliderNav
@@ -24,10 +29,9 @@ export const Slider = ({ children, slides, params, title }) => {
       />}
       <Swiper
         onInit={(swiper) => {
-          // eslint-disable-next-line no-param-reassign
           swiper.params.navigation.prevEl = prevRef.current;
-          // eslint-disable-next-line no-param-reassign
           swiper.params.navigation.nextEl = nextRef.current;
+          !allPages && setAllPages(swiper.params.slidesPerView);
           swiper.navigation.update();
         }}
         navigation

@@ -2,13 +2,15 @@
 @import '../../../styles/root';
 
 .btn {
-    @extend %button--circle;
-    &_small {
-       width: 40px;
-       height: 40px;
-    }
-    &:hover path {
-       stroke: unset;
-       fill: $accent;
-    }
- }
+  @extend %button--circle;
+  width: 40px;
+  height: 40px;
+  //&_small {
+  //   width: 40px;
+  //   height: 40px;
+  //}
+  &:hover path {
+    stroke: unset;
+    fill: $accent;
+  }
+}

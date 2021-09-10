@@ -1,11 +1,26 @@
+@import "/src/styles/root";
+
 .block {
   margin-top: 7.5rem;
 }
 
-.small {
+section.small {
   margin-top: 3.125rem;
 }
 
-.none {
+section.none {
   margin-top: 0;
 }
+
+@media (max-width: $landscape) {
+  .block {
+    margin-top: 75px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .block {
+    margin-top: 40px;
+  }
+}
+

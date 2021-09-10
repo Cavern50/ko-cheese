@@ -5,13 +5,18 @@ import {
 } from "components/SVG/ArticleIcons";
 
 import { Section } from "components/layout/Section/Section";
+import clsx from "clsx";
+import { windowSize } from "constants.js";
 import s from "./IntroSection.module.scss";
 
 // eslint-disable-next-line import/prefer-default-export
+
 export const IntroSection = ({ article }) => {
+
     const { name, text, time, persons, image, ingredients } = article;
+
     return (
-      <Section margin='small'>
+      <Section margin={clsx(windowSize > 768 ? "small" : "none")}>
         <h1 className={s.title}>{name}</h1>
         <p className={s.description}>
           {text}

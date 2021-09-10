@@ -79,3 +79,15 @@
 @media (max-width: $landscape) {
 
 }
+
+@media (max-width: $tablet) {
+    .title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .title {
+        font-size: 29px;
+    }
+}

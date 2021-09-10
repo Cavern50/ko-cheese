@@ -94,3 +94,22 @@
     opacity: 0.6;
     margin: 0 0.25rem 0 0.875rem;
 }
+
+
+@media (max-width: $tablet) {
+   .inCart {
+      margin-top: 0;
+   }
+}
+
+@media (max-width: $mobile) {
+   .inCart {
+      margin-top: 10px;
+   }
+   .counter {
+      margin-right: 10px;
+   }
+   .delivery {
+      margin-top: 16px;
+   }
+}

@@ -21,3 +21,15 @@
     color: $accent;
   }
 }
+
+@media (max-width: $tablet) {
+  .container {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    margin-top: 10px;
+  }
+}

@@ -1,4 +1,4 @@
-@import "../../../styles/root";
+@import "/src/styles/root";
 
 .container {
     width: 100%;
@@ -18,5 +18,11 @@
         path {
             fill: $accent;
         }
+    }
+}
+
+@media (max-width: $landscape) {
+    .share {
+        margin-top: 14px;
     }
 }

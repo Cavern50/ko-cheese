@@ -2,21 +2,26 @@ import React from "react";
 import clsx from "clsx";
 import { DeliveryIcon, FavoriteIcon, MinusIcon, PlusIcon } from "components/SVG/Icons";
 import { useDispatch } from "react-redux";
-import { cartModalToggleAction, favoriteModalToggleAction, subscribeModalToggleAction } from "redux/actions/modalsAction";
+import {
+  cartChangeModalState,
+  favoriteChangeModalState,
+  subscribeChangeModalState
+} from "redux/slices/modals";
+
 import { RemoveButton } from "../../buttons/RemoveButton/RemoveButton";
 import s from "./PurchaseControl.module.scss";
 
-export const PurchaseControl = ({ id, inCart }) => {
+export const PurchaseControl = ({ id, inCart, additionClass }) => {
   const dispatch = useDispatch();
   const cartModalHandler = () => {
-    dispatch(cartModalToggleAction(true));
+    dispatch(cartChangeModalState(true));
   };
   const favoriteModalHandler = () => {
-    dispatch(favoriteModalToggleAction(true));
+    dispatch(favoriteChangeModalState(true));
   };
 
   const subscribeModalHandler = () => {
-    dispatch(subscribeModalToggleAction(true));
+    dispatch(subscribeChangeModalState(true));
   };
 
   const [count, setCount] = React.useState(1);
@@ -35,8 +40,8 @@ export const PurchaseControl = ({ id, inCart }) => {
 
   return (
     <>
-      <div className={s.container}>
-        <div className={clsx(s.counter)}>
+      <div className={clsx(s.container, s[additionClass])}>
+        <div className={s.counter}>
           <button
             type="button"
             className={clsx(s.change, s.minus)}
@@ -44,7 +49,7 @@ export const PurchaseControl = ({ id, inCart }) => {
           >
             <MinusIcon/>
           </button>
-          <span className={clsx(s.count)}>{count}</span>
+          <span className={s.count}>{count}</span>
           <button
             type="button"
             className={clsx(s.change, s.plus)}
@@ -57,8 +62,8 @@ export const PurchaseControl = ({ id, inCart }) => {
           <RemoveButton/>
         ) : (
           <>
-            <button type="button" className={clsx(s.add)} onClick={cartModalHandler}>в корзину</button>
-            <button type="button" className={clsx(s.favorite)} onClick={favoriteModalHandler}>
+            <button type="button" className={s.add} onClick={cartModalHandler}>в корзину</button>
+            <button type="button" className={s.favorite} onClick={favoriteModalHandler}>
               <FavoriteIcon/>
             </button>
           </>
@@ -67,10 +72,10 @@ export const PurchaseControl = ({ id, inCart }) => {
       {!inCart &&
       <button type="button" className={s.subscribe} onClick={subscribeModalHandler}><span>Подписаться на доставку</span>
       </button>}
-      <div className={clsx(s.delivery)}>
+      <div className={s.delivery}>
         <DeliveryIcon/>
-        <span className={clsx(s.text)}>Ближайшая доставка: </span>
-        <span className={clsx(s.terms)}>15.05.2021 </span>
+        <span className={s.text}>Ближайшая доставка: </span>
+        <span className={s.terms}>15.05.2021 </span>
       </div>
     </>
   );

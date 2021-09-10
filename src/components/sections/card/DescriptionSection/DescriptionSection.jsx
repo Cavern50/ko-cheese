@@ -7,20 +7,14 @@ import { BackButton } from "components/buttons/BackButton/BackButton";
 import { Thumbnails } from "components/common/Thumbnails/Thumbnails";
 import { PurchaseControl } from "components/common/PurchaseControl/PurchaseControl";
 import { ProductProperty } from "components/Product/ProductProperty/ProductProperty";
-import { allTastes , mainModalProperties } from "constants.js";
-import { useModal } from "hooks";
+import { allTastes  } from "constants.js";
 import g from "styles/Main.module.scss";
 import { ProductNutrient } from "components/Product/ProductNutrient/ProductNutrient";
-import { Subscribe } from "components/modals/Subscribe/Subscribe";
-import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import s from "./DescriptionSection.module.scss";
 
 export const DescriptionSection = ({ id, product }) => {
   const { info, nutritional } = product.properties;
-  const subscribeModal = useModal();
-  const subscribeHandler = () => {
-    subscribeModal.showModal();
-  };
+
   return (
     <>
       <BackButton/>

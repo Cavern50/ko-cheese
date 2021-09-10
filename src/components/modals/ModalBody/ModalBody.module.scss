@@ -24,4 +24,12 @@
     }
 }
 
+@media (max-width: $tablet) {
+    .title {
+        font-size: 36px;
+    }
+}
 
+@media (max-width: $mobile) {
+
+}

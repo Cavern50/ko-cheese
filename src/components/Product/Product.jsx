@@ -34,7 +34,6 @@ export const Product = (props) => {
         <span className={s.weight}>{weight}</span>
       </div>
       <h3 className={s.price}>{price} руб.</h3>
-      <span className={s.more}>Подробнее</span>
       <Link href={`/products/${id}`}><a className={s.link}/></Link>
     </div>
 

@@ -21,3 +21,14 @@
     transform: translateY(-50%);
     right: 1.25rem;
 }
+
+@media (max-width: $mobile) {
+    .container {
+        margin-top: 20px;
+        padding: 20px 75px;
+        text-align: center;
+    }
+    .text {
+        font-size: 14px;
+    }
+}

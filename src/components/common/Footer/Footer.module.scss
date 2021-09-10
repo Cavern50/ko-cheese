@@ -94,3 +94,12 @@
         width: 100%;
     }
 }
+
+@media (max-width: $landscape) {
+    .address {
+        display: none;
+    }
+    .link {
+        width: 100%;
+    }
+}

@@ -10,13 +10,12 @@ import { H1 } from "components/layout/H1/H1";
 
 export const IntroSection = ({ categories, url, pageData }) => {
   const { promoImage, title } = pageData;
-  // eslint-disable-next-line array-callback-return,consistent-return
   const { activeId, toggleActiveId } = useTabs(categories.find(category => category.url === url).id, false);
 
   return (
     <Section>
       <Wrapper>
-        <Tabs>
+        <Tabs additionClass="farm">
           {
             // eslint-disable-next-line no-shadow
             categories.map(({ title, id, url }) =>
@@ -25,7 +24,8 @@ export const IntroSection = ({ categories, url, pageData }) => {
                   <TabButton index={id}
                              active={activeId}
                              toggleActive={toggleActiveId}
-                             text={title}/>
+                             text={title}
+                             additionClass="farm"/>
                 </a>
               </Link>
             )}

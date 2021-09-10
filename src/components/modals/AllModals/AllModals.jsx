@@ -5,17 +5,21 @@ import { Cart } from "components/modals/Cart/Cart";
 import { Favorite } from "components/modals/Favorite/Favorite";
 import { Subscribe } from "components/modals/Subscribe/Subscribe";
 import { Letter } from "components/modals/Letter/Letter";
+import { Menu } from "components/modals/Menu/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import {
   cartModalSelector,
   favoriteModalSelector,
   subscribeModalSelector,
   letterModalSelector,
+  menuModalSelector,
   cartChangeModalState,
   favoriteChangeModalState,
   letterChangeModalState,
-  subscribeChangeModalState
+  subscribeChangeModalState,
+  menuChangeModalState
 } from "redux/slices/modals";
+
 
 
 export const AllModals = () => {
@@ -24,7 +28,8 @@ export const AllModals = () => {
   const favoriteModalValue = useSelector(favoriteModalSelector);
   const subscribeModalValue = useSelector(subscribeModalSelector);
   const letterModalValue = useSelector(letterModalSelector);
-  console.log(cartChangeModalState);
+  const menuModalValue = useSelector(menuModalSelector);
+
   const cartModalCloseHandler = () => {
     dispatch(cartChangeModalState(false));
   };
@@ -41,10 +46,12 @@ export const AllModals = () => {
     dispatch(letterChangeModalState(false));
   };
 
+  const menuModalCloseHandler = () => {
+    dispatch(menuChangeModalState(false));
+  };
 
   return (
     <>
-
       <ModalWrapper closeModal={cartModalCloseHandler}
                     show={cartModalValue}
                     stopScroll
@@ -68,6 +75,13 @@ export const AllModals = () => {
                     stopScroll
                     {...mainModalProperties}>
         <Letter closeModal={letterModalCloseHandler}/>
+      </ModalWrapper>
+      <ModalWrapper closeModal={menuModalCloseHandler}
+                    show={menuModalValue}
+                    stopScroll
+                    additionClass="menu"
+                    {...mainModalProperties}>
+        <Menu/>
       </ModalWrapper>
     </>
   );

@@ -6,7 +6,7 @@ import { Tabs } from "components/layout/Tabs/Tabs";
 import { TabButton } from "components/buttons/TabButton/TabButton";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
-import { windowWidth } from "constants.js";
+import { windowSize } from "constants.js";
 
 import { useTabs } from "hooks";
 
@@ -58,7 +58,7 @@ export const ProductsSection = ({ products, categories }) => {
         <div className={s.body}>
           {products && products.map((product) => <Product key={product.id} {...product} />)}
         </div>
-        {windowWidth <= 1200 && <button type="button" className={s.more}>Показать еще <span>(4)</span></button>}
+        {windowSize <= 1200 && <button type="button" className={s.more}>Показать еще <span>(4)</span></button>}
       </Wrapper>
     </Section>
 

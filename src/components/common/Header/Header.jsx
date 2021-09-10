@@ -3,7 +3,9 @@ import clsx from "clsx";
 import Link from "next/link";
 import {
   cartChangeModalState,
-  favoriteChangeModalState
+  favoriteChangeModalState,
+  menuChangeModalState,
+  menuModalSelector
 } from "redux/slices/modals";
 
 
@@ -12,7 +14,7 @@ import { MainLogo } from "components/SVG/MainLogo";
 
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { FavoriteIcon, CartIcon } from "components/SVG/Icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./Header.module.scss";
 
 const headerLinks = [
@@ -28,29 +30,35 @@ const headerLinks = [
 export const Header = ({ router }) => {
 
   const dispatch = useDispatch();
-
+  const menuModalValue = useSelector(menuModalSelector);
   const favoriteModalHandler = () => {
     dispatch(favoriteChangeModalState(true));
   };
 
   const cartModalHandler = () => {
     dispatch(cartChangeModalState(true));
+    dispatch(menuChangeModalState(false));
   };
+
+  const menuModalHandler = (value) => {
+    dispatch(menuChangeModalState(value));
+  };
+
 
   const isPromoPage = router.pathname === "/";
 
   return (
     <>
-      <header className={s.header}>
+      <header className={clsx(s.header, menuModalValue && s.menuOpen)}>
         <Wrapper>
-          <div className={clsx(s.container, isPromoPage ? s.border_accent : "")}>
+          <div className={clsx(s.container, (isPromoPage || menuModalValue) ? s.border_accent : "")}>
             <nav className={s.nav}>
               {headerLinks.map((el, i) =>
                 el.logo ? (
                   <Link href="/" key={i}>
-                    <a className={clsx(
+                    <a onClick={() => menuModalHandler(false)} className={clsx(
                       s.logo,
-                      isPromoPage ? s.logo_accent : ""
+                      isPromoPage || menuModalValue ? s.logo_accent : ""
                     )}
                     >
                       <MainLogo/>
@@ -79,12 +87,20 @@ export const Header = ({ router }) => {
               </button>
               <button
                 type="button"
-                className={clsx(s.button, isPromoPage && s.button_accent)}
+                className={clsx(s.button, (isPromoPage || menuModalValue) && s.button_accent)}
                 onClick={cartModalHandler}
               >
-                <CartIcon className={clsx(s.cardIcon, isPromoPage && s.cardIcon__accent)}/>
+                <CartIcon className={clsx(s.cardIcon, (isPromoPage || menuModalValue) && s.cardIcon__accent)}/>
               </button>
             </div>
+            <button
+              type="button"
+              className={clsx(s.burger, s.button, (isPromoPage || menuModalValue) && s.button_accent, menuModalValue && s.burgerOpen)}
+              onClick={() => menuModalHandler(!menuModalValue)}>
+              <span className={s.line}>
+                <span/>
+              </span>
+            </button>
           </div>
         </Wrapper>
       </header>

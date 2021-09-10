@@ -3,10 +3,9 @@ import clsx from "clsx";
 import s from "./SliderCounter.module.scss";
 
 export const SliderCounter = (props) => {
-  const { isGallery, counter, counterBottom, currentCount, allCount, prev, next } = props;
-  console.log(prev, next);
+  const { isGallery, counter, counterBottom, currentCount, allCount, prev, next, additionClass } = props;
   return (
-    <div className={clsx(s.container, isGallery && s.full, counterBottom && s.bottom)}>
+    <div className={clsx(s.container, isGallery && s.full, counterBottom && s.bottom, s[additionClass])}>
       {counter && (
         <div className={clsx(s.counter, isGallery && s.large)}>
                   <span>

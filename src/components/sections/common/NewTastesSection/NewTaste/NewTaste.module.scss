@@ -116,8 +116,14 @@
     margin-top: 0.625rem;
 }
 
-@media (max-width: $landscape) {
-    .body {
+//@media (max-width: $landscape) {
+//    .body {
+//
+//    }
+//}
 
+@media (max-width: $mobile) {
+    .body {
+        height: 400px;
     }
 }
