@@ -38,7 +38,7 @@ const sliderParams = {
     slidesPerView: "auto",
     slidesPerGroup: 1,
     spaceBetween: 0,
-    slideClass: 'borderSlide'
+    slideClass: "borderSlide"
   },
   nav: {
     counterBottom: true,
@@ -51,17 +51,22 @@ export const PartnersSection = () => (
   <Section>
     <Wrapper>
       <h2 className={s.title}>Партнеры</h2>
-      {
-        windowSize >= 768 ?
-          <div className={s.grid}>
-            {partners.map((partner) => (
-              <Partner key={partner} url={partner}/>
-            ))}
-          </div> :
-          <Slider params={sliderParams} slides={partners}>
-            <Partner/>
-          </Slider>
-      }
+      {/*{*/}
+      {/*  windowSize >= 768 ?*/}
+      {/*    <div className={s.grid}>*/}
+      {/*      {partners.map((partner) => (*/}
+      {/*        <Partner key={partner} url={partner}/>*/}
+      {/*      ))}*/}
+      {/*    </div> :*/}
+      {/*    <Slider params={sliderParams} slides={partners}>*/}
+      {/*      <Partner/>*/}
+      {/*    </Slider>*/}
+      {/*}*/}
+      <div className={s.grid}>
+        {partners.map((partner) => (
+          <Partner key={partner} url={partner.url}/>
+        ))}
+      </div>
     </Wrapper>
   </Section>
 );
