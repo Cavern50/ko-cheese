@@ -120,9 +120,9 @@ h3 {
 }
 
 section {
-  &:not(:first-of-type) {
-    margin-top: 7.5rem;
-  }
+  //&:not(:first-of-type) {
+  //  margin-top: 7.5rem;
+  //}
 }
 
 .slider_border.swiper-container {
@@ -216,15 +216,15 @@ section {
   html {
     font-size: 16px;
   }
-  h1 {
-    font-size: 48px;
-  }
+  //h1 {
+  //  font-size: 48px;
+  //}
 }
 
 @media (max-width: $tablet) {
-  h1 {
-    font-size: 28px;
-  }
+  //h1 {
+  //  font-size: 64px;
+  //}
   h2 {
     font-size: 24px;
   }
