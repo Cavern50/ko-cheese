@@ -25,7 +25,6 @@
 import { configureStore, createSlice, ThunkAction } from "@reduxjs/toolkit";
 import { Action } from "redux";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
-import modalsReducer, { modalsInitialState } from "redux/reducers/modalsReducer";
 import { modalsSlice } from "redux/slices/modals";
 
 const makeStore = () =>

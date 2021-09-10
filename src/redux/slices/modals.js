@@ -5,7 +5,8 @@ const initialState = {
   cart: false,
   favorite: false,
   subscribe: false,
-  letter: false
+  letter: false,
+  menu: false
 };
 
 export const modalsSlice = createSlice({
@@ -23,11 +24,13 @@ export const modalsSlice = createSlice({
     },
     letterChangeModalState(state, action) {
       state.letter = action.payload;
+    },
+    menuChangeModalState(state, action) {
+      state.menu = action.payload;
     }
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      console.log("HYDRATE", state, action.payload);
       return {
         ...state,
         ...action.payload.some
@@ -40,13 +43,13 @@ export const {
   cartChangeModalState,
   favoriteChangeModalState,
   letterChangeModalState,
-  subscribeChangeModalState
+  subscribeChangeModalState,
+  menuChangeModalState
 } = modalsSlice.actions;
-
-console.log(cartChangeModalState);
 
 export const cartModalSelector = (state) => state.modals.cart;
 export const favoriteModalSelector = (state) => state.modals.favorite;
 export const subscribeModalSelector = (state) => state.modals.subscribe;
 export const letterModalSelector = (state) => state.modals.letter;
+export const menuModalSelector = (state) => state.modals.menu;
 
