@@ -8,6 +8,7 @@ import { Header } from 'components/common/Header/Header';
 import { Main } from 'components/layout/Main/Main';
 import { Footer } from 'components/common/Footer/Footer';
 import {AllModals} from "components/modals/AllModals/AllModals";
+import { isClientSide, windowSize } from "constants.js";
 
 const MyApp = ({ Component, pageProps, router }) => {
   return (
@@ -18,6 +19,7 @@ const MyApp = ({ Component, pageProps, router }) => {
       </Main>
       <Footer />
       <AllModals/>
+    {isClientSide && windowSize < 768 && <Submenu/>}
     </>
   );
 }
