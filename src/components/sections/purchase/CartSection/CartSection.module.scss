@@ -47,3 +47,20 @@
     justify-content: flex-end;
     min-width: 5.5rem;
 }
+
+@media (max-width: $landscape) {
+    .cart {
+        padding-left: 12px;
+    }
+}
+
+@media (max-width: $mobile) {
+    .container {
+        width: 100%;
+        margin-top: 50px;
+        padding-bottom: 110px;
+    }
+    .cart {
+        padding-left: 0;
+    }
+}

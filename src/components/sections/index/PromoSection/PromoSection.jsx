@@ -11,14 +11,13 @@ export const PromoSection = () => (
         <span className={s.intro}>Изысканность и свежесть</span>
         <h1 className={s.title}>
           Премиальные молочные продукты
-          <br />
-          <span className={g.italic}> и сыры с благородной плесенью</span> <br />
+          и сыры с благородной плесенью
           ручной работы
         </h1>
         <div className={s.footer}>
           <a href="" className={s.link}>
             <span>Наш телеграм канал</span>
-            {<Telegram />}
+            {<Telegram/>}
           </a>
         </div>
       </div>

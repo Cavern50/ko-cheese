@@ -2,7 +2,7 @@
 @import '/src/styles/root.scss';
 
 .card {
-  width: 19.375rem;
+  width: calc(25% - 1.25rem);
   margin-right: 1.25rem;
   &:last-child {
     margin-right: 0;
@@ -34,4 +34,39 @@
 .image {
   height: 14.5rem;
   object-fit: cover;
+}
+
+@media (max-width: $landscape) {
+  .card {
+    width: calc(33% - 12px);
+  }
+  .header {
+    min-height: 165px;
+  }
+  .image {
+    height: 250px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .card {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+    &:nth-child(3n) {
+      margin-right: 20px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .card {
+    width: 100%;
+    margin: 0;
+  }
+  .info {
+    max-width: 100%;
+  }
 }

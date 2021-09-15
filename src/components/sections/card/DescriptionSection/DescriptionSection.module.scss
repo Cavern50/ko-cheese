@@ -88,3 +88,78 @@
     margin-top: 3.125rem;
 }
 
+@media (max-width: $landscape) {
+  .nutrients {
+    flex-wrap: wrap;
+  }
+  .about {
+    max-width: 100%;
+  }
+  .column {
+    &:first-child {
+      margin-right: 50px;
+    }
+  }
+  .block {
+    width: 55%;
+  }
+  .statuses {
+    margin-top: 30px;
+  }
+  .price {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .properties {
+    margin-left: 0;
+  }
+  .block {
+    width: 45%;
+  }
+  .info {
+    width: 50%;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .block,
+  .info {
+    width: 100%;
+  }
+  .block {
+    position: static;
+  }
+  .slide {
+    height: 462px;
+    object-fit: cover;
+  }
+  .title {
+    margin-top: 23px;
+  }
+  .statuses {
+    margin-top: 20px;
+  }
+  .properties {
+    justify-content: space-between;
+  }
+  .column {
+    width: 55%;
+    &:first-child {
+      margin-right: 0;
+    }
+    &:last-child {
+      width: 40%;
+    }
+  }
+  .nutrients {
+    margin-top: 10px;
+  }
+  .description {
+    margin-top: 35px;
+  }
+}

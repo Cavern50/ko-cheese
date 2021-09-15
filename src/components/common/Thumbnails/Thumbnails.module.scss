@@ -1,4 +1,4 @@
-@import "../../../styles/root";
+@import '/src/styles/root';
 
 .container {
     display: flex;
@@ -29,4 +29,31 @@
     height: 45rem;
     object-fit: cover;
     object-position: top;
+}
+
+@media (max-width: $landscape) {
+    .main {
+        width: 400px;
+        height: 554px;
+    }
+    .preview {
+        margin-right: 20px;
+    }
+    .mini {
+        width: 69px;
+        height: 69px;
+        &:not(:first-child) {
+            margin-top: 0;
+        }
+    }
+}
+
+@media (max-width: $tablet) {
+    .main {
+        width: 250px;
+        height: 320px;
+    }
+    .block {
+        width: 45%;
+    }
 }

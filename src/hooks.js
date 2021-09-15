@@ -34,16 +34,10 @@ export const useTabs = (init = null, isRemovable = true) => {
   return { activeId, setActiveId, toggleActiveId };
 };
 
-
-export const windowWidth = () => {
-
-  const [mounted, setMounted] = React.useState(false);
-
+export const useClientSide = () => {
+  const [isRender, setIsRender] = React.useState(null);
   React.useEffect(() => {
-    setMounted(window.innerWidth);
-  }, []);
-
-
-  return mounted;
+    setIsRender(true);
+  });
+  return isRender;
 };
-

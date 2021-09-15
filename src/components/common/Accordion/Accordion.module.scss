@@ -75,6 +75,12 @@
    font-family: $font-service--bold;
 }
 
+@media (max-width: $landscape) {
+   .content {
+      max-width: 100%;
+   }
+}
+
 @media (max-width: $tablet) {
    .content {
       &--main {
@@ -85,15 +91,26 @@
 
 @media (max-width: $mobile) {
    .trigger {
-      font-size: 18px;
+      font-size: 24px;
       &::after {
-         padding: 9px;
+         width: 13px;
+         height: 13px;
+         padding: 0;
+      }
+      &--main {
+         font-size: 18px;
+         &::after {
+            width: 30px;
+            height: 30px;
+         }
       }
    }
    .content {
+      max-width: 95%;
       &--main {
          max-width: 80%;
       }
    }
+
 }
 

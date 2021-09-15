@@ -1,11 +1,16 @@
-import React from 'react';
-import Head from 'next/head';
-import { Wrapper } from 'components/layout/Wrapper/Wrapper';
-import { WrapperNarrow } from 'components/layout/WrapperNarrow/WrapperNarrow';
-import { IntroSection } from 'components/sections/article/IntroSection/IntroSection';
-import { RecommendSection } from 'components/sections/article/RecommendSection/RecommendSection';
-import { StepsSection } from 'components/sections/article/StepsSection/StepsSection';
-import { RecipesSliderSection } from 'components/sections/common/RecipesSliderSection/RecipesSliderSection';
+import React from "react";
+import Head from "next/head";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
+import { WrapperNarrow } from "components/layout/WrapperNarrow/WrapperNarrow";
+import { IntroSection } from "components/sections/article/IntroSection/IntroSection";
+import { RecommendSection } from "components/sections/article/RecommendSection/RecommendSection";
+import { StepsSection } from "components/sections/article/StepsSection/StepsSection";
+import { RecipesSliderSection } from "components/sections/common/RecipesSliderSection/RecipesSliderSection";
+import ProductsAPI from "api/ProductsAPI";
+import ArticlesAPI from "api/ArticlesAPI";
+import { windowSize } from "constants.js";
+import { BackButton } from "components/buttons/BackButton/BackButton";
+import axios from "axios";
 import DataAPI from 'api/DataAPI';
 import ArticlesAPI from 'api/ArticlesAPI';
 import { ShareControl } from 'components/common/ShareControl/ShareControl';
@@ -16,11 +21,13 @@ const Article = ({ recipes, products, article }) => (
       <title>Страница рецепта</title>
     </Head>
     <Wrapper style={{ position: 'relative' }}>
-      <ShareControl/>
+        {windowSize > 768 && <ShareControl back/>}
+        {windowSize < 768 && <BackButton/>}
       <WrapperNarrow>
         <IntroSection article={article}/>
         <RecommendSection products={products}/>
-        {article.stages && <StepsSection stages={article.stages}/>}
+          {article.stages && <StepsSection stages={article.stages}/>}
+          {windowSize < 768 && <ShareControl/>}
       </WrapperNarrow>
     </Wrapper>
     <Wrapper>

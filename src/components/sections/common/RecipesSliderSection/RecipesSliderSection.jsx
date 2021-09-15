@@ -5,7 +5,6 @@ import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { windowSize } from "constants.js";
 
-
 const sliderParams = {
   slider: {
     slidesPerView: "auto",
@@ -31,7 +30,9 @@ const sliderParams = {
   }
 };
 
+
 export const RecipesSliderSection = ({ recipes, title }) => {
+
     // const result = async () => {
     //   const r = await axios.get("http://192.168.1.141/api/test/").then(res => res);
     //   console.log(r.data);

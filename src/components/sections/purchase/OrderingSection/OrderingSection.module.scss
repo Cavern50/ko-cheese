@@ -48,3 +48,54 @@
     margin-top: 7.5rem;
     font-size: 1.125rem;
 }
+
+@media (max-width: $landscape) {
+  .purchase {
+    width: 382px;
+  }
+  .steps {
+    margin-top: 70px;
+  }
+  .submit {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .purchase {
+    width: 320px;
+  }
+  .submit {
+    height: 56px;
+    margin-top: 60px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .purchase {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  .submit {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    max-width: 420px;
+  }
+  .steps {
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba($gen, .3);
+  }
+  .title {
+    text-align: left;
+  }
+}

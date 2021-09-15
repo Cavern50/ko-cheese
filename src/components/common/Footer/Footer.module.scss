@@ -97,9 +97,32 @@
 
 @media (max-width: $landscape) {
     .address {
-        display: none;
+        font-size: 12px;
+        line-height: 20px;
     }
     .link {
         width: 100%;
+    }
+}
+
+@media (max-width: $mobile) {
+    .footer {
+        padding-bottom: 80px;
+        padding-top: 50px;
+    }
+    .title {
+        font-size: 18px;
+    }
+    .corp {
+        display: block;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+    .company {
+        max-width: 60%;
+        margin: 18px auto 0;
+    }
+    .asap {
+        margin-top: 18px;
     }
 }

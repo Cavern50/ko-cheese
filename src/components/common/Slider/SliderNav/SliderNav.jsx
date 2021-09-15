@@ -5,8 +5,8 @@ import { SliderCounter } from "components/common/Slider/SliderCounter/SliderCoun
 import s from "./SliderNav.module.scss";
 
 export const SliderNav = (props) => {
-  const { title, prev, next, allCount, currentCount, params: { counter, counterBottom, seeAll, isGallery, additionClass } } = props;
-  const counterProps = { isGallery, counter, counterBottom, currentCount, allCount, prev, next, additionClass };
+  const { title, prev, next, allCount, currentCount, params: { counter, counterBottom, seeAll, isGallery, additionClass, hide } } = props;
+  const counterProps = { isGallery, counter, counterBottom, currentCount, allCount, prev, next, additionClass, hide };
   return (
     <>
       <div className={clsx(s.wrapper, isGallery && s.bottom)}>

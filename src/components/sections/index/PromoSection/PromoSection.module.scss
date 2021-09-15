@@ -87,7 +87,19 @@
 }
 
 @media (max-width: $mobile) {
+    .promo {
+        height: 650px;
+    }
+    .container {
+        display: block;
+        height: fit-content;
+        margin-top: 50px;
+    }
     .title {
         font-size: 29px;
+        margin-top: 48px;
+    }
+    .link {
+        margin-top: 110px;
     }
 }

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Controller } from "swiper";
 import { SliderNav } from "components/common/Slider/SliderNav/SliderNav";
 
-import { windowSize } from "constants.js";
+import { windowSize, isClientSide } from "constants.js";
 import s from "./Slider.module.scss";
 
 export const Slider = ({ children, slides, params, title }) => {
@@ -16,9 +16,8 @@ export const Slider = ({ children, slides, params, title }) => {
   const [currentCount, setCurrentCount] = React.useState(1);
   const isSlideWidthAuto = params.slider.slidesPerView === "auto" && windowSize <= turnOffAutoSlides;
   const allCount = Math.ceil(isSlideWidthAuto ? slides.length : (slides.length / allPages || 1));
-
   return (
-    <div className={s.container}>
+    isClientSide && (<div className={s.container}>
       {params.nav && <SliderNav
         title={title}
         prev={prevRef}
@@ -46,6 +45,6 @@ export const Slider = ({ children, slides, params, title }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </div>)
   );
 };

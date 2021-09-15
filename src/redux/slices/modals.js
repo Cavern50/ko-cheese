@@ -27,6 +27,9 @@ export const modalsSlice = createSlice({
     },
     menuChangeModalState(state, action) {
       state.menu = action.payload;
+    },
+    closeAllModals() {
+      return {...initialState}
     }
   },
   extraReducers: {
@@ -44,7 +47,8 @@ export const {
   favoriteChangeModalState,
   letterChangeModalState,
   subscribeChangeModalState,
-  menuChangeModalState
+  menuChangeModalState,
+  closeAllModals
 } = modalsSlice.actions;
 
 export const cartModalSelector = (state) => state.modals.cart;

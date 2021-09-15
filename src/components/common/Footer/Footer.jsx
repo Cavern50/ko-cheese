@@ -69,7 +69,7 @@ export const Footer = () => {
                 </a>
               </Link>
             }
-            <div>
+            <div className={s.company}>
               <span>©Ko&Co, 2021г. Все права защищены.</span>
             </div>
             <a

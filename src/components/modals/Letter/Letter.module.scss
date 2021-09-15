@@ -50,3 +50,10 @@
   @extend %button--gen;
   margin: 3.125rem auto 0 auto;
 }
+
+@media (max-width: $mobile) {
+  .container {
+    width: 100%;
+    padding-bottom: 110px;
+  }
+}

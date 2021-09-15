@@ -4,32 +4,47 @@ import { DescriptionSection } from "components/sections/card/DescriptionSection/
 import { Slider } from "components/common/Slider/Slider";
 import { Product } from "components/Product/Product";
 
-import ProductsAPI from 'api/ProductsAPI';
+import ProductsAPI from "api/ProductsAPI";
+import ArticlesAPI from "api/ArticlesAPI";
 
-import { Wrapper } from 'components/layout/Wrapper/Wrapper';
-import { RecipesSliderSection } from 'components/sections/common/RecipesSliderSection/RecipesSliderSection';
-import ArticlesAPI from 'api/ArticlesAPI';
-import s from './ProductPage.module.scss';
-import { Section } from 'components/layout/Section/Section';
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
+import { RecipesSliderSection } from "components/sections/common/RecipesSliderSection/RecipesSliderSection";
+import { Section } from "components/layout/Section/Section";
+import { windowSize, isClientSide } from "constants.js";
+import g from '/src/styles/Main.module.scss';
+import Link from "next/link";
 import DataAPI from 'api/DataAPI.js';
 
 const sliderParams = {
   slider: {
-    slidesPerView: 4,
+    slidesPerView: "auto",
     slidesPerGroup: 1,
     spaceBetween: 0,
-    slideClass: 'product_slide',
-    className: 'slider_border'
+    slideClass: "product_slide",
+    className: "slider_border",
+    breakpoints: {
+      767: {
+        slidesPerView: 2.002
+      },
+      1023: {
+        slidesPerView: 3.002
+      },
+      1200: {
+        slidesPerView: 4.002
+      }
+    }
   },
   nav: {
+    hide: windowSize <= 768,
     counter: false,
     seeAll: {
-      visible: true,
-      position: 'right',
-      link: '/products'
+      visible: windowSize >= 768 && true,
+      position: windowSize >= 768 ? "right" : "bottom",
+      link: "/products"
     }
   }
 };
+
 
 const Card = ({ id, product, products, recipes }) => (
   <>
@@ -39,6 +54,10 @@ const Card = ({ id, product, products, recipes }) => (
         <Slider title={'Мы рекомендуем'} slides={products} params={sliderParams}>
           <Product additionClass={'card_slider'}/>
         </Slider>
+        {isClientSide && windowSize < 768 &&
+        <Link href="/products">
+          <a className={g.link}>Посмотреть все</a>
+        </Link>}
       </Section>
     </Wrapper>
     <RecipesSliderSection title="Рецепты" recipes={recipes}/>

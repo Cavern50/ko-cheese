@@ -95,7 +95,11 @@
     margin: 0 0.25rem 0 0.875rem;
 }
 
-
+@media (max-width: $landscape) {
+   .subscribe {
+      width: 300px;
+   }
+}
 @media (max-width: $tablet) {
    .inCart {
       margin-top: 0;
@@ -111,5 +115,10 @@
    }
    .delivery {
       margin-top: 16px;
+   }
+   .subscribe {
+      width: 100%;
+      max-width: 420px;
+      margin-bottom: 45px;
    }
 }

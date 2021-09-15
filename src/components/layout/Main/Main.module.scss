@@ -48,4 +48,9 @@ main.cheeseboard {
   main.cheeseboard {
     padding-bottom: 90px;
   }
+  main.purchase {
+    &::before {
+      display: none;
+    }
+  }
 }

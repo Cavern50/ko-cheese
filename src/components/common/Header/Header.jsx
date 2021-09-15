@@ -8,7 +8,6 @@ import {
   menuModalSelector
 } from "redux/slices/modals";
 
-
 import { MainLogo } from "components/SVG/MainLogo";
 
 

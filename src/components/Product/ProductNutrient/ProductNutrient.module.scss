@@ -1,4 +1,4 @@
-@import "../../../styles/root";
+@import "/src/styles/root";
 
 .element {
   display: flex;
@@ -14,5 +14,11 @@
   font-size: 0.875rem;
   &:last-child {
     margin-right: 0;
+  }
+}
+
+@media (max-width: $landscape) {
+  .element {
+    margin-top: 12px;
   }
 }

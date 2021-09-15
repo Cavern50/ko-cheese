@@ -3,7 +3,7 @@ import clsx from "clsx";
 import s from "./SliderCounter.module.scss";
 
 export const SliderCounter = (props) => {
-  const { isGallery, counter, counterBottom, currentCount, allCount, prev, next, additionClass } = props;
+  const { isGallery, counter, counterBottom, currentCount, allCount, prev, next, additionClass, hide } = props;
   return (
     <div className={clsx(s.container, isGallery && s.full, counterBottom && s.bottom, s[additionClass])}>
       {counter && (
@@ -17,7 +17,7 @@ export const SliderCounter = (props) => {
                   </span>
         </div>
       )}
-      <div className={s.nav}>
+      {!hide && <div className={s.nav}>
         <button type='button' ref={prev} className={s.prev}>
           <svg
             width="9"
@@ -48,7 +48,8 @@ export const SliderCounter = (props) => {
             />
           </svg>
         </button>
-      </div>
+      </div>}
+
     </div>
   );
 };

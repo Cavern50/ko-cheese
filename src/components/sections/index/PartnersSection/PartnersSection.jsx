@@ -2,9 +2,10 @@ import React from "react";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { Partner } from "components/common/Partner/Partner";
-import s from "./PartnersSection.module.scss";
-import { windowSize } from "constants.js";
+import { windowSize, isClientSide } from "constants.js";
 import { Slider } from "components/common/Slider/Slider";
+import { useClientSide } from "hooks.js";
+import s from "./PartnersSection.module.scss";
 
 const partners = [
   {
@@ -47,26 +48,22 @@ const sliderParams = {
 };
 
 
-export const PartnersSection = () => (
-  <Section>
-    <Wrapper>
-      <h2 className={s.title}>Партнеры</h2>
-      {/*{*/}
-      {/*  windowSize >= 768 ?*/}
-      {/*    <div className={s.grid}>*/}
-      {/*      {partners.map((partner) => (*/}
-      {/*        <Partner key={partner} url={partner}/>*/}
-      {/*      ))}*/}
-      {/*    </div> :*/}
-      {/*    <Slider params={sliderParams} slides={partners}>*/}
-      {/*      <Partner/>*/}
-      {/*    </Slider>*/}
-      {/*}*/}
-      <div className={s.grid}>
-        {partners.map((partner) => (
-          <Partner key={partner} url={partner.url}/>
-        ))}
-      </div>
-    </Wrapper>
-  </Section>
-);
+export const PartnersSection = () => {
+  return (
+    <Section>
+      <Wrapper>
+        <h2 className={s.title}>Партнеры</h2>
+        {isClientSide && windowSize >= 768 ?
+          (<div className={s.grid}>
+            {partners.map((partner) => (
+              <Partner key={partner} url={partner.url}/>
+            ))}
+          </div>) :
+          (<Slider params={sliderParams} slides={partners}>
+            <Partner/>
+          </Slider>)}
+      </Wrapper>
+    </Section>
+  );
+};
+
