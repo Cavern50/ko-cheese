@@ -12,7 +12,6 @@ import { windowSize } from "constants.js";
 import { BackButton } from "components/buttons/BackButton/BackButton";
 import axios from "axios";
 import DataAPI from 'api/DataAPI';
-import ArticlesAPI from 'api/ArticlesAPI';
 import { ShareControl } from 'components/common/ShareControl/ShareControl';
 
 const Article = ({ recipes, products, article }) => (
