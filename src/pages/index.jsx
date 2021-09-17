@@ -46,7 +46,7 @@ const Index = ({ promoContent, products, discountProduct, categories, posts, new
       </Head>
       {/*<PromoSection {...promoContent}/>*/}
       {/*<NewTastesSection products={newProducts}/>*/}
-      {/*<ProductsSection products={products} categories={categories}/>*/}
+      <ProductsSection products={products} categories={categories}/>
       {/*<DiscountSection {...discountProduct}/>*/}
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
       <TelegramPromoSection url={"http://instagram.com/instagram"}/>
@@ -90,10 +90,10 @@ const getData = async () => await DataAPI.getData();
 export const getServerSideProps = async () => {
     // const promoContent = await APIBitrix.getData('content/main/promo-section/').then(res => res[0]);
     // const newProducts = await APIBitrix.getData('products/slider/').then(res => res.products);
-    // const categories = await APIBitrix.getData('products/categories/');
-    // const products = await APIBitrix.getData(`products/collection/${categories[0].subcategories[0].id}`)
+    const categories = await APIBitrix.getData('products/categories/');
+    const products = await APIBitrix.getData(`products/collection/${categories[0].subcategories[0].id}`)
     const posts = await APIBitrix.getData(`articles/collection/`);
     const { discountProduct } = await getData();
     // console.log(products, posts, newProducts, promoContent);
-    return { props: {  discountProduct,  posts,  } };
+    return { props: {  discountProduct, products,  posts,  } };
 };
