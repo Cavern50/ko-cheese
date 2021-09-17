@@ -5,7 +5,7 @@ import { Wrapper } from 'components/layout/Wrapper/Wrapper';
 import { H1 } from 'components/layout/H1/H1';
 import { DeliverySection } from 'components/sections/delivery/DeliverySection';
 import DeliveryAPI from "api/DeliveryAPI";
-
+import DataAPI from '../api/DataAPI';
 const Delivery = ({deliveryData}) => (
     <>
       <Head />
@@ -19,10 +19,10 @@ const Delivery = ({deliveryData}) => (
 export default Delivery;
 
 // eslint-disable-next-line no-return-await
-const getDeliveryData = async () => await DeliveryAPI.getDeliveryData();
+const getDeliveryData = async () => await DataAPI.getData();
 
 
 export const getServerSideProps = async () => {
-  const deliveryData = await getDeliveryData();
+  const { deliveryData } = await getDeliveryData();
   return { props: { deliveryData } };
 };
