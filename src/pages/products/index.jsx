@@ -28,7 +28,7 @@ const Products = ({ products, newProducts, discountProduct, categories }) => {
         <H1>Продукция</H1>
       </Wrapper>
       <ProductsSection products={products} categories={categories}/>
-      <NewTastesSection products={newProducts}/>
+      <NewTastesSection newProducts={newProducts}/>
       <DiscountSection {...discountProduct}/>
     </>
   );
