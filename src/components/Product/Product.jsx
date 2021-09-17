@@ -29,7 +29,7 @@ export const Product = (props) => {
     <div className={clsx(s.card, additionClass && s[additionClass])}>
       <ControlButtons productProps={productProps}/>
       <span className={clsx(s.status, status ? s.stock : s.outStock)}>{status ? 'В наличии' : 'Нет в наличии'}</span>
-      <img src={BASE_SITE_URL + previewImage} alt={name} className={s.image}/>
+      <img width="300px" height="160px" src={BASE_SITE_URL + previewImage} alt={name} className={s.image}/>
       <h3 className={s.name}>{name}</h3>
       <span className={s.addition}>{addition}</span>
       <div className={s.info}>
