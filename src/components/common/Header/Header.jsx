@@ -82,14 +82,14 @@ export const Header = ({ router }) => {
                 className={clsx(s.button, s.favorite, isPromoPage && s.button_accent)}
                 onClick={favoriteModalHandler}
               >
-                <FavoriteIcon className={clsx(s.favIcon, isPromoPage && s.favIcon__accent)}/>
+                <FavoriteIcon/>
               </button>
               <button
                 type="button"
-                className={clsx(s.button, (isPromoPage || menuModalValue) && s.button_accent)}
+                className={clsx(s.button, s.cart, (isPromoPage || menuModalValue) && s.button_accent)}
                 onClick={cartModalHandler}
               >
-                <CartIcon className={clsx(s.cardIcon, (isPromoPage || menuModalValue) && s.cardIcon__accent)}/>
+                <CartIcon/>
               </button>
             </div>
             <button

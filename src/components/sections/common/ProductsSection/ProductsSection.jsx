@@ -11,6 +11,8 @@ import { windowSize } from "constants.js";
 import { useTabs } from "hooks";
 
 import s from "./ProductsSection.module.scss";
+import APIBitrix from "api/APIBitrix";
+import axios from "axios";
 
 
 export const ProductsSection = ({ products, categories }) => {
@@ -18,24 +20,40 @@ export const ProductsSection = ({ products, categories }) => {
   const { activeId: activeSubcategoryId, toggleActiveId: toggleSubcategoryId } = useTabs(categories[0].subcategories[0].id, false);
 
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
-  const [activeSubcategory, setActiveSubcategory] = React.useState(categories[0].subcategories);
+
+  const [activeProducts, setActiveProducts] = React.useState(products);
+
+  // const [activeSubcategory, setActiveSubcategory] = React.useState(categories[0].subcategories);
 
   React.useEffect(() => {
     setActiveCategory(categories.find(({ id }) => id === activeCategoryId));
   }, [activeCategoryId]);
 
   React.useEffect(() => {
-    toggleSubcategoryId(activeCategory.subcategories[0].id);
+    activeCategory.subcategories && toggleSubcategoryId(activeCategory.subcategories[0].id);
   }, [activeCategory]);
+
+
+  React.useEffect(() => {
+    const getProducts = async () => {
+      const requestProducts = await APIBitrix.getData(`products/collection/${activeSubcategoryId}`);
+      setActiveProducts(requestProducts);
+    };
+
+    getProducts();
+
+  }, [activeSubcategoryId]);
+
+
   return (
     <Section>
       <Wrapper>
         <div className={s.header}>
           <Tabs>
-            {categories.map(({ title, id }) => (
+            {categories.map(({ name, id }) => (
               <TabButton
                 key={id}
-                text={title}
+                text={name}
                 index={id}
                 active={activeCategoryId}
                 toggleActive={toggleActiveCategoryId}
@@ -43,11 +61,11 @@ export const ProductsSection = ({ products, categories }) => {
             ))}
           </Tabs>
           <div className={s.subcategories}>
-            {activeCategory.subcategories.map(({ title, id }) => (
+            {activeCategory.subcategories && activeCategory.subcategories.map(({ name, id }) => (
               <SubcategoryButton
                 key={id}
                 id={id}
-                title={title}
+                title={name}
                 active={activeSubcategoryId}
                 toggleActive={toggleSubcategoryId}
                 additionClass="mainButton"
@@ -56,7 +74,7 @@ export const ProductsSection = ({ products, categories }) => {
           </div>
         </div>
         <div className={s.body}>
-          {products && products.map((product) => <Product key={product.id} {...product} />)}
+          {activeProducts && activeProducts.map((product) => <Product key={product.id} {...product} />)}
         </div>
         {windowSize <= 1200 && <button type="button" className={s.more}>Показать еще <span>(4)</span></button>}
       </Wrapper>

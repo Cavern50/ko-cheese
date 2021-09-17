@@ -27,13 +27,15 @@ export const DescriptionSection = ({ id, product }) => {
         {nutritional.map(property => <ProductProperty key={property.id} {...property}/>)}
       </div>
     </div>;
-  return (
-    <>
-      <BackButton/>
-      <div className={s.container}>
-        <div className={s.block}>
-          {isDesktop ?
-            <Thumbnails gallery={product.gallery}/> :
+  console.log(isDesktop);
+  return <>
+    <BackButton/>
+    <div className={s.container}>
+      <div className={s.block}>
+        {
+          isClientSide ? windowSize >= 768 ?
+            <Thumbnails gallery={product.gallery}/>
+            :
             <Swiper
               spaceBetween={15}
             >
@@ -41,53 +43,49 @@ export const DescriptionSection = ({ id, product }) => {
                 <SwiperSlide key={el}>
                   <img className={s.slide} src={el} alt={product.name}/>
                 </SwiperSlide>)}
-            </Swiper>
-          }
-          {isDesktop && productProperties}
+            </Swiper> : ""
+        }
+        {isDesktop && productProperties}
 
+      </div>
+      <div className={s.info}>
+        <h2 className={s.title}>
+          {product.name}
+          <br/>
+          {product.addition}
+        </h2>
+        <div className={clsx(s.statuses)}>
+          {product.statuses.map(({ status, name, count, date }) => <span className={clsx(g.status, g[status])}
+                                                                         key={name}>
+                      {name}
+            {count && ` ${count}  шт `}
+            {date && `до ${date}`}
+                   </span>)}
         </div>
-        <div className={s.info}>
-          <h2 className={s.title}>
-            {product.name}
-            <br/>
-            {product.addition}
-          </h2>
-          <div className={clsx(s.statuses)}>
-            {product.statuses.map(({ status, name, count, date }) => (
-              <span className={clsx(g.status, g[status])} key={name}>
-                        {name}
-                {count && ` ${count}  шт `}
-                {date && `до ${date}`}
-                     </span>
-            ))}
-          </div>
-          <span className={clsx(s.price)}>{product.price} руб.</span>
-          {!isDesktop && productProperties}
-          <p className={clsx(s.about)}>{product.about}</p>
+        <span className={clsx(s.price)}>{product.price} руб.</span>
+        {!isDesktop && productProperties}
+        <p className={clsx(s.about)}>{product.about}</p>
 
-          <div className={s.nutrients}>
-            {nutritional.map(nutrient => <ProductNutrient key={nutrient.id} {...nutrient}/>)}
+        <div className={s.nutrients}>
+          {nutritional.map(nutrient => <ProductNutrient key={nutrient.id} {...nutrient}/>)}
+        </div>
+        {product.tastes?.length && <>
+          <span className={clsx(s.with)}>С чем употребляют</span>
+          <div className={clsx(s.tastes)}>
+            {product.tastes.map((taste) => allTastes[taste])}
           </div>
-          {product.tastes?.length && (
-            <>
-              <span className={clsx(s.with)}>С чем употребляют</span>
-              <div className={clsx(s.tastes)}>
-                {product.tastes.map((taste) => allTastes[taste])}
-              </div>
-            </>
-          )}
+        </>}
 
-          <PurchaseControl id={id} cart={false}/>
+        <PurchaseControl product={product} id={id} cart={false}/>
 
-          <div className={clsx(s.description)}>
-            <Accordion title={"Описание"}>
-              <p>
-                {product.description}
-              </p>
-            </Accordion>
-          </div>
+        <div className={clsx(s.description)}>
+          <Accordion title={"Описание"}>
+            <p>
+              {product.description}
+            </p>
+          </Accordion>
         </div>
       </div>
-    </>
-  );
+    </div>
+  </>;
 };

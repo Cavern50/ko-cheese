@@ -1,34 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import { Purchase } from 'components/common/Purchase/Purchase';
-import { CloseButton } from 'components/buttons/CloseButton/CloseButton';
-import { useModal } from 'hooks';
-import {ModalFooter} from "components/modals/ModalFooter/ModalFooter";
-import { ModalBody } from '../ModalBody/ModalBody';
-
-import s from './Cart.module.scss';
+import { Purchase } from "components/common/Purchase/Purchase";
+import { CloseButton } from "components/buttons/CloseButton/CloseButton";
+import { useModal } from "hooks";
+import { ModalFooter } from "components/modals/ModalFooter/ModalFooter";
+import { useSelector } from "react-redux";
+import { cartItemsSelector, totalPriceSelector } from "redux/slices/cart";
+import { ModalBody } from "../ModalBody/ModalBody";
+import s from "./Cart.module.scss";
 
 export const Cart = ({ closeModal }) => {
+
   const discountModal = useModal(true);
+  const itemsInCart = useSelector(cartItemsSelector);
   return (
     <ModalBody closeModal={closeModal} title="Корзина">
       {discountModal.isShowed && (
         <div className={s.promo}>
           <div className={s.promo__text}>Вам представлена скидка на первый заказ 10%</div>
-          <CloseButton close={discountModal.hideModal} />
+          <CloseButton close={discountModal.hideModal}/>
         </div>
       )}
       <div>
-        <Purchase inCart />
-        <Purchase inCart />
-        <Purchase inCart />
-        <Purchase inCart />
-        <Purchase inCart />
-        <Purchase inCart />
-        <Purchase inCart />
-        <Purchase inCart />
+        {itemsInCart.map(item => <Purchase inCart key={item} params={item}/>)}
       </div>
-     <ModalFooter/>
+      <ModalFooter/>
     </ModalBody>
   );
 };

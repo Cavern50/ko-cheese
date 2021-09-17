@@ -6,23 +6,22 @@ import {
 
 import { Section } from "components/layout/Section/Section";
 import clsx from "clsx";
-import { windowSize } from "constants.js";
+import { windowSize, BASE_SITE_URL } from "constants.js";
 import s from "./IntroSection.module.scss";
 
-// eslint-disable-next-line import/prefer-default-export
 
 export const IntroSection = ({ article }) => {
 
-    const { name, text, time, persons, image, ingredients } = article;
-
+    const { name, text, time, persons, previewImage, ingredients } = article;
     return (
       <Section margin={clsx(windowSize > 768 ? "small" : "none")}>
         <h1 className={s.title}>{name}</h1>
         <p className={s.description}>
           {text}
         </p>
-        <div className={s.info}>
+        {time && <div className={s.info}>
           <div className={s.field}>
+
           <span className={s.label}>
             Время приготовления
           </span>
@@ -41,7 +40,8 @@ export const IntroSection = ({ article }) => {
             </div>
           </div>
         </div>
-        <img src={image} alt="" className={s.image}/>
+        }
+        <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>
         {
           ingredients && <div className={s.ingredients}>
             <h2>Ингредиенты</h2>

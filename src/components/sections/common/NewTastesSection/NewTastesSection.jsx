@@ -3,8 +3,9 @@ import React from "react";
 import { Slider } from "components/common/Slider/Slider";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
-import { windowSize} from "constants.js";
+import { windowSize } from "constants.js";
 import { NewTaste } from "./NewTaste/NewTaste";
+import APIBitrix from "api/APIBitrix";
 
 const sliderParams = {
   slider: {
@@ -15,7 +16,7 @@ const sliderParams = {
     breakpoints: {
       767: {
         slidesPerView: 2,
-        slidesPerGroup: 2,
+        slidesPerGroup: 2
       },
       1023: {
         slidesPerView: 3,
@@ -34,14 +35,25 @@ const sliderParams = {
   }
 };
 
-export const NewTastesSection = ({ products }) => {
+export const NewTastesSection = ({newProducts}) => {
+  // const [newProducts, setNewProducts] = React.useState([]);
+  //
+  // React.useEffect(() => {
+  //   const getProducts = async () => {
+  //     const products = await APIBitrix.getData("products/slider/").then(res => res[0].products)
+  //     setNewProducts(products);
+  //   };
+  //
+  //   getProducts();
+  //
+  // }, []);
 
   return (
     <Section>
       <Wrapper>
         <Slider
           title="Новые вкусы"
-          slides={products}
+          slides={newProducts}
           params={sliderParams}
         >
           <NewTaste/>

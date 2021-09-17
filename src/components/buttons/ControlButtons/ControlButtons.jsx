@@ -1,27 +1,32 @@
 import React from "react";
 import { FavoriteIcon, PurchaseIcon } from "components/SVG/Icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartChangeModalState, favoriteChangeModalState } from "redux/slices/modals";
-import s from './ControlButtons.module.scss';
+import { cartItemsSelector, addToCart } from "redux/slices/cart";
+import s from "./ControlButtons.module.scss";
+import { addToFavorite } from "redux/slices/favorite";
+import clsx from "clsx";
 
-export const ControlButtons = () => {
+export const ControlButtons = ({ productProps }) => {
 
   const dispatch = useDispatch();
-  
+
   const favoriteModalHandler = () => {
+    dispatch(addToFavorite(productProps));
     dispatch(favoriteChangeModalState(true));
   };
 
-  const cartModalHandler = () => {
+  const cartHandler = () => {
+    dispatch(addToCart(productProps));
     dispatch(cartChangeModalState(true));
   };
 
   return (
     <div className={s.container}>
-      <button type="button" className={s.button} onClick={favoriteModalHandler}>
+      <button type="button" className={clsx(s.button, s.favorite)} onClick={favoriteModalHandler}>
         <FavoriteIcon/>
       </button>
-      <button type="button" className={s.button} onClick={cartModalHandler}>
+      <button type="button" className={clsx(s.button, s.cart)} onClick={cartHandler}>
         <PurchaseIcon/>
       </button>
     </div>

@@ -42,6 +42,7 @@ export const modalsSlice = createSlice({
   }
 });
 
+
 export const {
   cartChangeModalState,
   favoriteChangeModalState,

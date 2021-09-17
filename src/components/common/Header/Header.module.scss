@@ -62,17 +62,71 @@
   }
 }
 
-.cardIcon {
-  path {
-    fill: $gen;
-  }
-
-  &__accent {
+.cart {
+  &:not(.button_accent) {
+    circle,
     path {
-      fill: $accent;
+      stroke: $gen;
+    }
+
+    &:hover {
+      circle,
+      path {
+        stroke: $accent;
+      }
     }
   }
 }
+
+.favorite {
+  path {
+    stroke: $accent;
+  }
+  &:not(.button_accent) {
+    path {
+      stroke: $gen;
+    }
+    &:hover {
+      path {
+        fill: $accent;
+        stroke: $gen;
+      }
+    }
+  }
+
+}
+
+
+.button_accent {
+  background-color: rgba($accent, 0.2);
+
+  .line {
+    span,
+    &::after,
+    &::before {
+      background-color: $accent;
+
+    }
+  }
+
+  &:hover {
+    background-color: rgba($accent, 0.5);
+  }
+}
+
+
+
+//.cardIcon {
+//  path {
+//    fill: $gen;
+//  }
+//
+//  &__accent {
+//    path {
+//      fill: $accent;
+//    }
+//  }
+//}
 
 .favIcon {
   path,
@@ -100,22 +154,6 @@
   }
 }
 
-.button_accent {
-  background-color: rgba($accent, 0.2);
-
-  .line {
-    span,
-    &::after,
-    &::before {
-      background-color: $accent;
-
-    }
-  }
-
-  &:hover {
-    background-color: rgba($accent, 0.5);
-  }
-}
 
 .logo_accent {
   path {
@@ -237,5 +275,6 @@
   }
   .logo {
     transform: none;
+    margin: 0;
   }
 }

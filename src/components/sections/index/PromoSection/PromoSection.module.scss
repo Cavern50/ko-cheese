@@ -2,9 +2,9 @@
 @import '/src/styles/root.scss';
 
 .promo {
-    height: 37.5rem;
+    min-height: 43.5rem;
     padding-top: 5rem;
-    background-image: url('/static/img/promo-bg.jpg');
+    //background-image: url('/static/img/promo-bg.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    margin-top: 3.125rem;
     color: $accent;
 }
 .intro {
@@ -24,6 +25,7 @@
     margin-bottom: 1.875rem;
 }
 .title {
+    max-width: 80%;
     margin: 0 auto;
     text-align: center;
 }

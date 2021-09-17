@@ -123,6 +123,10 @@ export const mainModalProperties = {
 // export const windowSize = () => window.innerWidth;
 
 
-export const isClientSide = typeof window !== 'undefined';
+export const isClientSide = typeof window !== "undefined";
 
 export const windowSize = isClientSide ? window.innerWidth : false;
+
+export const BASE_API_URL = "http://5272-87-238-235-152.ngrok.io/api";
+
+export const BASE_SITE_URL = "http://5272-87-238-235-152.ngrok.io";

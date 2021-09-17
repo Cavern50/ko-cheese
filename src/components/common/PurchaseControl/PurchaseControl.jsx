@@ -1,22 +1,26 @@
 import React from "react";
 import clsx from "clsx";
 import { DeliveryIcon, FavoriteIcon, MinusIcon, PlusIcon } from "components/SVG/Icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   cartChangeModalState,
   favoriteChangeModalState,
   subscribeChangeModalState
 } from "redux/slices/modals";
+import { removeProduct, incProductCount, cartItemsSelector, decProductCount, addToCart } from "redux/slices/cart";
 
 import { RemoveButton } from "../../buttons/RemoveButton/RemoveButton";
 import s from "./PurchaseControl.module.scss";
+import { addToFavorite } from "redux/slices/favorite";
 
-export const PurchaseControl = ({ id, inCart, additionClass }) => {
+export const PurchaseControl = ({ product, inCart, additionClass }) => {
+
   const dispatch = useDispatch();
-  const cartModalHandler = () => {
-    dispatch(cartChangeModalState(true));
-  };
-  const favoriteModalHandler = () => {
+
+  const productSelector = useSelector(cartItemsSelector).find(item => item.id === product.id);
+
+  const addToFavoriteHandler = () => {
+    dispatch(addToFavorite(product));
     dispatch(favoriteChangeModalState(true));
   };
 
@@ -24,20 +28,33 @@ export const PurchaseControl = ({ id, inCart, additionClass }) => {
     dispatch(subscribeChangeModalState(true));
   };
 
-  const [count, setCount] = React.useState(1);
-  
-
-  // eslint-disable-next-line consistent-return
-  const changeCount = (operation) => {
-    if (count === 1 && operation === "-") {
-      return false;
-    }
-    setCount((prev) => (operation === "-" ? prev - 1 : prev + 1));
+  const removeHandler = () => {
+    dispatch(removeProduct(product));
   };
-  React.useEffect(() => {
-    setCount(1);
-  }, [id]);
 
+  const decHandlerInCart = () => {
+    dispatch(decProductCount(product));
+  };
+
+  const incHandlerInCart = () => {
+    dispatch(incProductCount(product));
+  };
+
+  const [count, setCount] = React.useState(1);
+
+  const decHandlerInDetail = () => {
+    count > 1 && setCount(count - 1);
+  }
+
+  const incHandlerInDetail = () => {
+    console.log(count);
+    setCount(count + 1);
+  }
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ count, ...product }))
+    dispatch(cartChangeModalState(true));
+  };
   return (
     <>
       <div className={clsx(s.container, s[additionClass])}>
@@ -45,25 +62,25 @@ export const PurchaseControl = ({ id, inCart, additionClass }) => {
           <button
             type="button"
             className={clsx(s.change, s.minus)}
-            onClick={() => changeCount("-")}
+            onClick={inCart ? decHandlerInCart : decHandlerInDetail}
           >
             <MinusIcon/>
           </button>
-          <span className={s.count}>{count}</span>
+          <span className={s.count}>{ inCart ? productSelector.count : count}</span>
           <button
             type="button"
             className={clsx(s.change, s.plus)}
-            onClick={() => changeCount("+")}
+            onClick={inCart ? incHandlerInCart : incHandlerInDetail}
           >
             <PlusIcon/>
           </button>
         </div>
         {inCart ? (
-          <RemoveButton/>
+          <RemoveButton clickHandler={removeHandler}/>
         ) : (
           <>
-            <button type="button" className={s.add} onClick={cartModalHandler}>в корзину</button>
-            <button type="button" className={s.favorite} onClick={favoriteModalHandler}>
+            <button type="button" className={s.add} onClick={addToCartHandler}>в корзину</button>
+            <button type="button" className={s.favorite} onClick={addToFavoriteHandler}>
               <FavoriteIcon/>
             </button>
           </>

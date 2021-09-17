@@ -3,8 +3,8 @@ import clsx from 'clsx';
 
 import s from 'components/buttons/RemoveButton/RemoveButton.module.scss';
 
-export const RemoveButton = ({small}) => (
-    <button type="button" className={clsx(s.btn, small && s.btn_small)}>
+export const RemoveButton = ({small, clickHandler}) => (
+    <button type="button" onClick={clickHandler} className={clsx(s.btn, small && s.btn_small)}>
       <svg
         width="16"
         height="16"

@@ -4,6 +4,8 @@ import React from "react";
 import { SubcategoryButton } from "components/buttons/SubcategoryButton/SubcategoryButton";
 import { Purchase } from "components/common/Purchase/Purchase";
 import { useTabs } from "hooks";
+import { useSelector } from "react-redux";
+import { favoriteItemsSelector } from "redux/slices/favorite";
 import { ModalBody } from "../ModalBody/ModalBody";
 import s from "./Favorite.module.scss";
 
@@ -16,7 +18,7 @@ const favorites = [
 export const Favorite = ({ closeModal }) => {
 
   const { activeId, toggleActiveId } = useTabs(1, false);
-
+  const itemsInFavorite = useSelector(favoriteItemsSelector);
   return (
     <ModalBody closeModal={closeModal} title='Избранное'>
       <div className={s.subcategories}>
@@ -30,8 +32,7 @@ export const Favorite = ({ closeModal }) => {
         ))}
       </div>
       <div>
-        <Purchase inFavorite/>
-        <Purchase inFavorite/>
+        {itemsInFavorite.map(item => <Purchase inFavorite key={item} params={item}/>)}
       </div>
     </ModalBody>
   );

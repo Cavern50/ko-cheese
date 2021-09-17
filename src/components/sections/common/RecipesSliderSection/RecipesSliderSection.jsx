@@ -38,6 +38,7 @@ export const RecipesSliderSection = ({ recipes, title }) => {
     //   console.log(r.data);
     // };
     // result();
+
     return (
       <Section>
         <Wrapper>

@@ -13,8 +13,9 @@ import { BackButton } from "components/buttons/BackButton/BackButton";
 import axios from "axios";
 import DataAPI from 'api/DataAPI';
 import { ShareControl } from 'components/common/ShareControl/ShareControl';
+import APIBitrix from "api/APIBitrix";
 
-const Article = ({ recipes, products, article }) => (
+const Article = ({ products, article, posts }) => (
   <>
     <Head>
       <title>Страница рецепта</title>
@@ -30,7 +31,7 @@ const Article = ({ recipes, products, article }) => (
       </WrapperNarrow>
     </Wrapper>
     <Wrapper>
-      <RecipesSliderSection recipes={recipes} title="Другие рецепты"/>
+      <RecipesSliderSection recipes={posts} title="Другие рецепты"/>
     </Wrapper>
   </>
 );
@@ -55,8 +56,19 @@ export default Article;
 
 const getData = async () => await DataAPI.getData();
 
+// export const getServerSideProps = async ({ params }) => {
+//   const { products, recipes } = await getData();
+//   const article = recipes.find(recipe => params.id === recipe.id);
+//   return { props: { recipes, products, article } };
+// };
+
+
 export const getServerSideProps = async ({ params }) => {
-  const { products, recipes } = await getData();
-  const article = recipes.find(recipe => params.id === recipe.id);
-  return { props: { recipes, products, article } };
+    const article = await APIBitrix.getData(`articles/item/${params.id}`).then(res => res);
+    const posts = await APIBitrix.getData('articles/collection/');
+    const { products } = await getData();
+    // const article = await getPost("recipes", params.id);
+    // const posts = await getPosts("recipes");
+    return { props: { products, article, posts } };
 };
+

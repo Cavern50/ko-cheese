@@ -1,17 +1,23 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 import clsx from "clsx";
-import s from './Recipe.module.scss';
+import { BASE_SITE_URL } from "constants.js";
+import s from "./Recipe.module.scss";
 
-export const Recipe = ({ image, name, text, url, id, isPreview }) => (
+
+export const Recipe = ({ previewImage, name, previewText, code, id, isPreview }) => {
+  console.log(id);
+  return (
     <div className={clsx(s.card, isPreview && s.preview)}>
-      <img src={image} alt="" className={s.image}/>
+      <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>
       <h3 className={s.name}>{name}</h3>
-      <p className={s.text}>{text}</p>
-      {url && <Link href={`/articles/${id}`}>
+      <p className={s.text}>{previewText}</p>
+      {code && <Link href={`/articles/${id}`}>
         <a className={s.link}>
           Посмотреть
         </a>
       </Link>}
     </div>
   );
+
+}

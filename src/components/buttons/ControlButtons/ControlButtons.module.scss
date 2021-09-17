@@ -24,14 +24,30 @@
   &:hover {
     background-color: $gen;
     color: $accent;
+    //path {
+    //  stroke: $accent;
+    //}
+    //path:first-child {
+    //  fill:$accent;
+    //}
+    //rect {
+    //  stroke: $accent;
+    //}
+  }
+}
+.cart {
+  &:hover {
+    path,
+    circle {
+      stroke: $accent;
+    }
+  }
+}
+
+.favorite {
+  &:hover {
     path {
-      stroke: $accent;
-    }
-    path:first-child {
-      fill:$accent;
-    }
-    rect {
-      stroke: $accent;
+      fill: $accent;
     }
   }
 }
