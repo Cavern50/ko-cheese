@@ -25,7 +25,7 @@ const Article = ({ products, article, posts }) => (
         {windowSize < 768 && <BackButton/>}
       <WrapperNarrow>
         <IntroSection article={article}/>
-        <RecommendSection products={products}/>
+        {/*<RecommendSection products={products}/>*/}
           {article.stages && <StepsSection stages={article.stages}/>}
           {windowSize < 768 && <ShareControl/>}
       </WrapperNarrow>
