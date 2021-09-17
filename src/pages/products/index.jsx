@@ -65,6 +65,7 @@ const getData = async () => await DataAPI.getData();
 export const getServerSideProps = async () => {
     const categories = await APIBitrix.getData('products/categories/');
     const products = await APIBitrix.getData(`products/collection/${categories[0].subcategories[0].id}`)
-    const {  newProducts, discountProduct } = await getData();
+    const newProducts = await APIBitrix.getData('products/slider/').then(res => res.products);
+    const { discountProduct } = await getData();
     return { props: { products, discountProduct, newProducts, categories } };
 };
