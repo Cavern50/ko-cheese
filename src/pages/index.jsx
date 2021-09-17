@@ -94,5 +94,6 @@ export const getServerSideProps = async () => {
     const newProducts = await APIBitrix.getData('products/slider/').then(res => res.products);
     const posts = await APIBitrix.getData(`articles/collection/`);
     const { discountProduct } = await getData();
+    console.log(products, posts, newProducts, promoContent);
     return { props: { products, discountProduct, categories, posts, newProducts, promoContent } };
 };
