@@ -66,7 +66,8 @@ const getData = async () => await DataAPI.getData();
 export const getServerSideProps = async ({ params }) => {
     const article = await APIBitrix.getData(`articles/item/${params.id}`).then(res => res);
     const posts = await APIBitrix.getData('articles/collection/');
-    const { products } = await getData();
+    const products = await APIBitrix.getData(`products/collection/2`)
+    // const { products } = await getData();
     // const article = await getPost("recipes", params.id);
     // const posts = await getPosts("recipes");
     return { props: { products, article, posts } };
