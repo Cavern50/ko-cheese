@@ -4,7 +4,7 @@ import { Slider } from "components/common/Slider/Slider";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { windowSize } from "constants.js";
-import { NewTaste } from "./NewTaste/NewTaste";
+import { NewTaste } from "../../../common/NewTaste/NewTaste";
 import APIBitrix from "api/APIBitrix";
 
 const sliderParams = {

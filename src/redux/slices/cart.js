@@ -13,27 +13,27 @@ export const cartSlice = createSlice({
     addToCart(state, action) {
       const isProductInCart = state.items.some(product => product.id === action.payload.id);
       if (isProductInCart) {
-        state.totalPrice -= parseInt(action.payload.price) * state.items.find(item => item.id === action.payload.id).count;
+        const prevCountInCart = state.items.find(item => item.id === action.payload.id).countInCart;
+        state.totalPrice -= parseInt(action.payload.price, 10) * prevCountInCart;
         state.items = state.items.filter(item => item.id !== action.payload.id);
-      } else {
-        state.totalPrice += parseInt(action.payload.price) * action.payload.count;
       }
+      state.totalPrice += parseInt(action.payload.price, 10) * action.payload.countInCart;
       state.items.push(action.payload);
     },
     removeProduct(state, action) {
-      state.totalPrice -= action.payload.price * action.payload.count;
+      state.totalPrice -= action.payload.price * action.payload.countInCart;
       state.items = state.items.filter(item => item.id !== action.payload.id);
     },
     incProductCount(state, action) {
       const product = state.items.find(item => item.id === action.payload.id);
-      product.count++;
-      state.totalPrice += parseInt(product.price);
+      product.countInCart++;
+      state.totalPrice += parseInt(product.price, 10);
     },
     decProductCount(state, action) {
       const product = state.items.find(item => item.id === action.payload.id);
-      if (product.count > 1) {
-        product.count--;
-        state.totalPrice -= parseInt(product.price);
+      if (product.countInCart > 1) {
+        product.countInCart--;
+        state.totalPrice -= parseInt(product.price, 10);
       }
     }
   },

@@ -88,6 +88,18 @@
     margin-top: 3.125rem;
 }
 
+.status {
+  @extend %status;
+}
+
+.inStock {
+  @extend %inStock;
+}
+
+.outStock {
+  @extend %outStock;
+}
+
 @media (max-width: $landscape) {
   .nutrients {
     flex-wrap: wrap;

@@ -127,6 +127,6 @@ export const isClientSide = typeof window !== "undefined";
 
 export const windowSize = isClientSide ? window.innerWidth : false;
 
-export const BASE_API_URL = "https://5272-87-238-235-152.ngrok.io/api";
+export const BASE_API_URL = "http://co-ko.asap-lp.ru/api";
 
-export const BASE_SITE_URL = "https://5272-87-238-235-152.ngrok.io";
+export const BASE_SITE_URL = "http://co-ko.asap-lp.ru/";

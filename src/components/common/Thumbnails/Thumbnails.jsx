@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { BASE_SITE_URL } from "constants.js";
 import s from "./Thumbnails.module.scss";
 
 export const Thumbnails = ({ gallery }) => {
@@ -20,14 +21,14 @@ export const Thumbnails = ({ gallery }) => {
         {gallery.map((image, i) => (
           <img
             className={clsx(s.mini, i === activeMini ? s.active : "")}
-            src={image}
+            src={BASE_SITE_URL + image}
             alt=""
             key={i}
             onClick={() => switchImage(image, i)}
           />
         ))}
       </div>
-      <img className={s.main} src={activeMain || gallery[0]} alt=""/>
+      <img className={s.main} src={BASE_SITE_URL + (activeMain || gallery[0])} alt=""/>
     </div>
   );
 };

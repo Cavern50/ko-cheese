@@ -14,7 +14,7 @@ import s from "./PurchaseControl.module.scss";
 import { addToFavorite } from "redux/slices/favorite";
 
 export const PurchaseControl = ({ product, inCart, additionClass }) => {
-
+  console.log(product);
   const dispatch = useDispatch();
 
   const productSelector = useSelector(cartItemsSelector).find(item => item.id === product.id);
@@ -40,19 +40,18 @@ export const PurchaseControl = ({ product, inCart, additionClass }) => {
     dispatch(incProductCount(product));
   };
 
-  const [count, setCount] = React.useState(1);
+  const [countInCart, setCountInCart] = React.useState(1);
 
   const decHandlerInDetail = () => {
-    count > 1 && setCount(count - 1);
+    countInCart > 1 && setCountInCart(countInCart - 1);
   }
 
   const incHandlerInDetail = () => {
-    console.log(count);
-    setCount(count + 1);
+    setCountInCart(countInCart + 1);
   }
 
   const addToCartHandler = () => {
-    dispatch(addToCart({ count, ...product }))
+    dispatch(addToCart({ countInCart, ...product }))
     dispatch(cartChangeModalState(true));
   };
   return (
@@ -66,7 +65,7 @@ export const PurchaseControl = ({ product, inCart, additionClass }) => {
           >
             <MinusIcon/>
           </button>
-          <span className={s.count}>{ inCart ? productSelector.count : count}</span>
+          <span className={s.count}>{ inCart ? productSelector.countInCart : countInCart}</span>
           <button
             type="button"
             className={clsx(s.change, s.plus)}
