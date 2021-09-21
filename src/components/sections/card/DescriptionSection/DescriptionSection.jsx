@@ -17,7 +17,7 @@ export const DescriptionSection = ({ id, product }) => {
   const defaults = {
     name: "",
     addition: "",
-    description: "",
+    detailText: "",
     info: [],
     nutritional: [],
     tastes: [],
@@ -27,7 +27,7 @@ export const DescriptionSection = ({ id, product }) => {
     status: false,
     count: 1,
     date: "",
-    about: ""
+    previewText: ""
   }
   const properties = {
     ...defaults,
@@ -35,26 +35,23 @@ export const DescriptionSection = ({ id, product }) => {
   }
 
   const cartProductsProps = {
-    ...product,
+    ...properties,
     cartCount : 1,
   }
 
-  // const cartProductsProps = {
-  //   id, previewImage, name, addition, price, weight, countInCart: 1
-  // };
 
-  const {name, addition, description, info, nutritional, date, weight, about, price, tastes,  gallery, status, count} = properties;
+  const {name, addition, detailText, info, nutritional, date, weight, previewText, price, tastes,  gallery, status, count} = properties;
   const isDesktop = isClientSide && windowSize >= 768;
   const productProperties =
-    <div className={s.properties}>
-      <div className={s.column}>
-        {info.map(property => <ProductProperty key={property.id} {...property}/>)}
-        <ProductProperty title="Вес" value={weight}/>
-      </div>
-      <div className={s.column}>
-        {nutritional.map(property => <ProductProperty key={property.id} {...property}/>)}
-      </div>
-    </div>;
+      <div className={s.properties}>
+        <div className={s.column}>
+          {info.map(property => <ProductProperty key={property.id} {...property}/>)}
+          <ProductProperty title="Вес" value={weight}/>
+        </div>
+        <div className={s.column}>
+          {nutritional.map(property => <ProductProperty key={property.id} {...property}/>)}
+        </div>
+      </div>;
 
   return <>
     <BackButton/>
@@ -62,16 +59,16 @@ export const DescriptionSection = ({ id, product }) => {
       <div className={s.block}>
         {
           isClientSide ? windowSize >= 768 ?
-            <Thumbnails gallery={gallery}/>
-            :
-            <Swiper
-              spaceBetween={15}
-            >
-              {gallery.map(el =>
-                <SwiperSlide key={el}>
-                  <img className={s.slide} src={BASE_SITE_URL + el} alt={name}/>
-                </SwiperSlide>)}
-            </Swiper> : ""
+              <Thumbnails gallery={gallery}/>
+              :
+              <Swiper
+                  spaceBetween={15}
+              >
+                {gallery.map(el =>
+                    <SwiperSlide key={el}>
+                      <img className={s.slide} src={BASE_SITE_URL + el} alt={name}/>
+                    </SwiperSlide>)}
+              </Swiper> : ""
         }
         {isDesktop && productProperties}
 
@@ -90,7 +87,7 @@ export const DescriptionSection = ({ id, product }) => {
         </div>
         <span className={s.price}>{parseInt(price, 10)} руб.</span>
         {!isDesktop && productProperties}
-        <p className={s.about}>{about}</p>
+        <p className={s.about}>{previewText}</p>
 
         <div className={s.nutrients}>
           {nutritional.map(nutrient => <ProductNutrient key={nutrient.id} {...nutrient}/>)}
@@ -106,9 +103,9 @@ export const DescriptionSection = ({ id, product }) => {
 
         <div className={s.description}>
           {
-            description && <Accordion title={"Описание"}>
+            detailText && <Accordion title={"Описание"}>
               <p>
-                {description}
+                {detailText}
               </p>
             </Accordion>
           }
