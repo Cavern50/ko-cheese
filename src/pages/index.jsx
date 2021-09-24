@@ -28,7 +28,7 @@ const cookiesModalProperties = {
   }
 };
 
-const Index = ({ promoContent, products, discountProduct, categories, posts, newProducts }) => {
+const Index = ({ promoContent, products,  categories, posts, newProducts }) => {
 
   const cookiesModal = useModal(true, false);
   const [showDelay, setShowDelay] = React.useState(false);
@@ -67,5 +67,5 @@ export const getServerSideProps = async () => {
   const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
   // const discountProduct = await ProductsAPI.getDiscountProduct();
-  return { props: { products, discountProduct, categories, posts, newProducts, promoContent } };
+  return { props: { products, categories, posts, newProducts, promoContent } };
 };
