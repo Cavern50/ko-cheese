@@ -28,7 +28,7 @@ const cookiesModalProperties = {
   }
 };
 
-const Index = ({ promoContent, products,  categories, posts, newProducts }) => {
+const Index = ({ promoContent, products, discountProduct, categories, posts, newProducts }) => {
 
   const cookiesModal = useModal(true, false);
   const [showDelay, setShowDelay] = React.useState(false);
@@ -44,8 +44,8 @@ const Index = ({ promoContent, products,  categories, posts, newProducts }) => {
       </Head>
       <PromoSection {...promoContent}/>
       <NewTastesSection newProducts={newProducts}/>
-      {/*<ProductsSection products={products} categories={categories}/>*/}
-      {/*<DiscountSection {...discountProduct}/>*/}
+      <ProductsSection products={products} categories={categories}/>
+      <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
       <TelegramPromoSection url={"http://instagram.com/instagram"}/>
       <InstagramSection/>
@@ -67,5 +67,5 @@ export const getServerSideProps = async () => {
   const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
   const { discountProduct } = await DataAPI.getData();
-  return { props: { products, categories, posts, newProducts, promoContent } };
+  return { props: { products, categories, discountProduct, posts, newProducts, promoContent } };
 };
