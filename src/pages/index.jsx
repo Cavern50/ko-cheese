@@ -28,7 +28,7 @@ const cookiesModalProperties = {
   }
 };
 
-const Index = ({ promoContent,  discountProduct, categories, posts, newProducts }) => {
+const Index = ({ promoContent, products, discountProduct, categories, posts, newProducts }) => {
 
   const cookiesModal = useModal(true, false);
   const [showDelay, setShowDelay] = React.useState(false);
@@ -43,13 +43,13 @@ const Index = ({ promoContent,  discountProduct, categories, posts, newProducts 
         <title>Главная</title>
       </Head>
       <PromoSection {...promoContent}/>
-      {/*<NewTastesSection newProducts={newProducts}/>*/}
-      {/*<ProductsSection products={products} categories={categories}/>*/}
-      {/*<DiscountSection {...discountProduct}/>*/}
+      <NewTastesSection newProducts={newProducts}/>
+      <ProductsSection products={products} categories={categories}/>
+      <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
       <TelegramPromoSection url={"http://instagram.com/instagram"}/>
-      {/*<InstagramSection/>*/}
-      {/*<PartnersSection/>*/}
+      <InstagramSection/>
+      <PartnersSection/>
       {cookiesModal.isShowed && showDelay ?
         <ModalWrapper show={cookiesModal.isShowed} closeModal={cookiesModal.hideModal} {...cookiesModalProperties}>
           <Cookies close={cookiesModal.hideModal}/>
@@ -62,10 +62,10 @@ export default Index;
 
 export const getServerSideProps = async () => {
   const promoContent = await APIBitrix.get("content/main/promo-section/").then(res => res[0]);
-  // const categories = await APIBitrix.get("products/categories/");
-  // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`) || [];
-  // const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
+  const categories = await APIBitrix.get("products/categories/");
+  const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`);
+  const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
-  // const { discountProduct } = await DataAPI.getData();
-  return { props: {   posts,  promoContent } };
+  const { discountProduct } = await DataAPI.getData();
+  return { props: { products, categories, discountProduct, posts, newProducts, promoContent } };
 };
