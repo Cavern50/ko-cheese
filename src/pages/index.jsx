@@ -43,8 +43,8 @@ const Index = ({ promoContent, products, discountProduct, categories, posts, new
         <title>Главная</title>
       </Head>
       <PromoSection {...promoContent}/>
-      <NewTastesSection newProducts={newProducts}/>
-      <ProductsSection products={products} categories={categories}/>
+      {/*<NewTastesSection newProducts={newProducts}/>*/}
+      {/*<ProductsSection products={products} categories={categories}/>*/}
       {/*<DiscountSection {...discountProduct}/>*/}
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
       <TelegramPromoSection url={"http://instagram.com/instagram"}/>
