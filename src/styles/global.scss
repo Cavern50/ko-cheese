@@ -20,6 +20,8 @@ body {
   @extend %scrollbar;
 }
 
+
+
 section {
   position: relative;
 }
@@ -132,6 +134,28 @@ section {
 
 .swiper-container {
   margin-left: unset !important;
+}
+
+// preloader
+
+#nprogress .bar {
+  background: #184240 !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #184240, 0 0 5px #184240 !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #184240 !important;
+  border-left-color: #184240 !important;
+}
+
+
+#nprogress .spinner-icon {
+  border-top-color: #184240 !important;
+  border-left-color: #184240 !important;
+
 }
 
 

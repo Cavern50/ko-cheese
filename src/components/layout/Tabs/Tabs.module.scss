@@ -1,6 +1,8 @@
+@import '/src/styles/mixins.scss';
 @import '/src/styles/root.scss';
 
 .container {
+  @extend %hiddenScroll;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -27,12 +29,6 @@
   .container {
     overflow-y: scroll;
     justify-content: flex-start;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
     > * {
       margin-right: 20px;
     }

@@ -26,6 +26,8 @@
 .checkout {
   @extend %button--gen;
   margin: 1.875rem auto 0 auto;
+  font-family: $font-service;
+  text-transform: uppercase;
 }
 
 @media (max-width: $mobile) {

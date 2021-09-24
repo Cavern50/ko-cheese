@@ -19,7 +19,7 @@ export const InputPhoto = ({ id, name, formProps, className }) => {
     formProps.setFieldValue(name, file);
   }, [file]);
   return (
-    <div className={clsx(s.container, s[className])}>
+    <div className={clsx(s.item, s[className])}>
       <div className={s.box}>
         {file && <img src={file} alt="" className={s.image}/>}
         {!file && <label className={s.label} htmlFor={name} style={{ "backgroundImage": file }}>

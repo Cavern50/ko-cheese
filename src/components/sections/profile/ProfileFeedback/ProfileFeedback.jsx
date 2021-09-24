@@ -9,7 +9,7 @@ import s from "./ProfileFeedback.module.scss";
 
 export const ProfileFeedback = () => {
   const initialValues = {
-    phone: +79271024567,
+    phone: +79271024567
   };
   return (
     <>
@@ -22,9 +22,11 @@ export const ProfileFeedback = () => {
             <Textarea label="Отзыв" id="feedback" name="feedback" additionClass="feedback"/>
             <div className={s.photos}>
               <span className={s.label}>* Добавить фото</span>
-              <InputPhoto name="photo1" id="photo1" formProps={formProps}/>
-              <InputPhoto name="photo2" id="photo2" formProps={formProps}/>
-              <InputPhoto name="photo3" id="photo3" formProps={formProps}/>
+              <div className={s.attached}>
+                <InputPhoto name="photo1" id="photo1" formProps={formProps}/>
+                <InputPhoto name="photo2" id="photo2" formProps={formProps}/>
+                <InputPhoto name="photo3" id="photo3" formProps={formProps}/>
+              </div>
             </div>
             <button type="submit" className={s.submit}>Отправить</button>
           </>

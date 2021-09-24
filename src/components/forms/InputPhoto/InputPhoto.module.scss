@@ -1,6 +1,6 @@
 @import "../../../styles/mixins";
 @import "../../../styles/root";
-.container {
+.item {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -62,4 +62,11 @@
   position: absolute;
   left: -9999px;
   top: -9999px;
+}
+
+@media (max-width: $landscape) {
+  .item {
+    width: 140px;
+    height: 140px;
+  }
 }

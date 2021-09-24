@@ -12,6 +12,10 @@ section.none {
   margin-top: 0;
 }
 
+section.article {
+  margin-top: 3.125rem;
+}
+
 @media (max-width: $landscape) {
   .block {
     margin-top: 75px;
@@ -21,6 +25,9 @@ section.none {
 @media (max-width: $mobile) {
   .block {
     margin-top: 40px;
+  }
+  section.article {
+    margin-top: 0;
   }
 }
 

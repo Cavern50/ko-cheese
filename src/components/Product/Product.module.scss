@@ -131,13 +131,18 @@
 
 @media (max-width: $mobile) {
   .card {
-    height: 204px;
+    height: 205px;
+    .image {
+      width: 128px;
+      height: 101px;
+    }
   }
-  .card_slider {
+  .card.card_slider {
     height: 405px;
-
+    width: 270px;
     .image {
       width: 212px;
+      height: 167px;
     }
 
     .name {

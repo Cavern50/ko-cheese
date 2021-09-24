@@ -14,14 +14,14 @@ export const Input = (props) => {
     <Field {...fieldProps}>
       {({
           field, // { name, value, onChange, onBlur }
-          form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+          form, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
           meta
         }) => (
-          <div className={clsx(label && s.container, s[containerClass])}>
+          <div className={clsx(s[containerClass], label && s.container)}>
             {label && <label className={s.label} htmlFor={id}>{label}</label>}
-            <input id={id} className={clsx(s.field, s[additionClass])} type={type} {...field}/>
-            {meta.touched && meta.error && (
-              <div className="error">{meta.error}</div>
+            <input id={id} className={clsx(s.field, s[additionClass])} type={type} onBlur={field.onBlur} {...field}/>
+            {meta.error && (
+              <div className={s.error}>{meta.error}</div>
             )}
           </div>
         )

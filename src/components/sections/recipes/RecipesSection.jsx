@@ -23,7 +23,6 @@ export const RecipesSection = ({ categories, items }) => {
 
   React.useEffect(() => {
     setActiveCategory(categories.find(category => category.id === activeCategoryId));
-    console.log(activeSubCategoryId);
   }, [activeCategoryId]);
 
 
@@ -33,8 +32,7 @@ export const RecipesSection = ({ categories, items }) => {
 
   React.useEffect(() => {
     const getPosts = async () => {
-      const posts = await APIBitrix.getData(`articles/collection/${activeSubCategoryId}`);
-      console.log(activeCategoryId);
+      const posts = await APIBitrix.get(`articles/collection/${activeSubCategoryId}`);
       setActivePosts(posts);
     };
 
@@ -42,18 +40,6 @@ export const RecipesSection = ({ categories, items }) => {
     
   }, [activeSubCategoryId]);
 
-  // React.useEffect(() => {
-  //   getPosts(activeCategory.url).then(res => setActiveCategoryItems(res));
-  //   // const testApi = async () => await axios.get(`http://192.168.1.141/api/articles/getPreviewsByCategory/${activeCategoryId}`).then(res => setActiveCategoryItems(res.data.list));
-  //   // testApi();
-  // }, [activeCategory]);
-
-
-  // React.useEffect(() => {
-  //   const getPosts = async () => {
-  //     const posts = await APIBitrix.getData('')
-  //   }
-  // }, [activeCategoryId, activeSubCategoryId]);
 
   return (
     <>

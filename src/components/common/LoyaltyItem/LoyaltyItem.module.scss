@@ -38,3 +38,33 @@
   font-family: $font-service--bold;
   margin-top: 1.75rem;
 }
+
+@media (max-width: $landscape) {
+  .container {
+    padding: 40px 90px 40px 88px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .container {
+    padding: 30px 54px 37px 70px;
+    &::before {
+      top: 25px;
+      left: 30px;
+      margin-right: 18px;
+      font-size: 20px;
+    }
+  }
+  .content {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .container {
+    padding: 30px 30px 30px 60px;
+    &::before {
+      left: 20px;
+    }
+  }
+}

@@ -7,7 +7,6 @@ class API {
   constructor(localStorageData = "") {
     const baseUrlFromLS = BASE_URL;
     this.url = baseUrlFromLS || process.env.REACT_APP_BASE_URL || "";
-    console.log(this.url);
     // this.localStorageData = localStorageData
   }
 

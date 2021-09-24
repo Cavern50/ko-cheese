@@ -7,14 +7,20 @@ import {
   favoriteChangeModalState,
   subscribeChangeModalState
 } from "redux/slices/modals";
-import { removeProduct, incProductCount, cartItemsSelector, decProductCount, addToCart } from "redux/slices/cart";
+import {
+  removeProduct,
+  incProductCount,
+  cartItemsSelector,
+  decProductCount,
+  addToCart,
+  reqIncProductCount, reqDecProductCount, reqRemoveFromCart
+} from "redux/slices/cart";
 
 import { RemoveButton } from "../../buttons/RemoveButton/RemoveButton";
 import s from "./PurchaseControl.module.scss";
 import { addToFavorite } from "redux/slices/favorite";
 
 export const PurchaseControl = ({ product, inCart, additionClass }) => {
-  console.log(product);
   const dispatch = useDispatch();
 
   const productSelector = useSelector(cartItemsSelector).find(item => item.id === product.id);
@@ -29,15 +35,15 @@ export const PurchaseControl = ({ product, inCart, additionClass }) => {
   };
 
   const removeHandler = () => {
-    dispatch(removeProduct(product));
+    dispatch(reqRemoveFromCart(product));
   };
 
   const decHandlerInCart = () => {
-    dispatch(decProductCount(product));
+    dispatch(reqDecProductCount(product));
   };
 
   const incHandlerInCart = () => {
-    dispatch(incProductCount(product));
+    dispatch(reqIncProductCount(product));
   };
 
   const [countInCart, setCountInCart] = React.useState(1);
@@ -51,8 +57,12 @@ export const PurchaseControl = ({ product, inCart, additionClass }) => {
   }
 
   const addToCartHandler = () => {
-    dispatch(addToCart({ countInCart, ...product }))
-    dispatch(cartChangeModalState(true));
+    if (product.status) {
+      dispatch(addToCart({ countInCart, ...product }))
+      dispatch(cartChangeModalState(true));
+    } else {
+      alert('Товара временно нет в наличии');
+    }
   };
   return (
     <>

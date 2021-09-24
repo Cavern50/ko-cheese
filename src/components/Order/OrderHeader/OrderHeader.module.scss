@@ -1,11 +1,12 @@
-@import "../../../styles/mixins";
-@import "../../../styles/root";
- 
+@import "/src/styles/mixins";
+@import "/src/styles/root";
+
 .wrapper {
   position: relative;
   padding-bottom: 1.25rem;
   font-family: $font-service;
 }
+
 .close {
   @extend %close-btn;
   right: 0;
@@ -24,4 +25,30 @@
 
 .label {
   font-family: $font-service--bold;
+}
+
+@media (max-width: $tablet) {
+  .field {
+    width: 50%;
+  }
+  .row {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .field {
+    font-size: 14px;
+    &Short {
+      width: 40%;
+    }
+  }
+  .row {
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .close {
+    right: -4px;
+    top: -46px;
+  }
 }

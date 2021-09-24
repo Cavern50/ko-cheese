@@ -39,6 +39,7 @@
 }
 
 .photos {
+  @extend %hiddenScroll;
   display: flex;
   margin-top: 0.625rem;
 }
@@ -47,4 +48,44 @@
   @extend %button--green;
   height: 3.125rem;
   margin-top: 1.875rem;
+}
+
+@media (max-width: $landscape) {
+  .container {
+    justify-content: space-between;
+  }
+  .block {
+    width: 48%;
+    margin-right: 0;
+  }
+  .photos {
+    > div {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .block {
+    width: 100%;
+    &:last-child {
+      margin-top: 20px;
+    }
+  }
+  .submit {
+    width: 215px;
+  }
+  .photos {
+    overflow-x: scroll;
+    & > div {
+      flex-shrink: 0;
+      width: 130px;
+      height: 130px;
+    }
+  }
 }

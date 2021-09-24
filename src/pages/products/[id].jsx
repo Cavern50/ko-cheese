@@ -8,10 +8,12 @@ import { Product } from "components/Product/Product";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { RecipesSliderSection } from "components/sections/common/RecipesSliderSection/RecipesSliderSection";
 import { Section } from "components/layout/Section/Section";
-import { windowSize, isClientSide } from "constants.js";
+import { windowSize } from "constants.js";
 import Link from "next/link";
 import APIBitrix from "api/APIBitrix";
-import g from '/src/styles/Main.module.scss';
+import g from "/src/styles/Main.module.scss";
+import { useClientSide } from "hooks.js";
+import Head from "next/head";
 
 
 const Card = ({ id, product, products, posts }) => {
@@ -46,9 +48,13 @@ const Card = ({ id, product, products, posts }) => {
     }
   };
 
+  const isClientSide = useClientSide();
 
   return (
     <>
+      <Head>
+        <title>{product.name}</title>
+      </Head>
       <Wrapper>
         <DescriptionSection product={product} id={id}/>
         {products.length && <Section>
@@ -65,15 +71,15 @@ const Card = ({ id, product, products, posts }) => {
       <RecipesSliderSection title="Рецепты" recipes={posts}/>
 
     </>
-  )
-}
+  );
+};
 
 export default Card;
 
 
 export const getServerSideProps = async ({ params }) => {
-  const product = await APIBitrix.getData(`products/item/${params.id}`);
-  const posts = await APIBitrix.getData(`articles/collection/`);
-  const {products = []} = product;
+  const product = await APIBitrix.get(`products/item/${params.id}`);
+  const posts = await APIBitrix.get(`articles/collection/`);
+  const { products = [] } = product;
   return { props: { id: params.id, product, products, posts } };
 };

@@ -31,7 +31,7 @@ export const allTastes = {
 };
 
 
-export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/8";
+export const BASE_URL = "http://localhost:3001/";
 
 export const cities = [
   {
@@ -100,12 +100,38 @@ export const cities = [
 export const instagramUser = "ko-cheese";
 
 export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
-  name: Yup.string(),
+  name: Yup.string().required("Введите имя"),
   surname: Yup.string(),
-  email: Yup.string(),
-  phone: Yup.number()
+  email: Yup.string().email("Введите корректный e-mail"),
+  phone: Yup.string().required("Введите номер телефона")
 });
 
+
+export const ADDRESS_VALIDATION_SCHEMA = Yup.object().shape({
+  city: Yup.string().required("Введите город"),
+  street: Yup.string().required("Введите улицу"),
+  house: Yup.string().required("Введите дом")
+});
+
+
+export const RETURN_ORDER_VALIDATION_SCHEMA = Yup.object().shape({
+  name: Yup.string().required('Введите имя'),
+  phone: Yup.string().required('Введите номер телефона'),
+
+})
+
+export const RETURN_VALIDATION_SCHEMA = Yup.object().shape({
+  name: Yup.string().required('Введите имя'),
+  phone: Yup.string().required('Введите номер телефона'),
+})
+
+export const PURCHASE_VALIDATION_SCHEMA = Yup.object().shape({
+  name: Yup.string().required('Введите имя'),
+  phone: Yup.string().required('Введите номер телефона'),
+  email: Yup.string().email('Введите корректный e-mail'),
+  street: Yup.string().required('Введите улицу'),
+  house: Yup.string().required('Введите номер дома'),
+});
 
 export const mainModalProperties = {
   animation: {
@@ -118,15 +144,41 @@ export const mainModalProperties = {
   }
 };
 
-// export const windowSize = typeof window !== "undefined" ? window.innerWidth : false;
-// export const windowSize = window.innerWidth;
-// export const windowSize = () => window.innerWidth;
 
 
 export const isClientSide = typeof window !== "undefined";
 
 export const windowSize = isClientSide ? window.innerWidth : false;
 
-export const BASE_API_URL = "https://co-ko.asap-lp.ru/api";
+export const BASE_API_URL = "https://co-ko.asap-lp.ru/api/";
 
 export const BASE_SITE_URL = "https://co-ko.asap-lp.ru/";
+
+
+export const orders = [
+  {
+    number: 234519,
+    totalPrice: 2245,
+    count: 2,
+    status: "Завершен",
+    date: "12.04.2021",
+    products: [
+      {
+        image: "/static/img/content/camamberGoat.png",
+        name: "Камамбер козий",
+        addition: "с белой плесенью",
+        price: 320,
+        weight: "200 гр.",
+        count: 2
+      },
+      {
+        image: "/static/img/content/camamberCow.png",
+        name: "Камамбер коровий",
+        addition: "с белой плесенью",
+        price: 350,
+        weight: "300 гр.",
+        count: 5
+      }
+    ]
+  }
+];

@@ -3,35 +3,38 @@ import React from 'react';
 import { Purchase } from 'components/common/Purchase/Purchase';
 import { TotalPrice } from 'components/common/TotalPrice/TotalPrice';
 import s from './CartSection.module.scss';
+import { useSelector } from "react-redux";
+import { cartItemsSelector, totalPriceSelector } from "redux/slices/cart";
 
-export const CartSection = () => (
+export const CartSection = () => {
+
+  const itemsInCart = useSelector(cartItemsSelector);
+  const totalPrice = useSelector(totalPriceSelector);
+
+  return (
     <>
       <div className={s.container}>
         <div className={s.cart}>
           <div className={s.header}>
             <h2>Корзина</h2>
           </div>
-          <Purchase inOrder />
-          <Purchase inOrder />
-          <Purchase inOrder />
-          <Purchase inOrder />
-          <Purchase inOrder />
-          <Purchase inOrder />
+          {itemsInCart.map(item => <Purchase inOrder key={item} params={item}/>)}
         </div>
         <div className={s.footer}>
           <div className={s.fields}>
             <div className={s.field}>
               <span className={s.info}>Цена:</span>
-              <span className={s.value}>1350 руб.</span>
+              <span className={s.value}>{totalPrice} руб.</span>
             </div>
             <div className={s.field}>
               <span className={s.info}>Доставка:</span>
               <span className={s.value}>Бесплатно</span>
             </div>
           </div>
-          <TotalPrice value={1315} />
+          <TotalPrice value={totalPrice} />
         </div>
       </div>
     </>
   );
+}
 

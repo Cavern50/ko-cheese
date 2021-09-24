@@ -35,9 +35,10 @@ export const useTabs = (init = null, isRemovable = true) => {
 };
 
 export const useClientSide = () => {
-  const [isRender, setIsRender] = React.useState(null);
+  const [isRender, setIsRender] = React.useState(false);
   React.useEffect(() => {
     setIsRender(true);
   });
   return isRender;
 };
+

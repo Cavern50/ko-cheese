@@ -1,5 +1,5 @@
-@import "../../../styles/root";
-@import "../../../styles/mixins";
+@import "/src/styles/root";
+@import "/src/styles/mixins";
 
 .container {
   display: flex;
@@ -52,4 +52,52 @@
   border: 1px solid $grey;
   border-radius: 8px;
   font-family: $font-service;
+}
+
+@media (max-width: $tablet) {
+  .title {
+    font-size: 18px;
+  }
+  .image {
+    width: 100px;
+    height: 80px;
+  }
+  .container {
+    padding: 14px 0;
+    &:last-child {
+      margin-bottom: 26px;
+    }
+  }
+  .count {
+    padding: 8px 22px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .container {
+    padding-bottom: 20px;
+  }
+  .info {
+    position: relative;
+    flex-wrap: wrap;
+    padding-left: 40px;
+  }
+  .image {
+    margin: 0;
+  }
+  .data {
+    width: 100%;
+    margin-top: 8px;
+  }
+  .count {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 60px;
+    margin-top: 92px;
+    padding: 0;
+    border: none;
+  }
+  .uncontrol {
+    padding-left: 16px;
+  }
 }

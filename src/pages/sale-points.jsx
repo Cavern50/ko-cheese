@@ -7,7 +7,9 @@ import { SalePointsSection } from 'components/sections/sale-points/SalePointsSec
 const SalePoints = () => {
   return (
     <>
-      <Head></Head>
+      <Head>
+        <title>Точки продаж</title>
+      </Head>
       <H1>Точки продаж</H1>
       <SalePointsSection />
     </>

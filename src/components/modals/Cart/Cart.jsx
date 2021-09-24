@@ -5,7 +5,7 @@ import { CloseButton } from "components/buttons/CloseButton/CloseButton";
 import { useModal } from "hooks";
 import { ModalFooter } from "components/modals/ModalFooter/ModalFooter";
 import { useSelector } from "react-redux";
-import { cartItemsSelector, totalPriceSelector } from "redux/slices/cart";
+import { cartItemsSelector } from "redux/slices/cart";
 import { ModalBody } from "../ModalBody/ModalBody";
 import s from "./Cart.module.scss";
 
@@ -22,7 +22,7 @@ export const Cart = ({ closeModal }) => {
         </div>
       )}
       <div>
-        {itemsInCart.map(item => <Purchase inCart key={item} params={item}/>)}
+        {itemsInCart.map((item, index) => <Purchase inCart key={index} params={item}/>)}
       </div>
       <ModalFooter/>
     </ModalBody>

@@ -20,7 +20,7 @@ export const DiscountSection = (props) => {
               <span className={s.name}> {name}</span>
             </h3>
             <div className={s.date}>До {date}</div>
-            <Link href={`products/${id}`}>
+            <Link href={`/products/${id}`}>
               <a className={s.link}>Посмотреть</a>
             </Link>
           </div>

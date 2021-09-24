@@ -1,29 +1,63 @@
 import React from "react";
-import {wrapper} from "redux/store";
+import { wrapper } from "redux/store";
 
-import 'styles/global.scss';
-
-import 'swiper/swiper.scss';
-import { Header } from 'components/common/Header/Header';
-import { Main } from 'components/layout/Main/Main';
-import { Footer } from 'components/common/Footer/Footer';
-import {AllModals} from "components/modals/AllModals/AllModals";
+import "nprogress/nprogress.css";
+import "styles/global.scss";
+import "swiper/swiper.scss";
+import NProgress from "nprogress";
+import Router from "next/router";
+import { Header } from "components/common/Header/Header";
+import { Main } from "components/layout/Main/Main";
+import { Footer } from "components/common/Footer/Footer";
+import { AllModals } from "components/modals/AllModals/AllModals";
 import { Submenu } from "components/common/Submenu/Submenu";
-import { isClientSide, windowSize } from "constants.js";
+import { windowSize } from "constants.js";
+import { useClientSide } from "hooks.js";
+import APIBitrix from "api/APIBitrix";
+
 
 const MyApp = ({ Component, pageProps, router }) => {
+
+  NProgress.configure({ easing: 'ease', speed: 500 });
+
+  Router.onRouteChangeStart = () => {
+    NProgress.start();
+  };
+
+  Router.onRouteChangeComplete = () => {
+    NProgress.done();
+  };
+
+  Router.onRouteChangeError = () => {
+    NProgress.done();
+  };
+
+
+  const isClientSide = useClientSide();
+
+  const putClientInStorage = async () => {
+    const getClientId = await APIBitrix.get("users/fuser-id/");
+    localStorage.setItem("fuser_id", getClientId);
+  };
+
+  React.useEffect(() => {
+    if (!localStorage.getItem("fuser_id")) {
+      putClientInStorage();
+    }
+  }, []);
+
   return (
     <>
-      <Header router={router} />
+      <Header router={router}/>
       <Main router={router}>
         <Component {...pageProps} />
+        <AllModals/>
+        {isClientSide && windowSize < 768 && <Submenu/>}
       </Main>
-      <Footer />
-      <AllModals/>
-    {isClientSide && windowSize < 768 && <Submenu/>}
+      <Footer/>
     </>
   );
-}
+};
 
 export default wrapper.withRedux(MyApp);
 

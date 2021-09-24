@@ -45,6 +45,10 @@
 @media (max-width: $mobile) {
   .container {
     width: 100%;
+
+    &:not(:first-child) {
+      margin-top: 50px;
+    }
   }
   .text {
     margin-top: 15px;

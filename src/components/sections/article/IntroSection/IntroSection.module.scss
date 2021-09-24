@@ -55,6 +55,9 @@
   font-family: $font-service;
   font-size: 1.125rem;
   line-height: 2;
+  h1, h2, h3 {
+    font-family: $font-main;
+  }
 }
 
 @media (max-width: $landscape) {

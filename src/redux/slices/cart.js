@@ -1,10 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
+import APIBitrix from "api/APIBitrix";
+
 
 const initialState = {
   items: [],
   totalPrice: 0
 };
+
 
 export const cartSlice = createSlice({
   name: "cart",
@@ -26,15 +29,18 @@ export const cartSlice = createSlice({
     },
     incProductCount(state, action) {
       const product = state.items.find(item => item.id === action.payload.id);
-      product.countInCart++;
+      product.countInCart += 1;
       state.totalPrice += parseInt(product.price, 10);
     },
     decProductCount(state, action) {
       const product = state.items.find(item => item.id === action.payload.id);
       if (product.countInCart > 1) {
-        product.countInCart--;
+        product.countInCart -= 1;
         state.totalPrice -= parseInt(product.price, 10);
       }
+    },
+    getProducts(state, action) {
+      state.items = action.payload;
     }
   },
   extraReducers: {
@@ -47,13 +53,96 @@ export const cartSlice = createSlice({
   }
 });
 
+
 export const {
   addToCart,
   removeProduct,
   incProductCount,
-  decProductCount
+  decProductCount,
+  getProducts
 } = cartSlice.actions;
 
 export const cartItemsSelector = (state) => state.cart.items;
 export const totalPriceSelector = (state) => state.cart.totalPrice;
 
+
+export const reqAddToCart = createAsyncThunk(
+  "cart/reqAddToCart",
+  async (productData, { dispatch }) => {
+    const response = await APIBitrix.post("basket/add/", {
+      fuser_id: localStorage.getItem("fuser_id"),
+      product_id: productData.id,
+      quantity: productData.countInCart
+    });
+    dispatch(addToCart({
+      ...productData,
+      countInCart: response.quantity
+    }));
+  }
+);
+
+
+export const reqIncProductCount = createAsyncThunk(
+  "cart/reqIncProductCount",
+  async (productData, { dispatch, getState }) => {
+    const state = getState();
+    const response = await APIBitrix.post("basket/increment/", {
+      fuser_id: localStorage.getItem("fuser_id"),
+      product_id: productData.id,
+      quantity: 1
+    });
+    dispatch(incProductCount({
+      ...productData,
+      countInCart: state.cart.items.find(product => productData.id === product.id).countInCart + 1
+    }));
+  }
+);
+
+
+export const reqDecProductCount = createAsyncThunk(
+  "cart/reqDecProductCount",
+  async (productData, { dispatch, getState }) => {
+    const state = getState();
+    if (state.cart.items.find(product => productData.id === product.id).countInCart > 1) {
+      const response = await APIBitrix.get("basket/decrement/", {
+        fuser_id: localStorage.getItem("fuser_id"),
+        product_id: productData.id,
+        quantity: -1
+      });
+      dispatch(addToCart({
+        ...productData,
+        countInCart: state.cart.items.find(product => productData.id === product.id).countInCart - 1
+      }));
+    }
+  }
+);
+
+
+export const reqRemoveFromCart = createAsyncThunk(
+  "cart/reqRemoveFromCart",
+  async (productData, { dispatch }) => {
+    const itemId = await APIBitrix.get("basket/items/", {
+      fuser_id: localStorage.getItem("fuser_id")
+    });
+    console.log(itemId);
+    const response = await APIBitrix.post("basket/remove/", {
+      fuser_id: localStorage.getItem("fuser_id"),
+      item_id: itemId
+    });
+    dispatch(removeProduct(productData));
+  }
+);
+
+
+export const reqGetProducts = createAsyncThunk(
+  "cart/reqGetProducts",
+  async (productData, { dispatch }) => {
+    const response = await APIBitrix.get("basket/add/", {
+      fuser_id: localStorage.getItem("fuser_id")
+    });
+    dispatch(addToCart({
+      ...productData,
+      countInCart: response.quantity
+    }));
+  }
+);

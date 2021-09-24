@@ -1,12 +1,13 @@
 import React from "react";
 import { ProfileControls } from "components/common/Profile/ProfileControls/ProfileControls";
 import { Order } from "components/Order/Order";
+import { orders } from "constants.js";
 
 export const ProfileSubscribe = () => {
   return (
     <div>
       <ProfileControls/>
-      <Order subscribe/>
+      {orders.map(order => <Order data={order} subscribe/>)}
     </div>
   );
 };

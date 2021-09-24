@@ -7,21 +7,22 @@ import { DiscountSection } from "components/sections/common/DiscountSection/Disc
 import { Discount } from "components/common/Discount/Discount";
 import { useModal } from "hooks";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
-
+import DataAPI from "api/DataAPI";
 
 import { H1 } from "components/layout/H1/H1";
-import DataAPI from "api/DataAPI";
 import APIBitrix from "api/APIBitrix";
 
 const Products = ({ products, newProducts, discountProduct, categories }) => {
   const discountModal = useModal(true, false);
   return (
     <>
-      <Head/>
+      <Head>
+        <title>Каталог</title>
+      </Head>
       <Wrapper>
         {discountModal.isShowed && (
           <Discount
-            text="Вам представлена скидка на перый заказ 10%"
+            text="Вам представлена скидка на первый заказ 10%"
             close={discountModal.hideModal}
           />
         )}
@@ -35,37 +36,11 @@ const Products = ({ products, newProducts, discountProduct, categories }) => {
 };
 
 export default Products;
-//
-// const getProducts = async () => {
-//   const newProducts = await ProductsAPI.getNewProducts();
-//   const products = await ProductsAPI.getProducts();
-//   const productsCategories = await ProductsAPI.getProductsCategories();
-//   const discountProduct = await ProductsAPI.getDiscountProduct();
-//
-//   return { products, newProducts, productsCategories, discountProduct };
-// };
-//
-//
-// export const getServerSideProps = async () => {
-//   const { products, newProducts, productsCategories, discountProduct } = await getProducts();
-//   return { props: { products, discountProduct, newProducts, productsCategories } };
-// };
-
-
-const getData = async () => await DataAPI.getData();
-//
-// export const getServerSideProps = async () => {
-//   // const categories = await getCategories();
-//   // const pageData = await getPageData(resolvedUrl.slice(1));
-//   const { products, newProducts, discountProduct, productsCategories } = await getData();
-//   return { props: { products, newProducts, discountProduct, productsCategories } };
-// };
-//
 
 export const getServerSideProps = async () => {
-    const categories = await APIBitrix.getData('products/categories/');
-    const products = await APIBitrix.getData(`products/collection/${categories[0].subcategories[0].id}`)
-    const newProducts = await APIBitrix.getData('products/slider/').then(res => res.products);
-    const { discountProduct } = await getData();
-    return { props: { products, discountProduct, newProducts, categories } };
+  const categories = await APIBitrix.get('products/categories/');
+  const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`)
+  const newProducts = await APIBitrix.get('products/slider/').then(res => res.products);
+  const { discountProduct } = await DataAPI.getData();
+  return { props: { products, discountProduct, newProducts, categories } };
 };

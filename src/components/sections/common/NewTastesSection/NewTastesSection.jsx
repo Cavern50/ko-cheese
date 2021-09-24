@@ -5,7 +5,6 @@ import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { windowSize } from "constants.js";
 import { NewTaste } from "../../../common/NewTaste/NewTaste";
-import APIBitrix from "api/APIBitrix";
 
 const sliderParams = {
   slider: {
@@ -35,19 +34,7 @@ const sliderParams = {
   }
 };
 
-export const NewTastesSection = ({newProducts}) => {
-  // const [newProducts, setNewProducts] = React.useState([]);
-  //
-  // React.useEffect(() => {
-  //   const getProducts = async () => {
-  //     const products = await APIBitrix.getData("products/slider/").then(res => res[0].products)
-  //     setNewProducts(products);
-  //   };
-  //
-  //   getProducts();
-  //
-  // }, []);
-
+export const NewTastesSection = ({ newProducts }) => {
   return (
     <Section>
       <Wrapper>

@@ -6,11 +6,12 @@ import { BackButton } from "components/buttons/BackButton/BackButton";
 import { Thumbnails } from "components/common/Thumbnails/Thumbnails";
 import { PurchaseControl } from "components/common/PurchaseControl/PurchaseControl";
 import { ProductProperty } from "components/Product/ProductProperty/ProductProperty";
-import { allTastes, windowSize, isClientSide, BASE_SITE_URL } from "constants.js";
+import { allTastes, windowSize, BASE_SITE_URL } from "constants.js";
 
 import { ProductNutrient } from "components/Product/ProductNutrient/ProductNutrient";
 import { Swiper, SwiperSlide } from "swiper/react";
 import s from "./DescriptionSection.module.scss";
+import { useClientSide } from "hooks";
 
 
 export const DescriptionSection = ({ id, product }) => {
@@ -28,49 +29,63 @@ export const DescriptionSection = ({ id, product }) => {
     count: 1,
     date: "",
     previewText: ""
-  }
+  };
   const properties = {
     ...defaults,
     ...product
-  }
+  };
 
   const cartProductsProps = {
     ...properties,
-    cartCount : 1,
-  }
+    cartCount: 1
+  };
 
 
-  const {name, addition, detailText, info, nutritional, date, weight, previewText, price, tastes,  gallery, status, count} = properties;
-  const isDesktop = isClientSide && windowSize >= 768;
+  const {
+    name,
+    addition,
+    detailText,
+    info,
+    nutritional,
+    date,
+    weight,
+    previewText,
+    price,
+    tastes,
+    gallery,
+    status,
+    count
+  } = properties;
+  const isClientSide = useClientSide();
   const productProperties =
-      <div className={s.properties}>
-        <div className={s.column}>
-          {info.map(property => <ProductProperty key={property.id} {...property}/>)}
-          <ProductProperty title="Вес" value={weight}/>
-        </div>
-        <div className={s.column}>
-          {nutritional.map(property => <ProductProperty key={property.id} {...property}/>)}
-        </div>
-      </div>;
+    <div className={s.properties}>
+      <div className={s.column}>
+        {info.map(property => <ProductProperty key={property.id} {...property}/>)}
+        <ProductProperty title="Вес" value={weight}/>
+      </div>
+      <div className={s.column}>
+        {nutritional.map(property => <ProductProperty key={property.id} {...property}/>)}
+      </div>
+    </div>;
 
   return <>
     <BackButton/>
     <div className={s.container}>
       <div className={s.block}>
         {
-          isClientSide ? windowSize >= 768 ?
-              <Thumbnails gallery={gallery}/>
-              :
-              <Swiper
-                  spaceBetween={15}
-              >
-                {gallery.map(el =>
-                    <SwiperSlide key={el}>
-                      <img className={s.slide} src={BASE_SITE_URL + el} alt={name}/>
-                    </SwiperSlide>)}
-              </Swiper> : ""
+          isClientSide && windowSize >= 768 ?
+            <Thumbnails gallery={gallery}/>
+            :
+            <Swiper
+              spaceBetween={15}
+            >
+              {gallery.map(el =>
+                <SwiperSlide key={el}>
+                  <img className={s.slide} src={BASE_SITE_URL + el} alt={name}/>
+                </SwiperSlide>)}
+            </Swiper>
         }
-        {isDesktop && productProperties}
+        {isClientSide && windowSize >= 768 && productProperties}
 
       </div>
       <div className={s.info}>
@@ -80,13 +95,13 @@ export const DescriptionSection = ({ id, product }) => {
           {addition}
         </h2>
         <div className={s.statuses}>
-          <span className={clsx( s.status, status ? s.inStock : s.outStock)}>
-            {status ? 'в наличии' : "нет в наличии"}{count > 0 && ` ${count}  шт `}
+          <span className={clsx(s.status, status ? s.inStock : s.outStock)}>
+            {status ? "в наличии" : "нет в наличии"}{count > 0 && ` ${count}  шт `}
             {/*{date && `до ${date}`}*/}
           </span>
         </div>
         <span className={s.price}>{parseInt(price, 10)} руб.</span>
-        {!isDesktop && productProperties}
+        {!isClientSide && windowSize <= 768 && productProperties}
         <p className={s.about}>{previewText}</p>
 
         <div className={s.nutrients}>

@@ -36,21 +36,27 @@ export const Submenu = () => {
 
   return (
     <div className={s.container}>
-      <button type="button" className={s.button}>
-        <GeoIcon/>
-      </button>
+      <Link href="/sale-points">
+        <a className={s.button}>
+          <GeoIcon/>
+        </a>
+      </Link>
       <Link href="/login">
         <a className={s.button} onClick={() => dispatch(closeAllModals())}>
           <ProfileIcon/>
         </a>
       </Link>
-      <button type="button" onClick={cartModalHandler} className={s.button}>
+      <button type="button"
+              onClick={cartModalHandler} className={s.button}>
         <CartIconMobile/>
       </button>
-      <button type="button" onClick={favoriteModalHandler} className={s.button}>
+      <button type="button"
+              onClick={favoriteModalHandler} className={s.button}>
         <FavoriteIconMobile/>
       </button>
-      <button type="button" onClick={menuModalHandler} className={clsx(s.button, s.burger, menuModalValue && s.burgerOpen)}>
+      <button type="button"
+              onClick={menuModalHandler}
+              className={clsx(s.button, s.burger, menuModalValue && s.burgerOpen)}>
          <span className={s.line}>
                 <span/>
          </span>

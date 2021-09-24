@@ -1,10 +1,18 @@
 import React from "react";
 import { RepeatIcon, ReplaceIcon } from "components/SVG/Icons";
+import { addOrderToReturn } from "redux/slices/returnOrder";
+import { useDispatch } from "react-redux";
 import s from "components/Order/OrderControls/OrderControls.module.scss";
 
 
-export const OrderControls = ({ formProps }) => {
-  console.log();
+export const OrderControls = ({ formProps, order }) => {
+
+  const dispatch = useDispatch();
+
+  const returnOrderHandler = () => {
+    dispatch(addOrderToReturn(order));
+  }
+
   return (
     <>
       <button type="button" className={s.more}>показать еще +</button>
@@ -13,7 +21,7 @@ export const OrderControls = ({ formProps }) => {
           <RepeatIcon/>
           <span>Повторить заказ</span>
         </button>
-        <button type="button" className={s.return}>
+        <button type="button" onClick={returnOrderHandler} className={s.return}>
           <ReplaceIcon/>
           <span>Заменить товар</span>
         </button>

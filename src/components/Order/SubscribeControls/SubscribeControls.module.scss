@@ -17,3 +17,12 @@
   height: 2.5rem;
   border-radius: 2.25rem;
 }
+
+@media (max-width: $mobile) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .change {
+    margin-top: 16px;
+  }
+}

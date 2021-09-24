@@ -57,3 +57,32 @@
     font-weight: 400;
   }
 }
+
+@media (max-width: $landscape) {
+  .wrapper {
+    flex-wrap: wrap;
+    margin-top: 45px;
+  }
+  .dates {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .wrapper {
+    margin-top: 20px;
+  }
+  .dates,
+  .tabs {
+    flex-wrap: wrap;
+  }
+  .dates {
+    margin-top: 8px;
+  }
+  .tab {
+    margin-bottom: 10px;
+  }
+  .submit {
+    margin-top: 18px;
+  }
+}

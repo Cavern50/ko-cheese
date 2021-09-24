@@ -5,7 +5,6 @@ import s from "components/forms/Textarea/Textarea.module.scss";
 
 export const Textarea = (props) => {
   const { label, type, id, name, additionClass = "" } = props;
-  console.log(props);
 
   return (
     <Field name={name}>

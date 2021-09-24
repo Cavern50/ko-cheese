@@ -8,11 +8,10 @@ import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { windowSize } from "constants.js";
 
-import { useTabs } from "hooks";
+import { useClientSide, useTabs } from "hooks.js";
 
-import s from "./ProductsSection.module.scss";
 import APIBitrix from "api/APIBitrix";
-import axios from "axios";
+import s from "./ProductsSection.module.scss";
 
 
 export const ProductsSection = ({ products, categories }) => {
@@ -22,8 +21,6 @@ export const ProductsSection = ({ products, categories }) => {
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
 
   const [activeProducts, setActiveProducts] = React.useState(products);
-
-  // const [activeSubcategory, setActiveSubcategory] = React.useState(categories[0].subcategories);
 
   React.useEffect(() => {
     setActiveCategory(categories.find(({ id }) => id === activeCategoryId));
@@ -36,47 +33,59 @@ export const ProductsSection = ({ products, categories }) => {
 
   React.useEffect(() => {
     const getProducts = async () => {
-      const requestProducts = await APIBitrix.getData(`products/collection/${activeSubcategoryId}`);
+      const requestId = activeCategory.subcategories ? activeSubcategoryId : activeCategory.id;
+      const requestProducts = await APIBitrix.get(`products/collection/${requestId}`);
       setActiveProducts(requestProducts);
     };
-
     getProducts();
+  }, [activeCategory, activeSubcategoryId]);
 
-  }, [activeSubcategoryId]);
-
+  const isClientSide = useClientSide();
 
   return (
     <Section>
       <Wrapper>
         <div className={s.header}>
           <Tabs>
-            {categories.map(({ name, id }) => (
-              <TabButton
-                key={id}
-                text={name}
-                index={id}
-                active={activeCategoryId}
-                toggleActive={toggleActiveCategoryId}
-              />
-            ))}
+            {
+              categories.map(({ name, id }) => (
+                <TabButton
+                  key={id}
+                  text={name}
+                  index={id}
+                  active={activeCategoryId}
+                  toggleActive={toggleActiveCategoryId}
+                />
+              ))
+            }
           </Tabs>
-          <div className={s.subcategories}>
-            {activeCategory.subcategories && activeCategory.subcategories.map(({ name, id }) => (
-              <SubcategoryButton
-                key={id}
-                id={id}
-                title={name}
-                active={activeSubcategoryId}
-                toggleActive={toggleSubcategoryId}
-                additionClass="mainButton"
-              />
-            ))}
+          {
+            activeCategory.subcategories &&
+            <div className={s.subcategories}>
+              {
+                activeCategory.subcategories.map(({ name, id }) => (
+                  <SubcategoryButton
+                    key={id}
+                    id={id}
+                    title={name}
+                    active={activeSubcategoryId}
+                    toggleActive={toggleSubcategoryId}
+                    additionClass="mainButton"
+                  />
+                ))
+              }
+            </div>
+          }
+        </div>
+        {
+          activeProducts.length > 0 &&
+          <div className={s.body}>
+            {activeProducts.map((product) => <Product key={product.id} {...product} />)}
           </div>
-        </div>
-        <div className={s.body}>
-          {activeProducts && activeProducts.map((product) => <Product key={product.id} {...product} />)}
-        </div>
-        {windowSize <= 1200 && <button type="button" className={s.more}>Показать еще <span>(4)</span></button>}
+        }
+
+        {isClientSide && windowSize <= 1200 &&
+        <button type="button" className={s.more}>Показать еще <span>(4)</span></button>}
       </Wrapper>
     </Section>
 

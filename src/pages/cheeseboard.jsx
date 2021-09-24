@@ -4,13 +4,16 @@ import { FarmContentLargeSection } from 'components/sections/farm/FarmContentLar
 import { FarmContentSmallSection } from 'components/sections/farm/FarmContentSmallSection/FarmContentSmallSection';
 import { GallerySection } from 'components/sections/farm/GallerySection/GallerySection';
 import { CheeseboardBackground } from "components/common/CheeseboardBackground/CheeseboardBackground";
+import Head from "next/head";
 
 import DataAPI from '../api/DataAPI';
 
 const Cheeseboard = ({ farmCategories, resolvedUrl, cheeseboard }) => {
-  console.log(cheeseboard, resolvedUrl, cheeseboard);
   return (
     <>
+      <Head>
+        <title>Сыроварня</title>
+      </Head>
       <IntroSection categories={farmCategories} url={resolvedUrl} pageData={cheeseboard}/>
       <FarmContentSmallSection pageData={cheeseboard} firstItem="left"/>
       {cheeseboard.gallery && <GallerySection pageData={cheeseboard}/>}
@@ -23,14 +26,9 @@ const Cheeseboard = ({ farmCategories, resolvedUrl, cheeseboard }) => {
 
 export default Cheeseboard;
 
-// const getCategories = async () => await FarmAPI.getFarmCategories();
-// const getPageData = async (url) => await FarmAPI.getPage(url);
-
 const getData = async () => await DataAPI.getData();
 
 export const getServerSideProps = async ({ resolvedUrl }) => {
-  // const categories = await getCategories();
-  // const pageData = await getPageData(resolvedUrl.slice(1));
   const { cheeseboard, farmCategories } = await getData();
   return { props: { resolvedUrl, farmCategories, cheeseboard } };
 };

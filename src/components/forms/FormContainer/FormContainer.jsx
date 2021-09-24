@@ -4,10 +4,11 @@ import { FormErrorContainer } from "components/forms/FormErrorContainer/FormErro
 import s from "./FormContainer.module.scss";
 
 export const FormContainer = (props) => {
-  const { serverErrors, children, className, ...other } = props;
+  const { serverErrors, children, className, submitHandler, ...other } = props;
   return (
     <Formik {...other} onSubmit={values => {
-      alert(JSON.stringify(values, null, 2));
+      values = JSON.stringify(values, null , 2);
+      submitHandler(values);
     }}>
       {(formik) => {
         const { setErrors } = formik;

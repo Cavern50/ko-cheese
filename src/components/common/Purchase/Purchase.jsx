@@ -7,11 +7,11 @@ import { FavoriteControl } from "../FavoriteControl/FavoriteControl";
 import s from "./Purchase.module.scss";
 
 export const Purchase = ({ inFavorite, inCart, inOrder, params }) => {
-  const { previewImage, name, addition, price, weight } = params;
+  const { previewImage, name, addition, price, weight, countInCart } = params;
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
-        {inOrder && <span className={s.count}>10</span>}
+        {inOrder && <span className={s.count}>{countInCart}</span>}
         <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>
       </div>
       <div className={s.info}>

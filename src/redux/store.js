@@ -4,7 +4,7 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { modalsSlice } from "redux/slices/modals";
 import { cartSlice } from "redux/slices/cart";
 import { favoriteSlice } from "redux/slices/favorite";
-
+import { returnOrderSlice } from "redux/slices/returnOrder";
 
 const makeStore = () =>
   configureStore({
@@ -12,6 +12,7 @@ const makeStore = () =>
       [modalsSlice.name]: modalsSlice.reducer,
       [cartSlice.name]: cartSlice.reducer,
       [favoriteSlice.name]: favoriteSlice.reducer,
+      [returnOrderSlice.name]: returnOrderSlice.reducer
     }
   });
 

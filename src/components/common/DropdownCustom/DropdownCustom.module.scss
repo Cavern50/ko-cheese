@@ -19,7 +19,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 2.5rem;
+  min-height: 2.5rem;
   border: 1px solid $grey;
   background-color: $accent !important;
   cursor: pointer;
@@ -71,4 +71,10 @@
 
 .arrowOpen {
   transform: translateY(-50%) rotate(180deg);
+}
+
+@media (max-width: $tablet) {
+  .field {
+    font-size: 14px;
+  }
 }

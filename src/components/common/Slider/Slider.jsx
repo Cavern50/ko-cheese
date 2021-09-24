@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Controller } from "swiper";
 import { SliderNav } from "components/common/Slider/SliderNav/SliderNav";
 
-import { windowSize, isClientSide } from "constants.js";
+import { windowSize } from "constants.js";
+import { useClientSide } from "hooks.js";
 import s from "./Slider.module.scss";
 
 export const Slider = ({ children, slides, params, title }) => {
-
   SwiperCore.use([Navigation]);
   const { sliderClass, slideClass, turnOffAutoSlides, ...restParams } = params.slider;
   const [allPages, setAllPages] = React.useState(null);
@@ -16,6 +16,7 @@ export const Slider = ({ children, slides, params, title }) => {
   const [currentCount, setCurrentCount] = React.useState(1);
   const isSlideWidthAuto = params.slider.slidesPerView === "auto" && windowSize <= turnOffAutoSlides;
   const allCount = Math.ceil(isSlideWidthAuto ? slides.length : (slides.length / allPages || 1));
+  const isClientSide = useClientSide();
   return (
     isClientSide && (<div className={s.container}>
       {params.nav && <SliderNav

@@ -12,16 +12,30 @@ import s from "./IntroSection.module.scss";
 
 export const IntroSection = ({ article }) => {
 
-    const { name, text, time, persons, previewImage, ingredients } = article;
+    const defaults = {
+      name: "",
+      previewText: "",
+      previewImage: "",
+      time: "",
+      persons: "",
+      detailText: ""
+    };
+
+    const properties = {
+      ...defaults,
+      ...article
+    };
+
+    const { name, previewText, time, persons, previewImage, detailText } = properties;
+
     return (
-      <Section margin={clsx(windowSize > 768 ? "small" : "none")}>
+      <Section margin="article">
         <h1 className={s.title}>{name}</h1>
         <p className={s.description}>
-          {text}
+          {previewText}
         </p>
-        {time && <div className={s.info}>
-          <div className={s.field}>
-
+        {(time || persons) && <div className={s.info}>
+          {time && <div className={s.field}>
           <span className={s.label}>
             Время приготовления
           </span>
@@ -29,8 +43,8 @@ export const IntroSection = ({ article }) => {
               <Time/>
               <span className={s.value}>{time}</span>
             </div>
-          </div>
-          <div className={s.field}>
+          </div>}
+          {persons && <div className={s.field}>
           <span className={s.label}>
             Порция на:
           </span>
@@ -38,18 +52,15 @@ export const IntroSection = ({ article }) => {
               <Persons/>
               <span className={s.value}>{persons}</span>
             </div>
-          </div>
+          </div>}
         </div>
         }
         <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>
-        {
-          ingredients && <div className={s.ingredients}>
-            <h2>Ингредиенты</h2>
-            <div className={s.content}>
-              {ingredients && parse(ingredients)}
-            </div>
+        <div className={s.ingredients}>
+          <div className={s.content}>
+            {parse(detailText)}
           </div>
-        }
+        </div>
       </Section>
     );
   }

@@ -2,7 +2,6 @@ import React from "react";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
 import { Input } from "components/forms/Input/Input";
 import clsx from "clsx";
-import { PROFILE_VALIDATION_SCHEMA } from "/src/constants.js";
 import s from "components/common/Profile/ProfileControls/ProfileControls.module.scss";
 import { useTabs } from "hooks";
 
@@ -26,15 +25,13 @@ export const ProfileControls = () => {
   const { activeId, toggleActiveId } = useTabs(0, null);
 
   const handleFilter = (id) => {
-    toggleActiveId(id)
-  }
+    toggleActiveId(id);
+  };
 
   return (
     <header className={s.header}>
       <FormContainer
         enableReinitialize
-        initialValues={{}}
-        validationScheme={PROFILE_VALIDATION_SCHEMA}
         className="fullWidth">
         {() =>
           <div className={s.wrapper}>
@@ -44,7 +41,9 @@ export const ProfileControls = () => {
                   type="button"
                   key={filter.id}
                   className={clsx(s.tab, activeId === filter.id && s.active)}
-                  onClick={() => handleFilter(filter.id)}>{filter.text}</button>
+                  onClick={() => handleFilter(filter.id)}>
+                  {filter.text}
+                </button>
               )))}
             </div>
             <div className={s.dates}>

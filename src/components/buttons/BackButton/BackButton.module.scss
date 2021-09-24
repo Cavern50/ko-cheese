@@ -3,6 +3,11 @@
 .container {
     width: 100%;
     margin: 1.25rem 0;
+    height: 100%;
+}
+
+.purchase {
+    height: auto;
 }
 
 .button {
@@ -21,8 +26,16 @@
     }
 }
 
+.share {
+    height: 100%;
+}
+
 @media (max-width: $landscape) {
     .share {
         margin-top: 14px;
+    }
+    .profile {
+        width: fit-content;
+        margin-top: 0;
     }
 }

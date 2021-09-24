@@ -6,7 +6,6 @@ import s from "./Recipe.module.scss";
 
 
 export const Recipe = ({ previewImage, name, previewText, code, id, isPreview }) => {
-  console.log(id);
   return (
     <div className={clsx(s.card, isPreview && s.preview)}>
       <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>

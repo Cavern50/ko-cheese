@@ -8,6 +8,7 @@ export const SubscribeControls = () => {
   const subscribeModalOpenHandler = () => {
     dispatch(subscribeChangeModalState(true));
   };
+
   return (
     <div className={s.container}>
       <button type="button" className={s.cancel}>Отменить подписку</button>

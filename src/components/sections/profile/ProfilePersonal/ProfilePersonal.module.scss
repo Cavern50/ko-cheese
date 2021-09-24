@@ -31,3 +31,22 @@
   margin-top: 3.125rem;
   font-size: 1.125rem;
 }
+
+@media (max-width: $landscape) {
+  .form {
+    width: 50%;
+  }
+}
+
+@media (max-width: $mobile) {
+  .form {
+    width: 100%;
+  }
+  .wrapper {
+    margin-top: 0;
+  }
+  .submit {
+    width: 100%;
+    font-size: 16px;
+  }
+}
