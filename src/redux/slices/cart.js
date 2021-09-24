@@ -72,7 +72,7 @@ export const reqAddToCart = createAsyncThunk(
     const response = await APIBitrix.post("basket/add/", {
       fuser_id: localStorage.getItem("fuser_id"),
       product_id: productData.id,
-      quantity: productData.countInCart
+      quantity: 1
     });
     dispatch(addToCart({
       ...productData,
