@@ -86,10 +86,10 @@ export const reqIncProductCount = createAsyncThunk(
   "cart/reqIncProductCount",
   async (productData, { dispatch, getState }) => {
     const state = getState();
-    const response = await APIBitrix.post("basket/increment/", {
+    const response = await APIBitrix.post("basket/add/", {
       fuser_id: localStorage.getItem("fuser_id"),
       product_id: productData.id,
-      quantity: 1
+      quantity: state.cart.items.find(product => productData.id === product.id).countInCart + 1
     });
     dispatch(incProductCount({
       ...productData,
@@ -103,17 +103,15 @@ export const reqDecProductCount = createAsyncThunk(
   "cart/reqDecProductCount",
   async (productData, { dispatch, getState }) => {
     const state = getState();
-    if (state.cart.items.find(product => productData.id === product.id).countInCart > 1) {
-      const response = await APIBitrix.get("basket/decrement/", {
-        fuser_id: localStorage.getItem("fuser_id"),
-        product_id: productData.id,
-        quantity: -1
-      });
-      dispatch(addToCart({
-        ...productData,
-        countInCart: state.cart.items.find(product => productData.id === product.id).countInCart - 1
-      }));
-    }
+    const response = await APIBitrix.post("basket/decrement/", {
+      fuser_id: localStorage.getItem("fuser_id"),
+      product_id: productData.id,
+      quantity: -1
+    });
+    dispatch(decProductCount({
+      ...productData,
+      countInCart: parseInt(state.cart.items.find(product => productData.id === product.id).countInCart, 10) - 1
+    }));
   }
 );
 
