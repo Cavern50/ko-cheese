@@ -43,7 +43,7 @@ const Index = ({ promoContent,  discountProduct, categories, posts, newProducts 
         <title>Главная</title>
       </Head>
       <PromoSection {...promoContent}/>
-      <NewTastesSection newProducts={newProducts}/>
+      {/*<NewTastesSection newProducts={newProducts}/>*/}
       {/*<ProductsSection products={products} categories={categories}/>*/}
       <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
@@ -63,9 +63,9 @@ export default Index;
 export const getServerSideProps = async () => {
   const promoContent = await APIBitrix.get("content/main/promo-section/").then(res => res[0]);
   const categories = await APIBitrix.get("products/categories/");
-  // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`);
+  const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`) || [];
   const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
   const { discountProduct } = await DataAPI.getData();
-  return { props: {  categories, discountProduct, posts, newProducts, promoContent } };
+  return { props: {  categories, discountProduct, posts,  promoContent } };
 };
