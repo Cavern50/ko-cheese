@@ -121,10 +121,9 @@ export const reqDecProductCount = createAsyncThunk(
 export const reqRemoveFromCart = createAsyncThunk(
   "cart/reqRemoveFromCart",
   async (productData, { dispatch }) => {
-    const itemId = await APIBitrix.get("basket/items/", {
+    const itemId = await APIBitrix.post("basket/items/", {
       fuser_id: localStorage.getItem("fuser_id")
-    });
-    console.log(itemId);
+    }).then(res => res.find(item => productData.id == item.product_id).item_id);
     const response = await APIBitrix.post("basket/remove/", {
       fuser_id: localStorage.getItem("fuser_id"),
       item_id: itemId
@@ -146,3 +145,15 @@ export const reqGetProducts = createAsyncThunk(
     }));
   }
 );
+
+
+
+
+// export const reqPurchaseOrder = createAsyncThunk(
+//   "cart/reqAddToCart",
+//   async (productData, { dispatch }) => {
+//     const response = await APIBitrix.post("basket/order/", {
+//       fuser_id: localStorage.getItem("fuser_id")
+//     });
+//   }
+// );

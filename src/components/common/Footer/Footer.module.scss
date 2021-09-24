@@ -19,6 +19,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    &Social {
+        justify-content: flex-start;
+    }
 }
 .link {
     color: $accent;
@@ -26,6 +29,13 @@
     text-transform: none;
     width: 50%;
     margin-bottom: 1.875rem;
+}
+.social {
+    width: fit-content;
+    margin-right: 40px;
+    &:last-child {
+        margin-right: 0;
+    }
 }
 .title {
     @extend %underline;

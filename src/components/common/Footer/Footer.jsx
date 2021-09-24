@@ -7,6 +7,7 @@ import { formatPhone } from "functions.js";
 import { useDispatch } from "react-redux";
 import { letterChangeModalState } from "redux/slices/modals";
 import s from "./Footer.module.scss";
+import clsx from "clsx";
 
 const footerLinks = [
   { title: "Каталог", link: "/products" },
@@ -43,8 +44,9 @@ export const Footer = () => {
               </nav>
             </div>
             <div className={s.block}>
-              <nav className={s.menu}>
-                <a className={s.link} href="https://instagram.com/instagram"><h3 className={s.title}>Telegram</h3></a>
+              <nav className={clsx(s.menu, s.menuSocial)}>
+                <a className={clsx(s.link, s.social)} href="https://telegram.org"><h3 className={s.title}>Telegram</h3></a>
+                <a className={clsx(s.link, s.social)} href="https://instagram.com/instagram"><h3 className={s.title}>Instagram</h3></a>
               </nav>
               <div className={s.info}>
                 <address className={s.address}>
