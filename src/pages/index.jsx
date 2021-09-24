@@ -10,7 +10,7 @@ import { TelegramPromoSection } from "components/sections/index/TelegramPromoSec
 import { InstagramSection } from "components/sections/index/InstagramSection/InstagramSection";
 import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import { Cookies } from "components/modals/Cookies/Cookies";
-
+import DataAPI from 'api/DataAPI.js';
 import { useModal } from "hooks";
 
 import ProductsAPI from "api/ProductsAPI";
@@ -43,7 +43,7 @@ const Index = ({ promoContent, products,  categories, posts, newProducts }) => {
         <title>Главная</title>
       </Head>
       <PromoSection {...promoContent}/>
-      {/*<NewTastesSection newProducts={newProducts}/>*/}
+      <NewTastesSection newProducts={newProducts}/>
       {/*<ProductsSection products={products} categories={categories}/>*/}
       {/*<DiscountSection {...discountProduct}/>*/}
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
@@ -66,6 +66,6 @@ export const getServerSideProps = async () => {
   const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`);
   const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
-  // const discountProduct = await ProductsAPI.getDiscountProduct();
+  const { discountProduct } = await DataAPI.getData();
   return { props: { products, categories, posts, newProducts, promoContent } };
 };
