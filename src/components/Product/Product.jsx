@@ -25,7 +25,7 @@ export const Product = (props) => {
   };
 
   const cartProductsProps = {
-    ...properties, countInCart: 1
+    ...properties, quantity: 1
   };
 
   const {

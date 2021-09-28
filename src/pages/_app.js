@@ -14,7 +14,9 @@ import { Submenu } from "components/common/Submenu/Submenu";
 import { windowSize } from "constants.js";
 import { useClientSide } from "hooks.js";
 import APIBitrix from "api/APIBitrix";
-
+import { useDispatch } from "react-redux";
+import { addUserId } from "../redux/slices/user";
+import { reqGetProducts } from "../redux/slices/cart";
 
 const MyApp = ({ Component, pageProps, router }) => {
 
@@ -34,16 +36,20 @@ const MyApp = ({ Component, pageProps, router }) => {
 
 
   const isClientSide = useClientSide();
+  const dispatch = useDispatch();
 
   const putClientInStorage = async () => {
     const getClientId = await APIBitrix.get("users/fuser-id/");
     localStorage.setItem("fuser_id", getClientId);
+    dispatch(addUserId(localStorage.getItem("fuser_id")));
   };
 
   React.useEffect(() => {
     if (!localStorage.getItem("fuser_id")) {
       putClientInStorage();
     }
+    dispatch(addUserId(localStorage.getItem("fuser_id")));
+    dispatch(reqGetProducts());
   }, []);
 
   return (

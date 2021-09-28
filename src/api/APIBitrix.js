@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_API_URL} from "constants.js";
+import { BASE_API_URL } from "constants.js";
 
 class APIBitrix {
 
@@ -73,7 +73,7 @@ class APIBitrix {
       data
     })
       .then(res => res.data)
-      .catch(err => this.handleError(err));
+      .catch(err => err);
   };
 
   put = async (path = "", data = {}, headers) => {

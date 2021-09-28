@@ -1,10 +1,10 @@
-import { configureStore, createSlice, ThunkAction } from "@reduxjs/toolkit";
-import { Action } from "redux";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { configureStore } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
 import { modalsSlice } from "redux/slices/modals";
 import { cartSlice } from "redux/slices/cart";
 import { favoriteSlice } from "redux/slices/favorite";
 import { returnOrderSlice } from "redux/slices/returnOrder";
+import { userSlice } from "./slices/user";
 
 const makeStore = () =>
   configureStore({
@@ -12,7 +12,8 @@ const makeStore = () =>
       [modalsSlice.name]: modalsSlice.reducer,
       [cartSlice.name]: cartSlice.reducer,
       [favoriteSlice.name]: favoriteSlice.reducer,
-      [returnOrderSlice.name]: returnOrderSlice.reducer
+      [returnOrderSlice.name]: returnOrderSlice.reducer,
+      [userSlice.name]: userSlice.reducer
     }
   });
 

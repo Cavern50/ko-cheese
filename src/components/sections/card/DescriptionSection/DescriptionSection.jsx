@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import parse from "html-react-parser";
 
 import Accordion from "components/common/Accordion/Accordion";
 import { BackButton } from "components/buttons/BackButton/BackButton";
@@ -10,8 +11,8 @@ import { allTastes, windowSize, BASE_SITE_URL } from "constants.js";
 
 import { ProductNutrient } from "components/Product/ProductNutrient/ProductNutrient";
 import { Swiper, SwiperSlide } from "swiper/react";
-import s from "./DescriptionSection.module.scss";
 import { useClientSide } from "hooks";
+import s from "./DescriptionSection.module.scss";
 
 
 export const DescriptionSection = ({ id, product }) => {
@@ -28,18 +29,13 @@ export const DescriptionSection = ({ id, product }) => {
     status: false,
     count: 1,
     date: "",
-    previewText: ""
+    previewText: "",
+    quantity: 1,
   };
   const properties = {
     ...defaults,
     ...product
   };
-
-  const cartProductsProps = {
-    ...properties,
-    cartCount: 1
-  };
-
 
   const {
     name,
@@ -47,7 +43,6 @@ export const DescriptionSection = ({ id, product }) => {
     detailText,
     info,
     nutritional,
-    date,
     weight,
     previewText,
     price,
@@ -102,30 +97,27 @@ export const DescriptionSection = ({ id, product }) => {
         </div>
         <span className={s.price}>{parseInt(price, 10)} руб.</span>
         {!isClientSide && windowSize <= 768 && productProperties}
-        <p className={s.about}>{previewText}</p>
+        <p className={s.about}>{parse(previewText)}</p>
 
-        <div className={s.nutrients}>
-          {nutritional.map(nutrient => <ProductNutrient key={nutrient.id} {...nutrient}/>)}
-        </div>
+        {/*<div className={s.nutrients}>*/}
+        {/*  {nutritional.map(nutrient => <ProductNutrient key={nutrient.id} {...nutrient}/>)}*/}
+        {/*</div>*/}
         {tastes.length && <>
           <span className={s.with}>С чем употребляют</span>
           <div className={s.tastes}>
-            {tastes.map((taste) => allTastes[taste])}
+            {tastes.map((taste, index) => <span key={index} title="Подпись вкуса">{allTastes[taste]}</span>)}
           </div>
         </>}
 
-        <PurchaseControl product={cartProductsProps} id={id} cart={false}/>
-
-        <div className={s.description}>
-          {
-            detailText && <Accordion title={"Описание"}>
-              <p>
-                {detailText}
-              </p>
+        <PurchaseControl product={properties} id={id} cart={false}/>
+        {
+          detailText &&
+          <div className={s.description}>
+            <Accordion title={"Описание"}>
+              {parse(detailText)}
             </Accordion>
-          }
-
-        </div>
+          </div>
+        }
       </div>
     </div>
   </>;

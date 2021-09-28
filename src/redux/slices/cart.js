@@ -13,53 +13,45 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart(state, action) {
-      const isProductInCart = state.items.some(product => product.id === action.payload.id);
-      if (isProductInCart) {
-        const prevCountInCart = state.items.find(item => item.id === action.payload.id).countInCart;
-        state.totalPrice -= parseInt(action.payload.price, 10) * prevCountInCart;
-        state.items = state.items.filter(item => item.id !== action.payload.id);
-      }
-      state.totalPrice += parseInt(action.payload.price, 10) * action.payload.countInCart;
+    addProduct(state, action) {
       state.items.push(action.payload);
+      state.totalPrice += parseInt(action.payload.price, 10) * action.payload.quantity;
     },
     removeProduct(state, action) {
-      state.totalPrice -= action.payload.price * action.payload.countInCart;
       state.items = state.items.filter(item => item.id !== action.payload.id);
+      state.totalPrice -= action.payload.price * action.payload.quantity;
     },
     incProductCount(state, action) {
       const product = state.items.find(item => item.id === action.payload.id);
-      product.countInCart += 1;
+      product.quantity += 1;
       state.totalPrice += parseInt(product.price, 10);
     },
     decProductCount(state, action) {
       const product = state.items.find(item => item.id === action.payload.id);
-      if (product.countInCart > 1) {
-        product.countInCart -= 1;
-        state.totalPrice -= parseInt(product.price, 10);
-      }
+      product.quantity -= 1;
+      state.totalPrice -= parseInt(product.price, 10);
     },
-    getProducts(state, action) {
-      state.items = action.payload;
+    putProducts(state, action) {
+      state.items.push(...action.payload);
+      console.log(action.payload);
+      state.totalPrice = action.payload.reduce((acc, current) => acc + (current.price * current.quantity), 0);
     }
   },
   extraReducers: {
-    [HYDRATE]: (state, action) => {
-      return {
-        ...state,
-        ...action.payload.some
-      };
-    }
+    [HYDRATE]: (state, action) => ({
+      ...state,
+      ...action.payload.some
+    })
   }
 });
 
 
-export const {
-  addToCart,
+const {
+  addProduct,
   removeProduct,
   incProductCount,
   decProductCount,
-  getProducts
+  putProducts
 } = cartSlice.actions;
 
 export const cartItemsSelector = (state) => state.cart.items;
@@ -68,33 +60,47 @@ export const totalPriceSelector = (state) => state.cart.totalPrice;
 
 export const reqAddToCart = createAsyncThunk(
   "cart/reqAddToCart",
-  async (productData, { dispatch }) => {
-    const response = await APIBitrix.post("basket/add/", {
-      fuser_id: localStorage.getItem("fuser_id"),
-      product_id: productData.id,
-      quantity: 1
-    });
-    dispatch(addToCart({
-      ...productData,
-      countInCart: response.quantity
-    }));
+  async (productData, { dispatch, getState }) => {
+    const { user } = getState();
+    console.log(productData, 'fromSlice');
+    try {
+      await APIBitrix.post("basket/add/", {
+        fuser_id: user.id,
+        product_id: productData.id,
+        quantity: productData.quantity
+      }).then(res => {
+        if (typeof res === "object") {
+          dispatch(addProduct(productData));
+        } else {
+          throw new Error("Ошибка при добавлении товара. Попробуйте обновить страницу и добавить товар еще раз");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
-
 
 export const reqIncProductCount = createAsyncThunk(
   "cart/reqIncProductCount",
   async (productData, { dispatch, getState }) => {
-    const state = getState();
-    const response = await APIBitrix.post("basket/add/", {
-      fuser_id: localStorage.getItem("fuser_id"),
-      product_id: productData.id,
-      quantity: state.cart.items.find(product => productData.id === product.id).countInCart + 1
-    });
-    dispatch(incProductCount({
-      ...productData,
-      countInCart: state.cart.items.find(product => productData.id === product.id).countInCart + 1
-    }));
+    const { user } = getState();
+    try {
+      await APIBitrix.post("basket/increment/", {
+        fuser_id: user.id,
+        product_id: productData.id,
+        quantity: 1
+      })
+        .then(res => {
+          if (typeof res === "object") {
+            dispatch(incProductCount(productData));
+          } else {
+            throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 
@@ -102,49 +108,71 @@ export const reqIncProductCount = createAsyncThunk(
 export const reqDecProductCount = createAsyncThunk(
   "cart/reqDecProductCount",
   async (productData, { dispatch, getState }) => {
-    const state = getState();
-    const response = await APIBitrix.post("basket/decrement/", {
-      fuser_id: localStorage.getItem("fuser_id"),
-      product_id: productData.id,
-      quantity: -1
-    });
-    dispatch(decProductCount({
-      ...productData,
-      countInCart: parseInt(state.cart.items.find(product => productData.id === product.id).countInCart, 10) - 1
-    }));
+    const { user } = getState();
+    try {
+      await APIBitrix.post("basket/decrement/", {
+        fuser_id: user.id,
+        product_id: productData.id,
+        quantity: -1
+      })
+        .then(res => {
+          if (typeof res === "object") {
+            dispatch(decProductCount(productData));
+          } else {
+            throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }
 );
 
 
 export const reqRemoveFromCart = createAsyncThunk(
   "cart/reqRemoveFromCart",
-  async (productData, { dispatch }) => {
-    const itemId = await APIBitrix.post("basket/items/", {
-      fuser_id: localStorage.getItem("fuser_id")
-    }).then(res => res.find(item => productData.id == item.product_id).item_id);
-    const response = await APIBitrix.post("basket/remove/", {
-      fuser_id: localStorage.getItem("fuser_id"),
-      item_id: itemId
-    });
-    dispatch(removeProduct(productData));
+  async (productData, { getState, dispatch }) => {
+    const { user } = getState();
+    try {
+      const itemId = await APIBitrix.post("basket/items/", {
+        fuser_id: user.id
+      }).then(res => res.find(product => product.id === productData.id).item_id);
+      await APIBitrix.post("basket/remove/", {
+        fuser_id: user.id,
+        item_id: itemId
+      }).then(res => {
+        if (typeof res === "object") {
+          dispatch(removeProduct(productData));
+        } else {
+          throw new Error("Произошла ошибка при удалении товара. Попробуйте обновить страницу и удалить товар еще раз");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 
 
 export const reqGetProducts = createAsyncThunk(
   "cart/reqGetProducts",
-  async (productData, { dispatch }) => {
-    const response = await APIBitrix.get("basket/add/", {
-      fuser_id: localStorage.getItem("fuser_id")
-    });
-    dispatch(addToCart({
-      ...productData,
-      countInCart: response.quantity
-    }));
+  async (_, { dispatch, getState }) => {
+    const { user } = getState();
+    try {
+      await APIBitrix.post("basket/items/", {
+        fuser_id: user.id
+      }).then(res => {
+        if (typeof res === "object") {
+          res.length > 0 && dispatch(putProducts(res || {}));
+        } else {
+          throw new Error("Произошла ошибка при загрузке товаров. Попробуйте обновить страницу");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
-
-
 
 
 // export const reqPurchaseOrder = createAsyncThunk(

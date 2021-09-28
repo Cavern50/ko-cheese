@@ -7,11 +7,24 @@ import { FavoriteControl } from "../FavoriteControl/FavoriteControl";
 import s from "./Purchase.module.scss";
 
 export const Purchase = ({ inFavorite, inCart, inOrder, params }) => {
-  const { previewImage, name, addition, price, weight, countInCart } = params;
+  console.log(params);
+  const defaults = {
+    previewImage: "",
+    name: "",
+    addition: "",
+    price: 0,
+    weight: 0,
+    quantity: 0
+  }
+  const properties = {
+    ...defaults,
+    ...params
+  }
+  const { previewImage, name, addition, price, weight, quantity } = properties;
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
-        {inOrder && <span className={s.count}>{countInCart}</span>}
+        {inOrder && <span className={s.count}>{quantity}</span>}
         <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>
       </div>
       <div className={s.info}>
@@ -20,12 +33,12 @@ export const Purchase = ({ inFavorite, inCart, inOrder, params }) => {
           <div className={s.addition}>{addition}</div>
           <div className={s.cost}>
             <span className={s.price}>{price} руб.</span>
-            <span className={s.weight}>{weight}</span>
+            <span className={s.weight}>{parseInt(weight, 10)} г.</span>
           </div>
         </div>
         <div className={s.controls}>
-          {inFavorite && <FavoriteControl product={params}/>}
-          {inCart && <PurchaseControl inCart additionClass="inCart" product={params}/>}
+          {inFavorite && <FavoriteControl product={properties}/>}
+          {inCart && <PurchaseControl inCart additionClass="inCart" product={properties}/>}
         </div>
       </div>
     </div>

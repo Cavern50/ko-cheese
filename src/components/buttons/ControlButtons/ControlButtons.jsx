@@ -2,7 +2,7 @@ import React from "react";
 import { FavoriteIcon, PurchaseIcon } from "components/SVG/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { cartChangeModalState, favoriteChangeModalState } from "redux/slices/modals";
-import {  addToCart, reqAddToCart } from "redux/slices/cart";
+import { cartItemsSelector, reqAddToCart } from "redux/slices/cart";
 import { addToFavorite } from "redux/slices/favorite";
 import clsx from "clsx";
 import s from "./ControlButtons.module.scss";
@@ -10,18 +10,26 @@ import s from "./ControlButtons.module.scss";
 export const ControlButtons = ({ productProps }) => {
 
   const dispatch = useDispatch();
+  const itemsInCart = useSelector(cartItemsSelector);
+
+  const isItemInCart = itemsInCart.find(product => product.id === productProps.id);
+
 
   const favoriteModalHandler = () => {
     dispatch(addToFavorite(productProps));
     dispatch(favoriteChangeModalState(true));
   };
 
+
+
   const cartHandler = () => {
-    if (productProps.status) {
+    if (productProps.status && !isItemInCart) {
       dispatch(reqAddToCart(productProps));
       dispatch(cartChangeModalState(true));
-    } else {
+    } else if (!productProps.status) {
       alert('Товара временно нет в наличии');
+    } else if (isItemInCart) {
+      alert('Товара уже в корзине');
     }
   };
 

@@ -2,9 +2,7 @@ import React from 'react';
 import { Tabs } from 'components/layout/Tabs/Tabs';
 import { TabButton } from 'components/buttons/TabButton/TabButton';
 import { useTabs } from 'hooks';
-
 import s from './DeliverySection.module.scss';
-
 
 export const DeliverySection = ({deliveryData}) => {
   const { activeId, toggleActiveId } = useTabs(1, false);
@@ -30,7 +28,7 @@ export const DeliverySection = ({deliveryData}) => {
         ))}
       </Tabs>
       <div className={s.container}>
-        {activeCategory.items?.length && activeCategory.items.map((item, i) => (
+        {activeCategory.items && activeCategory.items.map((item, i) => (
           <div className={s.block} key={i}>
             <span className={s.subtitle}>{item.subtitle}</span>
             <ul className={s.list}>

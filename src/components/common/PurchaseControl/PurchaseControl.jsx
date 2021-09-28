@@ -8,22 +8,27 @@ import {
   subscribeChangeModalState
 } from "redux/slices/modals";
 import {
-  removeProduct,
-  incProductCount,
   cartItemsSelector,
-  decProductCount,
-  addToCart,
-  reqIncProductCount, reqDecProductCount, reqRemoveFromCart
+  reqAddToCart,
+  reqIncProductCount,
+  reqDecProductCount,
+  reqRemoveFromCart
 } from "redux/slices/cart";
 
+import { addToFavorite } from "redux/slices/favorite";
 import { RemoveButton } from "../../buttons/RemoveButton/RemoveButton";
 import s from "./PurchaseControl.module.scss";
-import { addToFavorite } from "redux/slices/favorite";
 
 export const PurchaseControl = ({ product, inCart, additionClass }) => {
   const dispatch = useDispatch();
 
   const productSelector = useSelector(cartItemsSelector).find(item => item.id === product.id);
+
+  const isItemInCart = productSelector?.id === product.id;
+
+  const [quantity, setQuantity] = React.useState((inCart && parseInt(productSelector?.quantity, 10)) || 1);
+
+  console.log(product, quantity, "fromPruchase");
 
   const addToFavoriteHandler = () => {
     dispatch(addToFavorite(product));
@@ -39,31 +44,38 @@ export const PurchaseControl = ({ product, inCart, additionClass }) => {
   };
 
   const decHandlerInCart = () => {
-    dispatch(reqDecProductCount(product));
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+      dispatch(reqDecProductCount({ ...productSelector, quantity }));
+    }
   };
 
   const incHandlerInCart = () => {
-    dispatch(reqIncProductCount(product));
-  };
-
-  const [countInCart, setCountInCart] = React.useState(1);
-
-  const decHandlerInDetail = () => {
-    countInCart > 1 && setCountInCart(countInCart - 1);
-  }
-
-  const incHandlerInDetail = () => {
-    setCountInCart(countInCart + 1);
-  }
-
-  const addToCartHandler = () => {
-    if (product.status) {
-      dispatch(addToCart({ countInCart, ...product }))
-      dispatch(cartChangeModalState(true));
-    } else {
-      alert('Товара временно нет в наличии');
+    if (quantity < product.count) {
+      setQuantity(quantity + 1);
+      dispatch(reqIncProductCount({ ...productSelector, quantity }));
     }
   };
+
+  const decHandlerInDetail = () => {
+    quantity > 1 && setQuantity(quantity - 1);
+  };
+
+  const incHandlerInDetail = () => {
+    quantity < product.count && setQuantity(quantity + 1);
+  };
+
+  const addToCartHandler = () => {
+    if (product.status && !isItemInCart) {
+      dispatch(reqAddToCart({ ...product, quantity }));
+      dispatch(cartChangeModalState(true));
+    } else if (!product.status) {
+      alert("Товара временно нет в наличии");
+    } else if (isItemInCart) {
+      alert("Товара уже в корзине");
+    }
+  };
+
   return (
     <>
       <div className={clsx(s.container, s[additionClass])}>
@@ -75,7 +87,7 @@ export const PurchaseControl = ({ product, inCart, additionClass }) => {
           >
             <MinusIcon/>
           </button>
-          <span className={s.count}>{ inCart ? productSelector.countInCart : countInCart}</span>
+          <span className={s.count}>{quantity}</span>
           <button
             type="button"
             className={clsx(s.change, s.plus)}
