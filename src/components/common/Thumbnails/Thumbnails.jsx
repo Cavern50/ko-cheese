@@ -59,9 +59,21 @@ export const Thumbnails = ({ gallery }) => {
 
     observer.observe(cachedRef);
 
+    window.addEventListener("scroll", () => {
+      console.log('new prop');
+      setObjectProperties({
+        width: containerRef.current?.clientWidth,
+        height: containerRef.current?.clientHeight,
+        left: containerRef.current?.getBoundingClientRect().left,
+        top: containerRef.current?.getBoundingClientRect().top + getOffsetTop()
+      });
+    })
+
     return function() {
       observer.unobserve(cachedRef);
     };
+
+
 
   }, []);
 
