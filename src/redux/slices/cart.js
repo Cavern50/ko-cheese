@@ -32,9 +32,12 @@ export const cartSlice = createSlice({
       state.totalPrice -= parseInt(product.price, 10);
     },
     putProducts(state, action) {
-      state.items.push(...action.payload);
-      console.log(action.payload);
-      state.totalPrice = action.payload.reduce((acc, current) => acc + (current.price * current.quantity), 0);
+      state.items = action.payload;
+      state.totalPrice = action.payload.reduce((acc, current) => acc + current.price * current.quantity, 0);
+    },
+    purchaseOrder(state) {
+      state.items = [];
+      state.totalPrice = 0;
     }
   },
   extraReducers: {
@@ -51,6 +54,7 @@ const {
   removeProduct,
   incProductCount,
   decProductCount,
+  purchaseOrder,
   putProducts
 } = cartSlice.actions;
 
@@ -62,7 +66,6 @@ export const reqAddToCart = createAsyncThunk(
   "cart/reqAddToCart",
   async (productData, { dispatch, getState }) => {
     const { user } = getState();
-    console.log(productData, 'fromSlice');
     try {
       await APIBitrix.post("basket/add/", {
         fuser_id: user.id,
@@ -70,7 +73,7 @@ export const reqAddToCart = createAsyncThunk(
         quantity: productData.quantity
       }).then(res => {
         if (typeof res === "object") {
-          dispatch(addProduct(productData));
+          dispatch(putProducts(res));
         } else {
           throw new Error("Ошибка при добавлении товара. Попробуйте обновить страницу и добавить товар еще раз");
         }
@@ -93,7 +96,9 @@ export const reqIncProductCount = createAsyncThunk(
       })
         .then(res => {
           if (typeof res === "object") {
-            dispatch(incProductCount(productData));
+            console.log(res);
+            dispatch(putProducts(res));
+            // dispatch(incProductCount(productData));
           } else {
             throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
           }
@@ -117,7 +122,8 @@ export const reqDecProductCount = createAsyncThunk(
       })
         .then(res => {
           if (typeof res === "object") {
-            dispatch(decProductCount(productData));
+            dispatch(putProducts(res));
+            // dispatch(decProductCount(productData));
           } else {
             throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
           }
@@ -134,15 +140,16 @@ export const reqRemoveFromCart = createAsyncThunk(
   async (productData, { getState, dispatch }) => {
     const { user } = getState();
     try {
-      const itemId = await APIBitrix.post("basket/items/", {
-        fuser_id: user.id
-      }).then(res => res.find(product => product.id === productData.id).item_id);
+      // const itemId = await APIBitrix.post("basket/items/", {
+      //   fuser_id: user.id
+      // }).then(res => res.find(product => product.id === productData.id).item_id);
       await APIBitrix.post("basket/remove/", {
         fuser_id: user.id,
-        item_id: itemId
+        item_id: productData.item_id
       }).then(res => {
         if (typeof res === "object") {
-          dispatch(removeProduct(productData));
+          dispatch(putProducts(res));
+          // dispatch(removeProduct(productData));
         } else {
           throw new Error("Произошла ошибка при удалении товара. Попробуйте обновить страницу и удалить товар еще раз");
         }
@@ -175,11 +182,18 @@ export const reqGetProducts = createAsyncThunk(
 );
 
 
-// export const reqPurchaseOrder = createAsyncThunk(
-//   "cart/reqAddToCart",
-//   async (productData, { dispatch }) => {
-//     const response = await APIBitrix.post("basket/order/", {
-//       fuser_id: localStorage.getItem("fuser_id")
-//     });
-//   }
-// );
+export const reqPurchaseOrder = createAsyncThunk(
+  "cart/reqAddToCart",
+  async (productData, { dispatch, getState }) => {
+    const { user } = getState();
+    await APIBitrix.post("basket/order/", {
+      fuser_id: user.id
+    }).then(res => {
+      console.log(res);
+      dispatch(purchaseOrder());
+      alert('Заказ успешно оформлен');
+    });
+  }
+);
+
+

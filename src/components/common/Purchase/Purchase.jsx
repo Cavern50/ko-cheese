@@ -7,7 +7,6 @@ import { FavoriteControl } from "../FavoriteControl/FavoriteControl";
 import s from "./Purchase.module.scss";
 
 export const Purchase = ({ inFavorite, inCart, inOrder, params }) => {
-  console.log(params);
   const defaults = {
     previewImage: "",
     name: "",
@@ -24,7 +23,7 @@ export const Purchase = ({ inFavorite, inCart, inOrder, params }) => {
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
-        {inOrder && <span className={s.count}>{quantity}</span>}
+        {inOrder && <span className={s.count}>{parseInt(quantity, 10)}</span>}
         <img src={BASE_SITE_URL + previewImage} alt="" className={s.image}/>
       </div>
       <div className={s.info}>

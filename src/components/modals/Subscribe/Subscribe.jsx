@@ -27,7 +27,7 @@ export const Subscribe = ({ closeModal }) => {
               <Input id="dateTo" name="dateTo" type="date" label="до" containerClass="subscribe"
                      additionClass="dateInput"/>
             </div>
-            {itemsInCart.map(item => <Purchase inCart key={item} params={item}/>)}
+            {itemsInCart.map(item => <Purchase inCart key={item.item_id} params={item}/>)}
             <ModalFooter/>
           </>
         }

@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { DeliveryIcon, FavoriteIcon, MinusIcon, PlusIcon } from "components/SVG/Icons";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import {
   cartChangeModalState,
   favoriteChangeModalState,
@@ -20,15 +21,15 @@ import { RemoveButton } from "../../buttons/RemoveButton/RemoveButton";
 import s from "./PurchaseControl.module.scss";
 
 export const PurchaseControl = ({ product, inCart, additionClass }) => {
+
   const dispatch = useDispatch();
+
 
   const productSelector = useSelector(cartItemsSelector).find(item => item.id === product.id);
 
   const isItemInCart = productSelector?.id === product.id;
 
-  const [quantity, setQuantity] = React.useState((inCart && parseInt(productSelector?.quantity, 10)) || 1);
-
-  console.log(product, quantity, "fromPruchase");
+  const [quantity, setQuantity] = React.useState(inCart ? parseInt(productSelector?.quantity, 10) : 1);
 
   const addToFavoriteHandler = () => {
     dispatch(addToFavorite(product));
@@ -43,17 +44,17 @@ export const PurchaseControl = ({ product, inCart, additionClass }) => {
     dispatch(reqRemoveFromCart(product));
   };
 
-  const decHandlerInCart = () => {
+  const decHandlerInCart = async () => {
     if (quantity > 1) {
+      await dispatch(reqDecProductCount({ ...productSelector, quantity }));
       setQuantity(quantity - 1);
-      dispatch(reqDecProductCount({ ...productSelector, quantity }));
     }
   };
 
-  const incHandlerInCart = () => {
+  const incHandlerInCart = async () => {
     if (quantity < product.count) {
+      await dispatch(reqIncProductCount({ ...productSelector, quantity }));
       setQuantity(quantity + 1);
-      dispatch(reqIncProductCount({ ...productSelector, quantity }));
     }
   };
 

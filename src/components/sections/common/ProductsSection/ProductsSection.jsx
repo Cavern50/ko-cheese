@@ -7,7 +7,7 @@ import { TabButton } from "components/buttons/TabButton/TabButton";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { windowSize } from "constants.js";
-
+import { ProductLoader } from "components/Product/ProductLoader/ProductLoader";
 import { useClientSide, useTabs } from "hooks.js";
 
 import APIBitrix from "api/APIBitrix";
@@ -17,6 +17,8 @@ import s from "./ProductsSection.module.scss";
 export const ProductsSection = ({ products, categories }) => {
   const { activeId: activeCategoryId, toggleActiveId: toggleActiveCategoryId } = useTabs(categories[0].id, false);
   const { activeId: activeSubcategoryId, toggleActiveId: toggleSubcategoryId } = useTabs(categories[0].subcategories[0].id, false);
+
+  const [isLoading, setLoading] = React.useState(false);
 
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
 
@@ -30,12 +32,13 @@ export const ProductsSection = ({ products, categories }) => {
     activeCategory.subcategories && toggleSubcategoryId(activeCategory.subcategories[0].id);
   }, [activeCategory]);
 
-
   React.useEffect(() => {
     const getProducts = async () => {
+      setLoading(true);
       const requestId = activeCategory.subcategories ? activeSubcategoryId : activeCategory.id;
       const requestProducts = await APIBitrix.get(`products/collection/${requestId}`);
       setActiveProducts(requestProducts);
+      setLoading(false);
     };
     getProducts();
   }, [activeCategory, activeSubcategoryId]);
@@ -78,10 +81,13 @@ export const ProductsSection = ({ products, categories }) => {
           }
         </div>
         {
-          activeProducts.length > 0 &&
-          <div className={s.body}>
-            {activeProducts.map((product) => <Product key={product.id} {...product} />)}
-          </div>
+          isLoading ?
+            <ProductLoader/>
+            :
+            activeProducts.length > 0 &&
+            <div className={s.body}>
+              {activeProducts.map((product) => <Product key={product.id} {...product} />)}
+            </div>
         }
 
         {isClientSide && windowSize <= 1200 &&

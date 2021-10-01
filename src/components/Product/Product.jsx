@@ -45,7 +45,7 @@ export const Product = (props) => {
     <div className={clsx(s.card, additionClass && s[additionClass])}>
       <ControlButtons productProps={cartProductsProps}/>
       <span className={clsx(s.status, status ? s.inStock : s.outStock)}>{status ? "В наличии" : "Нет в наличии"}</span>
-      <img src={BASE_SITE_URL + previewImage} alt={name} className={s.image}/>
+      <img height={160} src={BASE_SITE_URL + previewImage} alt={name} className={s.image}/>
       <h3 className={s.name}>{name}</h3>
       <span className={s.addition}>{addition}</span>
       <div className={s.info}>

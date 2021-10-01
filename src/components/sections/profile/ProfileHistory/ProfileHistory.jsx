@@ -3,7 +3,6 @@ import { ProfileControls } from "components/common/Profile/ProfileControls/Profi
 import { Order } from "components/Order/Order";
 
 export const ProfileHistory = () => {
-  console.log();
   return (
     <>
       <ProfileControls/>

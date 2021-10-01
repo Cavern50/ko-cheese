@@ -1,0 +1,33 @@
+import React from "react";
+import s from "./ZoomImage.module.scss";
+
+export const ZoomImage = ({ image, objectProperties }) => {
+
+  const [zoom, setZoom] = React.useState({});
+  const { left, top, width, height } = objectProperties;
+  const zoomInHandler = (e) => {
+    setZoom({
+      transformOrigin: `${(e.pageX - left) / parseInt(width, 10) * 100}% ${(e.pageY - top) / parseInt(height, 10) * 100}%`
+    });
+  };
+  const zoomOutHandler = () => {
+    setZoom({
+      opacity: 0,
+      transform: "scale(1)"
+    });
+  };
+
+  React.useEffect(() => {
+  }, [image]);
+  return (
+    <div
+      className={s.item}
+      style={{
+        backgroundImage: `url(${image})`,
+        ...zoom
+      }}
+      onMouseMove={zoomInHandler}
+      onMouseOut={zoomOutHandler}
+    />
+  );
+};

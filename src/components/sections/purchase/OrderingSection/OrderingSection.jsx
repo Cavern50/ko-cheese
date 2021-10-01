@@ -4,9 +4,10 @@ import clsx from "clsx";
 import { BackButton } from "components/buttons/BackButton/BackButton";
 import { Input } from "components/forms/Input/Input";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
-import { PURCHASE_VALIDATION_SCHEMA , windowSize } from "constants.js";
+import { PURCHASE_VALIDATION_SCHEMA, windowSize } from "constants.js";
 import s from "./OrderingSection.module.scss";
-
+import { reqPurchaseOrder } from "redux/slices/cart";
+import { useDispatch } from "react-redux";
 
 
 const stages = [[{
@@ -55,21 +56,22 @@ const stages = [[{
 
 const steps = ["Информация", "Доставка", "Оплата"];
 
-export const OrderingSection = () => {
+const initialValues = {
+  phone: "",
+  name: "",
+  email: "",
+  city: "Москва",
+  street: "",
+  house: "",
+  apartment: "",
+  payment: ""
+};
 
-  const initialValues = {
-    phone: "",
-    name: "",
-    email: "",
-    city: "Москва",
-    street: "",
-    house: "",
-    apartment: "",
-    payment: ""
-  };
+export const OrderingSection = () => {
 
   const [stageForm, setStageForm] = React.useState(0);
   const [currentInputs, setCurrentInputs] = React.useState(stages[stageForm].map(stage => stage.name));
+  const dispatch = useDispatch();
   const submitHandler = (values) => {
     console.log(values);
   };
@@ -85,7 +87,6 @@ export const OrderingSection = () => {
 
     formProps.setTouched();
     const currentErrors = Object.keys(formProps.errors).sort();
-    console.log(currentErrors, currentInputs.sort());
 
 
     //
@@ -93,9 +94,13 @@ export const OrderingSection = () => {
     // setStageForm(prev => prev + 1);
   };
 
+  const purchaseHandler = () => {
+    dispatch(reqPurchaseOrder());
+  };
+
   React.useEffect(() => {
     setCurrentInputs(stages[stageForm].map(stage => stage.name));
-  }, [stageForm])
+  }, [stageForm]);
 
   return (
     <div className={s.container}>
@@ -125,7 +130,7 @@ export const OrderingSection = () => {
               </div>
               <button
                 type="button"
-                onClick={() => stageHandler(formProps)}
+                onClick={() => purchaseHandler()}
                 className={s.submit}>
                 Оформить заказ
               </button>

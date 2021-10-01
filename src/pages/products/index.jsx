@@ -7,12 +7,13 @@ import { DiscountSection } from "components/sections/common/DiscountSection/Disc
 import { Discount } from "components/common/Discount/Discount";
 import { useModal } from "hooks";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
-import DataAPI from "api/DataAPI";
+
 
 import { H1 } from "components/layout/H1/H1";
+import DataAPI from "api/DataAPI";
 import APIBitrix from "api/APIBitrix";
 
-const Products = ({ products, newProducts, discountProduct, categories }) => {
+const Products = ({ newProducts, discountProduct, categories }) => {
   const discountModal = useModal(true, false);
   return (
     <>
@@ -28,7 +29,7 @@ const Products = ({ products, newProducts, discountProduct, categories }) => {
         )}
         <H1>Продукция</H1>
       </Wrapper>
-      <ProductsSection products={products} categories={categories}/>
+      <ProductsSection products={[]} categories={categories}/>
       <NewTastesSection newProducts={newProducts}/>
       <DiscountSection {...discountProduct}/>
     </>
@@ -39,8 +40,8 @@ export default Products;
 
 export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/');
-  const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`)
+  // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`)
   const newProducts = await APIBitrix.get('products/slider/').then(res => res.products);
   const { discountProduct } = await DataAPI.getData();
-  return { props: { products, discountProduct, newProducts, categories } };
+  return { props: {  discountProduct, newProducts, categories } };
 };

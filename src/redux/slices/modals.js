@@ -6,7 +6,8 @@ const initialState = {
   favorite: false,
   subscribe: false,
   letter: false,
-  menu: false
+  menu: false,
+  privacy: false
 };
 
 export const modalsSlice = createSlice({
@@ -27,6 +28,9 @@ export const modalsSlice = createSlice({
     },
     menuChangeModalState(state, action) {
       state.menu = action.payload;
+    },
+    privacyChangeModalState(state, action) {
+      state.privacy = action.payload;
     },
     closeAllModals() {
       return {...initialState}
@@ -49,6 +53,7 @@ export const {
   letterChangeModalState,
   subscribeChangeModalState,
   menuChangeModalState,
+  privacyChangeModalState,
   closeAllModals
 } = modalsSlice.actions;
 
@@ -57,4 +62,5 @@ export const favoriteModalSelector = (state) => state.modals.favorite;
 export const subscribeModalSelector = (state) => state.modals.subscribe;
 export const letterModalSelector = (state) => state.modals.letter;
 export const menuModalSelector = (state) => state.modals.menu;
+export const privacyModalSelector = (state) => state.modals.privacy;
 

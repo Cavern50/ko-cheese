@@ -48,7 +48,7 @@ export const ProfileReturn = () => {
   };
 
   React.useEffect(() => {
-    console.log(curProducts);
+
     // async stuff
     orderNumber && setCurProducts(currentProducts);
 

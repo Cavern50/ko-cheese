@@ -8,7 +8,6 @@ import s from "./StepsSection.module.scss";
 
 export const StepsSection = ({ stages }) => {
   const { promo, steps } = stages;
-  console.log(steps);
   return (
     <section className={s.section}>
       <WrapperNarrow>

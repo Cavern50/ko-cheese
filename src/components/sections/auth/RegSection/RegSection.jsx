@@ -3,11 +3,18 @@ import { Input } from "components/forms/Input/Input";
 import Link from "next/link";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
 import s from "../AuthSection/AuthSection.module.scss";
+import { useDispatch } from "react-redux";
+import { privacyChangeModalState } from "redux/slices/modals";
 
 export const RegSection = () => {
+  const dispatch = useDispatch();
+
+  const privacyModalHandler = () => {
+    dispatch(privacyChangeModalState(true));
+  };
 
   const initialValues = {
-    phone: "",
+    phone: ""
   };
 
   return (
@@ -21,9 +28,16 @@ export const RegSection = () => {
           (
             <>
               <Input id="phone" label="Телефон" name="phone" type="number"/>
+              <Input id="email" label="E-mail" name="email" type="text"/>
               <div className={s.politics}>
                 <Input id="politics" name="politics" type="checkbox" additionClass="checkbox"/>
-                <span className={s.label}>Я ознакомлен(-а) с политикой конфиденциальности</span>
+                <div className={s.label}>
+                  <span>Я ознакомлен(-а)</span>
+                  <button type="button" className={s.privacy}
+                        onClick={privacyModalHandler}>
+                    с политикой конфиденциальности
+                  </button>
+                </div>
               </div>
               <Link href="/profile">
                 <a className={s.submit}>Зарегистрироваться</a>

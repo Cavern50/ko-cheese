@@ -7,7 +7,7 @@ import { RecipesSection } from "components/sections/recipes/RecipesSection";
 
 import APIBitrix from "api/APIBitrix";
 
-const Index = ({ categories, items }) => {
+const Index = ({ categories }) => {
     return (
       <>
         <Head>
@@ -15,7 +15,7 @@ const Index = ({ categories, items }) => {
         </Head>
         <Wrapper>
           <H1>Культура потребления</H1>
-          <RecipesSection categories={categories} items={items}/>
+          <RecipesSection categories={categories} items={[]}/>
         </Wrapper>
       </>
     );
@@ -24,13 +24,10 @@ const Index = ({ categories, items }) => {
 
 export default Index;
 
-
-
-
 export const getServerSideProps = async () => {
 
-  const categories = await APIBitrix.get('articles/categories/');
-  const items = await APIBitrix.get(`articles/collection/${categories[0].subcategories[0].id}`)
-  return { props: { categories, items } };
+  const categories = await APIBitrix.get("articles/categories/");
+  // const items = await APIBitrix.get(`articles/collection/${categories[0].subcategories[0].id}`)
+  return { props: { categories } };
 };
 

@@ -20,7 +20,9 @@ import { reqGetProducts } from "../redux/slices/cart";
 
 const MyApp = ({ Component, pageProps, router }) => {
 
-  NProgress.configure({ easing: 'ease', speed: 500 });
+
+  // preloader
+  NProgress.configure({ easing: "ease", speed: 500 });
 
   Router.onRouteChangeStart = () => {
     NProgress.start();

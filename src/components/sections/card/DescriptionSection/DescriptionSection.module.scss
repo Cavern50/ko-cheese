@@ -2,19 +2,20 @@
 @import "/src/styles/mixins.scss";
 
 .container {
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
+
 .block {
   position: sticky;
   top: 1.25rem;
   width: 50%;
   height: fit-content;
 }
+
 .properties {
   display: flex;
   margin-top: 1.875rem;
-  margin-left: 6.875rem;
 }
 
 .column {
@@ -24,29 +25,45 @@
 }
 
 .title {
-    line-height: 1.1;
+  line-height: 1.1;
 }
 
 .statuses {
-   display: flex;
-   margin-top: 3.125rem;
-   span {
-      &:not(:first-child) {
-         margin-left: 2.1875rem;
-      }
-   }
+  display: flex;
+  margin-top: 1.25rem;
+
+  span {
+    &:not(:first-child) {
+      margin-left: 2.1875rem;
+    }
+  }
 }
 
 .info {
-   width: 40%;
+  width: 40%;
 }
 
 .price {
-    display: block;
-    margin-top: 3.125rem;
-    font-size: 2rem;
-    line-height: 1.2;
-    font-family: $font-numbers;
+  display: block;
+  margin-top: 1.875rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-family: $font-numbers;
+}
+
+
+.oldPrice {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  text-decoration: line-through;
+  color: $lighten;
+}
+
+.weight {
+  display: block;
+  margin-top: 1rem;
+  font-family: $font-service;
+  font-size: 0.875rem;
 }
 
 .nutrients {
@@ -55,37 +72,49 @@
 }
 
 .about {
-    max-width: 85%;
-    margin-top: 1.875rem;
-    font-family: $font-service;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    opacity: 0.8;
+  max-width: 85%;
+  margin-top: 1rem;
+  font-family: $font-service;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  opacity: 0.8;
 }
 
 .with {
-    display: block;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-    font-family: $font-service;
-    opacity: 0.8;
+  display: block;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-family: $font-service;
+  opacity: 0.8;
 }
 
 .tastes {
-    display: flex;
-    span {
-        width: 2.5rem;
-        height: 2.5rem;
-        margin-right: 1rem;
-        svg {
-            height: 50%;
-            width: 50%;
-        }
+  display: flex;
+
+  span {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+
+    svg {
+      height: 50%;
+      width: 50%;
     }
+  }
 }
 
-.description {
-    margin-top: 3.125rem;
+.composition {
+  margin-top: 3.125rem;
+}
+
+.discount {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem 1rem 1.875rem;
+  border-radius: 10px;
+  font-family: $font-service;
+  font-size: 1.125rem;
+  background-color: $lightest;
 }
 
 .status {
@@ -124,9 +153,7 @@
 }
 
 @media (max-width: $tablet) {
-  .properties {
-    margin-left: 0;
-  }
+
   .block {
     width: 45%;
   }
@@ -146,6 +173,9 @@
   .block {
     position: static;
   }
+  .slider {
+    position: relative;
+  }
   .slide {
     height: 462px;
     object-fit: cover;
@@ -161,9 +191,11 @@
   }
   .column {
     width: 55%;
+
     &:first-child {
       margin-right: 0;
     }
+
     &:last-child {
       width: 40%;
     }

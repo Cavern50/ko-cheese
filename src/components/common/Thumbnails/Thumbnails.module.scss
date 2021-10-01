@@ -1,59 +1,70 @@
 @import '/src/styles/root';
 
 .container {
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
 }
+
 .preview {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
+  display: flex;
+  width: 40rem;
+  margin-top: 20px;
 }
 
 
 .mini {
-    width: 6.25rem;
-    height: 6.25rem;
-    object-fit: cover;
-    cursor: pointer;
-    &:not(:first-child) {
-        margin-top: 10px;
-    }
+  width: 6.25rem;
+  height: 6.25rem;
+  object-fit: cover;
+  cursor: pointer;
+
+  &:not(:first-child) {
+    margin-right: 10px;
+  }
 }
 
 .active {
-    border: 2px solid $gen;
+  border: 2px solid $gen;
 }
 
 .main {
-    width: 33.125rem;
-    height: 33.125rem;
+  position: relative;
+  width: 40rem;
+  height: 35rem;
+  overflow: hidden;
+  img {
+    height: 100%;
+    width: 100%;
     object-fit: cover;
-    object-position: top;
+  }
 }
 
+
+
 @media (max-width: $landscape) {
-    .main {
-        width: 400px;
-        height: 554px;
+  .main {
+    width: 400px;
+    height: 554px;
+  }
+  .preview {
+    margin-right: 20px;
+  }
+  .mini {
+    width: 69px;
+    height: 69px;
+
+    &:not(:first-child) {
+      margin-top: 0;
     }
-    .preview {
-        margin-right: 20px;
-    }
-    .mini {
-        width: 69px;
-        height: 69px;
-        &:not(:first-child) {
-            margin-top: 0;
-        }
-    }
+  }
 }
 
 @media (max-width: $tablet) {
-    .main {
-        width: 250px;
-        height: 320px;
-    }
-    .block {
-        width: 45%;
-    }
+  .main {
+    width: 250px;
+    height: 320px;
+  }
+  .block {
+    width: 45%;
+  }
 }

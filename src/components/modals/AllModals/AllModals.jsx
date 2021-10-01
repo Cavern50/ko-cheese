@@ -6,6 +6,7 @@ import { Favorite } from "components/modals/Favorite/Favorite";
 import { Subscribe } from "components/modals/Subscribe/Subscribe";
 import { Letter } from "components/modals/Letter/Letter";
 import { Menu } from "components/modals/Menu/Menu";
+import { PrivacyPolicy } from "components/modals/PrivacyPolicy/PrivacyPolicy";
 import { useDispatch, useSelector } from "react-redux";
 import {
   cartModalSelector,
@@ -13,13 +14,14 @@ import {
   subscribeModalSelector,
   letterModalSelector,
   menuModalSelector,
+  privacyModalSelector,
   cartChangeModalState,
   favoriteChangeModalState,
   letterChangeModalState,
   subscribeChangeModalState,
-  menuChangeModalState
+  menuChangeModalState,
+  privacyChangeModalState
 } from "redux/slices/modals";
-
 
 
 export const AllModals = () => {
@@ -29,6 +31,7 @@ export const AllModals = () => {
   const subscribeModalValue = useSelector(subscribeModalSelector);
   const letterModalValue = useSelector(letterModalSelector);
   const menuModalValue = useSelector(menuModalSelector);
+  const privacyModalValue = useSelector(privacyModalSelector);
 
   const cartModalCloseHandler = () => {
     dispatch(cartChangeModalState(false));
@@ -49,6 +52,10 @@ export const AllModals = () => {
   const menuModalCloseHandler = () => {
     dispatch(menuChangeModalState(false));
   };
+
+  const privacyModalCloseHandler = () => {
+    dispatch(privacyChangeModalState(false))
+  }
 
   return (
     <>
@@ -82,6 +89,12 @@ export const AllModals = () => {
                     additionClass="menu"
                     {...mainModalProperties}>
         <Menu/>
+      </ModalWrapper>
+      <ModalWrapper closeModal={privacyModalCloseHandler}
+                    show={privacyModalValue}
+                    stopScroll
+                    {...mainModalProperties}>
+        <PrivacyPolicy closeModal={privacyModalCloseHandler}/>
       </ModalWrapper>
     </>
   );

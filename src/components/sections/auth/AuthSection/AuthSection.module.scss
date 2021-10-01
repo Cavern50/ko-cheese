@@ -42,3 +42,14 @@
   margin: 1.25rem auto 0 auto;
   text-align: center;
 }
+
+.privacy {
+  display: inline;
+  font-size: 1rem;
+  color: $lighten;
+  text-transform: none;
+  text-decoration: underline;
+  &:hover {
+    color: $gen;
+  }
+}

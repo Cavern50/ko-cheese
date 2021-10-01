@@ -11,12 +11,15 @@ import ArticlesAPI from "api/ArticlesAPI";
 
 import APIBitrix from "api/APIBitrix";
 import s from "./RecipesSection.module.scss";
+import { RecipeLoader } from "components/common/RecipeLoader/RecipeLoader";
 
 export const RecipesSection = ({ categories, items }) => {
 
   const { id: categoryId, subcategories: subCategoryId } = categories[0];
   const { activeId: activeCategoryId, toggleActiveId: toggleCategoryId } = useTabs(categoryId, false);
   const { activeId: activeSubCategoryId, toggleActiveId: toggleSubCategoryId } = useTabs(subCategoryId[0].id, false);
+
+  const [isLoading, setLoading] = React.useState(false);
 
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
   const [activePosts, setActivePosts] = React.useState(items);
@@ -32,12 +35,14 @@ export const RecipesSection = ({ categories, items }) => {
 
   React.useEffect(() => {
     const getPosts = async () => {
+      setLoading(true);
       const posts = await APIBitrix.get(`articles/collection/${activeSubCategoryId}`);
       setActivePosts(posts);
+      setLoading(false);
     };
 
     getPosts();
-    
+
   }, [activeSubCategoryId]);
 
 
@@ -66,10 +71,15 @@ export const RecipesSection = ({ categories, items }) => {
         }
       </div>
       <div className={s.posts}>
-        {activePosts.length ? activePosts.map((post, i) =>
-          <Recipe
-            key={i}
-            isPreview {...post} />) : ""}
+        {isLoading ?
+          <RecipeLoader/>
+          :
+          activePosts.length > 0 &&
+          activePosts.map((post, i) =>
+            <Recipe
+              key={i}
+              isPreview {...post} />)
+        }
       </div>
     </>
   );

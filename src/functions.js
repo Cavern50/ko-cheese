@@ -8,11 +8,18 @@ export const useOutsideClicker = (ref, action) => {
       if (ref.current && !ref.current.contains(event.target)) {
         action(false);
       }
-    }
+    };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref]);
+};
+
+export const getCookie = (name) => {
+  const matches = document.cookie.match(new RegExp(
+    "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
 };

@@ -1,34 +1,111 @@
 import React from "react";
 import clsx from "clsx";
 import { BASE_SITE_URL } from "constants.js";
+import { ZoomImage } from "components/common/ZoomImage/ZoomImage";
+import { Swiper, SwiperSlide } from "swiper/react";
 import s from "./Thumbnails.module.scss";
 
 export const Thumbnails = ({ gallery }) => {
-  const [activeMain, setActiveMain] = React.useState("");
+  const [init, setInit] = React.useState(false);
+  const [objectProperties, setObjectProperties] = React.useState({});
+  const [activeMain, setActiveMain] = React.useState(`${BASE_SITE_URL}${gallery[0]}`);
   const [activeMini, setActiveMini] = React.useState(0);
 
-  const switchImage = (image, i) => {
-    setActiveMain(image);
+
+  const [isSticky, setIsSticky] = React.useState(false);
+
+  const switchImageHandler = (image, i) => {
+    setActiveMain(`${BASE_SITE_URL}${image}`);
     setActiveMini(i);
   };
+
   React.useEffect(() => {
-    setActiveMain("");
     setActiveMini(0);
+    setActiveMain(`${BASE_SITE_URL}${gallery[0]}`);
   }, [gallery]);
+
+  const containerRef = React.useRef(null);
+
+  const getOffsetTop = () => {
+    let scrollTop = 0;
+
+    if (document.documentElement && document.documentElement.scrollTop) {
+      scrollTop = document.documentElement.scrollTop;
+    } else if (document.body) {
+      scrollTop = document.body.scrollTop;
+    }
+
+    return scrollTop;
+  };
+
+
+  React.useEffect(() => {
+    setInit(true);
+    setObjectProperties({
+      width: containerRef.current?.clientWidth,
+      height: containerRef.current?.clientHeight,
+      left: containerRef.current?.getBoundingClientRect().left,
+      top: containerRef.current?.getBoundingClientRect().top + getOffsetTop()
+    });
+
+
+    // используем observer для отслеживания
+    // изменения положения превью
+    const cachedRef = containerRef.current;
+    const observer = new IntersectionObserver(
+      ([e]) => setIsSticky(e.intersectionRatio < 1),
+      { threshold: [1] }
+    );
+
+    observer.observe(cachedRef);
+
+    return function() {
+      observer.unobserve(cachedRef);
+    };
+
+  }, []);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setObjectProperties({
+        width: containerRef.current?.clientWidth,
+        height: containerRef.current?.clientHeight,
+        left: containerRef.current?.getBoundingClientRect().left,
+        top: containerRef.current?.getBoundingClientRect().top + getOffsetTop()
+      });
+    }, 300);
+  }, [isSticky]);
+
+
   return (
     <div className={s.container}>
-      <div className={s.preview}>
-        {gallery.map((image, i) => (
-          <img
-            className={clsx(s.mini, i === activeMini ? s.active : "")}
-            src={BASE_SITE_URL + image}
-            alt=""
-            key={i}
-            onClick={() => switchImage(image, i)}
-          />
-        ))}
+      <div ref={containerRef} className={s.main}>
+        <img src={activeMain} alt=""/>
+        {
+          init &&
+          <ZoomImage image={activeMain} objectProperties={objectProperties}/>
+        }
       </div>
-      <img className={s.main} src={BASE_SITE_URL + (activeMain || gallery[0])} alt=""/>
+      <div className={s.preview}>
+        <Swiper
+          slidesPerView={"auto"}
+          slidesPerGroup={1}
+          spaceBetween={10}
+        >
+          {gallery.map((image, i) => (
+            <SwiperSlide key={i} style={{
+              width: "auto"
+            }}>
+              <img
+                className={clsx(s.mini, i === activeMini ? s.active : "")}
+                src={`${BASE_SITE_URL}${image}`}
+                alt="a"
+                onClick={() => switchImageHandler(image, i)}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

@@ -57,19 +57,23 @@ const Card = ({ id, product, products, posts }) => {
       </Head>
       <Wrapper>
         <DescriptionSection product={product} id={id}/>
-        {products.length && <Section>
-          <Slider title={"Мы рекомендуем"} slides={products} params={sliderParams}>
-            <Product additionClass={"card_slider"}/>
-          </Slider>
-          {isClientSide && windowSize < 768 &&
-          <Link href="/products">
-            <a className={g.link}>Посмотреть все</a>
-          </Link>}
-        </Section>}
-
+        {
+          products.length &&
+          <Section>
+            <Slider title={"Мы рекомендуем"} slides={products} params={sliderParams}>
+              <Product additionClass={"card_slider"}/>
+            </Slider>
+            {
+              isClientSide &&
+              windowSize < 768 &&
+              <Link href="/products">
+                <a className={g.link}>Посмотреть все</a>
+              </Link>
+            }
+          </Section>
+        }
       </Wrapper>
       <RecipesSliderSection title="Рецепты" recipes={posts}/>
-
     </>
   );
 };

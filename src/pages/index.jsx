@@ -10,12 +10,12 @@ import { TelegramPromoSection } from "components/sections/index/TelegramPromoSec
 import { InstagramSection } from "components/sections/index/InstagramSection/InstagramSection";
 import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import { Cookies } from "components/modals/Cookies/Cookies";
-import DataAPI from 'api/DataAPI.js';
-import { useModal } from "hooks";
 
-import ProductsAPI from "api/ProductsAPI";
+import { useModal } from "hooks";
+import DataAPI from 'api/DataAPI.js';
 import { PartnersSection } from "components/sections/index/PartnersSection/PartnersSection";
 import APIBitrix from "api/APIBitrix";
+import { getCookie } from "functions";
 
 const cookiesModalProperties = {
   animation: {
@@ -28,15 +28,17 @@ const cookiesModalProperties = {
   }
 };
 
-const Index = ({ promoContent, products, discountProduct, categories, posts, newProducts }) => {
+const Index = ({ promoContent, discountProduct, categories, posts, newProducts }) => {
 
-  const cookiesModal = useModal(true, false);
-  const [showDelay, setShowDelay] = React.useState(false);
+  const cookiesModal = useModal(false, false);
   React.useEffect(() => {
     setTimeout(() => {
-      setShowDelay(true);
-    }, 5000);
+      if (!getCookie("hideCookie")) {
+        cookiesModal.showModal();
+      }
+    }, 1000);
   }, []);
+
   return (
     <>
       <Head>
@@ -44,16 +46,18 @@ const Index = ({ promoContent, products, discountProduct, categories, posts, new
       </Head>
       <PromoSection {...promoContent}/>
       <NewTastesSection newProducts={newProducts}/>
-      <ProductsSection products={products} categories={categories}/>
+      <ProductsSection products={[]} categories={categories}/>
       <DiscountSection {...discountProduct}/>
       <RecipesSliderSection recipes={posts} title="Рецепты"/>
       <TelegramPromoSection url={"http://instagram.com/instagram"}/>
       <InstagramSection/>
       <PartnersSection/>
-      {cookiesModal.isShowed && showDelay ?
+      {
+        cookiesModal.isShowed &&
         <ModalWrapper show={cookiesModal.isShowed} closeModal={cookiesModal.hideModal} {...cookiesModalProperties}>
           <Cookies close={cookiesModal.hideModal}/>
-        </ModalWrapper> : ""}
+        </ModalWrapper>
+      }
     </>
   );
 };
@@ -63,9 +67,10 @@ export default Index;
 export const getServerSideProps = async () => {
   const promoContent = await APIBitrix.get("content/main/promo-section/").then(res => res[0]);
   const categories = await APIBitrix.get("products/categories/");
-  const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`);
+  // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`);
   const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
   const { discountProduct } = await DataAPI.getData();
-  return { props: { products, categories, discountProduct, posts, newProducts, promoContent } };
+  return { props: { discountProduct, categories, posts, newProducts, promoContent } };
 };
+

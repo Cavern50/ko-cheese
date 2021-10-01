@@ -8,7 +8,6 @@ import clsx from "clsx";
 import s from "./ControlButtons.module.scss";
 
 export const ControlButtons = ({ productProps }) => {
-
   const dispatch = useDispatch();
   const itemsInCart = useSelector(cartItemsSelector);
 
