@@ -5,16 +5,54 @@ import { FormContainer } from "components/forms/FormContainer/FormContainer";
 import s from "../AuthSection/AuthSection.module.scss";
 import { useDispatch } from "react-redux";
 import { privacyChangeModalState } from "redux/slices/modals";
+import APIBitrix from "api/APIBitrix";
+import { useRouter } from 'next/router'
 
 export const RegSection = () => {
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const [confirmField, setConfirmField] = React.useState(false);
+  const [confirmData, setConfrimData] = React.useState({});
   const privacyModalHandler = () => {
     dispatch(privacyChangeModalState(true));
   };
 
   const initialValues = {
-    phone: ""
+    phone: "",
+    code: "",
+    policy: false
+  };
+
+  const regHandler = (value) => {
+    const { phone, policy } = JSON.parse(value);
+    console.log(value);
+    if (policy) {
+      APIBitrix.post("user/new-user/", {
+        phone
+      }).then(res => {
+        if (res.user_id) {
+          setConfirmField(true);
+          setConfrimData(res);
+        } else {
+          console.log(res);
+        }
+      });
+    } else {
+      alert("Пожалуйста, ознакомьтесь с политикой конфиденциальности");
+    }
+  };
+
+  const confirmHandler = (value) => {
+    const { user_id } = confirmData;
+    const { code } = JSON.parse(value);
+    APIBitrix.post("user/new-user/check/", {
+      user_id,
+      code,
+    }).then(res => {
+      console.log(res);
+      // router.push('/profile');
+    });
   };
 
   return (
@@ -23,25 +61,31 @@ export const RegSection = () => {
       <FormContainer
         initialValues={initialValues}
         className="loginForm"
+        submitHandler={confirmField ? confirmHandler : regHandler}
       >
         {() =>
           (
             <>
-              <Input id="phone" label="Телефон" name="phone" type="number"/>
-              <Input id="email" label="E-mail" name="email" type="text"/>
+              {
+                !confirmField ?
+                  <Input id="phone" label="Номер телефона" name="phone" type="text"/>
+                  :
+                  <Input id="code" label="Код подтверждения" name="code" type="text"/>
+              }
               <div className={s.politics}>
-                <Input id="politics" name="politics" type="checkbox" additionClass="checkbox"/>
+                <Input id="policy" name="policy" type="checkbox" additionClass="checkbox"/>
                 <div className={s.label}>
                   <span>Я ознакомлен(-а)</span>
                   <button type="button" className={s.privacy}
-                        onClick={privacyModalHandler}>
+                          onClick={privacyModalHandler}>
                     с политикой конфиденциальности
                   </button>
                 </div>
               </div>
-              <Link href="/profile">
-                <a className={s.submit}>Зарегистрироваться</a>
-              </Link>
+              <button className={s.submit}
+                      type="submit">
+                Зарегистрироваться
+              </button>
               <Link href="/login">
                 <a className={s.reg}>Войти</a>
               </Link>
