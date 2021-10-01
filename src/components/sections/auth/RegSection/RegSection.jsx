@@ -6,7 +6,7 @@ import s from "../AuthSection/AuthSection.module.scss";
 import { useDispatch } from "react-redux";
 import { privacyChangeModalState } from "redux/slices/modals";
 import APIBitrix from "api/APIBitrix";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 export const RegSection = () => {
 
@@ -34,6 +34,7 @@ export const RegSection = () => {
         if (res.user_id) {
           setConfirmField(true);
           setConfrimData(res);
+          localStorage.setItem("code", res.code);
         } else {
           console.log(res);
         }
@@ -48,10 +49,16 @@ export const RegSection = () => {
     const { code } = JSON.parse(value);
     APIBitrix.post("user/new-user/check/", {
       user_id,
-      code,
+      code
     }).then(res => {
-      console.log(res);
-      // router.push('/profile');
+      if (JSON.parse(localStorage.getItem('code')) == code) {
+        console.log(res);
+        localStorage.setItem('code', '');
+        router.push('/profile');
+      } else {
+        alert('Проверьте правильность кода...')
+      }
+
     });
   };
 
