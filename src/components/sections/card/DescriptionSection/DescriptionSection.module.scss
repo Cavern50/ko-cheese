@@ -15,7 +15,9 @@
 
 .properties {
   display: flex;
-  margin-top: 1.875rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba($gen, .2);
 }
 
 .column {
