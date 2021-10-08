@@ -8,6 +8,11 @@ import {
   Fruits
 } from "components/SVG/TastesSVG/TastesSVG";
 
+
+export const BASE_API_URL = "https://co-ko.asap-lp.ru/api/";
+
+export const BASE_SITE_URL = "https://co-ko.asap-lp.ru/";
+export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/8";
 export const allStatus = {
   avaliable: {
     title: "в наличии",
@@ -30,8 +35,6 @@ export const allTastes = {
   fruits: <Fruits border={"accent"} key={3}/>
 };
 
-
-export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/8";
 
 export const cities = [
   {
@@ -97,13 +100,37 @@ export const cities = [
   }
 ];
 
+
+export const subscribeDays = [{
+  name: "Понедельник",
+  index: 0
+}, {
+  name: "Вторник",
+  index: 1
+}, {
+  name: "Среда",
+  index: 2
+}, {
+  name: "Четверг",
+  index: 3
+}, {
+  name: "Пятница",
+  index: 4
+}, {
+  name: "Суббота",
+  index: 5
+}, {
+  name: "Воскресенье",
+  index: 6
+}];
+
+
 export const instagramUser = "ko-cheese";
 
 export const PROFILE_VALIDATION_SCHEMA = Yup.object().shape({
-  name: Yup.string().required("Введите имя"),
-  surname: Yup.string(),
-  email: Yup.string().email("Введите корректный e-mail"),
-  phone: Yup.string().required("Введите номер телефона")
+  name: Yup.string().required("Введите имя").nullable(true),
+  surname: Yup.string().nullable(true),
+  email: Yup.string().email("Введите корректный e-mail").nullable(true),
 });
 
 
@@ -115,22 +142,29 @@ export const ADDRESS_VALIDATION_SCHEMA = Yup.object().shape({
 
 
 export const RETURN_ORDER_VALIDATION_SCHEMA = Yup.object().shape({
-  name: Yup.string().required('Введите имя'),
-  phone: Yup.string().required('Введите номер телефона'),
+  name: Yup.string().required("Введите имя"),
+  phone: Yup.string().required("Введите номер телефона")
 
-})
+});
 
 export const RETURN_VALIDATION_SCHEMA = Yup.object().shape({
-  name: Yup.string().required('Введите имя'),
-  phone: Yup.string().required('Введите номер телефона'),
-})
+  name: Yup.string().required("Введите имя"),
+  phone: Yup.string().required("Введите номер телефона")
+});
 
 export const PURCHASE_VALIDATION_SCHEMA = Yup.object().shape({
-  name: Yup.string().required('Введите имя'),
-  phone: Yup.string().required('Введите номер телефона'),
-  email: Yup.string().email('Введите корректный e-mail'),
-  street: Yup.string().required('Введите улицу'),
-  house: Yup.string().required('Введите номер дома'),
+  name: Yup.string().required("Введите имя"),
+  phone: Yup.string().required("Введите номер телефона"),
+  email: Yup.string().email("Введите корректный e-mail"),
+  street: Yup.string().required("Введите улицу"),
+  house: Yup.string().required("Введите номер дома")
+});
+
+
+export const AUTH_VALIDATION_SCHEMA = Yup.object().shape({
+  // phone: Yup.string().min(16, 'Проверьте правильность введенного номера')
+  // .max(16, 'Проверьте правильность введенного номера'),
+  policy: Yup.bool().oneOf([true], "Пожалуйста, ознакомьтесь с политикой конфиденциальности")
 });
 
 export const mainModalProperties = {
@@ -144,15 +178,21 @@ export const mainModalProperties = {
   }
 };
 
+export const mainPopupProperties = {
+  animation: {
+    animationShow: "fadeIn",
+    animationHide: "fadeOut"
+  },
+  classes: {
+    boxClass: "modalBox",
+    containerClass: "popupContainer"
+  }
+};
 
 
 export const isClientSide = typeof window !== "undefined";
 
 export const windowSize = isClientSide ? window.innerWidth : false;
-
-export const BASE_API_URL = "https://co-ko.asap-lp.ru/api/";
-
-export const BASE_SITE_URL = "https://co-ko.asap-lp.ru/";
 
 
 export const orders = [
