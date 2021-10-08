@@ -7,7 +7,7 @@ export const FormContainer = (props) => {
   const { serverErrors, children, className, submitHandler, ...other } = props;
   return (
     <Formik {...other} onSubmit={values => {
-      values = JSON.stringify(values, null , 2);
+      // values = JSON.stringify(values, null , 2);
       submitHandler(values);
     }}>
       {(formik) => {

@@ -4,8 +4,10 @@ import { BASE_SITE_URL } from "constants.js";
 import { ZoomImage } from "components/common/ZoomImage/ZoomImage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import s from "./Thumbnails.module.scss";
+import { getOffsetTop } from "functions";
 
 export const Thumbnails = ({ gallery }) => {
+
   const [init, setInit] = React.useState(false);
   const [objectProperties, setObjectProperties] = React.useState({});
   const [activeMain, setActiveMain] = React.useState(`${BASE_SITE_URL}${gallery[0]}`);
@@ -14,32 +16,22 @@ export const Thumbnails = ({ gallery }) => {
 
   const [isSticky, setIsSticky] = React.useState(false);
 
+  const containerRef = React.useRef(null);
+
   const switchImageHandler = (image, i) => {
     setActiveMain(`${BASE_SITE_URL}${image}`);
     setActiveMini(i);
   };
 
-  React.useEffect(() => {
-    setActiveMini(0);
-    setActiveMain(`${BASE_SITE_URL}${gallery[0]}`);
-  }, [gallery]);
-
-  const containerRef = React.useRef(null);
-
-  const getOffsetTop = () => {
-    let scrollTop = 0;
-
-    if (document.documentElement && document.documentElement.scrollTop) {
-      scrollTop = document.documentElement.scrollTop;
-    } else if (document.body) {
-      scrollTop = document.body.scrollTop;
-    }
-
-    return scrollTop;
-  };
-
+  const scrollHandler = () => {
+    setObjectProperties((prevState => ({
+      ...prevState,
+      top: containerRef.current?.getBoundingClientRect().top + getOffsetTop()
+    })));
+  }
 
   React.useEffect(() => {
+    // setActiveMain(`${BASE_SITE_URL}${gallery[0]}`);
     setInit(true);
     setObjectProperties({
       width: containerRef.current?.clientWidth,
@@ -47,7 +39,6 @@ export const Thumbnails = ({ gallery }) => {
       left: containerRef.current?.getBoundingClientRect().left,
       top: containerRef.current?.getBoundingClientRect().top + getOffsetTop()
     });
-
 
     // используем observer для отслеживания
     // изменения положения превью
@@ -59,34 +50,31 @@ export const Thumbnails = ({ gallery }) => {
 
     observer.observe(cachedRef);
 
-    window.addEventListener("scroll", () => {
-      console.log('new prop');
-      setObjectProperties({
-        width: containerRef.current?.clientWidth,
-        height: containerRef.current?.clientHeight,
-        left: containerRef.current?.getBoundingClientRect().left,
-        top: containerRef.current?.getBoundingClientRect().top + getOffsetTop()
-      });
-    })
+
+    window.addEventListener("scroll", scrollHandler);
 
     return function() {
       observer.unobserve(cachedRef);
+      window.removeEventListener("scroll", scrollHandler);
     };
-
-
 
   }, []);
 
   React.useEffect(() => {
-    setTimeout(() => {
-      setObjectProperties({
-        width: containerRef.current?.clientWidth,
-        height: containerRef.current?.clientHeight,
-        left: containerRef.current?.getBoundingClientRect().left,
-        top: containerRef.current?.getBoundingClientRect().top + getOffsetTop()
-      });
+    const timeout = setTimeout(() => {
+      scrollHandler();
     }, 300);
+
+    return () => window.clearTimeout(timeout);
+
   }, [isSticky]);
+
+
+  React.useEffect(() => {
+    setActiveMini(0);
+    setActiveMain(`${BASE_SITE_URL}${gallery[0]}`);
+  }, [gallery]);
+
 
 
   return (

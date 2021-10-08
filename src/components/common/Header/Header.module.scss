@@ -51,6 +51,7 @@
 
 .control {
   @extend %flexbox;
+  position: relative;
   margin-left: 2.875rem;
 }
 
@@ -96,6 +97,19 @@
 
 }
 
+
+.search {
+  &:not(.button_accent) {
+    path {
+      fill: $gen;
+    }
+    &:hover {
+      path {
+        fill: $accent;
+      }
+    }
+  }
+}
 
 .button_accent {
   background-color: rgba($accent, 0.2);

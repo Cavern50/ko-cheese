@@ -23,3 +23,15 @@ export const getCookie = (name) => {
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
 };
+
+export const getOffsetTop = () => {
+  let scrollTop = 0;
+
+  if (document.documentElement && document.documentElement.scrollTop) {
+    scrollTop = document.documentElement.scrollTop;
+  } else if (document.body) {
+    scrollTop = document.body.scrollTop;
+  }
+
+  return scrollTop;
+};

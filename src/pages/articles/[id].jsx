@@ -40,6 +40,7 @@ export const getServerSideProps = async ({ params }) => {
   const article = await APIBitrix.get(`articles/item/${params.id}`).then(res => res);
   const posts = await APIBitrix.get("articles/collection/");
   const { products } = article;
+  console.log(article, posts, products);
   return { props: { products, article, posts } };
 };
 

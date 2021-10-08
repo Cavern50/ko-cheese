@@ -4,7 +4,8 @@ import clsx from "clsx";
 import s from "components/forms/Input/Input.module.scss";
 
 export const Input = (props) => {
-  const { label, type, id, name, additionClass = "", containerClass = "", value = "" } = props;
+  const { label, type, id, name, additionClass = "", containerClass = "", value = "", autoFocus } = props;
+  console.log(autoFocus);
   const fieldProps = {
     name,
     type,
@@ -19,7 +20,7 @@ export const Input = (props) => {
         }) => (
           <div className={clsx(s[containerClass], label && s.container)}>
             {label && <label className={s.label} htmlFor={id}>{label}</label>}
-            <input id={id} className={clsx(s.field, s[additionClass])} type={type} onBlur={field.onBlur} {...field}/>
+            <input autoFocus={!!autoFocus} id={id} className={clsx(s.field, s[additionClass])} type={type} onBlur={field.onBlur} {...field}/>
             {meta.error && (
               <div className={s.error}>{meta.error}</div>
             )}

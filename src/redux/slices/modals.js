@@ -7,7 +7,12 @@ const initialState = {
   subscribe: false,
   letter: false,
   menu: false,
-  privacy: false
+  privacy: false,
+  newPhonePopup: false,
+  popup: {
+    visible: false,
+    text: ""
+  },
 };
 
 export const modalsSlice = createSlice({
@@ -32,6 +37,12 @@ export const modalsSlice = createSlice({
     privacyChangeModalState(state, action) {
       state.privacy = action.payload;
     },
+    popUpChangeModalState(state, action) {
+      state.popup = action.payload;
+    },
+    newPhonePopupChangeState(state,action) {
+      state.newPhonePopup = action.payload;
+    },
     closeAllModals() {
       return {...initialState}
     }
@@ -54,7 +65,9 @@ export const {
   subscribeChangeModalState,
   menuChangeModalState,
   privacyChangeModalState,
-  closeAllModals
+  popUpChangeModalState,
+  closeAllModals,
+  newPhonePopupChangeState
 } = modalsSlice.actions;
 
 export const cartModalSelector = (state) => state.modals.cart;
@@ -63,4 +76,6 @@ export const subscribeModalSelector = (state) => state.modals.subscribe;
 export const letterModalSelector = (state) => state.modals.letter;
 export const menuModalSelector = (state) => state.modals.menu;
 export const privacyModalSelector = (state) => state.modals.privacy;
+export const popUpModalSelector = (state) => state.modals.popup;
+export const newPhonePopUpSelector = (state) => state.modals.newPhonePopup;
 

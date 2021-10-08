@@ -1,14 +1,14 @@
-import React from 'react';
-import { Section } from 'components/layout/Section/Section';
-import { Wrapper } from 'components/layout/Wrapper/Wrapper';
-import { H1 } from 'components/layout/H1/H1';
-import Accordion from 'components/common/Accordion/Accordion';
+import React from "react";
+import { Section } from "components/layout/Section/Section";
+import { Wrapper } from "components/layout/Wrapper/Wrapper";
+import { H1 } from "components/layout/H1/H1";
+import Accordion from "components/common/Accordion/Accordion";
+import QuestionsAPI from "api/QuestionsAPI";
 import Head from "next/head";
-import DataAPI from '../api/DataAPI';
 
 const additionAccordionClasses = {
-  triggerClass: 'trigger--main',
-  contentClass: 'content--main'
+  triggerClass: "trigger--main",
+  contentClass: "content--main"
 };
 
 const Questions = ({ questions }) => (
@@ -33,9 +33,11 @@ const Questions = ({ questions }) => (
 
 export default Questions;
 
-const getData = async () => await DataAPI.getData();
+const getQuestions = async () => await QuestionsAPI.getQuestions();
 
 export const getServerSideProps = async () => {
-  const { questions } = await getData();
-  return { props: { questions } };
+  const questions = await getQuestions();
+  return {
+    props: { questions }
+  };
 };

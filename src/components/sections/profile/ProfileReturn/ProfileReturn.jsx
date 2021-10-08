@@ -82,7 +82,8 @@ export const ProfileReturn = () => {
                       id="orderNumber"
                       selectHandler={selectHandler}/>
                     {
-                      curProducts.length > 0 && <DropdownCustom
+                      curProducts.length > 0 &&
+                      <DropdownCustom
                         label="*Выберите товар из списка"
                         placeholder=""
                         options={curProducts.map(product => `${product.name}, ${product.count} шт.`)}

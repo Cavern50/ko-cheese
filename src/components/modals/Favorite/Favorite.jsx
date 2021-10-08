@@ -32,7 +32,7 @@ export const Favorite = ({ closeModal }) => {
         ))}
       </div>
       <div>
-        {itemsInFavorite.map(item => <Purchase inFavorite key={item} params={item}/>)}
+        {itemsInFavorite.map(item => <Purchase inFavorite key={item.id} params={item}/>)}
       </div>
     </ModalBody>
   );

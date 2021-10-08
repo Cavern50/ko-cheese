@@ -26,6 +26,23 @@
   }
 }
 
+.compose {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba($gen, .3);
+  font-family: $font-service;
+  &Wrapper {
+    max-width: 80%;
+  }
+  &Property {
+    font-family: $font-service--bold;
+  }
+  &Text {
+    display: inline;
+    max-width: 80%;
+  }
+}
+
 .title {
   line-height: 1.1;
 }
@@ -43,6 +60,15 @@
 
 .info {
   width: 40%;
+}
+
+.producer {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-family: $font-service;
+  &Value {
+    font-family: $font-service--bold;
+  }
 }
 
 .price {
@@ -65,12 +91,17 @@
   display: block;
   margin-top: 1rem;
   font-family: $font-service;
-  font-size: 0.875rem;
+  font-size: 1.125rem;
+  &Property {
+    font-family: $font-service--bold;
+  }
 }
 
 .nutrients {
   display: flex;
   margin-top: 1.25rem;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba($gen, .3);
 }
 
 .about {

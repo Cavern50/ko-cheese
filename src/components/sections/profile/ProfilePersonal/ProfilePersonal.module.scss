@@ -32,6 +32,12 @@
   font-size: 1.125rem;
 }
 
+.changePhone {
+  @extend %link;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
 @media (max-width: $landscape) {
   .form {
     width: 50%;

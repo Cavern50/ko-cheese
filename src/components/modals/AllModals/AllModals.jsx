@@ -1,6 +1,6 @@
 import React from "react";
 import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
-import { mainModalProperties } from "constants.js";
+import { mainModalProperties, mainPopupProperties } from "constants.js";
 import { Cart } from "components/modals/Cart/Cart";
 import { Favorite } from "components/modals/Favorite/Favorite";
 import { Subscribe } from "components/modals/Subscribe/Subscribe";
@@ -20,8 +20,10 @@ import {
   letterChangeModalState,
   subscribeChangeModalState,
   menuChangeModalState,
-  privacyChangeModalState
+  privacyChangeModalState, popUpChangeModalState, popUpModalSelector, newPhonePopUpSelector, newPhonePopupChangeState
 } from "redux/slices/modals";
+import { WarnPopup } from "components/modals/WarnPopup/WarnPopup";
+import { ChangePhonePopup } from "components/modals/ChangePhonePopup/ChangePhonePopup";
 
 
 export const AllModals = () => {
@@ -32,6 +34,8 @@ export const AllModals = () => {
   const letterModalValue = useSelector(letterModalSelector);
   const menuModalValue = useSelector(menuModalSelector);
   const privacyModalValue = useSelector(privacyModalSelector);
+  const popupModalValue = useSelector(popUpModalSelector);
+  const newPhonePopupValue = useSelector(newPhonePopUpSelector);
 
   const cartModalCloseHandler = () => {
     dispatch(cartChangeModalState(false));
@@ -54,8 +58,16 @@ export const AllModals = () => {
   };
 
   const privacyModalCloseHandler = () => {
-    dispatch(privacyChangeModalState(false))
-  }
+    dispatch(privacyChangeModalState(false));
+  };
+
+  const popupCloseHandler = () => {
+    dispatch(popUpChangeModalState(false));
+  };
+
+  const newPhonePopupCloseHandler = () => {
+    dispatch(newPhonePopupChangeState(false));
+  };
 
   return (
     <>
@@ -95,6 +107,16 @@ export const AllModals = () => {
                     stopScroll
                     {...mainModalProperties}>
         <PrivacyPolicy closeModal={privacyModalCloseHandler}/>
+      </ModalWrapper>
+      <ModalWrapper closeModal={popupCloseHandler}
+                    show={popupModalValue.visible}
+                    {...mainPopupProperties}>
+        <WarnPopup text={popupModalValue.text}/>
+      </ModalWrapper>
+      <ModalWrapper closeModal={newPhonePopupCloseHandler}
+                    show={newPhonePopupValue}
+                    {...mainPopupProperties}>
+        <ChangePhonePopup/>
       </ModalWrapper>
     </>
   );

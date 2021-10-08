@@ -21,9 +21,9 @@ const defaults = {
   name: "",
   addition: "",
   detailText: "",
-  info: [],
   discount: "10%",
   nutritional: [],
+  producer: "",
   tastes: [],
   weight: 0,
   price: 0,
@@ -33,30 +33,30 @@ const defaults = {
   date: "",
   previewText: "",
   quantity: 1,
-  composition: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece o\"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.\"\nf classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. \"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source."
+  compose: "молоко козье пастеризованное, закваска (мезофильные молочнокислые микроорганизмы), пищевая соль, молокосвёртывающий ферментный препарат животного происхождения.",
+  storage: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque deserunt enim expedita ipsa iure maxime reiciendis tempora veniam voluptatem.\n"
 };
 
 export const DescriptionSection = ({ id, product }) => {
   SwiperCore.use([Pagination]);
-  console.log(product);
   const properties = {
     ...defaults,
     ...product
   };
-
   const {
     name,
     addition,
     detailText,
-    info,
+    producer,
     nutritional,
     weight,
     previewText,
     price,
-    composition,
     discount,
     tastes,
     gallery,
+    compose,
+    storage,
     status,
     count
   } = properties;
@@ -64,13 +64,14 @@ export const DescriptionSection = ({ id, product }) => {
   const newPrice = parseInt(price, 10) - parseInt(price, 10) * parseInt(discount, 10) / 100;
 
   const isClientSide = useClientSide();
-  const productProperties =
-    <div className={s.properties}>
-      <div className={s.column}>
-        {info.map(property => <ProductProperty key={property.id} {...property}/>)}
-        <ProductProperty title="Вес" value={weight}/>
-      </div>
-    </div>;
+
+  // const productProperties =
+  //   <div className={s.properties}>
+  //     <div className={s.column}>
+  //       {info.map(property => <ProductProperty key={property.id} {...property}/>)}
+  //       <ProductProperty title="Вес" value={weight}/>
+  //     </div>
+  //   </div>;
   return (
     <>
       <BackButton/>
@@ -93,7 +94,13 @@ export const DescriptionSection = ({ id, product }) => {
                 </Swiper>
               </div>
           }
-          {isClientSide && windowSize >= 768 && productProperties}
+          {/*{isClientSide && windowSize >= 768 && productProperties}*/}
+          <div className={s.compose}>
+            <div className={s.composeWrapper}>
+              <span className={s.composeProperty}>Состав: </span>
+              <p className={s.composeText}>{compose}</p>
+            </div>
+          </div>
 
         </div>
         <div className={s.info}>
@@ -102,6 +109,13 @@ export const DescriptionSection = ({ id, product }) => {
             <br/>
             {addition}
           </h2>
+          {
+            producer &&
+            <div className={s.producer}>
+              <span className={s.producerProperty}>Производитель: </span>
+              <span className={s.producerValue}>{producer}</span>
+            </div>
+          }
           {
             discount &&
             <div className={s.discount}>
@@ -123,11 +137,11 @@ export const DescriptionSection = ({ id, product }) => {
             }
             <span className={newPrice ? s.oldPrice : s.commonPrice}>{parseInt(price, 10)} руб.</span>
           </div>
-          <span className={s.weight}>{weight} г.</span>
-          {
-            isClientSide && windowSize <= 768 &&
-            productProperties
-          }
+          <span className={s.weight}><span className={s.weightProperty}>Вес:</span> {weight} г.</span>
+          {/*{*/}
+          {/*  isClientSide && windowSize <= 768 &&*/}
+          {/*  productProperties*/}
+          {/*}*/}
           <p className={s.about}>{parse(previewText)}</p>
           <div className={s.nutrients}>
             {nutritional.map(nutrient => <ProductNutrient key={nutrient.id} {...nutrient}/>)}
@@ -143,15 +157,15 @@ export const DescriptionSection = ({ id, product }) => {
           <PurchaseControl product={properties} id={id} cart={false}/>
           <div className={s.composition}>
             {
-              composition &&
-              <Accordion title={"Состав"}>
-                {parse(composition)}
-              </Accordion>
-            }
-            {
               detailText &&
               <Accordion title={"Описание"}>
                 {parse(detailText)}
+              </Accordion>
+            }
+            {
+              storage &&
+              <Accordion title={"Особенности хранения"}>
+                {parse(storage)}
               </Accordion>
             }
           </div>
