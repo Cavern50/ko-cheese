@@ -10,7 +10,7 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
 
 import { H1 } from "components/layout/H1/H1";
-import ProductsAPI from "api/ProductsAPI";
+import DataAPI from "api/DataAPI";
 import APIBitrix from "api/APIBitrix";
 
 const Products = ({ newProducts, discountProduct, categories }) => {
@@ -42,6 +42,6 @@ export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/');
   // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`)
   const newProducts = await APIBitrix.get('products/slider/').then(res => res.products);
-  const discountProduct = await ProductsAPI.getDiscountProduct();
+  const { discountProduct } = await DataAPI.getData();
   return { props: {  discountProduct, newProducts, categories } };
 };

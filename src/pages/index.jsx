@@ -12,8 +12,7 @@ import { ModalWrapper } from "components/modals/ModalWrapper/ModalWrapper";
 import { Cookies } from "components/modals/Cookies/Cookies";
 
 import { useModal } from "hooks";
-
-import ProductsAPI from "api/ProductsAPI";
+import DataAPI from 'api/DataAPI.js';
 import { PartnersSection } from "components/sections/index/PartnersSection/PartnersSection";
 import APIBitrix from "api/APIBitrix";
 import { getCookie } from "functions";
@@ -71,8 +70,7 @@ export const getServerSideProps = async () => {
   // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`);
   const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
-  const discountProduct = await ProductsAPI.getDiscountProduct();
+  const { discountProduct } = await DataAPI.getData();
   return { props: { discountProduct, categories, posts, newProducts, promoContent } };
 };
-
 
