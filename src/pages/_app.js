@@ -41,17 +41,27 @@ const MyApp = ({ Component, pageProps, router }) => {
   const dispatch = useDispatch();
 
   const putClientInStorage = async () => {
-    const getClientId = await APIBitrix.get("users/fuser-id/");
+    const getClientId = await APIBitrix.get("users/fuser-id/").then(res => res.fuser_id);
     localStorage.setItem("fuser_id", getClientId);
     dispatch(addUserId(localStorage.getItem("fuser_id")));
   };
 
-  React.useEffect(() => {
+  const getProducts = async () => {
     if (!localStorage.getItem("fuser_id")) {
-      putClientInStorage();
+      await putClientInStorage();
     }
-    dispatch(addUserId(localStorage.getItem("fuser_id")));
-    dispatch(reqGetProducts());
+    await dispatch(addUserId(localStorage.getItem("fuser_id")));
+    await dispatch(reqGetProducts());
+  }
+
+
+  React.useEffect(() => {
+
+    getProducts();
+    
+    // избранное
+
+
   }, []);
 
   return (

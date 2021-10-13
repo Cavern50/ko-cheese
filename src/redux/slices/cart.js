@@ -74,7 +74,7 @@ export const reqAddToCart = createAsyncThunk(
         quantity: productData.quantity
       }).then(res => {
         if (res.code === 200) {
-          dispatch(putProducts(res.items));
+          dispatch(putProducts(res.data));
           dispatch(cartChangeModalState(true));
         } else {
           throw new Error("Ошибка при добавлении товара. Попробуйте обновить страницу и добавить товар еще раз");
@@ -101,7 +101,7 @@ export const reqIncProductCount = createAsyncThunk(
       })
         .then(res => {
           if (res.code === 200) {
-            dispatch(putProducts(res.items));
+            dispatch(putProducts(res.data));
           } else {
             throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
           }
@@ -128,7 +128,7 @@ export const reqDecProductCount = createAsyncThunk(
       })
         .then(res => {
           if (res.code === 200) {
-            dispatch(putProducts(res.items));
+            dispatch(putProducts(res.data));
           } else {
             throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
           }
@@ -153,7 +153,7 @@ export const reqRemoveFromCart = createAsyncThunk(
         item_id: productData.item_id
       }).then(res => {
         if (res.code === 200) {
-          dispatch(putProducts(res.items));
+          dispatch(putProducts(res.data));
         } else {
           throw new Error("Произошла ошибка при удалении товара. Попробуйте обновить страницу и удалить товар еще раз");
         }
@@ -177,7 +177,7 @@ export const reqGetProducts = createAsyncThunk(
         fuser_id: user.id
       }).then(res => {
         if (res.code === 200) {
-          dispatch(putProducts(res.items || []));
+          dispatch(putProducts(res.data || []));
         } else {
           throw new Error("Произошла ошибка при загрузке товаров. Попробуйте обновить страницу");
         }

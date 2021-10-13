@@ -60,7 +60,7 @@ class APIBitrix {
       method: "GET",
       url: `${this.url}${path}`
     })
-      .then(res => res.data.items)
+      .then(res => res.data.data)
       .catch(err => this.handleError(err));
   };
 
