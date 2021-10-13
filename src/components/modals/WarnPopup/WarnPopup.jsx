@@ -8,7 +8,8 @@ export const WarnPopup = ({ text }) => {
 
   const popupCloseHandler = () => {
     dispatch(popUpChangeModalState({
-      visible: false
+      visible: false,
+      text: ''
     }));
   };
 

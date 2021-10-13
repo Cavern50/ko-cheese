@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import APIBitrix from "api/APIBitrix";
+import { cartChangeModalState, popUpChangeModalState } from "redux/slices/modals";
 
 
 const initialState = {
@@ -72,14 +73,18 @@ export const reqAddToCart = createAsyncThunk(
         product_id: productData.id,
         quantity: productData.quantity
       }).then(res => {
-        if (typeof res === "object") {
-          dispatch(putProducts(res));
+        if (res.code === 200) {
+          dispatch(putProducts(res.items));
+          dispatch(cartChangeModalState(true));
         } else {
           throw new Error("Ошибка при добавлении товара. Попробуйте обновить страницу и добавить товар еще раз");
         }
       });
-    } catch (error) {
-      console.log(error);
+    } catch ({ message }) {
+      dispatch(popUpChangeModalState({
+        visible: true,
+        text: message
+      }));
     }
   }
 );
@@ -95,16 +100,17 @@ export const reqIncProductCount = createAsyncThunk(
         quantity: 1
       })
         .then(res => {
-          if (typeof res === "object") {
-            console.log(res);
-            dispatch(putProducts(res));
-            // dispatch(incProductCount(productData));
+          if (res.code === 200) {
+            dispatch(putProducts(res.items));
           } else {
             throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
           }
         });
-    } catch (err) {
-      console.log(err);
+    } catch ({ message }) {
+      dispatch(popUpChangeModalState({
+        visible: true,
+        text: message
+      }));
     }
   }
 );
@@ -121,15 +127,17 @@ export const reqDecProductCount = createAsyncThunk(
         quantity: -1
       })
         .then(res => {
-          if (typeof res === "object") {
-            dispatch(putProducts(res));
-            // dispatch(decProductCount(productData));
+          if (res.code === 200) {
+            dispatch(putProducts(res.items));
           } else {
             throw new Error("Ошибка при изменении количества. Попробуйте обновить страницу и изменить еще раз");
           }
         });
-    } catch (err) {
-      console.log(err);
+    } catch ({ message }) {
+      dispatch(popUpChangeModalState({
+        visible: true,
+        text: message
+      }));
     }
   }
 );
@@ -140,22 +148,21 @@ export const reqRemoveFromCart = createAsyncThunk(
   async (productData, { getState, dispatch }) => {
     const { user } = getState();
     try {
-      // const itemId = await APIBitrix.post("basket/items/", {
-      //   fuser_id: user.id
-      // }).then(res => res.find(product => product.id === productData.id).item_id);
       await APIBitrix.post("basket/remove/", {
         fuser_id: user.id,
         item_id: productData.item_id
       }).then(res => {
-        if (typeof res === "object") {
-          dispatch(putProducts(res));
-          // dispatch(removeProduct(productData));
+        if (res.code === 200) {
+          dispatch(putProducts(res.items));
         } else {
           throw new Error("Произошла ошибка при удалении товара. Попробуйте обновить страницу и удалить товар еще раз");
         }
       });
-    } catch (error) {
-      console.log(error);
+    } catch ({ message }) {
+      dispatch(popUpChangeModalState({
+        visible: true,
+        text: message
+      }));
     }
   }
 );
@@ -169,14 +176,17 @@ export const reqGetProducts = createAsyncThunk(
       await APIBitrix.post("basket/items/", {
         fuser_id: user.id
       }).then(res => {
-        if (typeof res === "object") {
-          res.length > 0 && dispatch(putProducts(res || {}));
+        if (res.code === 200) {
+          dispatch(putProducts(res.items || []));
         } else {
           throw new Error("Произошла ошибка при загрузке товаров. Попробуйте обновить страницу");
         }
       });
-    } catch (error) {
-      console.log(error);
+    } catch ({ message }) {
+      dispatch(popUpChangeModalState({
+        visible: true,
+        text: message
+      }));
     }
   }
 );
@@ -191,7 +201,7 @@ export const reqPurchaseOrder = createAsyncThunk(
     }).then(res => {
       console.log(res);
       dispatch(purchaseOrder());
-      alert('Заказ успешно оформлен');
+      alert("Заказ успешно оформлен");
     });
   }
 );

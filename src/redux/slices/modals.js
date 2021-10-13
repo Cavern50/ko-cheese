@@ -43,6 +43,9 @@ export const modalsSlice = createSlice({
     newPhonePopupChangeState(state,action) {
       state.newPhonePopup = action.payload;
     },
+    popupChangeState(state,action) {
+      state.popup = action.payload;
+    },
     closeAllModals() {
       return {...initialState}
     }
@@ -56,7 +59,6 @@ export const modalsSlice = createSlice({
     }
   }
 });
-
 
 export const {
   cartChangeModalState,

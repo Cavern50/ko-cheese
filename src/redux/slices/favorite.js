@@ -17,6 +17,9 @@ export const favoriteSlice = createSlice({
     removeFromFavorite(state, action) {
       state.items = state.items.filter(item => item.id !== action.payload.id);
     },
+    getFavorite(state, action) {
+      state.items = action.payload
+    }
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
@@ -30,7 +33,8 @@ export const favoriteSlice = createSlice({
 
 export const {
   addToFavorite,
-  removeFromFavorite
+  removeFromFavorite,
+  getFavorite
 } = favoriteSlice.actions;
 
 export const favoriteItemsSelector = (state) => state.favorite.items;

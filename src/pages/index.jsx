@@ -66,7 +66,7 @@ export default Index;
 
 export const getServerSideProps = async () => {
   const promoContent = await APIBitrix.get("content/main/promo-section/").then(res => res[0]);
-  const categories = await APIBitrix.get("products/categories/");
+  const categories = await APIBitrix.get("products/categories/").then(res => res);
   // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`);
   const newProducts = await APIBitrix.get("products/slider/").then(res => res.products);
   const posts = await APIBitrix.get(`articles/collection/`);
