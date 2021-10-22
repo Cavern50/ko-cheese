@@ -26,9 +26,7 @@ export default Index;
 
 
 export const getServerSideProps = async () => {
-
   const categories = await APIBitrix.get("articles/categories/");
-  // const items = await APIBitrix.get(`articles/collection/${categories[0].subcategories[0].id}`)
   return { props: { categories } };
 };
 

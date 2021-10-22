@@ -8,10 +8,9 @@ import { Discount } from "components/common/Discount/Discount";
 import { useModal } from "hooks";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 
-
 import { H1 } from "components/layout/H1/H1";
-import ProductsAPI from "api/ProductsAPI";
 import APIBitrix from "api/APIBitrix";
+import MockAPI from "api/MockAPI";
 
 const Products = ({ newProducts, discountProduct, categories }) => {
   const discountModal = useModal(true, false);
@@ -40,8 +39,7 @@ export default Products;
 
 export const getServerSideProps = async () => {
   const categories = await APIBitrix.get('products/categories/');
-  // const products = await APIBitrix.get(`products/collection/${categories[0].subcategories[0].id}`)
   const newProducts = await APIBitrix.get('products/slider/').then(res => res.products);
-  const discountProduct = await ProductsAPI.getDiscountProduct();
+  const { discountProduct } = await MockAPI.getData();
   return { props: {  discountProduct, newProducts, categories } };
 };
