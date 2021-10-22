@@ -7,7 +7,7 @@ export const ProfileSubscribe = () => {
   return (
     <div>
       <ProfileControls/>
-      {orders.map(order => <Order data={order} subscribe/>)}
+      {orders.map((order, i) => <Order data={order} key={i} subscribe/>)}
     </div>
   );
 };

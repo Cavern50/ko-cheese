@@ -6,22 +6,26 @@ export const ModalWrapper = (props) => {
   const { show, children, closeModal, animation: { animationShow, animationHide }, classes: { boxClass, containerClass }, additionClass, stopScroll = false } = props;
   const [shouldRender, setRender] = React.useState(show);
 
+  const closeModalOnEscape = React.useCallback((e) => {
+    if (e.keyCode === 27) {
+      closeModal();
+    }
+  }, [show]);
+
   React.useEffect(() => {
-    if (show) setRender(true);
+    if (show) {
+      setRender(true);
+      document.addEventListener("keydown", closeModalOnEscape);
+    }
 
     document.body.style.overflow = stopScroll && show ? "hidden" : "unset";
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && show) {
-        closeModal();
-      }
-    });
+    return () => document.removeEventListener("keydown", closeModalOnEscape)
   }, [show]);
 
-  React.useEffect(() => () => document.removeEventListener("keydown", closeModal, false));
 
 
-  const onAnimationEnd = () => {
+  const onAnimationEnd = (e) => {
     if (!show) setRender(false);
   };
 
@@ -31,7 +35,7 @@ export const ModalWrapper = (props) => {
            style={{ animation: `${show ? "fadeIn" : "fadeOut"} forwards .4s` }}>
         <div className={clsx(s[containerClass], s[additionClass])} onClick={(e) => e.stopPropagation()}
              style={{ animation: `${show ? animationShow : animationHide} forwards .4s` }}
-             onAnimationEnd={() => onAnimationEnd()}>
+             onAnimationEnd={(e) => onAnimationEnd(e)}>
           {children}
         </div>
       </div>
@@ -39,3 +43,9 @@ export const ModalWrapper = (props) => {
   );
 };
 
+//
+// const closeModalOnEscape = e => {
+//   if (e.key === "Escape" && show) {
+//     closeModal();
+//   }
+// }

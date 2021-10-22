@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
+  fuserId: null,
   id: null,
   userInfo: {},
   userPhone: '',

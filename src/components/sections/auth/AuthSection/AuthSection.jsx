@@ -9,28 +9,33 @@ import { AUTH_VALIDATION_SCHEMA } from "constants.js";
 import APIAuth from "api/APIAuth";
 import { useRouter } from "next/router";
 import APIBitrix from "api/APIBitrix";
+import { privacyChangeModalState } from "redux/slices/modals";
 import s from "./AuthSection.module.scss";
 
-const initialValues = {
-  phone: ""
-};
+
 
 export const AuthSection = () => {
 
   const router = useRouter();
+  const isLoginPage = router.pathname === "/login";
+
+  const initialValues = {
+    phone: "+7 ",
+    code: "",
+    policy: isLoginPage
+  };
+  
 
   const [confirmField, setConfirmField] = React.useState(false);
   const [formData, setFormData] = React.useState({});
   const userId = useSelector(userIdSelector);
   const dispatch = useDispatch();
 
-  const regHandler = async ({ phone, ...rest }) => {
+  const regHandler = async ({ phone }) => {
     phone = phone.replace(/\s+/g, "");
     const response = await APIAuth.reg(phone);
-
     setFormData(response);
     setConfirmField(true);
-    console.log(phone);
   };
 
   const confirmHandler = async (userData, verification) => {
@@ -38,18 +43,27 @@ export const AuthSection = () => {
       ...userData,
       fuser_id: userId
     };
-    const response = await APIAuth.confirm(userData, verification);
+
+    const confirmRequest = await APIAuth.confirm(userData, verification);
     await dispatch(addUserId(userData.user_id));
-    const userInfo = await APIBitrix.post('user/personal-data/', {
-      user_id: userData.user_id
-    });
-    await dispatch(setUserInfo(userInfo));
-    localStorage.setItem('fuser_id', userData.user_id);
+
+    const profileInfo = await APIBitrix.post("user/personal-data/", {}, {
+      Authorization: `Bearer ${confirmRequest.token}`
+    }).then(res => res.data);
+
+    await dispatch(setUserInfo(profileInfo));
+    localStorage.setItem('authToken', confirmRequest.token);
+    // localStorage.setItem('fuser_id', userData.user_id);
+    // localStorage.removeItem("fuser_id");
     await dispatch(setLogged(true));
     router.push("/profile");
     console.log(userData, verification);
   };
 
+
+  const privacyModalHandler = () => {
+    dispatch(privacyChangeModalState(true));
+  };
 
   return (
     <div className={s.container}>
@@ -76,14 +90,38 @@ export const AuthSection = () => {
                   // <Input id="phone" label="Номер телефона" name="phone" type="text"/>
                   <Input id="code" label="Код подтверждения" name="code" type="text" autoFocus/>
               }
-              <button type="submit" className={s.submit}>Войти</button>
-              <Link href="/registration">
-                <a className={s.reg}>Зарегистрироваться</a>
-              </Link>
+              {
+                isLoginPage ?
+                  <>
+                    <button type="submit" className={s.submit}>Войти</button>
+                    <Link href="/registration">
+                      <a className={s.reg}>Зарегистрироваться</a>
+                    </Link>
+                  </>
+                  :
+                  <>
+                    <div className={s.politics}>
+                      <Input id="policy" name="policy" type="checkbox" additionClass="checkbox"/>
+                      <div className={s.label}>
+                        <span>Я ознакомлен(-а)</span>
+                        <button type="button" className={s.privacy}
+                                onClick={privacyModalHandler}>
+                          с политикой конфиденциальности
+                        </button>
+                      </div>
+                    </div>
+                    <button className={s.submit}
+                            type="submit">
+                      Зарегистрироваться
+                    </button>
+                    <Link href="/login">
+                      <a className={s.reg}>Войти</a>
+                    </Link>
+                  </>
+              }
             </>
           )
         }
-
       </FormContainer>
     </div>
   );

@@ -4,10 +4,12 @@
 .container {
   width: 50%;
 }
+
 .purchase {
   width: 26.875rem;
   margin: 0 auto;
 }
+
 .title {
   text-align: center;
 }
@@ -23,35 +25,41 @@
 }
 
 .step {
-    opacity: 0.4;
-    text-transform: uppercase;
-    color: $gen;
+  display: flex;
+  align-items: center;
+  opacity: 0.4;
+  text-transform: uppercase;
+  color: $gen;
 
-    &.active {
-        opacity: 1;
+  &.active {
+    opacity: 1;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:not(:last-child) {
+    &::after {
+      display: flex;
+      align-items: center;
+      content: ">";
+      margin: 0 0.9375rem;
     }
-    &:first-child {
-        margin-left: 0;
-    }
-    &:not(:last-child) {
-      &::after {
-        content: ">";
-        margin: 0 0.9375rem;
-      }
-    }
+  }
 }
 
 .form {
-    width: 26.25rem;
-    margin: 3.125rem auto 0 auto;
+  width: 26.25rem;
+  margin: 3.125rem auto 0 auto;
 }
 
 .submit {
-    @extend %button--accent;
-    width: 100%;
-    height: 4rem;
-    margin-top: 7.5rem;
-    font-size: 1.125rem;
+  @extend %button--accent;
+  width: 100%;
+  height: 4rem;
+  margin-top: 7.5rem;
+  font-size: 1.125rem;
 }
 
 @media (max-width: $landscape) {

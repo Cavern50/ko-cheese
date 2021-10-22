@@ -9,20 +9,40 @@
   border-color: $gen;
   border-radius: 0.9375rem;
   text-transform: uppercase;
+
   &:hover,
   &.active {
     background-color: $gen;
     color: $accent;
   }
+
   &:last-child {
-     margin-right: 0;
+    margin-right: 0;
+  }
+
+  &.product {
+    width: fit-content;
+    margin-right: 1.25rem;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: $gen;
+    &.active,
+    &:hover {
+      text-decoration: underline;
+    }
+    &.active {
+      font-family: $font-service--bold;
+    }
   }
 }
+
 @media (max-width: $landscape) {
   .subcategory {
     margin-bottom: 20px;
   }
 }
+
 @media (max-width: $tablet) {
   //.mainButton {
   //  margin-bottom: 20px;
@@ -36,6 +56,10 @@
   //}
   .subcategory {
     margin-bottom: 16px;
+    &.product {
+      margin-right: 18px;
+      margin-bottom: 6px;
+    }
   }
 }
 

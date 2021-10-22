@@ -24,6 +24,7 @@ const Index = ({ categories }) => {
 
 export default Index;
 
+
 export const getServerSideProps = async () => {
 
   const categories = await APIBitrix.get("articles/categories/");

@@ -8,11 +8,11 @@ import {
   Fruits
 } from "components/SVG/TastesSVG/TastesSVG";
 
+export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/8";
 
 export const BASE_API_URL = "https://co-ko.asap-lp.ru/api/";
 
 export const BASE_SITE_URL = "https://co-ko.asap-lp.ru/";
-export const BASE_URL = "https://api.jsonbin.io/b/60f8295399892a4ae9a732dc/8";
 export const allStatus = {
   avaliable: {
     title: "в наличии",
@@ -155,15 +155,20 @@ export const RETURN_VALIDATION_SCHEMA = Yup.object().shape({
 export const PURCHASE_VALIDATION_SCHEMA = Yup.object().shape({
   name: Yup.string().required("Введите имя"),
   phone: Yup.string().required("Введите номер телефона"),
-  email: Yup.string().email("Введите корректный e-mail"),
+  email: Yup.string().email("Введите корректный e-mail")
+});
+
+export const DELIVERY_VALIDATION_SCHEMA = Yup.object().shape({
+  city: Yup.string().required("Введите город"),
   street: Yup.string().required("Введите улицу"),
   house: Yup.string().required("Введите номер дома")
 });
 
+export const EMPTY_VALIDATION_SCHEMA = Yup.object().shape({})
 
 export const AUTH_VALIDATION_SCHEMA = Yup.object().shape({
-  // phone: Yup.string().min(16, 'Проверьте правильность введенного номера')
-  // .max(16, 'Проверьте правильность введенного номера'),
+  phone: Yup.string().min(16, 'Проверьте правильность введенного номера')
+  .max(16, 'Проверьте правильность введенного номера'),
   policy: Yup.bool().oneOf([true], "Пожалуйста, ознакомьтесь с политикой конфиденциальности")
 });
 

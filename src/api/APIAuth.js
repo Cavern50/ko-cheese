@@ -6,38 +6,19 @@ class APIAuth {
 
   reg = (phone) => APIBitrix.post("user/registration/", {
     phone
-  }).then(res => {
-    if (typeof res === "object") {
-      return res;
-    }
-    return {
-      type: "error",
-      message: "Что-то пошло не так, попробуйте обновить страницу и попробовать снова"
-    };
-  });
+  }).then(res => res.data);
 
   confirm = (userData, verification) => {
-    const { user_id, phone, fuser_id } = userData;
+    const { user_id, phone } = userData;
     const { code } = verification;
-
-    APIBitrix.post("user/verification/", {
+    const fuser_id = localStorage.getItem('fuser_id');
+    return APIBitrix.post("user/verification/", {
       user_id,
       phone,
       code,
       fuser_id
-    }).then(res => {
-        if (typeof res === "object") {
-          localStorage.setItem('isLogged', 'true');
-          return res;
-        }
-        return {
-          type: "error",
-          message: "Что-то пошло не так, попробуйте обновить страницу и попробовать снова"
-        };
-      }
-    )
-    ;
-  };
+    }).then(res => res.data);
+  }
 
 
   auth = (typeOfOperation) => {

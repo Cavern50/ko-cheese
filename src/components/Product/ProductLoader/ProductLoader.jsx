@@ -2,8 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 import s from "./ProductLoader.module.scss";
 
-export const ProductLoader = () => {
-  return (
+export const ProductLoader = () => (
     <>
       {["", "", "", ""].map((_, i) => <ContentLoader
         speed={2}
@@ -35,4 +34,3 @@ export const ProductLoader = () => {
       </ContentLoader>)}
     </>
   );
-};

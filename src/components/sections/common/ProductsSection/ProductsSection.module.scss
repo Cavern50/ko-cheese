@@ -5,7 +5,7 @@
    @extend %flexbox;
    justify-content: center;
    flex-wrap: wrap;
-   margin-top: 3.125rem;
+   margin-top: 1rem;
 }
 
 .body {
@@ -28,13 +28,14 @@
    }
    .subcategories {
       width: 85%;
-      margin: 30px auto 0 auto;
+      margin: 16px auto 0 auto;
    }
 }
 
 @media (max-width: $mobile) {
    .body {
-      width: 340px;
+      width: 100%;
+      max-width: 420px;
    }
    .subcategories {
       justify-content: flex-start;

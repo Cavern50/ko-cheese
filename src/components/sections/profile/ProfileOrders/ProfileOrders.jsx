@@ -8,7 +8,7 @@ export const ProfileOrders = () => {
   return (
     <>
       <ProfileControls/>
-      {orders.map(order => <Order data={order} controls/>)}
+      {orders.map((order, i) => <Order data={order} key={i} controls/>)}
     </>
   );
 };

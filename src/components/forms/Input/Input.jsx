@@ -5,7 +5,6 @@ import s from "components/forms/Input/Input.module.scss";
 
 export const Input = (props) => {
   const { label, type, id, name, additionClass = "", containerClass = "", value = "", autoFocus } = props;
-  console.log(autoFocus);
   const fieldProps = {
     name,
     type,

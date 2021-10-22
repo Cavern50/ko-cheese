@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import APIBitrix from "api/APIBitrix";
-import { cartChangeModalState, popUpChangeModalState } from "redux/slices/modals";
+import { cartChangeModalState, popUpChangeModalState, successPurchasePopupChangeState } from "redux/slices/modals";
 
 
 const initialState = {
@@ -195,13 +195,18 @@ export const reqGetProducts = createAsyncThunk(
 export const reqPurchaseOrder = createAsyncThunk(
   "cart/reqAddToCart",
   async (productData, { dispatch, getState }) => {
-    const { user } = getState();
+    const { user: { id, isLogged } } = getState();
     await APIBitrix.post("basket/order/", {
-      fuser_id: user.id
+      fuser_id: id,
+      user_id: isLogged ? id : 0
     }).then(res => {
       console.log(res);
       dispatch(purchaseOrder());
-      alert("Заказ успешно оформлен");
+      dispatch(successPurchasePopupChangeState({
+        visible: true,
+        order: 123,
+        mail: "kamaPulya@mail.ru"
+      }))
     });
   }
 );

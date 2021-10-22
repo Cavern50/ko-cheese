@@ -13,6 +13,11 @@
   font-family: $font-service;
 }
 
+.text {
+  width: 80%;
+  text-align: center;
+}
+
 .ok {
   @extend %button--gen;
   margin-top: 20px;

@@ -4,8 +4,10 @@
 .card {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   width: 25%;
-  height: 25rem;
+  height: 26rem;
   padding: 1.25rem 0.9375rem;
   border: 1px solid rgba($gen, 0.3);
   border-top: none;
@@ -38,14 +40,18 @@
   text-align: center;
 }
 
-.price {
-  font-family: $font-numbers;
-}
 
 .image {
   max-height: 10rem;
   margin: 0.625rem auto 0 auto;
   object-fit: contain;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .name {
@@ -79,21 +85,26 @@
   opacity: 0.4;
 }
 
-.more {
-  @extend %flexbox;
-  @extend %button--decorate;
-  justify-content: center;
-  position: absolute;
-  left: 0;
-  bottom: -3.75rem;
-  width: 100%;
-  height: 3.75rem;
-  margin-top: 1.0625rem;
-  font-size: 0.875rem;
-  color: $accent;
-  background-color: $gen;
-  transition: bottom 0.4s ease-out;
+.price {
+  font-family: $font-numbers;
 }
+
+//
+//.more {
+//  @extend %flexbox;
+//  @extend %button--decorate;
+//  justify-content: center;
+//  position: absolute;
+//  left: 0;
+//  bottom: -3.75rem;
+//  width: 100%;
+//  height: 3.75rem;
+//  margin-top: 1.0625rem;
+//  font-size: 0.875rem;
+//  color: $accent;
+//  background-color: $gen;
+//  transition: bottom 0.4s ease-out;
+//}
 
 .link {
   position: absolute;
@@ -130,11 +141,54 @@
 }
 
 @media (max-width: $mobile) {
-  .card {
-    height: 205px;
+  .card:not(.card_slider) {
+    height: 225px;
+    padding: 11px 8px;
+    // control buttons
+    button {
+      width: 30px;
+      height: 30px;
+      margin-right: 6px;
+      &:last-child {
+        margin-right: 0;
+      }
+      svg {
+        width: 60%;
+      }
+    }
     .image {
       width: 128px;
-      height: 101px;
+      height: 76px;
+    }
+    .name {
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    .addition {
+      min-height: 18px;
+      font-size: 7px;
+    }
+    .info {
+      margin-top: 4px;
+    }
+    .well {
+      span {
+        width: 18px;
+        height: 18px;
+      }
+      svg {
+        width: 50%;
+      }
+    }
+    .status {
+      font-size: 8px;
+    }
+    .weight {
+      margin-top: 5px;
+      font-size: 7px;
+    }
+    .price {
+      font-size: 10px;
     }
   }
   .card.card_slider {
@@ -153,13 +207,9 @@
       font-size: 14px;
     }
   }
-  .image {
-    width: 128px;
-  }
-  .name {
-    font-size: 12px;
-  }
-  .addition {
-    font-size: 7px;
-  }
+  //.image {
+  //  width: 128px;
+  //}
+
+
 }

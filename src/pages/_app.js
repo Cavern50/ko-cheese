@@ -58,7 +58,7 @@ const MyApp = ({ Component, pageProps, router }) => {
   React.useEffect(() => {
 
     getProducts();
-    
+
     // избранное
 
 

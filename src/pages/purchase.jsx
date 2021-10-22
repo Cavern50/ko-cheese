@@ -6,6 +6,7 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { OrderingSection } from "components/sections/purchase/OrderingSection/OrderingSection";
 import { CartSection } from "components/sections/purchase/CartSection/CartSection";
 import g from "../styles/Main.module.scss";
+import APIBitrix from "api/APIBitrix";
 
 const Purchase = () => (
   <>
@@ -21,3 +22,11 @@ const Purchase = () => (
 );
 
 export default Purchase;
+
+//
+// export const getServerSideProps = async () => {
+//   const userData = await APIBitrix.post('order/data-step-one/', {
+//     is_guest:
+//     user_id: ''
+//   })
+// }

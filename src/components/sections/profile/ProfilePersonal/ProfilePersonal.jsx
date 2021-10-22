@@ -25,17 +25,18 @@ export const ProfilePersonal = () => {
       surname,
       email
     });
+
     await dispatch(setUserInfo({
       phone,
       name,
       surname,
       email
     }));
+
     await dispatch(popUpChangeModalState({
       visible: true,
       text: "Данные успешно изменены."
     }));
-
   };
 
   const callChangePhonePopup = () => {

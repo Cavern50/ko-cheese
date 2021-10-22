@@ -13,6 +13,11 @@ const initialState = {
     visible: false,
     text: ""
   },
+  successPurchase: {
+    visible: false,
+    order: "",
+    mail: ""
+  }
 };
 
 export const modalsSlice = createSlice({
@@ -43,8 +48,8 @@ export const modalsSlice = createSlice({
     newPhonePopupChangeState(state,action) {
       state.newPhonePopup = action.payload;
     },
-    popupChangeState(state,action) {
-      state.popup = action.payload;
+    successPurchasePopupChangeState(state,action) {
+      state.successPurchase = action.payload;
     },
     closeAllModals() {
       return {...initialState}
@@ -69,7 +74,8 @@ export const {
   privacyChangeModalState,
   popUpChangeModalState,
   closeAllModals,
-  newPhonePopupChangeState
+  newPhonePopupChangeState,
+  successPurchasePopupChangeState
 } = modalsSlice.actions;
 
 export const cartModalSelector = (state) => state.modals.cart;
@@ -80,4 +86,5 @@ export const menuModalSelector = (state) => state.modals.menu;
 export const privacyModalSelector = (state) => state.modals.privacy;
 export const popUpModalSelector = (state) => state.modals.popup;
 export const newPhonePopUpSelector = (state) => state.modals.newPhonePopup;
+export const successPurchaseSelector = (state) => state.modals.successPurchase;
 

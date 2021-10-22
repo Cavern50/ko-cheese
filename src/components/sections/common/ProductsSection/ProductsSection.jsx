@@ -12,6 +12,8 @@ import { useClientSide, useTabs } from "hooks.js";
 
 import APIBitrix from "api/APIBitrix";
 import s from "./ProductsSection.module.scss";
+import Dropdown from "react-dropdown";
+import { DropdownCustom } from "components/common/DropdownCustom/DropdownCustom";
 
 
 export const ProductsSection = ({ products, categories }) => {
@@ -43,28 +45,45 @@ export const ProductsSection = ({ products, categories }) => {
     getProducts();
   }, [activeCategory, activeSubcategoryId]);
 
+  React.useEffect(() => {
+    console.log(categories);
+  }, []);
+
+
   const isClientSide = useClientSide();
+
+  const selectHandler = (name) => {
+    const that = categories.find(category => category.name === name).id;
+    toggleActiveCategoryId(that);
+  }
 
   return (
     <Section>
       <Wrapper>
         <div className={s.header}>
-          <Tabs>
-            {
-              categories.map(({ name, id }) => (
-                <TabButton
+          {isClientSide && windowSize >= 1200 ?
+            <Tabs>
+              {categories.map(({ name, id }) => (
+                <SubcategoryButton
                   key={id}
-                  text={name}
-                  index={id}
+                  title={name}
+                  id={id}
                   active={activeCategoryId}
                   toggleActive={toggleActiveCategoryId}
                 />
               ))
-            }
-          </Tabs>
+              }
+            </Tabs> :
+            <DropdownCustom
+              value={categories[0].name}
+              options={categories.map(el => el.name)}
+              selectHandler={(e) => selectHandler(e.value)}
+            />
+          }
           {
             activeCategory.subcategories &&
             <div className={s.subcategories}>
+
               {
                 activeCategory.subcategories.map(({ name, id }) => (
                   <SubcategoryButton
@@ -73,13 +92,14 @@ export const ProductsSection = ({ products, categories }) => {
                     title={name}
                     active={activeSubcategoryId}
                     toggleActive={toggleSubcategoryId}
-                    additionClass="mainButton"
+                    additionClass="product"
                   />
                 ))
               }
             </div>
           }
         </div>
+
         {
           isLoading ?
             <ProductLoader/>

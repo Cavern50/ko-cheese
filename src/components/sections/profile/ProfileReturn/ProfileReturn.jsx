@@ -9,10 +9,14 @@ import { windowSize } from "constants.js";
 import { useClientSide } from "hooks.js";
 import { returnOrderSelector } from "redux/slices/returnOrder";
 import s from "./ProfileReturn.module.scss";
+import { Field } from "formik";
+import Dropdown from "react-dropdown";
 
 const initialValues = {
   name: "Сергей",
-  phone: +79271015487
+  phone: +79271015487,
+  point: "",
+  orderProduct: ""
 };
 const returnReasonOptions = [
   "Товар просрочен", "Ненадлежащее качество товара", "Я передумал"
@@ -56,8 +60,6 @@ export const ProfileReturn = () => {
 
   const isClientSide = useClientSide();
 
-
-
   return (
     <>
       {
@@ -70,7 +72,7 @@ export const ProfileReturn = () => {
           >
             {(formProps) => (
               <>
-                {/*<Order/>*/}
+
                 <h3 className={s.title}>Заявление на замену</h3>
                 <div className={s.container}>
                   <div className={s.block}>
@@ -78,18 +80,21 @@ export const ProfileReturn = () => {
                       label="*Номер заказа"
                       placeholder=""
                       options={allOrders}
-                      name="orderNumber"
-                      id="orderNumber"
-                      selectHandler={selectHandler}/>
+                      selectHandler={(e) => {
+                        formProps.setFieldValue("orderNumber", e.value);
+                        selectHandler(e);
+                      }
+                      }/>
                     {
                       curProducts.length > 0 &&
                       <DropdownCustom
                         label="*Выберите товар из списка"
                         placeholder=""
                         options={curProducts.map(product => `${product.name}, ${product.count} шт.`)}
-                        name="orderProduct"
-                        id="orderProduct"
-                        selectHandler={selectHandler}/>
+                        selectHandler={(e) => {
+                          formProps.setFieldValue("orderProduct", e.value);
+                        }
+                        }/>
                     }
                     <Input label="*Телефон" type="number" id="phone" name="phone"/>
                     <Input label="*Имя" type="text" id="name" name="name"/>
@@ -99,8 +104,10 @@ export const ProfileReturn = () => {
                       label="*Причина замены"
                       placeholder="Выберите причину"
                       options={returnReasonOptions}
-                      name="reason"
-                      id="reason"
+                      selectHandler={(e) => {
+                        formProps.setFieldValue("reason", e.value);
+                      }
+                      }
                     />
                     <div className={s.replace}>
                       <span className={s.subtitle}>Замена на</span>
@@ -145,8 +152,11 @@ export const ProfileReturn = () => {
                       label="Точка продаж"
                       placeholder="Выберите точку продаж"
                       options={salePoints}
-                      name="point"
-                      id="point"/>
+                      selectHandler={(e) => {
+                        formProps.setFieldValue("point", e.value);
+                      }
+                      }
+                    />
                   </div>
                 </div>
                 <button type="submit" className={s.submit}>Отправить заявку</button>

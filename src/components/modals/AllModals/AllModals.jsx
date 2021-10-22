@@ -20,10 +20,16 @@ import {
   letterChangeModalState,
   subscribeChangeModalState,
   menuChangeModalState,
-  privacyChangeModalState, popUpChangeModalState, popUpModalSelector, newPhonePopUpSelector, newPhonePopupChangeState
+  privacyChangeModalState,
+  popUpChangeModalState,
+  popUpModalSelector,
+  newPhonePopUpSelector,
+  newPhonePopupChangeState,
+  successPurchasePopupChangeState, successPurchaseSelector
 } from "redux/slices/modals";
 import { WarnPopup } from "components/modals/WarnPopup/WarnPopup";
 import { ChangePhonePopup } from "components/modals/ChangePhonePopup/ChangePhonePopup";
+import { SuccessPurchase } from "components/modals/SuccessPurchase/SuccessPurchase";
 
 
 export const AllModals = () => {
@@ -36,87 +42,63 @@ export const AllModals = () => {
   const privacyModalValue = useSelector(privacyModalSelector);
   const popupModalValue = useSelector(popUpModalSelector);
   const newPhonePopupValue = useSelector(newPhonePopUpSelector);
-
-  const cartModalCloseHandler = () => {
-    dispatch(cartChangeModalState(false));
-  };
-
-  const favoriteModalCloseHandler = () => {
-    dispatch(favoriteChangeModalState(false));
-  };
-
-  const subscribeModalCloseHandler = () => {
-    dispatch(subscribeChangeModalState(false));
-  };
-
-  const letterModalCloseHandler = () => {
-    dispatch(letterChangeModalState(false));
-  };
-
-  const menuModalCloseHandler = () => {
-    dispatch(menuChangeModalState(false));
-  };
-
-  const privacyModalCloseHandler = () => {
-    dispatch(privacyChangeModalState(false));
-  };
-
-  const popupCloseHandler = () => {
-    dispatch(popUpChangeModalState(false));
-  };
-
-  const newPhonePopupCloseHandler = () => {
-    dispatch(newPhonePopupChangeState(false));
-  };
+  const successPurchasePopupValue = useSelector(successPurchaseSelector);
 
   return (
     <>
-      <ModalWrapper closeModal={cartModalCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(cartChangeModalState(false))}
                     show={cartModalValue}
                     stopScroll
                     {...mainModalProperties}>
-        <Cart closeModal={cartModalCloseHandler}/>
+        <Cart closeModal={() => dispatch(cartChangeModalState(false))}/>
       </ModalWrapper>
-      <ModalWrapper closeModal={favoriteModalCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(favoriteChangeModalState(false))}
                     show={favoriteModalValue}
                     stopScroll
                     {...mainModalProperties}>
-        <Favorite closeModal={favoriteModalCloseHandler}/>
+        <Favorite closeModal={() => dispatch(favoriteChangeModalState(false))}/>
       </ModalWrapper>
-      <ModalWrapper closeModal={subscribeModalCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(subscribeChangeModalState(false))}
                     show={subscribeModalValue}
                     stopScroll
                     {...mainModalProperties}>
-        <Subscribe closeModal={subscribeModalCloseHandler}/>
+        <Subscribe closeModal={() => dispatch(subscribeChangeModalState(false))}/>
       </ModalWrapper>
-      <ModalWrapper closeModal={letterModalCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(letterChangeModalState(false))}
                     show={letterModalValue}
                     stopScroll
                     {...mainModalProperties}>
-        <Letter closeModal={letterModalCloseHandler}/>
+        <Letter closeModal={() => dispatch(letterChangeModalState(false))}/>
       </ModalWrapper>
-      <ModalWrapper closeModal={menuModalCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(menuChangeModalState(false))}
                     show={menuModalValue}
                     stopScroll
                     additionClass="menu"
                     {...mainModalProperties}>
         <Menu/>
       </ModalWrapper>
-      <ModalWrapper closeModal={privacyModalCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(privacyChangeModalState(false))}
                     show={privacyModalValue}
                     stopScroll
                     {...mainModalProperties}>
-        <PrivacyPolicy closeModal={privacyModalCloseHandler}/>
+        <PrivacyPolicy closeModal={() => dispatch(privacyChangeModalState(false))}/>
       </ModalWrapper>
-      <ModalWrapper closeModal={popupCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(popUpChangeModalState(false))}
                     show={popupModalValue.visible}
+                    stopScroll
                     {...mainPopupProperties}>
         <WarnPopup text={popupModalValue.text}/>
       </ModalWrapper>
-      <ModalWrapper closeModal={newPhonePopupCloseHandler}
+      <ModalWrapper closeModal={() => dispatch(newPhonePopupChangeState(false))}
                     show={newPhonePopupValue}
                     {...mainPopupProperties}>
         <ChangePhonePopup/>
+      </ModalWrapper>
+      <ModalWrapper closeModal={() => dispatch(successPurchasePopupChangeState(false))}
+                    show={successPurchasePopupValue.visible}
+                    stopScroll
+                    {...mainPopupProperties}>
+        <SuccessPurchase order={successPurchasePopupValue.order} mail={successPurchasePopupValue.mail}/>
       </ModalWrapper>
     </>
   );

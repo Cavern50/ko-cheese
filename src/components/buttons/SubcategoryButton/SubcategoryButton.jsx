@@ -6,7 +6,7 @@ import s from 'components/buttons/SubcategoryButton/SubcategoryButton.module.scs
 export const SubcategoryButton = ({title, id, active, toggleActive, additionClass}) => (
     <button
       type="button"
-      className={clsx(s.subcategory, active === id ? s.active : '', s[additionClass])}
+      className={clsx(s.subcategory, active === id && s.active, s[additionClass])}
       onClick={() => toggleActive(id)}
     >
       {title}
