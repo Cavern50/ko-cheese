@@ -1,5 +1,4 @@
 import React from "react";
-import FarmAPI from "api/FarmAPI";
 import { IntroSection } from "components/sections/farm/IntroSection/IntroSection";
 import { FarmContentLargeSection } from "components/sections/farm/FarmContentLargeSection/FarmContentLargeSection";
 import { FarmContentSmallSection } from "components/sections/farm/FarmContentSmallSection/FarmContentSmallSection";

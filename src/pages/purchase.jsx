@@ -6,7 +6,6 @@ import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { OrderingSection } from "components/sections/purchase/OrderingSection/OrderingSection";
 import { CartSection } from "components/sections/purchase/CartSection/CartSection";
 import g from "../styles/Main.module.scss";
-import APIBitrix from "api/APIBitrix";
 
 const Purchase = () => (
   <>

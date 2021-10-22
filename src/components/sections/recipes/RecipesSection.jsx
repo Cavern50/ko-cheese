@@ -7,11 +7,9 @@ import { Recipe } from "components/common/Recipe/Recipe";
 
 import { useTabs } from "hooks";
 
-import ArticlesAPI from "api/ArticlesAPI";
-
 import APIBitrix from "api/APIBitrix";
-import s from "./RecipesSection.module.scss";
 import { RecipeLoader } from "components/common/RecipeLoader/RecipeLoader";
+import s from "./RecipesSection.module.scss";
 
 export const RecipesSection = ({ categories, items }) => {
 

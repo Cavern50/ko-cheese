@@ -3,7 +3,6 @@ import React from "react";
 import { Product } from "components/Product/Product";
 import { SubcategoryButton } from "components/buttons/SubcategoryButton/SubcategoryButton";
 import { Tabs } from "components/layout/Tabs/Tabs";
-import { TabButton } from "components/buttons/TabButton/TabButton";
 import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { windowSize } from "constants.js";
@@ -11,10 +10,8 @@ import { ProductLoader } from "components/Product/ProductLoader/ProductLoader";
 import { useClientSide, useTabs } from "hooks.js";
 
 import APIBitrix from "api/APIBitrix";
-import s from "./ProductsSection.module.scss";
-import Dropdown from "react-dropdown";
 import { DropdownCustom } from "components/common/DropdownCustom/DropdownCustom";
-
+import s from "./ProductsSection.module.scss";
 
 export const ProductsSection = ({ products, categories }) => {
   const { activeId: activeCategoryId, toggleActiveId: toggleActiveCategoryId } = useTabs(categories[0].id, false);
@@ -45,16 +42,12 @@ export const ProductsSection = ({ products, categories }) => {
     getProducts();
   }, [activeCategory, activeSubcategoryId]);
 
-  React.useEffect(() => {
-    console.log(categories);
-  }, []);
-
 
   const isClientSide = useClientSide();
 
-  const selectHandler = (name) => {
-    const that = categories.find(category => category.name === name).id;
-    toggleActiveCategoryId(that);
+  const selectHandlerForDropdown = (name) => {
+    const thatCategory = categories.find(category => category.name === name).id;
+    toggleActiveCategoryId(thatCategory);
   }
 
   return (
@@ -77,7 +70,7 @@ export const ProductsSection = ({ products, categories }) => {
             <DropdownCustom
               value={categories[0].name}
               options={categories.map(el => el.name)}
-              selectHandler={(e) => selectHandler(e.value)}
+              selectHandler={(e) => selectHandlerForDropdown(e.value)}
             />
           }
           {

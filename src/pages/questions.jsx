@@ -3,7 +3,6 @@ import { Section } from "components/layout/Section/Section";
 import { Wrapper } from "components/layout/Wrapper/Wrapper";
 import { H1 } from "components/layout/H1/H1";
 import Accordion from "components/common/Accordion/Accordion";
-import QuestionsAPI from "api/QuestionsAPI";
 import Head from "next/head";
 import MockAPI from "api/MockAPI";
 
