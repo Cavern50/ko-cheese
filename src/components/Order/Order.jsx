@@ -1,6 +1,5 @@
 import React from "react";
 import { OrderHeader } from "components/Order/OrderHeader/OrderHeader";
-import ProductsAPI from "api/ProductsAPI";
 import { OrderItem } from "components/Order/OrderItem/OrderItem";
 import { FormContainer } from "components/forms/FormContainer/FormContainer";
 
